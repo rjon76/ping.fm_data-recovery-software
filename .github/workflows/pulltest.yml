@@ -1,0 +1,22 @@
+name: Test Deployment
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: "cd /home/www/t.ping.fm/www/ip && git config core.filemode false
+ &&  git pull origin test"
