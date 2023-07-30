@@ -20,4 +20,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: "cd /home/www/www.ping.fm/www/ip && git config core.filemode false
- &&  git pull origin main && cd /home/www/www.ping.fm/www/ && chown -R ping.fm:ping.fm ip"
+ &&  git pull origin main && find . -type f -exec chmod 664 {} \; && find . -type d -exec chmod 775 {} \; && cd /home/www/www.ping.fm/www/ && chown -R ping.fm:ping.fm ip"
