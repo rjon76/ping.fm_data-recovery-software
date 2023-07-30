@@ -1,0 +1,92 @@
+ErrorDocument 401 "Unauthorized"
+
+#<FilesMatch "wp-login.php">
+AuthType Basic
+AuthName "Restricted Area"
+AuthGroupFile /home/www/access_control
+AuthUserFile /home/www/password_control
+Require group wpadmin
+#Require group webdev
+#</FilesMatch>
+
+
+
+<Files wp-cron.php>
+order allow,deny
+deny from all
+</files>
+
+
+<Files wp-config.php>
+order allow,deny
+deny from all
+</files>
+
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</Files>
+
+<FilesMatch "(wp-cron.php)$">
+Satisfy Any
+Order allow,deny
+#Allow from all
+#Deny from none
+Deny from all
+</FilesMatch>
+
+<Files cache.php>
+Order allow,Deny
+Deny from all
+</Files>
+
+<FilesMatch "\.(ini|phps|fla|psd|log)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+
+<ifModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+RedirectMatch 404 /\.hg
+RedirectMatch 404 /\.git
+
+<IfModule mod_rewrite.c>
+RewriteCond %{SERVER_PORT} ^80$
+RewriteRule ^(.*) https://%{HTTP_HOST}/ip/$1 [L,R=301] 
+</IfModule>
+
+
+#------WEBP--------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Check if browser supports WebP images
+  RewriteCond %{HTTP_ACCEPT} image/webp
+
+  # Check if WebP replacement image exists
+  RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+
+  # Serve WebP image instead
+  RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=REQUEST_image]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Vary: Accept for all the requests to jpeg and png
+  Header append Vary Accept env=REQUEST_image
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+#------WEBP--------------
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+
+# END WordPress
+
