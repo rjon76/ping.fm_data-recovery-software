@@ -24,13 +24,13 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 		<?php wp_head(); ?>
 		<meta name="author" content="Olga Weis">
-		<link rel="stylesheet" id="stylecss-css" href="/wp-content/themes/ping/css/header.css" media="all">
+		<link rel="stylesheet" id="stylecss-css" href="/ip/wp-content/themes/ping/css/header.css" media="all">
 		<?php
 			if($fileName === 'chromecast.php') {
 		?>
-			<link rel="stylesheet" id="youtubecss-css" href="/wp-content/themes/ping/css/youtube-style.css" media="all">
+			<link rel="stylesheet" id="youtubecss-css" href="/ip/wp-content/themes/ping/css/youtube-style.css" media="all">
 		<?php } else { ?>
-			<link rel="stylesheet" id="stylecss-css" href="/wp-content/themes/ping/css/style.css" media="all">
+			<link rel="stylesheet" id="stylecss-css" href="/ip/wp-content/themes/ping/css/style.css" media="all">
 		<?php } ?>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-H1RBTQZ91E"></script>
