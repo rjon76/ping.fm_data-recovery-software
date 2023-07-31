@@ -1,0 +1,1 @@
+!function(t){t(document).on("click","section:last-child p:nth-child(even)",(function(){if("display: block;"===t(this).next().attr("style"))return t(this).next().hide("normal"),void t(this).removeClass("show");t(this).addClass("show"),t(this).next().show("normal")}))}(jQuery);
