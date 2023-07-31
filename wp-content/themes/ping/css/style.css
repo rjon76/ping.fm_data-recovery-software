@@ -698,7 +698,7 @@ section.banner .banner--img {
 section.banner .banner--img::after {
   content: '';
   opacity: 100%;
-  background-image: url("1-2.jpg") !important;
+  background-image: url("wifi.jpg") !important;
   background-size: cover;
   width: 100%;
   min-width: 100vw;
@@ -713,7 +713,7 @@ section.banner .banner--img::after {
   z-index: -1;
 }
 section.banner .banner--img.chromecast--img::after {
-  content: url("iPhone-stream@2x.webp");
+  /* content: url("iPhone-stream@2x.webp"); */
   background-image: unset !important;
   opacity: 70%;
   bottom: unset;

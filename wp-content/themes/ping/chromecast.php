@@ -37,7 +37,7 @@
 						<?php
 							$pages = get_pages( [
 								'authors' => 2,
-								'exclude' => get_the_ID()
+								'exclude' => [get_the_ID(), 9]
 							] );
 							shuffle($pages);
 							$output = array_slice($pages, 0, 14);
