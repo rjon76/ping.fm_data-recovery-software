@@ -17,7 +17,7 @@
 				<div class="info">
 					<div class="author">
 						<div class="img">
-							<img src="/wp-content/uploads/2023/07/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
+							<img src="/ip/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
 							<div class="authorpost">Tutorial written from original video by:</div>
@@ -31,20 +31,16 @@
 				<?php
 					the_content();
 				?>
-				<section class="how-test">
-					<h2>How do we test?</h2>
-					<p>🧑‍💻 Here at <a href="/" rel="follow">Ping.FM</a> (Ping.FM), our editorial team prides itself on delivering concise and precise information based on video tutorials for all your style needs. Why spend valuable time sitting through a 10-20 minute video when you can get the key points in a quick, easily digestible text format? This way, you've got flexibility at your fingertips: you can either watch the full video or simply scan the text for quick tips. Our goal is to make your style journey as efficient and enjoyable as possible.</p>
-				</section>
 				<aside>
-					<div class="h2">More How To Tutorials</div>
+					<div class="h2">More IP / WiFi /  Router Tutorials</div>
 					<ul>
 						<?php
 							$pages = get_pages( [
-								'authors' => 5,
+								'authors' => 2,
 								'exclude' => get_the_ID()
 							] );
 							shuffle($pages);
-							$output = array_slice($pages, 0, 12);
+							$output = array_slice($pages, 0, 14);
 							foreach( $output as $post ) {
 								$date = date_format(date_create($post->post_modified), 'M j, Y');
 							?>
@@ -52,7 +48,7 @@
 									<div class="article">
 										<div><?php echo $date ?></div>
 										<div class="innerart">
-											<img srcset="/wp-content/uploads/webinar.png" src="/wp-content/uploads/webinar.png" width="512" height="512" alt="Webinar icon">
+											<img srcset="/ip/wp-content/uploads/wifi.png" src="/ip/wp-content/uploads/wifi.png" width="512" height="512" alt="WiFi icon">
 											<a href="<?php echo esc_url( get_permalink($post->id) ); ?>" rel="follow"><?php echo $post->post_title ?></a>
 										</div>
 									</div>

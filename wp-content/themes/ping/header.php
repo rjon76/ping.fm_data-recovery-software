@@ -52,7 +52,6 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<?php echo do_shortcode( '[language-switcher]' ); ?>
 				<ul>
 					<li><a href="/chromecast-screen-mirroring/" rel="dofollow">Chromecast Screen Mirroring</a></li>
 					<li><a href="https://filmdivider.com/" rel="dofollow" target="_blank">Best Movies</a></li>
