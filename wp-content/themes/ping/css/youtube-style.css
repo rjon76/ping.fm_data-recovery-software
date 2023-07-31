@@ -687,12 +687,22 @@ address + p {
   margin: 0;
 }
 table {
-  width: 100%;
+  width: calc(100% - 56px);
   border-radius: 12px;
-  margin: 20px 10px 0 56px;
+  margin: 20px 0 0 56px;
   text-align: left;
 }
+@media(max-width: 767px) {
+  table {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+table tr th,
 table tr td {
   border-top: 1px solid #e8e8e8;
-  padding: 8px 0;
+  padding: 8px 4px;
+}
+table tr td {
+  word-break: break-word;
 }
