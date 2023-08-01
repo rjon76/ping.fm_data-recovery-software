@@ -274,6 +274,10 @@ p a {
   margin: 0;
 }
 
+div > a {
+  margin-bottom: 0;
+}
+
 section:last-child {
   margin-top: 80px;
 }
