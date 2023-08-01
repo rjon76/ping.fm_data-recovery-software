@@ -54,7 +54,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 			<div class="header-menu">
 				<ul>
 					<li><a href="/chromecast-screen-mirroring/" rel="dofollow">Chromecast Screen Mirroring</a></li>
-					<li><a href="https://filmdivider.com/" rel="dofollow" target="_blank">Best Movies</a></li>
+					<li><a href="/ip/" rel="dofollow">IP</a></li>
 				</ul>
 			</div>
 		</header>
