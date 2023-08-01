@@ -768,6 +768,10 @@ p a {
   margin: 0;
 }
 
+div > a {
+  margin-bottom: 0;
+}
+
 .author {
   display: -webkit-box;
   display: -ms-flexbox;
