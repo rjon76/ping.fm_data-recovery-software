@@ -56,6 +56,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					<li><a href="/chromecast-screen-mirroring/" rel="dofollow">Chromecast Screen Mirroring</a></li>
 					<li><a href="/ip/" rel="dofollow">Router Login & IP address</a></li>
 					<li><a href="/social-media-tutorials/" rel="dofollow">Social Media Tutorials</a></li>
+					<li><a href="/app-vs-app/" rel="dofollow">App vs App</a></li>
 				</ul>
 			</div>
 		</header>
