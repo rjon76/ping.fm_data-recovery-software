@@ -16,12 +16,15 @@
                     </div>
                 </div>
             </section>
+            <?php
+                the_content();
+            ?>
             <section class="homePosts">
                 <div class="container">
                 <?php
 					$pages = get_pages( [
 						'authors' => 2,
-                        'exclude' => 9
+                        'exclude' => [9, 277]
 					] );
                 ?>
                    <?php foreach( $pages as $post ) {
