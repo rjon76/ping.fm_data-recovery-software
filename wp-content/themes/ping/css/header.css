@@ -98,10 +98,11 @@ header {
     overflow-y: auto;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50px;
     display: inline-block !important;
     min-height: auto;
   }
+  header .language-switcher .langList img,
   header .language-switcher > div > a > img {
     margin: 0 5px 0 0 !important;
     display: inline;
@@ -109,6 +110,7 @@ header {
     height: 12px;
     border-radius: 0;
   }
+  header .language-switcher .langList a,
   header .language-switcher > div > a {
     line-height: 26px;
     display: block !important;
@@ -131,7 +133,11 @@ header {
     overflow-y: auto;
     left: 0;
     top: 0;
+    right: 0;
     min-height: auto;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    width: 166px;
   }
   header .language-switcher {
     position: absolute;
