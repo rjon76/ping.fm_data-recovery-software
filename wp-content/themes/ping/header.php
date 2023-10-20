@@ -57,13 +57,13 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 						<a href="/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
 					</li>
 					<li>
-						<a href="/ip/" rel="dofollow"><?php pll_e('Router Login & IP address'); ?></a>
+						<a href="/ip/" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
 					</li>
 					<li>
 						<a href="/social-media-tutorials/" rel="dofollow"><?php pll_e('Social Media Tutorials'); ?></a>
 					</li>
 					<li>
-						<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App vs App'); ?></a>
+						<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
 					</li>
 				</ul>
 			</div>
