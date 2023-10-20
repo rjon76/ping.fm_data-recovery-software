@@ -89,6 +89,9 @@ header {
     background-repeat: no-repeat !important;
     border: 0 !important;
   }
+  header .language-switcher .trp-ls-shortcode-disabled-language {
+    cursor: default !important;
+  }
   header .language-switcher:focus .langList,
   header .language-switcher:hover .langList {
     padding: 4px !important;
