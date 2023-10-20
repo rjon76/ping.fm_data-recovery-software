@@ -16,18 +16,23 @@ $current_language = get_locale();
 if($current_language == 'de_DE') {
 	$curr_url = 'de/';
 	$ping_url = '/de';
+	$curr_lang = 'German';
 } elseif ($current_language == 'es_ES') {
 	$curr_url = 'es/';
 	$ping_url = '/es';
+	$curr_lang = 'Spanish';
 } elseif ($current_language == 'fr_FR') {
 	$curr_url = 'fr/';
 	$ping_url = '/fr';
+	$curr_lang = 'French';
 } elseif ($current_language == 'nl_NL') {
 	$curr_url = 'nl/';
 	$ping_url = '/nl';
+	$curr_lang = 'Dutch';
 } else {
 	$curr_url = '';
 	$ping_url = '';
+	$curr_lang = 'English';
 }
 
 ?><!DOCTYPE html>
@@ -71,6 +76,19 @@ if($current_language == 'de_DE') {
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
+				<?php if($current_language == 'de_DE') { ?>
+					<div class="language-switcher">
+						<div class="trp-ls-shortcode-current-language" style="width: 166px;">
+							<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
+								<img srcset="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" src="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" width="18" height="12" alt="<?php echo $current_language; ?>" title="<?php echo $curr_lang; ?>">
+								<?php echo $curr_lang; ?>
+							</a>
+						</div>
+						<ul class="langList">
+							<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
+						</ul>
+					</div>
+				<?php } ?>
 				<ul>
 					<li>
 						<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
