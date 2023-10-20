@@ -76,19 +76,17 @@ if($current_language == 'de_DE') {
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<?php if($current_language == 'de_DE') { ?>
-					<div class="language-switcher">
-						<div class="trp-ls-shortcode-current-language" style="width: 166px;">
-							<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
-								<img srcset="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" src="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" width="18" height="12" alt="<?php echo $current_language; ?>" title="<?php echo $curr_lang; ?>">
-								<?php echo $curr_lang; ?>
-							</a>
-						</div>
-						<ul class="langList">
-							<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
-						</ul>
+				<div class="language-switcher">
+					<div class="trp-ls-shortcode-current-language" style="width: 166px;">
+						<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
+							<img srcset="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" src="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" width="18" height="12" alt="<?php echo $current_language; ?>" title="<?php echo $curr_lang; ?>">
+							<?php echo $curr_lang; ?>
+						</a>
 					</div>
-				<?php } ?>
+					<ul class="langList">
+						<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
+					</ul>
+				</div>
 				<ul>
 					<li>
 						<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
