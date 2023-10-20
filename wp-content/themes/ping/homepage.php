@@ -15,7 +15,7 @@
                 <?php
 					$pages = get_pages( [
 						'authors' => 2,
-                        'exclude' => [9, 277]
+                        'exclude' => [9, 277, 571]
 					] );
                 ?>
                    <?php foreach( $pages as $post ) {
