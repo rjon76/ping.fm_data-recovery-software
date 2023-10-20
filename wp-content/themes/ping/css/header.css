@@ -142,6 +142,7 @@ header {
     background-repeat: no-repeat;
     background-color: #fff;
     width: 166px;
+    border-radius: 6px;
   }
   header .language-switcher {
     position: absolute;
@@ -267,7 +268,7 @@ header {
         background: #fff;
     }
     header .language-switcher {
-        position: static !important;
+        position: relative !important;
         margin-left: 10px;
     }
     header ul li {
