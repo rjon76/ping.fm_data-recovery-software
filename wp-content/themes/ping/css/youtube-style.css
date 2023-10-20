@@ -616,21 +616,14 @@ address + p {
   fill: #6366f1 !important;
 }
 .panel .toggle-link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: block !important;
   width: 100%;
   position: relative;
 }
 .panel .toggle-link .panel-title {
   margin: 0;
-  padding-right: 10px;
+  padding-right: 30px;
+  position: relative;
   -webkit-text-size-adjust: 100%;
   -webkit-transition: color 0.3s ease-in-out;
   -o-transition: color 0.3s ease-in-out;
@@ -639,8 +632,27 @@ address + p {
   font-size: 16px;
   line-height: 24px;
 }
+.panel .toggle-link .panel-title:after {
+  content: '';
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNNyw3IEw3LDAgTDksMCBMOSw3IEwxNiw3IEwxNiw5IEw5LDkgTDksMTYgTDcsMTYgTDcsOSBMMCw5IEwwLDcgTDcsNyBaIiBmaWxsPSIjMDAwMDAwIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 2px;
+  transition: all .2s linear;
+}
+.panel.active .toggle-link .panel-title:after {
+  transform: rotate(45deg);
+}
 .panel .toggle-link .panel-title + p {
   margin: 0;
+}
+.panel .toggle-link .panel-title + div {
+  display: none;
 }
 .panel .toggle-link svg {
   min-width: 16px;

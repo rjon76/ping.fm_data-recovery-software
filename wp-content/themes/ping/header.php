@@ -65,7 +65,7 @@ if($current_language == 'de_DE') {
 
 	<body <?php body_class(); ?>>
 		<header>
-			<a href="/<?php echo $curr_url; ?>" rel="follow">
+			<a href="https://www.ping.fm/<?php echo $curr_url; ?>" rel="follow">
 				<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
 				ping.fm
 			</a>
