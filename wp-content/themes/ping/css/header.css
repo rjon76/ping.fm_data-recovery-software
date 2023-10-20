@@ -86,14 +86,28 @@ header {
     background-image: url('/wp-content/plugins/translatepress-multilingual/assets/images/arrow-down-3101.svg') !important;
     background-position: calc(100% - 10px) calc(1em + 4px),calc(100% - 3px) calc(1em + 0px) !important;
     background-size: 10px 10px, 10px 10px !important;
+    background-repeat: no-repeat !important;
     border: 0 !important;
   }
-  header .language-switcher:focus .trp-ls-shortcode-language,
-  header .language-switcher:hover .trp-ls-shortcode-language {
+  header .language-switcher:focus .langList,
+  header .language-switcher:hover .langList {
     padding: 4px !important;
+    visibility: visible;
+    max-height: 250px;
+    height: auto;
+    overflow-y: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block !important;
+    min-height: auto;
   }
   header .language-switcher > div > a > img {
     margin: 0 5px 0 0 !important;
+    display: inline;
+    width: 18px;
+    height: 12px;
+    border-radius: 0;
   }
   header .language-switcher > div > a {
     line-height: 26px;
@@ -101,10 +115,23 @@ header {
     text-align: left;
     text-transform: capitalize;
     text-decoration: none !important;
+    padding: 7px 12px;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 400;
   }
-  header .language-switcher .trp-ls-shortcode-language,
-  header .language-switcher .trp-ls-shortcode-language {
+  header .language-switcher .langList {
+    display: none;
     padding: 4px;
+    height: 1px;
+    overflow: hidden;
+    visibility: hidden;
+    z-index: 1;
+    max-height: 250px;
+    overflow-y: auto;
+    left: 0;
+    top: 0;
+    min-height: auto;
   }
   header .language-switcher {
     position: absolute;
