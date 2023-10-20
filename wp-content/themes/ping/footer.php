@@ -54,7 +54,7 @@
 				<p>
 					<?php pll_e('Copyright'); ?> © <?php echo date("Y"); ?> <?php pll_e('Electronic Team, Inc., its affiliates and licensors.'); ?> <a href="https://www.electronic.us/legal/" title="Legal Information" rel="nofollow"><?php pll_e('Legal Information.'); ?></a><br>
 				</p>
-				<address><?php pll_e('More IP / WiFi / Router Tutorials'); ?><?php pll_e('1800 Diagonal Road, Ste 600, Alexandria, VA 22314, USA'); ?></address>
+				<address><?php pll_e('1800 Diagonal Road, Ste 600, Alexandria, VA 22314, USA'); ?></address>
 				<p> • +12023358465 • <a href="mailto:support@electronic.us">support@electronic.us</a></p>
 			</div>
 		</footer>
