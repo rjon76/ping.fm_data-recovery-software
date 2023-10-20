@@ -11,6 +11,25 @@
 $currenturl = preg_replace('#(/[a-z]{2})?(/.*)#', '${2}', $_SERVER['REQUEST_URI']);
 $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
+$current_language = get_locale();
+
+if($current_language == 'de_DE') {
+	$curr_url = 'de/';
+	$ping_url = '/de';
+} elseif ($current_language == 'es_ES') {
+	$curr_url = 'es/';
+	$ping_url = '/es';
+} elseif ($current_language == 'fr_FR') {
+	$curr_url = 'fr/';
+	$ping_url = '/fr';
+} elseif ($current_language == 'nl_NL') {
+	$curr_url = 'nl/';
+	$ping_url = '/nl';
+} else {
+	$curr_url = '';
+	$ping_url = '';
+}
+
 ?><!DOCTYPE html>
 
 <html class="no-js" <?php language_attributes(); ?>>
@@ -46,7 +65,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 	<body <?php body_class(); ?>>
 		<header>
-			<a href="/" rel="follow">
+			<a href="/<?php echo $curr_url; ?>" rel="follow">
 				<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
 				ping.fm
 			</a>
@@ -54,17 +73,19 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 			<div class="header-menu">
 				<ul>
 					<li>
-						<a href="/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
+						<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
 					</li>
 					<li>
-						<a href="/ip/" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
+						<a href="/ip/<?php echo $curr_url; ?>" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
 					</li>
-					<li>
-						<a href="/social-media-tutorials/" rel="dofollow"><?php pll_e('Social Media Tutorials'); ?></a>
-					</li>
-					<li>
-						<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
-					</li>
+					<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
+						<li>
+							<a href="/social-media-tutorials/" rel="dofollow"><?php pll_e('Social Media Tutorials'); ?></a>
+						</li>
+						<li>
+							<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
+						</li>
+					<?php } ?>
 				</ul>
 			</div>
 		</header>
