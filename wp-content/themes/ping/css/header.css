@@ -75,48 +75,50 @@ header {
     transform: translate(-50%, -50%);
     height: 31px;
   }
-  header .trp-language-switcher > div {
+  header .language-switcher > div {
     max-width: 200px;
     min-width: 120px;
     padding: 4px;
     height: 50px;
     border-radius: 6px;
   }
-  header .trp-language-switcher > div {
+  header .language-switcher > div {
     background-image: url('/wp-content/plugins/translatepress-multilingual/assets/images/arrow-down-3101.svg') !important;
     background-position: calc(100% - 10px) calc(1em + 4px),calc(100% - 3px) calc(1em + 0px) !important;
     background-size: 10px 10px, 10px 10px !important;
     border: 0 !important;
   }
-  header .trp-language-switcher:focus .trp-ls-shortcode-language,
-  header .trp-language-switcher:hover .trp-ls-shortcode-language {
+  header .language-switcher:focus .trp-ls-shortcode-language,
+  header .language-switcher:hover .trp-ls-shortcode-language {
     padding: 4px !important;
   }
-  header .trp-language-switcher > div > a > img {
+  header .language-switcher > div > a > img {
     margin: 0 5px 0 0 !important;
   }
-  header .trp-language-switcher > div > a {
+  header .language-switcher > div > a {
     line-height: 26px;
     display: block !important;
     text-align: left;
     text-transform: capitalize;
     text-decoration: none !important;
   }
-  header .trp-language-switcher .trp-ls-shortcode-language,
-  header .trp-language-switcher .trp-ls-shortcode-language {
+  header .language-switcher .trp-ls-shortcode-language,
+  header .language-switcher .trp-ls-shortcode-language {
     padding: 4px;
   }
-  header .trp-language-switcher {
+  header .language-switcher {
     position: absolute;
-    left: 50%;
+    left: 250px;
     top: 45%;
-    transform: translate(-50%, -40%);
+    transform: translate(0,-40%);
     height: 50px;
     width: max-content;
     z-index: 99999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   @media(max-width: 1199px) {
-    header .trp-language-switcher {
+    header .language-switcher {
       left: unset;
       right: 5px;
       bottom: 0;
@@ -227,7 +229,7 @@ header {
         flex-direction: column;
         background: #fff;
     }
-    header .trp-language-switcher {
+    header .language-switcher {
         position: static !important;
         margin-left: 10px;
     }
