@@ -725,3 +725,9 @@ table tr td {
 table tr td {
   word-break: break-word;
 }
+article > section:not(:first-child):not(:last-child) ol p,
+article > section:not(:first-child):not(:last-child) ul h3,
+article > section:not(:first-child):not(:last-child) ol h3,
+article > section:not(:first-child):not(:last-child) ul p {
+  padding-left: 0;
+}
