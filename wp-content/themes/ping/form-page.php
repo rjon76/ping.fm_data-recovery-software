@@ -122,7 +122,7 @@ error_reporting(E_ALL);
 		<main>
 			<div class="container">
                 <div class="loader">
-                    <img src="/wp-content/uploads/ajax-loader.gif" alt="loader">
+                    <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                 </div>
                 <?php if(time() > $current) { ?>
                     <div>
@@ -134,7 +134,7 @@ error_reporting(E_ALL);
                         <p>URL: <?php echo $url;?></p>
                         <p>URL Description: <?php echo $url_descr;?></p>
                         <p>Anchor: <?php echo $anchor;?></p>
-                        <img src="<?php echo '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
+                        <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
                     </div>
                     <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
