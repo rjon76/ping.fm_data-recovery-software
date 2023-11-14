@@ -137,7 +137,7 @@ error_reporting(E_ALL);
                         <img src="<?php echo '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
                     </div>
-                    <form id="article" action="/">
+                    <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
                         <h3>New record:</h3>
                         <label for="apikey">AI API KEY</label>
                         <input type="text" id="apikey" name="apikey">
@@ -206,7 +206,7 @@ error_reporting(E_ALL);
                     jQuery('.loader').addClass('show');
                     jQuery.ajax({
                         type: 'POST',
-                        url: '/wp-content/uploads/article-script.php',
+                        url: jQuery("form").attr('data-action'),
                         data: formData,
                         success: function(data) {
                             if(data == 'false') {
