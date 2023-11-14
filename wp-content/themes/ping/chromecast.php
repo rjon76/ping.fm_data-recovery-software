@@ -17,7 +17,7 @@
 				<div class="info">
 					<div class="author">
 						<div class="img">
-							<img src="/ip/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
+							<img src="<?php echo home_url();?>/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
 							<div class="authorpost">Written by:</div>
@@ -49,7 +49,7 @@
 									<div class="article">
 										<div><?php echo $date ?></div>
 										<div class="innerart">
-											<img srcset="/ip/wp-content/uploads/wifi.png" src="/ip/wp-content/uploads/wifi.png" width="512" height="512" alt="WiFi icon">
+											<img srcset="<?php echo home_url();?>/wp-content/uploads/wifi.png" src="<?php echo home_url();?>/wp-content/uploads/wifi.png" width="512" height="512" alt="WiFi icon">
 											<a href="<?php echo esc_url( get_permalink($post->id) ); ?>" rel="follow"><?php echo $post->post_title ?></a>
 										</div>
 									</div>

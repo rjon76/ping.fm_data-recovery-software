@@ -22,7 +22,7 @@
 					?>
                     <div class="article">
                         <div class="innerart">
-                            <img srcset="/ip/wp-content/uploads/wifi.png" src="/ip/wp-content/uploads/wifi.png" width="512" height="512" alt="WiFi icon">
+                            <img srcset="<?php echo home_url();?>/wp-content/uploads/wifi.png" src="<?php echo home_url();?>/wp-content/uploads/wifi.png" width="512" height="512" alt="WiFi icon">
                             <h2><a href="<?php echo esc_url( get_permalink($post->id) ); ?>"><?php echo $post->post_title ?></a></h2>
                         </div>
                    </div>
