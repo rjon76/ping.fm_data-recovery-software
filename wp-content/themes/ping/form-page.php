@@ -117,6 +117,11 @@ error_reporting(E_ALL);
     .loader.show {
         display: flex;
     }
+    .moreFAq {
+        margin-top: 65px;
+        text-align: center;
+        font-weight: bold;
+    }
 </style>
 		<main>
 			<div class="container">
@@ -136,8 +141,8 @@ error_reporting(E_ALL);
                         <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
 
-                        <label for="btn-num-faq">+ Write quantity faq questions (default + 10)</label>
-                        <input type="number" id="numberFaq" name="numberFaq">
+                        <label for="btn-num-faq" id="moreFAq">ADD MORE QUESTIONS (default + 10)</label>
+                        <input type="number" id="numberFaq" name="numberFaq" min="1" max="30">
                         <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                     </div>
                     <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
