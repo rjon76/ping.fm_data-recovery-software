@@ -16,6 +16,12 @@
 					$pages = get_pages( [
                         'exclude' => get_the_ID()
 					] );
+
+                    $pages2 = get_pages();
+
+                    var_dump($pages);
+                    echo "<br>=================<br>";
+                    var_dump($pages2);
                 ?>
                    <?php foreach( $pages as $post ) {
 						$date = date_format(date_create($post->post_modified), 'M j, Y');
