@@ -139,6 +139,8 @@ error_reporting(E_ALL);
                     </div>
                     <form id="article" action="/">
                         <h3>New record:</h3>
+                        <label for="apikey">AI API KEY</label>
+                        <input type="text" id="apikey" name="apikey">
                         <label for="title">TITLE (theme)</label>
                         <input type="text" id="title" name="title" data-last="<?php echo $title;?>">
                         <label for="h1title">H1 - TITLE</label>
@@ -189,7 +191,8 @@ error_reporting(E_ALL);
                 event.preventDefault()
                 var formData = new FormData(this);
                 
-                if(jQuery('#title')[0].value.trim().length === 0 ||
+                if(jQuery('#apikey')[0].value.trim().length === 0 ||
+                    jQuery('#title')[0].value.trim().length === 0 ||
                     jQuery('#h1title')[0].value.trim().length === 0 ||
                     jQuery('#meta_title')[0].value.trim().length === 0 ||
                     jQuery('#url')[0].value.trim().length === 0 ||

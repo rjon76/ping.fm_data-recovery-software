@@ -40,6 +40,10 @@ if ($_POST["post_url"]) {
     $post_url = $_POST["post_url"];
 }
 
+if ($_POST["apikey"]) {
+    $OPENAI_API_KEY = $_POST["apikey"];
+}
+
 if ($_FILES['file'] && empty($_POST["file_url"])) {
     $moved = move_uploaded_file($_FILES["file"]["tmp_name"], $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]));
 
@@ -56,7 +60,7 @@ if($_POST["file_url"]) {
     $image_src = $_POST["file_url"];
 }
 
-if( !$_POST["anchor"] || !$_POST["url"] || 
+if( !$_POST["anchor"] || !$_POST["url"] || !$_POST["apikey"] ||
     !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
     !$_POST["url_descr"] || !$_POST["post_url"] ) {
     echo 'false';
@@ -77,8 +81,6 @@ function writeTimeGeneration($path_to_file, $seconds) {
 }
 
 writeTimeGeneration($file, 120);
-
-$OPENAI_API_KEY="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";
 
 function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text){
 	// Get height of single line
