@@ -48,13 +48,13 @@ if($current_language == 'de_DE') {
 
 		<?php wp_head(); ?>
 		<meta name="author" content="Olga Weis">
-		<link rel="stylesheet" id="stylecss-css" href="/ip/wp-content/themes/ping/css/header.css" media="all">
+		<link rel="stylesheet" id="stylecss-css" href="<?php echo home_url();?>/wp-content/themes/ping/css/header.css" media="all">
 		<?php
 			if($fileName === 'chromecast.php') {
 		?>
-			<link rel="stylesheet" id="youtubecss-css" href="/ip/wp-content/themes/ping/css/youtube-style.css" media="all">
+			<link rel="stylesheet" id="youtubecss-css" href="<?php echo home_url();?>/wp-content/themes/ping/css/youtube-style.css" media="all">
 		<?php } else { ?>
-			<link rel="stylesheet" id="stylecss-css" href="/ip/wp-content/themes/ping/css/style.css" media="all">
+			<link rel="stylesheet" id="stylecss-css" href="<?php echo home_url();?>/wp-content/themes/ping/css/style.css" media="all">
 		<?php } ?>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-H1RBTQZ91E"></script>
@@ -92,7 +92,7 @@ if($current_language == 'de_DE') {
 						<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
 					</li>
 					<li>
-						<a href="/ip/<?php echo $curr_url; ?>" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
+						<a href="<?php echo home_url();?>/<?php echo $curr_url; ?>" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
 					</li>
 					<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
 						<li>
