@@ -117,7 +117,7 @@ error_reporting(E_ALL);
     .loader.show {
         display: flex;
     }
-    .moreFAq {
+    #moreFAq {
         margin-top: 65px;
         text-align: center;
         font-weight: bold;
