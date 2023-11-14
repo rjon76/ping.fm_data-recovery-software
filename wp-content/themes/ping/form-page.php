@@ -42,11 +42,11 @@ error_reporting(E_ALL);
 <style>
     .container {
         position: relative;
-        max-width: 100%;
-        padding: 0 24px;
+        max-width: 100% !important;
+        padding: 0 24px !important;
         display: flex;
         justify-content: center;
-        gap: 50px;
+        gap: 100px;
     }
     form {
         max-width: 600px;
@@ -67,8 +67,7 @@ error_reporting(E_ALL);
         line-height: 24px;
     }
     button {
-        cursor: pointer;
-        background: #333;
+        background: #333 !important;
         color: white;
         display: block;
         max-width: 320px;
@@ -136,6 +135,10 @@ error_reporting(E_ALL);
                         <p>Anchor: <?php echo $anchor;?></p>
                         <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
+
+                        <label for="btn-num-faq">+ Write quantity faq questions (default + 10)</label>
+                        <input type="number" id="numberFaq" name="numberFaq">
+                        <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                     </div>
                     <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
                         <h3>New record:</h3>
@@ -158,6 +161,7 @@ error_reporting(E_ALL);
                         <label for="file">IMG</label>
                         <input type="file" name="file" id="file">
                         <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
+                        <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
                         <button type="submit" id="btn">SEND</button>
                     </form>
                 <?php } else { ?>

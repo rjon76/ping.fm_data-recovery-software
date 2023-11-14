@@ -44,6 +44,10 @@ if ($_POST["apikey"]) {
     $OPENAI_API_KEY = $_POST["apikey"];
 }
 
+if ($_POST["domain_url"]) {
+    $domain_url = $_POST["domain_url"];
+}
+
 if ($_FILES['file'] && empty($_POST["file_url"])) {
     $moved = move_uploaded_file($_FILES["file"]["tmp_name"], $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]));
 
@@ -511,7 +515,7 @@ xmlwriter_start_element($xw, 'root');
     }
 
     $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
-        <img src="/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
+        <img src="' . $domain_url . 'wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
         <p>'.$page_intro.'</p></div></div></section>
         <section><div><div>1</div><h2>Common Scenarios:</h2></div>'.$scenarious.'</section>
         <section><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>
@@ -540,6 +544,9 @@ xmlwriter_start_element($xw, 'root');
     xmlwriter_start_element($xw, 'page');
         xmlwriter_start_element($xw, 'page_meta');
             xmlwriter_text($xw, $theme_meta_title);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'page_image');
+            xmlwriter_text($xw, $domain_url . 'wp-content/uploads/ai/'.$image_title.'.jpg');
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'page_url');
             xmlwriter_text($xw, $page_url);
