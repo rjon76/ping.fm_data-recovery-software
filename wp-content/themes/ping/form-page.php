@@ -133,7 +133,7 @@ error_reporting(E_ALL);
                         <h3>Last record:</h3>
                         <p>TITLE: <?php echo $title;?></p>
                         <p>H1 TITLE: <?php echo $h1title;?></p>
-                        <p>URL for Post: <a href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                        <p>URL for Post: <a targe="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
                         <p>META TITLE: <?php echo $meta_title;?></p>
                         <p>URL: <?php echo $url;?></p>
                         <p>URL Description: <?php echo $url_descr;?></p>
@@ -171,7 +171,7 @@ error_reporting(E_ALL);
                     </form>
                 <?php } else { ?>
                     <div class="loader show">
-                        <img src="/wp-content/uploads/ajax-loader.gif" alt="loader">
+                        <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                     </div>
                     <h1>Article loading...please wait, autoreload will happen in a minute</h1>
                     <script>

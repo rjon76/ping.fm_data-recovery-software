@@ -564,7 +564,7 @@ xmlwriter_end_document($xw);
 
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
-$dom->save(__DIR__ . '/wpallimport/files/gen-article.xml');
+$dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
 $xw = xmlwriter_open_memory();
 xmlwriter_set_indent($xw, 1);
