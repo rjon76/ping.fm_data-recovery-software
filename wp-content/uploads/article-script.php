@@ -618,6 +618,6 @@ if(!$_POST["file_url"]) {
     unlink($image_src);
 }
 
-// exec( 'wget -q -O - ' . __DIR__ . '/../../wp-load.php?import_key=DSD0p&import_id=21&action=processing' );
-// sleep(5);
-// exec( 'wget -q -O - ' . __DIR__ . '/../../wp-load.php?import_key=DSD0p&import_id=21&action=trigger' );
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=3&action=processing');
+sleep(5);
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=3&action=trigger');

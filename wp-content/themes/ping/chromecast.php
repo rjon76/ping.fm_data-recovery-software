@@ -20,11 +20,9 @@
 							<img src="/ip/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
-							<div class="authorpost">
-								<?php pll_e('Tutorial written from original video by:'); ?>
-							</div>
+							<div class="authorpost">Written by:</div>
 							<div class="title">
-								<a href="https://www.linkedin.com/in/kropachek/" rel="nofollow" target="_blank">Roman Kropachek</a> & <a href="https://openai.com/" rel="nofollow" target="_blank"><?php pll_e('Chat GPT'); ?></a>
+								<a href="https://www.linkedin.com/in/kropachek/" rel="nofollow" target="_blank">Roman Kropachek</a>
 							</div>
 						</div>
 					</div>
@@ -35,13 +33,12 @@
 				?>
 				<aside>
 					<div class="h2">
-						<?php pll_e('More IP / WiFi / Router Tutorials'); ?>
+						<?php pll_e('More Articles'); ?>
 					</div>
 					<ul>
 						<?php
 							$pages = get_pages( [
-								'authors' => 2,
-								'exclude' => [get_the_ID(), 9, 277, 571, 778, 970]
+								'exclude' => [get_the_ID(), 9, 1244]
 							] );
 							shuffle($pages);
 							$output = array_slice($pages, 0, 14);
