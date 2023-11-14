@@ -14,7 +14,7 @@
                 <div class="container">
                 <?php
 					$pages = get_pages( [
-                        'exclude' => [9, 1244]
+                        'exclude' => get_the_ID()
 					] );
                 ?>
                    <?php foreach( $pages as $post ) {
