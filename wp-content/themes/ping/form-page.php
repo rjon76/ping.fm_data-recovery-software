@@ -283,9 +283,9 @@ error_reporting(E_ALL);
                             alert('Article imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
-                            console.log(jqXHR, 'jqXHR')
-                            console.log(exception, 'exception')
-                            // location.reload()
+                            setTimeout(function () {
+                                location.reload()
+                            }, 20000);
                         },
                         cache: false,
                         contentType: false,
