@@ -7,6 +7,9 @@ error_reporting(E_ALL);
 
 $image_folder = __DIR__ . "/ai";
 
+var_dump($_POST);
+exit();
+
 if (!is_dir($image_folder)) {
     mkdir($image_folder, 0755);
     echo "The directory $image_folder was successfully created.";
@@ -327,17 +330,17 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
     curl_close($ch);
 }
 
-function getInfoFaq($title, $anchor_url, $anchor_title, $OPENAI_API_KEY) {
+function getInfoFaq($title, $number, $OPENAI_API_KEY) {
 
     $data = array(
         'model' => 'gpt-4-1106-preview',
         'messages' => [
             [
                 "role" => "system",
-                "content" => "Generate a set of 10 related to this keyword questions and 10 their corresponding answers for $title.
+                "content" => "Generate a set of $number related to this keyword questions and $number their corresponding answers for $title.
                             write about $title, not only about soft;
                             provide 1-2 another external hyperlinks only on homepages for convenient user navigation, with attributes rel='nofollow' target='_blank';
-                            MUST be 10 related questions and 10 their corresponding answers.
+                            MUST be $number related questions and $number their corresponding answers.
                             Question ONLY inside once <p> and answer ONLY inside once <p> without QUESTION and ANSWER words and without Q and A letters, and don't numeric.
                             A fully rewritten unique original content that can't be identified by artificial intelligence or plagiarism detection tools.
                             When outlining procedures or services, always provide external hyperlinks for convenient user navigation.
@@ -523,7 +526,7 @@ xmlwriter_start_element($xw, 'root');
         <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div><p>'.$page_infomation.'</p></section>
         <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
 
-    $faq = getInfoFaq($theme_title, $anchor_url, $anchor_title, $OPENAI_API_KEY);
+    $faq = getInfoFaq($theme_title, 10, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
