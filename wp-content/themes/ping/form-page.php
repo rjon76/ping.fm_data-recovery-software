@@ -217,7 +217,11 @@ error_reporting(E_ALL);
                                 alert('Some error occured in API. Please resend request')
                                 jQuery('#btn').prop("disabled", false)
                                 jQuery('.loader').removeClass('show')
-                            } 
+                            }
+
+                            if(data.status == 200) {
+                                alert('Faq updated!')
+                            }
                         },
                         error: function(jqXHR, exception) {
                             location.reload();
@@ -266,7 +270,11 @@ error_reporting(E_ALL);
                                 alert('Some error occured in API. Please resend request')
                                 jQuery('#btn').prop("disabled", false)
                                 jQuery('.loader').removeClass('show')
-                            } 
+                            }
+
+                            if(data.status == 200) {
+                                alert('Article added!')
+                            }
                         },
                         error: function(jqXHR, exception) {
                             location.reload();
