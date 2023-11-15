@@ -181,7 +181,7 @@ error_reporting(E_ALL);
                     </div>
                     <script>
                         setTimeout(function(){
-                            window.location = window.location.href+'?eraseCache=' + Math.floor(Math.random() * max)
+                            window.location = window.location.href+'?eraseCache=' + Math.floor(Math.random() * 1000000000)
                         }, 60000);
                     </script>
                 <?php } ?>
