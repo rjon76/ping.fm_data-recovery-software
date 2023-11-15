@@ -77,10 +77,6 @@ $xmlstring = file_get_contents($path);
 $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
 $array = json_decode($json, TRUE);
-
-var_dump($array["page"][0]["page_meta"]);
-exit();
-die();
   
 $xw = xmlwriter_open_memory();
 xmlwriter_set_indent($xw, 1);
@@ -88,7 +84,11 @@ $res = xmlwriter_set_indent_string($xw, ' ');
 xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
-    $faq = getInfoFaq($theme_title, 10, $OPENAI_API_KEY);
+    $mainString = '<section itemscope="" itemtype="https://schema.org/FAQPage">';
+    $page_content = $array["page"]["page_content"];
+    $aContent = explode('<section itemscope="" itemtype="https://schema.org/FAQPage">', $array["page"]["page_content"]);
+
+    $faq = getInfoFaq($theme_title, $numberFaq, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
@@ -103,21 +103,20 @@ xmlwriter_start_element($xw, 'root');
         }
     }
 
-    $mainString.='</section>';
-    $pageContent .= $contentString . $mainString . "</article>";
+    $pageContent = $aContent[0] . $mainString . $aContent[1];
 
     xmlwriter_start_element($xw, 'page');
         xmlwriter_start_element($xw, 'page_meta');
-            xmlwriter_text($xw, $theme_meta_title);
+            xmlwriter_text($xw, $array["page"]["page_meta"]);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'page_image');
-            xmlwriter_text($xw, $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg');
+            xmlwriter_text($xw, $array["page"]["page_image"]);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'page_url');
-            xmlwriter_text($xw, $page_url);
+            xmlwriter_text($xw, $array["page"]["page_url"]);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'page_title');
-            xmlwriter_text($xw, $page_title);
+            xmlwriter_text($xw, $array["page"]["page_title"]);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'page_content');
             xmlwriter_text($xw, $pageContent);
