@@ -281,11 +281,8 @@ error_reporting(E_ALL);
                             alert('Article imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
-                            if(exception === 'timeout') {     
-                                alert('Failed from timeout');
-                                return
-                            }
-                            alert('Some error occured in API. Please resend request')
+                            console.log(exception);
+                            // location.reload()
                         },
                         cache: false,
                         contentType: false,
