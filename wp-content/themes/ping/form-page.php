@@ -141,7 +141,7 @@ error_reporting(E_ALL);
                         <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
 
-                        <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
+                        <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
                             <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                             <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                             <label for="apikey">AI API KEY</label>

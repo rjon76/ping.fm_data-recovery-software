@@ -7,9 +7,6 @@ error_reporting(E_ALL);
 
 $image_folder = __DIR__ . "/ai";
 
-var_dump($_POST);
-exit();
-
 if (!is_dir($image_folder)) {
     mkdir($image_folder, 0755);
     echo "The directory $image_folder was successfully created.";
