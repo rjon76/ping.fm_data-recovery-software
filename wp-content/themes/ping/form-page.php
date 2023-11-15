@@ -141,9 +141,13 @@ error_reporting(E_ALL);
                         <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
 
-                        <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
-                        <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                        <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                        <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
+                            <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                            <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
+                            <label for="apikey">AI API KEY</label>
+                            <input type="text" id="apikey" name="apikey">
+                            <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                        </form>
                     </div>
                     <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
                         <h3>New record:</h3>
@@ -187,27 +191,41 @@ error_reporting(E_ALL);
             jQuery('#btn-num-faq').on('click', function(e) {
                 e.preventDefault()
 
-                jQuery('#btn-num-faq').attr('disabled','true');
-                jQuery('.loader').addClass('show');
-                jQuery.ajax({
-                    type: 'POST',
-                    url: jQuery("form").attr('data-action'),
-                    data: { quantityFaqs: jQuery('#numberFaq')[0].value || 10 },
-                    success: function(data) {
-                        if(data == 'false') {
-                            alert('Some error occured in API. Please resend request')
-                            jQuery('#btn').prop("disabled", false)
-                            jQuery('.loader').removeClass('show')
-                        } 
-                    },
-                    error: function(jqXHR, exception) {
-                        location.reload();
-                    },
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                });
+                if(!jQuery('#numberFaq')[0].value) {
+                    jQuery('#numberFaq')[0].value = 10
+                }
+                
             })
+            jQuery("#faqQuestions").on("submit", function(event) {
+                event.preventDefault()
+                const formData = new FormData(this);
+
+                if( jQuery('#apikey')[0].value.trim().length === 0 ||
+                    jQuery('#numberFaq')[0].value.trim().length === 0 ) {
+                        alert('All fields is required !!') 
+                } else {
+                    jQuery('#btn-num-faq').attr('disabled','true');
+                    jQuery('.loader').addClass('show');
+                    jQuery.ajax({
+                        type: 'POST',
+                        url: jQuery("#faqQuestions").attr('data-action'),
+                        data: formData,
+                        success: function(data) {
+                            if(data == 'false') {
+                                alert('Some error occured in API. Please resend request')
+                                jQuery('#btn').prop("disabled", false)
+                                jQuery('.loader').removeClass('show')
+                            } 
+                        },
+                        error: function(jqXHR, exception) {
+                            location.reload();
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                }
+            });
             jQuery('#btn-reg').on('click', function(e) {
                 e.preventDefault()
                 jQuery('#title')[0].value = jQuery(jQuery('#title')[0]).attr('data-last')
@@ -218,11 +236,11 @@ error_reporting(E_ALL);
                 jQuery('#url_descr')[0].value = jQuery(jQuery('#url_descr')[0]).attr('data-last')
                 jQuery('#post_url')[0].value = jQuery(jQuery('#post_url')[0]).attr('data-last')
                 jQuery('#file_url')[0].value = jQuery(jQuery('#file_url')[0]).attr('data-last')
-                jQuery("form").submit()
+                jQuery("#article").submit()
             })
-            jQuery("form").on("submit", function(event) {
+            jQuery("#article").on("submit", function(event) {
                 event.preventDefault()
-                var formData = new FormData(this);
+                const formData = new FormData(this);
                 
                 if(jQuery('#apikey')[0].value.trim().length === 0 ||
                     jQuery('#title')[0].value.trim().length === 0 ||
@@ -239,7 +257,7 @@ error_reporting(E_ALL);
                     jQuery('.loader').addClass('show');
                     jQuery.ajax({
                         type: 'POST',
-                        url: jQuery("form").attr('data-action'),
+                        url: jQuery("#article").attr('data-action'),
                         data: formData,
                         success: function(data) {
                             if(data == 'false') {
