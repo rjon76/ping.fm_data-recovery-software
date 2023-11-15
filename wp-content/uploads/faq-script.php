@@ -14,21 +14,6 @@ if ($_POST["apikey"]) {
     $OPENAI_API_KEY = $_POST["apikey"];
 }
 
-$file = __DIR__ . '/time_record.txt';
-function writeTimeGeneration($path_to_file, $seconds) {
-    if(file_exists($path_to_file)) {
-        $current = (int)file_get_contents($path_to_file);
-
-        if(time() > $current) {
-            file_put_contents($path_to_file, time() + $seconds);
-        }
-    } else {
-        file_put_contents($path_to_file, time());
-    }
-}
-
-writeTimeGeneration($file, 120);
-
 function getInfoFaq($title, $number, $OPENAI_API_KEY) {
 
     $data = array(
@@ -143,5 +128,3 @@ fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
-
-writeTimeGeneration($file, 0);

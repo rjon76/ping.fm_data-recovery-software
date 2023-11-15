@@ -205,7 +205,7 @@ error_reporting(E_ALL);
 
                 if( jQuery('#apikey')[0].value.trim().length === 0 ||
                     jQuery('#numberFaq')[0].value.trim().length === 0 ) {
-                        alert('All fields is required !!') 
+                        alert('All fields is required (Faq questions) !!') 
                 } else {
                     jQuery('#btn-num-faq').attr('disabled','true');
                     jQuery('.loader').addClass('show');
@@ -221,7 +221,7 @@ error_reporting(E_ALL);
                                 return
                             }
 
-                            alert('Article imported. Refresh page')
+                            alert('Faq updated and imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
                             if(exception === 'timeout') {     
@@ -262,7 +262,7 @@ error_reporting(E_ALL);
                     (jQuery('#file')[0].files.length === 0 && jQuery('#file_url')[0].value.trim().length === 0) ||
                     jQuery('#url_descr')[0].value.trim().length === 0 ||
                     jQuery('#post_url')[0].value.trim().length === 0) {
-                    alert('All fields is required !!')
+                    alert('All fields is required (Create new article) !!')
                 } else {
                     jQuery('#btn').attr('disabled','true');
                     jQuery('.loader').addClass('show');
