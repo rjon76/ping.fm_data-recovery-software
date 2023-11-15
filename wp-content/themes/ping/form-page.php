@@ -176,12 +176,12 @@ error_reporting(E_ALL);
                     </form>
                 <?php } else { ?>
                     <div class="loader show">
+                        <h1>Article import...please wait, autoreload will happen in a minute</h1>
                         <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                     </div>
-                    <h1>Article loading...please wait, autoreload will happen in a minute</h1>
                     <script>
                         setTimeout(function(){
-                            location.reload();
+                            window.location = window.location.href+'?eraseCache=' + Math.floor(Math.random() * max)
                         }, 60000);
                     </script>
                 <?php } ?>
@@ -281,8 +281,7 @@ error_reporting(E_ALL);
                             alert('Article imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
-                            console.log(exception);
-                            // location.reload()
+                            location.reload()
                         },
                         cache: false,
                         contentType: false,
