@@ -141,8 +141,8 @@ error_reporting(E_ALL);
                         <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                         <button type="button" id="btn-reg">REGENERATE</button>
 
-                        <label for="btn-num-faq" id="moreFAq">ADD MORE QUESTIONS (default + 10)</label>
-                        <input type="number" id="numberFaq" name="numberFaq" min="1" max="30">
+                        <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                        <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                         <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                     </div>
                     <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
@@ -153,13 +153,13 @@ error_reporting(E_ALL);
                         <input type="text" id="title" name="title" data-last="<?php echo $title;?>">
                         <label for="h1title">H1 - TITLE</label>
                         <input type="text" id="h1title" name="h1title" data-last="<?php echo $h1title;?>">
-                        <label for="post_url">URL for Post</label>
+                        <label for="post_url">URL for Post (slug)</label>
                         <input type="text" id="post_url" name="post_url" data-last="<?php echo $post_url;?>">
                         <label for="title">META TITLE</label>
                         <input type="text" id="meta_title" name="meta_title" data-last="<?php echo $meta_title;?>">
-                        <label for="url">URL</label>
+                        <label for="url">URL (link to article)</label>
                         <input type="text" id="url" name="url" data-last="<?php echo $url;?>">
-                        <label for="url_descr">URL Description</label>
+                        <label for="url_descr">URL Description (about link article)</label>
                         <input type="text" id="url_descr" name="url_descr" data-last="<?php echo $url_descr;?>">
                         <label for="anchor">Anchor (link title)</label>
                         <input type="text" id="anchor" name="anchor" data-last="<?php echo $anchor;?>">
@@ -184,6 +184,30 @@ error_reporting(E_ALL);
 		</main>
         <script>
         jQuery(document).ready(function() {
+            jQuery('#btn-num-faq').on('click', function(e) {
+                e.preventDefault()
+
+                jQuery('#btn-num-faq').attr('disabled','true');
+                jQuery('.loader').addClass('show');
+                jQuery.ajax({
+                    type: 'POST',
+                    url: jQuery("form").attr('data-action'),
+                    data: { quantityFaqs: jQuery('#numberFaq')[0].value || 10 },
+                    success: function(data) {
+                        if(data == 'false') {
+                            alert('Some error occured in API. Please resend request')
+                            jQuery('#btn').prop("disabled", false)
+                            jQuery('.loader').removeClass('show')
+                        } 
+                    },
+                    error: function(jqXHR, exception) {
+                        location.reload();
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            })
             jQuery('#btn-reg').on('click', function(e) {
                 e.preventDefault()
                 jQuery('#title')[0].value = jQuery(jQuery('#title')[0]).attr('data-last')
