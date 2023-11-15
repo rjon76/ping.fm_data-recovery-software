@@ -126,6 +126,7 @@ error_reporting(E_ALL);
 		<main>
 			<div class="container">
                 <div class="loader">
+                    <h1>Article loading...please wait around 2 minutes</h1>
                     <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                 </div>
                 <?php if(time() > $current) { ?>
@@ -217,18 +218,22 @@ error_reporting(E_ALL);
                                 alert('Some error occured in API. Please resend request')
                                 jQuery('#btn').prop("disabled", false)
                                 jQuery('.loader').removeClass('show')
+                                return
                             }
 
-                            if(data.status == 200) {
-                                alert('Faq updated!')
-                            }
+                            alert('Article imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
-                            location.reload();
+                            if(exception === 'timeout') {     
+                                alert('Failed from timeout');
+                                return
+                            }
+                            alert('Some error occured in API. Please resend request')
                         },
                         cache: false,
                         contentType: false,
-                        processData: false
+                        processData: false,
+                        timeout: 120000
                     });
                 }
             });
@@ -270,18 +275,22 @@ error_reporting(E_ALL);
                                 alert('Some error occured in API. Please resend request')
                                 jQuery('#btn').prop("disabled", false)
                                 jQuery('.loader').removeClass('show')
+                                return
                             }
 
-                            if(data.status == 200) {
-                                alert('Article added!')
-                            }
+                            alert('Article imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
-                            location.reload();
+                            if(exception === 'timeout') {     
+                                alert('Failed from timeout');
+                                return
+                            }
+                            alert('Some error occured in API. Please resend request')
                         },
                         cache: false,
                         contentType: false,
-                        processData: false
+                        processData: false,
+                        timeout: 120000
                     });
                 }
             });
