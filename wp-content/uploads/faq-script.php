@@ -88,7 +88,7 @@ xmlwriter_start_element($xw, 'root');
     $page_content = $array["page"]["page_content"];
     $aContent = explode('<section itemscope="" itemtype="https://schema.org/FAQPage">', $array["page"]["page_content"]);
 
-    $faq = getInfoFaq($theme_title, $numberFaq, $OPENAI_API_KEY);
+    $faq = getInfoFaq($array["page"]["page_title"], $numberFaq, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
@@ -143,3 +143,5 @@ fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
+
+writeTimeGeneration($file, 0);
