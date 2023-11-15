@@ -698,7 +698,7 @@ section.banner .banner--img {
 section.banner .banner--img::after {
   content: '';
   opacity: 100%;
-  background-image: url("wifi.jpg") !important;
+  background-image: url("dall-main.jpg") !important;
   background-size: cover;
   width: 100%;
   min-width: 100vw;
