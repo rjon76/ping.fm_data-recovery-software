@@ -251,35 +251,35 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
                         ],
                         "step1" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step2" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step3" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step4" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step5" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step6" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step7" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step8" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] - extensively use emojis</h3> Step must be with link in <a> tag to high authority relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] - extensively use emojis</h3> important insert link with <a href> tag to relevant website/app in <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "tips" => [
                             "type" => "array",
