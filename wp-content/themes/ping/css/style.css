@@ -703,6 +703,7 @@ section.banner .banner--img::after {
   width: 100%;
   min-width: 100vw;
   transform: translateX(-50%);
+  filter: drop-shadow(2px 4px 6px black);
   left: 50%;
   height: 100%;
   background-repeat: no-repeat;
