@@ -221,6 +221,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
                             Place the link anchor $anchor_title organically as a part of the content, surrounded by the link description to ensure it looks natural - $url_description;
                             Important - Do not add another name for link $anchor_url;
                             provide another relevant links with anchor/title such as https://www... or at your discretion in <a> tag with attributes rel='nofollow' target='_blank';
+                            At one step of each method, it is important to insert a link with <a href> to the corresponding website or application.
                             inside paragraphs extensively use '<b></b>' for topics, keywords;
                             do not use personal names or channel names;
                             do not insert links to images;
@@ -251,35 +252,35 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
                         ],
                         "step1" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step2" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step3" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step4" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step5" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step6" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step7" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step8" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] with emojis</h3> in one of the steps, important insert link with <a href> to relevant website or app in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "tips" => [
                             "type" => "array",
