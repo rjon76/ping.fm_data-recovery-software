@@ -145,8 +145,8 @@ error_reporting(E_ALL);
                         <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
                             <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                             <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                            <label for="apikey">AI API KEY</label>
-                            <input type="text" id="apikey" name="apikey">
+                            <label for="faqapikey">AI API KEY</label>
+                            <input type="text" id="faqapikey" name="apikey">
                             <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                         </form>
                     </div>
@@ -203,7 +203,7 @@ error_reporting(E_ALL);
                 event.preventDefault()
                 const formData = new FormData(this);
 
-                if( jQuery('#apikey')[0].value.trim().length === 0 ||
+                if( jQuery('#faqapikey')[0].value.trim().length === 0 ||
                     jQuery('#numberFaq')[0].value.trim().length === 0 ) {
                         alert('All fields is required (Faq questions) !!') 
                 } else {
