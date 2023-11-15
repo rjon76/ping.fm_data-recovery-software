@@ -194,6 +194,8 @@ error_reporting(E_ALL);
                 if(!jQuery('#numberFaq')[0].value) {
                     jQuery('#numberFaq')[0].value = 10
                 }
+
+                jQuery("#faqQuestions").submit()
                 
             })
             jQuery("#faqQuestions").on("submit", function(event) {
