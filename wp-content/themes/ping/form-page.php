@@ -258,6 +258,7 @@ error_reporting(E_ALL);
                     });
                 }
             });
+            console.log(jQuery(jQuery('#apps_links')[0]).attr('data-checked'))
             jQuery('#btn-reg').on('click', function(e) {
                 e.preventDefault()
                 jQuery('#title')[0].value = jQuery(jQuery('#title')[0]).attr('data-last')
