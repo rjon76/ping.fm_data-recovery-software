@@ -569,13 +569,13 @@ xmlwriter_start_element($xw, 'root');
             <section><div><div>&#129352;</div></div>'.$page_step2.'</section>
             <section><div><div>&#129353;</div></div>'.$page_step3.'</section>
             <section><div><div>4</div></div>'.$page_step4.'</section>
-            <section><div><div>5</div></div>'.$page_step5.'</section>'.
-            !empty($page_step6) ? '<section><div><div>6</div></div>'.$page_step6.'</section>' : ''.
-            !empty($page_step7) ? '<section><div><div>7</div></div>'.$page_step7.'</section>' : ''.
-            !empty($page_step8) ? '<section><div><div>8</div></div>'.$page_step8.'</section>' : ''.
-            !empty($page_step9) ? '<section><div><div>9</div></div>'.$page_step9.'</section>' : ''.
-            !empty($page_step10) ? '<section><div><div>10</div></div>'.$page_step10.'</section>' : ''.
-            '<section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+            <section><div><div>5</div></div>'.$page_step5.'</section>
+            <section><div><div>6</div></div>'.$page_step6.'</section>
+            <section><div><div>7</div></div>'.$page_step7.'</section>
+            <section><div><div>8</div></div>'.$page_step8.'</section>
+            <section><div><div>9</div></div>'.$page_step9.'</section>
+            <section><div><div>10</div></div>'.$page_step10.'</section>
+            <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
 
     } else {
 
