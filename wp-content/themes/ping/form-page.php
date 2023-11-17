@@ -127,7 +127,13 @@ error_reporting(E_ALL);
     }
     .checkbox {
         display:flex;
-        align-items: flex-start;
+        align-items: center;
+        font-weight: bold;
+    }
+    .checkbox input {
+        width: 20px;
+        height: 20px;
+        margin: 0 12px 0 0;
     }
 </style>
 		<main>
@@ -263,6 +269,7 @@ error_reporting(E_ALL);
                 jQuery('#post_url')[0].value = jQuery(jQuery('#post_url')[0]).attr('data-last')
                 jQuery('#file_url')[0].value = jQuery(jQuery('#file_url')[0]).attr('data-last')
                 jQuery('#youtube_url')[0].value = jQuery(jQuery('#youtube_url')[0]).attr('data-last')
+                jQuery('#apps_links').prop("checked", jQuery(jQuery('#apps_links')[0]).attr('data-checked'))
                 jQuery("#article").submit()
             })
             jQuery("#article").on("submit", function(event) {
