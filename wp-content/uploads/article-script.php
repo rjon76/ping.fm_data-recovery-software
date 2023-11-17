@@ -8,9 +8,6 @@ error_reporting(E_ALL);
 
 $image_folder = __DIR__ . "/ai";
 
-var_dump($_POST);
-exit();
-
 if (!is_dir($image_folder)) {
     mkdir($image_folder, 0755);
     echo "The directory $image_folder was successfully created.";
@@ -20,10 +17,18 @@ if ($_POST["title"]) {
     $theme_title = $_POST["title"];
 }
 
+if($_POST["apps_links"]) {
+    if($_POST["apps_links"] == 'on') {
+        $apps_links = 'true';
+    } else {
+        $apps_links = 'false';
+    }
+} else {
+    $apps_links = 'false';
+}
+
 if($_POST["youtube_url"]) {
     $youtube_url = trim($_POST["youtube_url"]);
-} else {
-    $youtube_url = '';
 }
 
 if ($_POST["h1title"]) {
@@ -215,9 +220,32 @@ function generateImgWithTitle($title, $image_src) {
     imagedestroy($capture);
 }
 
-function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPENAI_API_KEY) {
-    // Use these abstracts when creating an article: What are Microsoft Teams?, Access Teams, Exploring Teams, Personalizing Teams, Channels, Private chat, Calendar, Teams meetings, Summary;
-    // direct links without anchors but include the address, such as https://www...
+function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY) {
+    
+    if($apps_links == 'true') {
+        $stepString1 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title1</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString2 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title2</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString3 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title3</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString4 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title4</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString5 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title5</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString6 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title6</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString7 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title7</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString8 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title8</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString9 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title9</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+        $stepString10 = '<h3><a href="" rel="nofollow" target="_blank">Soft/Application Title10</a></h3> at one of the top items, <p>Description at one of the top items</p>, <p><b>Note:</b> Note</p>, <div><p><b>Pros</b></p><p>PROS1</p><p>PROS2</p></div>, <div><p><b>Cons</b></p><p>CONS1</p><p>CONS2</p></div>';
+    } else {
+        $stepString1 = 'Step-by-Step Guide. <h3>Method 1: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString2 = 'Step-by-Step Guide. <h3>Method 2: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString3 = 'Step-by-Step Guide. <h3>Method 3: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString4 = 'Step-by-Step Guide. <h3>Method 4: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString5 = 'Step-by-Step Guide. <h3>Method 5: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString6 = 'Step-by-Step Guide. <h3>Method 6: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString7 = 'Step-by-Step Guide. <h3>Method 7: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString8 = 'Step-by-Step Guide. <h3>Method 8: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString9 = 'Step-by-Step Guide. <h3>Method 9: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+        $stepString10 = 'Step-by-Step Guide. <h3>Method 10: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>';
+    }
+
     $data = array(
         'model' => 'gpt-4-1106-preview',
         'messages' => [
@@ -261,35 +289,43 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
                         ],
                         "step1" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString1,
                         ],
                         "step2" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString2,
                         ],
                         "step3" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString3,
                         ],
                         "step4" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString4,
                         ],
                         "step5" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString5,
                         ],
                         "step6" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString6,
                         ],
                         "step7" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString7,
                         ],
                         "step8" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => $stepString8,
+                        ],
+                        "step9" => [
+                            "type" => "string",
+                            "description" => $stepString9,
+                        ],
+                        "step10" => [
+                            "type" => "string",
+                            "description" => $stepString10,
                         ],
                         "tips" => [
                             "type" => "array",
@@ -402,7 +438,7 @@ $res = xmlwriter_set_indent_string($xw, ' ');
 xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
-    $a = getInfoTitle($theme_title, $anchor_url, $anchor_title, $url_description, $OPENAI_API_KEY);
+    $a = getInfoTitle($theme_title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY);
     
     if( is_null( $a->choices[0]->message->function_call->arguments ) || 
         empty( $a->choices[0]->message->function_call->arguments ) ) {
@@ -616,6 +652,9 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'youtube_url');
             xmlwriter_text($xw, $youtube_url);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'apps_links');
+            xmlwriter_text($xw, $apps_links);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'file');
             xmlwriter_text($xw, __DIR__ . "/ai/$image_title.jpg");
