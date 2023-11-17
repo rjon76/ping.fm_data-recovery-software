@@ -277,15 +277,15 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                         ],
                         "scenario1" => [
                             "type" => "string",
-                            "description" => "<h3>Common Scenario Description with 1 emoji in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
+                            "description" => "Scenario1 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
                         ],
                         "scenario2" => [
                             "type" => "string",
-                            "description" => "<h3>Common Scenario Description with 1 emoji in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
+                            "description" => "Scenario2 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
                         ],
                         "scenario3" => [
                             "type" => "string",
-                            "description" => "<h3>Common Scenario Description with 1 emoji in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
+                            "description" => "Scenario3 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
                         ],
                         "step1" => [
                             "type" => "string",
