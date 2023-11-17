@@ -139,7 +139,7 @@ error_reporting(E_ALL);
 		<main>
 			<div class="container">
                 <div class="loader">
-                    <h1>Article loading...please wait around 2 minutes</h1>
+                    <h1>Article loading...please wait around 3 minutes</h1>
                     <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                 </div>
                 <?php if(time() > $current) { ?>
@@ -195,7 +195,7 @@ error_reporting(E_ALL);
                     </form>
                 <?php } else { ?>
                     <div class="loader show">
-                        <h1>Article import...please wait, autoreload will happen in a minute</h1>
+                        <h1>Article import...please wait, autoreload will happen in a 1-2 minute</h1>
                         <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                     </div>
                     <script>
@@ -203,7 +203,7 @@ error_reporting(E_ALL);
                             let fullUrl = window.location.href
                             const needUrl = fullUrl.split('?')
                             window.location = needUrl[0]+'?eraseCache=' + Math.floor(Math.random() * 1000000000)
-                        }, 60000);
+                        }, 120000);
                     </script>
                 <?php } ?>
 			</div>
