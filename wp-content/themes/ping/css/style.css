@@ -672,7 +672,7 @@ footer p a:hover {
 }
 
 section.banner {
-  background: #593dfb;
+  background: #cae1fd;
   position: relative;
   overflow: hidden;
 }
@@ -698,8 +698,9 @@ section.banner .banner--img {
 section.banner .banner--img::after {
   content: '';
   opacity: 100%;
-  background-image: url("dall-main.jpg") !important;
-  background-size: cover;
+  background-image: url("data_recovery_company.png") !important;
+  background-size: auto 100%;
+  background-position: right center;
   width: 100%;
   min-width: 100vw;
   transform: translateX(-50%);
