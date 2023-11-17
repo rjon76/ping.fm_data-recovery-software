@@ -739,14 +739,18 @@ article > section:not(:first-child):not(:last-child) ol h3,
 article > section:not(:first-child):not(:last-child) ul p {
   padding-left: 0;
 }
-.no-medal,
 .medal {
   display: inline-block !important;
   font-size: 28px;
 }
+.no-medal {
+  display: inline-block !important;
+}
+.no-medal + h2,
 .medal + h2 {
   display: inline-block;
 }
+.no-medal + h2 a,
 .medal + h2 a {
   font-weight: 700;
   font-size: 22px;
