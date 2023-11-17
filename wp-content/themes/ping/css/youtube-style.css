@@ -739,8 +739,9 @@ article > section:not(:first-child):not(:last-child) ol h3,
 article > section:not(:first-child):not(:last-child) ul p {
   padding-left: 0;
 }
+.no-medal,
 .medal {
-  display: inline-block;
+  display: inline-block !important;
   font-size: 28px;
 }
 .medal + h2 {
@@ -788,32 +789,33 @@ article > section:not(:first-child):not(:last-child) ul p {
 }
 .consTitle,
 .prosTitle {
-  padding-left: 84px;
+  padding-left: 84px !important;
   position: relative;
-  margin: 30px 0;
-  font-size: 20px;
+  margin: 30px 0 !important;
+  font-size: 20px !important;
 }
 .consTitle::before,
 .prosTitle::before {
   content: '🥳';
   position: absolute;
-  left: 0;
-  top: 3px;
+  left: 56px;
+  top: 1px;
 }
 .consTitle::before {
   content: '🥺';
 }
 .listpc {
-  list-style: none;
+  list-style: none !important;
 }
 .listpc li {
   position: relative;
+  padding-left: 24px;
 }
 .listpc li:before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 2px;
+  left: -10px;
+  top: 0;
   width: 24px;
   height: 24px;
   background-size: 100% 100%;
