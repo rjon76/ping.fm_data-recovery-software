@@ -563,18 +563,41 @@ xmlwriter_start_element($xw, 'root');
 
     if($apps_links == 'true') {
 
+        $st6 = '';
+        $st7 = '';
+        $st8 = '';
+        $st9 = '';
+        $st10 = '';
+
+        if(!empty($page_step6)) {
+            $st6 = '<section><div><div>6</div></div>'.$page_step6.'</section>';
+        }
+
+        if(!empty($page_step7)) {
+            $st7 = '<section><div><div>7</div></div>'.$page_step7.'</section>';
+        }
+
+        if(!empty($page_step8)) {
+            $st8 = '<section><div><div>8</div></div>'.$page_step8.'</section>';
+        }
+
+        if(!empty($page_step9)) {
+            $st9 = '<section><div><div>9</div></div>'.$page_step9.'</section>';
+        }
+
+        if(!empty($page_step10)) {
+            $st10 = '<section><div><div>10</div></div>'.$page_step10.'</section>';
+        }
+
         $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
-            <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720"></div></div></section>
-            <section><div><div>&#129351;</div></div>'.$page_step1.'</section>
-            <section><div><div>&#129352;</div></div>'.$page_step2.'</section>
-            <section><div><div>&#129353;</div></div>'.$page_step3.'</section>
+            <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
+            <p>'.$page_intro.'</p></div></div></section>
+            <section><div class="medal"><div>&#129351;</div></div>'.$page_step1.'</section>
+            <section><div class="medal"><div>&#129352;</div></div>'.$page_step2.'</section>
+            <section><div class="medal"><div>&#129353;</div></div>'.$page_step3.'</section>
             <section><div><div>4</div></div>'.$page_step4.'</section>
-            <section><div><div>5</div></div>'.$page_step5.'</section>
-            <section><div><div>6</div></div>'.$page_step6.'</section>
-            <section><div><div>7</div></div>'.$page_step7.'</section>
-            <section><div><div>8</div></div>'.$page_step8.'</section>
-            <section><div><div>9</div></div>'.$page_step9.'</section>
-            <section><div><div>10</div></div>'.$page_step10.'</section>
+            <section><div><div>5</div></div>'.$page_step5.'</section>'
+            . $st6 . $st7 . $st8 . $st9 . $st10 .'
             <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
 
     } else {
