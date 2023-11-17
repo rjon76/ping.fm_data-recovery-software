@@ -734,7 +734,6 @@ section.banner .banner--img .banner--inner {
   max-width: 997px;
   width: 100%;
   color: #fff;
-  filter: drop-shadow(2px 4px 6px #000);
 }
 section.banner .banner--img .banner--inner h1 {
   font-weight: 700;
@@ -743,6 +742,7 @@ section.banner .banner--img .banner--inner h1 {
   margin-bottom: 20px;
   text-align: left;
   text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000;
+  filter: drop-shadow(2px 4px 6px #000);
 }
 section.banner .banner--img .banner--inner h1 a {
   margin: 0;
