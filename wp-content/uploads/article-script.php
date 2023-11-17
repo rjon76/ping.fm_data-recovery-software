@@ -17,6 +17,12 @@ if ($_POST["title"]) {
     $theme_title = $_POST["title"];
 }
 
+if($_POST["youtube_url"]) {
+    $youtube_url = trim($_POST["youtube_url"]);
+} else {
+    $youtube_url = '';
+}
+
 if ($_POST["h1title"]) {
     $h1title = $_POST["h1title"];
 }
@@ -240,47 +246,47 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
                         ],
                         "scenario1" => [
                             "type" => "string",
-                            "description" => "<h3>Common Scenario Description with emojis in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
+                            "description" => "<h3>Common Scenario Description with 1 emoji in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
                         ],
                         "scenario2" => [
                             "type" => "string",
-                            "description" => "<h3>Common Scenario Description with emojis in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
+                            "description" => "<h3>Common Scenario Description with 1 emoji in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
                         ],
                         "scenario3" => [
                             "type" => "string",
-                            "description" => "<h3>Common Scenario Description with emojis in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
+                            "description" => "<h3>Common Scenario Description with 1 emoji in <h3> tag </h3>. Brief overviews of the solution inside <ul> and <li> tags. Don't use scenario word",
                         ],
                         "step1" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 1: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step2" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 2: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step3" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 3: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step4" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 4: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step5" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 5: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step6" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 6: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step7" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 7: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "step8" => [
                             "type" => "string",
-                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] with emojis</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
+                            "description" => "Step-by-Step Guide. <h3>Method 8: [Name of the Method] with 1 emoji</h3> at one of the steps, important insert link with <a href> to the corresponding website or application in <li> tag inside <ul> tag; <p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion or pros & cons</p>",
                         ],
                         "tips" => [
                             "type" => "array",
@@ -296,7 +302,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $OPE
                         ],
                         "information" => [
                             "type" => "string",
-                            "description" => "add valuable information around 500 words at the end of article with links without anchors but include the address, such as https://www... in <a> tag with attributes rel='nofollow' target='_blank', to high authority relevant websites",
+                            "description" => "add valuable information around 500 words at the end of article with html formats in <p> tags and links without anchors but include the address, such as https://www... in <a> tag with attributes rel='nofollow' target='_blank', to high authority relevant websites",
                         ],
                         "conclusion" => [
                             "type" => "string",
@@ -516,14 +522,23 @@ xmlwriter_start_element($xw, 'root');
         generateImgWithTitle($h1title, $image_src);
     }
 
+    if(empty($youtube_url)) {
+        $string = '<section><div><div>3</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
+                    <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
+                    <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+    } else {
+        $string = '<section><div><div>3</div><h2>' . $anchor_title . ' chromecast</h2></div><div>
+                    <iframe width="560" height="315" src="'. $youtube_url .'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></section>
+                    <section><div><div>4</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
+                    <section><div><div>5</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
+                    <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+    }
+
     $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
         <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
         <p>'.$page_intro.'</p></div></div></section>
         <section><div><div>1</div><h2>Common Scenarios:</h2></div>'.$scenarious.'</section>
-        <section><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>
-        <section><div><div>3</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
-        <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div><p>'.$page_infomation.'</p></section>
-        <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+        <section><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>' . $string;
 
     $faq = getInfoFaq($theme_title, 10, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
@@ -595,6 +610,9 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'post_url');
             xmlwriter_text($xw, $post_url);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'youtube_url');
+            xmlwriter_text($xw, $youtube_url);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'file');
             xmlwriter_text($xw, __DIR__ . "/ai/$image_title.jpg");

@@ -19,6 +19,7 @@ error_reporting(E_ALL);
     $anchor = '';
     $post_url = '';
     $file_url = '';
+    $youtubeUrl = '';
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
@@ -34,6 +35,8 @@ error_reporting(E_ALL);
         $anchor = $arrayLastArticle["page"]["anchor"];
         $post_url = $arrayLastArticle["page"]["post_url"];
         $file_url = $arrayLastArticle["page"]["file"];
+        $youtubeUrl = !empty($arrayLastArticle["page"]["youtube_url"]) ? $arrayLastArticle["page"]["youtube_url"] : '';
+        $apps_links = $arrayLastArticle["page"]["apps_links"];
     }
 
     $current = (int)file_get_contents($file);
@@ -122,6 +125,10 @@ error_reporting(E_ALL);
         text-align: center;
         font-weight: bold;
     }
+    .checkbox {
+        display:flex;
+        align-items: flex-start;
+    }
 </style>
 		<main>
 			<div class="container">
@@ -172,6 +179,12 @@ error_reporting(E_ALL);
                         <input type="file" name="file" id="file">
                         <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
                         <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
+                        <label for="youtube_url">Add Youtube Link</label>
+                        <input type="text" id="youtube_url" name="youtube_url" data-last="<?php echo $youtubeUrl;?>">
+                        <label for="apps_links" class="checkbox">
+                            <input type="checkbox" name="apps_links" id="apps_links" data-checked="<?php echo $apps_links; ?>">
+                            Top list websites/applications with links and Pros/Cons
+                        </label>
                         <button type="submit" id="btn">SEND</button>
                     </form>
                 <?php } else { ?>
@@ -249,6 +262,7 @@ error_reporting(E_ALL);
                 jQuery('#url_descr')[0].value = jQuery(jQuery('#url_descr')[0]).attr('data-last')
                 jQuery('#post_url')[0].value = jQuery(jQuery('#post_url')[0]).attr('data-last')
                 jQuery('#file_url')[0].value = jQuery(jQuery('#file_url')[0]).attr('data-last')
+                jQuery('#youtube_url')[0].value = jQuery(jQuery('#youtube_url')[0]).attr('data-last')
                 jQuery("#article").submit()
             })
             jQuery("#article").on("submit", function(event) {
