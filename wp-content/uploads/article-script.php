@@ -223,16 +223,18 @@ function generateImgWithTitle($title, $image_src) {
 function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY) {
     
     if($apps_links == 'true') {
-        $stepString1 = '<h3><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title1</a></h3><p>Soft/Application Description1</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString2 = '<h3><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title2</a></h3><p>Soft/Application Description2</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString3 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title3</a></h3><p>Soft/Application Description3</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString4 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title4</a></h3><p>Soft/Application Description4</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString5 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title5</a></h3><p>Soft/Application Description5</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString6 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title6</a></h3><p>Soft/Application Description6</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString7 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title7</a></h3><p>Soft/Application Description7</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString8 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title8</a></h3><p>Soft/Application Description8</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString9 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title9</a></h3><p>Soft/Application Description9</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
-        $stepString10 = '<h3><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title10</a></h3><p>Soft/Application Description10</p><p><b>Pros</b></p><ul><li>PROS1</li><li>PROS2</li></ul><p><b>Cons</b></p><ul><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString1 = '<h2><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title1</a></h2><p>Soft/Application Description1 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString2 = '<h2><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title2</a></h2><p>Soft/Application Description2 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString3 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title3</a></h2><p>Soft/Application Description3 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString4 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title4</a></h2><p>Soft/Application Description4 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString5 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title5</a></h2><p>Soft/Application Description5 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString6 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title6</a></h2><p>Soft/Application Description6 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString7 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title7</a></h2><p>Soft/Application Description7 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString8 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title8</a></h2><p>Soft/Application Description8 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString9 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title9</a></h2><p>Soft/Application Description9 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+        $stepString10 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title10</a></h2><p>Soft/Application Description10 50-80 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3>🥳 Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3>🥺 Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
+
+        $aRequired = ["step1", "step2", "step3", "step4", "step5", "conclusion"];
     } else {
         $stepString1 = 'Step-by-Step Guide with HTML formats. <h3>Method 1: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString2 = 'Step-by-Step Guide with HTML formats. <h3>Method 2: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
@@ -244,6 +246,8 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString8 = 'Step-by-Step Guide with HTML formats. <h3>Method 8: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString9 = 'Step-by-Step Guide with HTML formats. <h3>Method 9: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+
+        $aRequired = ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "tips", "infotitle", "information", "conclusion"];
     }
 
     $data = array(
@@ -348,7 +352,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "description" => "Optimized conclusion of the article. Important provide external hyperlinks for convenient user navigation",
                         ],
                     ],
-                    'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "tips", "infotitle", "information", "conclusion"],
+                    'required' => $aRequired,
                 ],
             ]
         ],
@@ -455,21 +459,21 @@ xmlwriter_start_element($xw, 'root');
         function($a) { return emoji_to_entity($a[0]); },
         $h1title
     );
-    $page_intro = preg_replace_callback(
+    $page_intro = isset($b->intro) ? preg_replace_callback(
         $emoji_regex,
         function($a) { return emoji_to_entity($a[0]); },
         $b->intro
-    );
-    $page_infomation = preg_replace_callback(
+    ) : '';
+    $page_infomation = isset($b->information) ? preg_replace_callback(
         $emoji_regex,
         function($a) { return emoji_to_entity($a[0]); },
         $b->information
-    );
-    $page_infotitle = preg_replace_callback(
+    ) : '';
+    $page_infotitle = isset($b->infotitle) ? preg_replace_callback(
         $emoji_regex,
         function($a) { return emoji_to_entity($a[0]); },
         $b->infotitle
-    );
+    ) : '';
     $page_scenario1 = isset($b->scenario1) ? preg_replace_callback(
         $emoji_regex,
         function($a) { return emoji_to_entity($a[0]); },
@@ -533,7 +537,7 @@ xmlwriter_start_element($xw, 'root');
     ) : '';
     $steps = $page_step1 . $page_step2 . $page_step3 . $page_step4 . $page_step5 . $page_step6 . $page_step7 . $page_step8;
     // ================
-    $tips = $b->tips;
+    $tips = isset($b->tips) ? $b->tips : '';
     // ================
     $page_conclusion = preg_replace_callback(
         $emoji_regex,
@@ -542,7 +546,7 @@ xmlwriter_start_element($xw, 'root');
     );
     
     $pageContent = '';
-    $mainString = '<section itemscope="" itemtype="https://schema.org/FAQPage">';
+    $mainString = '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
     $contentString = '';
     $tipsString = '';
                         
@@ -561,24 +565,44 @@ xmlwriter_start_element($xw, 'root');
         generateImgWithTitle($h1title, $image_src);
     }
 
-    if(empty($youtube_url)) {
-        $string = '<section><div><div>3</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
-                    <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
-                    <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
-    } else {
-        $string = '<section><div><div>3</div><h2>Youtube video to watch</h2></div><div class="iframe">' . 
-                        preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $youtube_url)
-                    . '</div></section>
-                    <section><div><div>4</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
-                    <section><div><div>5</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
-                    <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
-    }
+    if($apps_links == 'true') {
 
-    $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
-        <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
-        <p>'.$page_intro.'</p></div></div></section>
-        <section><div><div>1</div><h2>Common Scenarios:</h2></div>'.$scenarious.'</section>
-        <section><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>' . $string;
+        $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
+            <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720"></div></div></section>
+            <section><div><div>&#129351;</div></div>'.$page_step1.'</section>
+            <section><div><div>&#129352;</div></div>'.$page_step2.'</section>
+            <section><div><div>&#129353;</div></div>'.$page_step3.'</section>
+            <section><div><div>4</div></div>'.$page_step4.'</section>
+            <section><div><div>5</div></div>'.$page_step5.'</section>'.
+            !empty($page_step6) ? '<section><div><div>6</div></div>'.$page_step6.'</section>' : ''.
+            !empty($page_step7) ? '<section><div><div>7</div></div>'.$page_step7.'</section>' : ''.
+            !empty($page_step8) ? '<section><div><div>8</div></div>'.$page_step8.'</section>' : ''.
+            !empty($page_step9) ? '<section><div><div>9</div></div>'.$page_step9.'</section>' : ''.
+            !empty($page_step10) ? '<section><div><div>10</div></div>'.$page_step10.'</section>' : ''.
+            '<section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+
+    } else {
+
+        if(empty($youtube_url)) {
+            $string = '<section><div><div>3</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
+                        <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
+                        <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+        } else {
+            $string = '<section><div><div>3</div><h2>Youtube video to watch</h2></div><div class="iframe">' . 
+                            preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $youtube_url)
+                        . '</div></section>
+                        <section><div><div>4</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
+                        <section><div><div>5</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
+                        <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
+        }
+    
+        $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
+            <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
+            <p>'.$page_intro.'</p></div></div></section>
+            <section><div><div>1</div><h2>Common Scenarios:</h2></div>'.$scenarious.'</section>
+            <section><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>' . $string;
+
+    }
 
     $faq = getInfoFaq($theme_title, 10, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
