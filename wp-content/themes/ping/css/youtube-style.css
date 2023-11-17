@@ -173,6 +173,10 @@ article > section:not(:first-child):not(:last-child) ul {
   list-style-type: disc;
   padding: 0 10px 0 72px;
 }
+article > section:not(:first-child):not(:last-child) ul > li > ol,
+article > section:not(:first-child):not(:last-child) ol > li > ul {
+  padding-left: 0;
+}
 
 article > section:not(:first-child):not(:last-child) li {
   margin: 16px 0 6px;
