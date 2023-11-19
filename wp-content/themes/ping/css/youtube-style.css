@@ -748,7 +748,9 @@ article > section:not(:first-child):not(:last-child) ul p {
 }
 .no-medal + h2,
 .medal + h2 {
-  display: inline-block;
+  display: inline-flex;
+  max-width: calc(100% - 56px);
+  align-items: center;
 }
 .no-medal + h2 a,
 .medal + h2 a {

@@ -167,21 +167,21 @@ error_reporting(E_ALL);
                         <h3>New record:</h3>
                         <label for="apikey">AI API KEY</label>
                         <input type="text" id="apikey" name="apikey">
-                        <label for="title">TITLE (theme)</label>
-                        <input type="text" id="title" name="title" data-last="<?php echo $title;?>">
-                        <label for="h1title">H1 - TITLE</label>
-                        <input type="text" id="h1title" name="h1title" data-last="<?php echo $h1title;?>">
-                        <label for="post_url">URL for Post (slug)</label>
-                        <input type="text" id="post_url" name="post_url" data-last="<?php echo $post_url;?>">
+                        <label for="title">What would you like to write about (max 150 characters)</label>
+                        <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
+                        <label for="h1title">H1 (Article Title) (max 150 characters)</label>
+                        <input type="text" id="h1title" name="h1title" maxlength="150" data-last="<?php echo $h1title;?>">
+                        <label for="post_url">URL (/folder/url/)</label>
+                        <input type="text" id="post_url" placeholder="slug" name="post_url" data-last="<?php echo $post_url;?>">
                         <label for="title">META TITLE</label>
                         <input type="text" id="meta_title" name="meta_title" data-last="<?php echo $meta_title;?>">
-                        <label for="url">URL (link to article)</label>
+                        <label for="url">URL to pass link juice (Dofollow)</label>
                         <input type="text" id="url" name="url" data-last="<?php echo $url;?>">
-                        <label for="url_descr">URL Description (about link article)</label>
-                        <input type="text" id="url_descr" name="url_descr" data-last="<?php echo $url_descr;?>">
-                        <label for="anchor">Anchor (link title)</label>
+                        <label for="url_descr">What does this link lead to, and where will users be directed if they click on it? (max 150 characters)</label>
+                        <input type="text" id="url_descr" name="url_descr" maxlength="150" data-last="<?php echo $url_descr;?>">
+                        <label for="anchor">Link Anchor (ex: “how to do something” Don’t spam!)</label>
                         <input type="text" id="anchor" name="anchor" data-last="<?php echo $anchor;?>">
-                        <label for="file">IMG</label>
+                        <label for="file">Featured Image (JPG only)</label>
                         <input type="file" name="file" id="file">
                         <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
                         <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
@@ -189,9 +189,9 @@ error_reporting(E_ALL);
                         <input type="text" id="youtube_url" name="youtube_url" data-last="<?php echo $youtubeUrl;?>">
                         <label for="apps_links" class="checkbox">
                             <input type="checkbox" name="apps_links" id="apps_links" data-checked="<?php echo $apps_links; ?>">
-                            Top list websites/applications with links and Pros/Cons
+                            Click here if you want your article to look like a “list of/best of” style (not a how to style)
                         </label>
-                        <button type="submit" id="btn">SEND</button>
+                        <button type="submit" id="btn">Generate Article</button>
                     </form>
                 <?php } else { ?>
                     <div class="loader show">
