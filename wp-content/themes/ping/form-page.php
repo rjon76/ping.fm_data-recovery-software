@@ -135,6 +135,37 @@ error_reporting(E_ALL);
         height: 20px;
         margin: 0 12px 0 0;
     }
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+    }
+    .tab button:hover {
+        background-color: #ddd;
+    }
+    .tab button.active {
+        background-color: #ccc;
+    }
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+        animation: fadeEffect 1s;
+    }
+    @keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
 </style>
 		<main>
 			<div class="container">
@@ -143,56 +174,64 @@ error_reporting(E_ALL);
                     <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                 </div>
                 <?php if(time() > $current) { ?>
-                    <div>
-                        <h3>Last record:</h3>
-                        <p>TITLE: <?php echo $title;?></p>
-                        <p>H1 TITLE: <?php echo $h1title;?></p>
-                        <p>URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
-                        <p>META TITLE: <?php echo $meta_title;?></p>
-                        <p>URL: <?php echo $url;?></p>
-                        <p>URL Description: <?php echo $url_descr;?></p>
-                        <p>Anchor: <?php echo $anchor;?></p>
-                        <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
-                        <button type="button" id="btn-reg">REGENERATE</button>
+                    <div class="tab">
+                        <button class="tablinks" onclick="openTab(event, 'createdArticles')" id="defaultOpen">Created Articles</button>
+                        <button class="tablinks" onclick="openTab(event, 'generateArticle')">Generate Article</button>
+                    </div>
+                    <div id="createdArticles" class="tabcontent">
+                        <div>
+                            <h3>Last record:</h3>
+                            <p>TITLE: <?php echo $title;?></p>
+                            <p>H1 TITLE: <?php echo $h1title;?></p>
+                            <p>URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                            <p>META TITLE: <?php echo $meta_title;?></p>
+                            <p>URL: <?php echo $url;?></p>
+                            <p>URL Description: <?php echo $url_descr;?></p>
+                            <p>Anchor: <?php echo $anchor;?></p>
+                            <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
+                            <button type="button" id="btn-reg">REGENERATE</button>
 
-                        <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
-                            <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
-                            <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                            <label for="faqapikey">AI API KEY</label>
-                            <input type="text" id="faqapikey" name="apikey">
-                            <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                            <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
+                                <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                                <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
+                                <label for="faqapikey">AI API KEY</label>
+                                <input type="text" id="faqapikey" name="apikey">
+                                <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="generateArticle" class="tabcontent">
+                        <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
+                            <h3>New record:</h3>
+                            <label for="apikey">AI API KEY</label>
+                            <input type="text" id="apikey" name="apikey">
+                            <label for="title">What would you like to write about (max 150 characters)</label>
+                            <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
+                            <label for="h1title">H1 (Article Title) (max 150 characters)</label>
+                            <input type="text" id="h1title" name="h1title" maxlength="150" data-last="<?php echo $h1title;?>">
+                            <label for="post_url">URL (/folder/url/)</label>
+                            <input type="text" id="post_url" placeholder="slug" name="post_url" data-last="<?php echo $post_url;?>">
+                            <label for="title">META TITLE</label>
+                            <input type="text" id="meta_title" name="meta_title" data-last="<?php echo $meta_title;?>">
+                            <label for="url">URL to pass link juice (Dofollow)</label>
+                            <input type="text" id="url" name="url" data-last="<?php echo $url;?>">
+                            <label for="url_descr">What does this link lead to, and where will users be directed if they click on it? (max 150 characters)</label>
+                            <input type="text" id="url_descr" name="url_descr" maxlength="150" data-last="<?php echo $url_descr;?>">
+                            <label for="anchor">Link Anchor (ex: “how to do something” Don’t spam!)</label>
+                            <input type="text" id="anchor" name="anchor" data-last="<?php echo $anchor;?>">
+                            <label for="file">Featured Image (JPG only)</label>
+                            <input type="file" name="file" id="file">
+                            <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
+                            <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
+                            <label for="youtube_url">Add Youtube Link</label>
+                            <input type="text" id="youtube_url" name="youtube_url" data-last="<?php echo $youtubeUrl;?>">
+                            <label for="apps_links" class="checkbox">
+                                <input type="checkbox" name="apps_links" id="apps_links" data-checked="<?php echo $apps_links; ?>">
+                                Click here if you want your article to look like a “list of/best of” style (not a how to style)
+                            </label>
+                            <button type="submit" id="btn">Generate Article</button>
                         </form>
                     </div>
-                    <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
-                        <h3>New record:</h3>
-                        <label for="apikey">AI API KEY</label>
-                        <input type="text" id="apikey" name="apikey">
-                        <label for="title">What would you like to write about (max 150 characters)</label>
-                        <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
-                        <label for="h1title">H1 (Article Title) (max 150 characters)</label>
-                        <input type="text" id="h1title" name="h1title" maxlength="150" data-last="<?php echo $h1title;?>">
-                        <label for="post_url">URL (/folder/url/)</label>
-                        <input type="text" id="post_url" placeholder="slug" name="post_url" data-last="<?php echo $post_url;?>">
-                        <label for="title">META TITLE</label>
-                        <input type="text" id="meta_title" name="meta_title" data-last="<?php echo $meta_title;?>">
-                        <label for="url">URL to pass link juice (Dofollow)</label>
-                        <input type="text" id="url" name="url" data-last="<?php echo $url;?>">
-                        <label for="url_descr">What does this link lead to, and where will users be directed if they click on it? (max 150 characters)</label>
-                        <input type="text" id="url_descr" name="url_descr" maxlength="150" data-last="<?php echo $url_descr;?>">
-                        <label for="anchor">Link Anchor (ex: “how to do something” Don’t spam!)</label>
-                        <input type="text" id="anchor" name="anchor" data-last="<?php echo $anchor;?>">
-                        <label for="file">Featured Image (JPG only)</label>
-                        <input type="file" name="file" id="file">
-                        <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
-                        <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
-                        <label for="youtube_url">Add Youtube Link</label>
-                        <input type="text" id="youtube_url" name="youtube_url" data-last="<?php echo $youtubeUrl;?>">
-                        <label for="apps_links" class="checkbox">
-                            <input type="checkbox" name="apps_links" id="apps_links" data-checked="<?php echo $apps_links; ?>">
-                            Click here if you want your article to look like a “list of/best of” style (not a how to style)
-                        </label>
-                        <button type="submit" id="btn">Generate Article</button>
-                    </form>
                 <?php } else { ?>
                     <div class="loader show">
                         <h1>Article import...please wait, autoreload will happen in a 1-2 minute</h1>
@@ -319,6 +358,25 @@ error_reporting(E_ALL);
                     });
                 }
             });
+
+            function openTab(evt, tabName) {
+                let i, tabcontent, tablinks;
+
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+
+            document.getElementById("defaultOpen").click();
         });
         </script>
     </body>
