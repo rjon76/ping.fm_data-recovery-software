@@ -43,12 +43,15 @@ error_reporting(E_ALL);
 	
 ?>
 <style>
+    main {
+        padding-top: 0 !important;
+    }
     .container {
         position: relative;
         max-width: 100% !important;
         padding: 0 24px !important;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         gap: 100px;
     }
     form {
@@ -69,7 +72,7 @@ error_reporting(E_ALL);
         font-size: 16px;
         line-height: 24px;
     }
-    button {
+    .sBtn {
         background: #333 !important;
         color: white;
         display: block;
@@ -139,6 +142,7 @@ error_reporting(E_ALL);
         overflow: hidden;
         border: 1px solid #ccc;
         background-color: #f1f1f1;
+        margin-left: -24px;
     }
     .tab button {
         background-color: inherit;
@@ -148,6 +152,8 @@ error_reporting(E_ALL);
         cursor: pointer;
         padding: 14px 16px;
         transition: 0.3s;
+        width: 100%;
+        font-size: 18px;
     }
     .tab button:hover {
         background-color: #ddd;
@@ -157,8 +163,8 @@ error_reporting(E_ALL);
     }
     .tabcontent {
         display: none;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
+        flex: 1 0;
+        padding: 30px 0 0;
         border-top: none;
         animation: fadeEffect 1s;
     }
@@ -189,14 +195,14 @@ error_reporting(E_ALL);
                             <p>URL Description: <?php echo $url_descr;?></p>
                             <p>Anchor: <?php echo $anchor;?></p>
                             <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
-                            <button type="button" id="btn-reg">REGENERATE</button>
+                            <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
 
                             <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
                                 <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                 <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                                 <label for="faqapikey">AI API KEY</label>
                                 <input type="text" id="faqapikey" name="apikey">
-                                <button type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                                <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                             </form>
                         </div>
                     </div>
@@ -229,7 +235,7 @@ error_reporting(E_ALL);
                                 <input type="checkbox" name="apps_links" id="apps_links" data-checked="<?php echo $apps_links; ?>">
                                 Click here if you want your article to look like a “list of/best of” style (not a how to style)
                             </label>
-                            <button type="submit" id="btn">Generate Article</button>
+                            <button  class="sBtn" type="submit" id="btn">Generate Article</button>
                         </form>
                     </div>
                 <?php } else { ?>
