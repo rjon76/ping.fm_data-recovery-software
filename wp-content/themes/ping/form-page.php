@@ -56,7 +56,7 @@ error_reporting(E_ALL);
     }
     form {
         max-width: 600px;
-        margin: 0 auto;
+        margin: 0;
         padding: 0;
         width: 100%;
     }
@@ -77,7 +77,7 @@ error_reporting(E_ALL);
         color: white;
         display: block;
         max-width: 320px;
-        margin: 60px auto 0;
+        margin: 60px 0 0;
         width: 100%;
         border-radius: 12px;
         font-size: 16px;
@@ -168,6 +168,9 @@ error_reporting(E_ALL);
         border-top: none;
         animation: fadeEffect 1s;
     }
+    .generate {
+        color: green;
+    }
     @keyframes fadeEffect {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -181,8 +184,8 @@ error_reporting(E_ALL);
                 </div>
                 <?php if(time() > $current) { ?>
                     <div class="tab">
-                        <button class="tablinks" onclick="openTab(event, 'createdArticles')" id="defaultOpen">Created Articles</button>
-                        <button class="tablinks" onclick="openTab(event, 'generateArticle')">Generate Article</button>
+                        <button class="tablinks" onclick="openTab(event, 'createdArticles')" id="defaultOpen">Generated Articles</button>
+                        <button class="tablinks generate" onclick="openTab(event, 'generateArticle')">+ Generate Article</button>
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
