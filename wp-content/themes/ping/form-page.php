@@ -53,7 +53,7 @@ error_reporting(E_ALL);
     }
     form {
         max-width: 600px;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         width: 100%;
     }
