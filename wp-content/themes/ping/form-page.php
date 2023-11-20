@@ -28,7 +28,7 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        $arrayLastArticle = $arrayArticles[count($arrayArticles) - 1];
+        $arrayLastArticle = $arrayArticles;
 
         $title = $arrayLastArticle["page"]["title"];
         $h1title = $arrayLastArticle["page"]["h1title"];
