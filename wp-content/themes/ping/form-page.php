@@ -27,6 +27,7 @@ error_reporting(E_ALL);
         $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
+        var_dump($arrayArticles);
         $arrayLastArticle = $arrayArticles[count($arrayArticles) - 1];
 
         $title = $arrayLastArticle["page"]["title"];
