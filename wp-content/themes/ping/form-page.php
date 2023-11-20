@@ -175,6 +175,9 @@ error_reporting(E_ALL);
     .generate {
         color: green;
     }
+    br {
+        display: block !important;
+    }
     @keyframes fadeEffect {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -359,7 +362,7 @@ error_reporting(E_ALL);
                         },
                         error: function(jqXHR, exception) {
                             setTimeout(function () {
-                                location.reload()
+                                // location.reload()
                             }, 20000);
                         },
                         cache: false,
