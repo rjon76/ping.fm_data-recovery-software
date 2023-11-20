@@ -35,6 +35,8 @@ if(isset($_POST["apps_links"])) {
 
 if($_POST["youtube_url"]) {
     $youtube_url = trim($_POST["youtube_url"]);
+} else {
+    $youtube_url = '';
 }
 
 if ($_POST["h1title"]) {
