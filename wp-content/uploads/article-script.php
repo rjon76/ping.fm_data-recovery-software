@@ -454,7 +454,7 @@ $articlesFile = __DIR__ . '/wpallimport/files/generated-post.xml';
 $xmlstring = file_get_contents($path);
 $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
 $json = json_encode($xml);
-$array = json_decode($json, TRUE);
+$aArticles = json_decode($json, TRUE);
   
 $xw = xmlwriter_open_memory();
 xmlwriter_set_indent($xw, 1);
@@ -665,6 +665,107 @@ xmlwriter_start_element($xw, 'root');
     $mainString.='</section>';
     $pageContent .= $contentString . $mainString . "</article>";
 
+    if(count($aArticles) == 1 && $theme_title != $aArticles["page"]["title"]) {
+        xmlwriter_start_element($xw, 'page');
+            xmlwriter_start_element($xw, 'page_meta');
+                xmlwriter_text($xw, $aArticles["page"]["page_meta"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_image');
+                xmlwriter_text($xw, $aArticles["page"]["page_image"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_url');
+                xmlwriter_text($xw, $aArticles["page"]["page_url"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_title');
+                xmlwriter_text($xw, $aArticles["page"]["page_title"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_content');
+                xmlwriter_text($xw, $aArticles["page"]["page_content"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'title');
+                xmlwriter_text($xw, $aArticles["page"]["title"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'h1title');
+                xmlwriter_text($xw, $aArticles["page"]["h1title"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'url');
+                xmlwriter_text($xw, $aArticles["page"]["url"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'url_descr');
+                xmlwriter_text($xw, $aArticles["page"]["url_descr"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'anchor');
+                xmlwriter_text($xw, $aArticles["page"]["anchor"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'post_url');
+                xmlwriter_text($xw, $aArticles["page"]["post_url"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'youtube_url');
+                xmlwriter_text($xw, $aArticles["page"]["youtube_url"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'apps_links');
+                xmlwriter_text($xw, $aArticles["page"]["apps_links"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'faq_theme');
+                xmlwriter_text($xw, $aArticles["page"]["faq_theme"]);
+            xmlwriter_end_element($xw);
+        xmlwriter_end_element($xw);
+    }
+
+    if(count($aArticles) > 1) {
+        for($i = 0; $i < count($aArticles); $i++ ) {
+
+            if($theme_title === $aArticles["page"][$i]["title"]) {
+                continue;
+            }
+
+            xmlwriter_start_element($xw, 'page');
+                xmlwriter_start_element($xw, 'page_meta');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["page_meta"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_image');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["page_image"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_url');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["page_url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_title');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["page_title"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_content');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["page_content"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'title');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["title"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'h1title');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["h1title"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'url');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'url_descr');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["url_descr"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'anchor');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["anchor"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'post_url');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'youtube_url');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'apps_links');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["apps_links"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'faq_theme');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["faq_theme"]);
+                xmlwriter_end_element($xw);
+            xmlwriter_end_element($xw);
+        }
+    }
+
     xmlwriter_start_element($xw, 'page');
         xmlwriter_start_element($xw, 'page_meta');
             xmlwriter_text($xw, $theme_meta_title);
@@ -715,7 +816,7 @@ xmlwriter_end_document($xw);
 
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
-$dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
+$dom->save($articlesFile);
 
 if(!$_POST["file_url"]) {
     unlink($image_src);
