@@ -28,19 +28,25 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        $arrayLastArticle = $arrayArticles;
+        if(count($arrayArticles) > 0) {
+            if(count($arrayArticles) == 1) {
+                $arrayLastArticle = $arrayArticles["page"];
+            } else {
+                $arrayLastArticle = $arrayArticles["page"][count($arrayArticles) - 1];
+            }
 
-        $title = $arrayLastArticle["page"]["title"];
-        $h1title = $arrayLastArticle["page"]["h1title"];
-        $meta_title = $arrayLastArticle["page"]["page_meta"];
-        $url = $arrayLastArticle["page"]["url"];
-        $url_descr = $arrayLastArticle["page"]["url_descr"];
-        $anchor = $arrayLastArticle["page"]["anchor"];
-        $post_url = $arrayLastArticle["page"]["post_url"];
-        $file_url = $arrayLastArticle["page"]["page_image"];
-        $youtubeUrl = !empty($arrayLastArticle["page"]["youtube_url"]) ? $arrayLastArticle["page"]["youtube_url"] : '';
-        $apps_links = $arrayLastArticle["page"]["apps_links"];
-        $faq_theme = $arrayLastArticle["page"]["faq_theme"];
+            $title = $arrayLastArticle["title"];
+            $h1title = $arrayLastArticle["h1title"];
+            $meta_title = $arrayLastArticle["page_meta"];
+            $url = $arrayLastArticle["url"];
+            $url_descr = $arrayLastArticle["url_descr"];
+            $anchor = $arrayLastArticle["anchor"];
+            $post_url = $arrayLastArticle["post_url"];
+            $file_url = $arrayLastArticle["page_image"];
+            $youtubeUrl = !empty($arrayLastArticle["youtube_url"]) ? $arrayLastArticle["youtube_url"] : '';
+            $apps_links = $arrayLastArticle["apps_links"];
+            $faq_theme = $arrayLastArticle["faq_theme"];
+        }
     }
 
     $current = (int)file_get_contents($file);
