@@ -699,6 +699,9 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_start_element($xw, 'apps_links');
             xmlwriter_text($xw, $apps_links);
         xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'faq_theme');
+            xmlwriter_text($xw, $faq_theme);
+        xmlwriter_end_element($xw);
     xmlwriter_end_element($xw);
 
 xmlwriter_end_element($xw);

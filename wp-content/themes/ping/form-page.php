@@ -318,6 +318,7 @@ error_reporting(E_ALL);
                 jQuery('#post_url')[0].value = jQuery(jQuery('#post_url')[0]).attr('data-last')
                 jQuery('#file_url')[0].value = jQuery(jQuery('#file_url')[0]).attr('data-last')
                 jQuery('#youtube_url')[0].value = jQuery(jQuery('#youtube_url')[0]).attr('data-last')
+                jQuery('#faq_theme')[0].value = jQuery(jQuery('#faq_theme')[0]).attr('data-last')
                 if(jQuery(jQuery('#apps_links')[0]).attr('data-checked') == 'true') {
                     jQuery('#apps_links').prop('checked',true);
                 } else {
