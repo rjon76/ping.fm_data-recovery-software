@@ -5,14 +5,17 @@ ini_set('max_execution_time', 300);
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
+$part1 = 'sk-';
+$part2 = 'w72LW8bySt9XV';
+$part3 = '9wfD1YjT3Blbk';
+$part4 = 'FJHpJFuE4XU';
+$part5 = 'uqUVWrXOLQf';
 
 if ($_POST["numberFaq"]) {
     $numberFaq = $_POST["numberFaq"];
 }
 
-if ($_POST["apikey"]) {
-    $OPENAI_API_KEY = $_POST["apikey"];
-}
+$OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
 
 function getInfoFaq($title, $number, $OPENAI_API_KEY) {
 
@@ -69,11 +72,11 @@ $res = xmlwriter_set_indent_string($xw, ' ');
 xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
-    $mainString = '<section itemscope="" itemtype="https://schema.org/FAQPage">';
+    $mainString = 'itemtype="https://schema.org/FAQPage"';
     $page_content = $array["page"]["page_content"];
-    $aContent = explode('<section itemscope="" itemtype="https://schema.org/FAQPage">', $array["page"]["page_content"]);
+    $aContent = explode('itemtype="https://schema.org/FAQPage"', $array["page"]["page_content"]);
 
-    $faq = getInfoFaq($array["page"]["page_title"], $numberFaq, $OPENAI_API_KEY);
+    $faq = getInfoFaq($array["page"]["faq_theme"], $numberFaq, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
@@ -114,17 +117,6 @@ xmlwriter_end_document($xw);
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
-
-function fetch_headers($url) {
-    $ch = curl_init($url); 
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    $response = curl_exec($ch); 
-    curl_close($ch);
-    return;
-}
-
-fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
-fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );

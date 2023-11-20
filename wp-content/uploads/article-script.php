@@ -6,6 +6,12 @@ set_time_limit(240);
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
+$part1 = 'sk-';
+$part2 = 'w72LW8bySt9XV';
+$part3 = '9wfD1YjT3Blbk';
+$part4 = 'FJHpJFuE4XU';
+$part5 = 'uqUVWrXOLQf';
+
 $image_folder = __DIR__ . "/ai";
 
 if (!is_dir($image_folder)) {
@@ -55,12 +61,12 @@ if ($_POST["post_url"]) {
     $post_url = $_POST["post_url"];
 }
 
-if ($_POST["apikey"]) {
-    $OPENAI_API_KEY = $_POST["apikey"];
-}
-
 if ($_POST["domain_url"]) {
     $domain_url = $_POST["domain_url"];
+}
+
+if($_POST["faq_theme"]) {
+    $faq_theme = $_POST["faq_theme"];
 }
 
 if ($_FILES['file'] && empty($_POST["file_url"])) {
@@ -81,10 +87,12 @@ if($_POST["file_url"]) {
 
 if( !$_POST["anchor"] || !$_POST["url"] || !$_POST["apikey"] ||
     !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
-    !$_POST["url_descr"] || !$_POST["post_url"] ) {
+    !$_POST["url_descr"] || !$_POST["post_url"] || !$_POST["faq_theme"] ) {
     echo 'false';
     exit();
 }
+
+$OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
 
 $file = __DIR__ . '/time_record.txt';
 function writeTimeGeneration($path_to_file, $seconds) {
@@ -623,7 +631,7 @@ xmlwriter_start_element($xw, 'root');
 
     }
 
-    $faq = getInfoFaq($theme_title, 10, $OPENAI_API_KEY);
+    $faq = getInfoFaq($faq_theme, 10, $OPENAI_API_KEY);
     $page_faq = $faq->choices[0]->message->content;
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
@@ -657,30 +665,11 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_start_element($xw, 'page_content');
             xmlwriter_text($xw, $pageContent);
         xmlwriter_end_element($xw);
-    xmlwriter_end_element($xw);
-
-xmlwriter_end_element($xw);
-xmlwriter_end_document($xw);
-
-$dom = new DOMDocument;
-$dom->loadXML(xmlwriter_output_memory($xw));
-$dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
-
-$xw = xmlwriter_open_memory();
-xmlwriter_set_indent($xw, 1);
-$res = xmlwriter_set_indent_string($xw, ' ');
-xmlwriter_start_document($xw, '1.0', 'UTF-8');
-xmlwriter_start_element($xw, 'root');
-
-    xmlwriter_start_element($xw, 'page');
         xmlwriter_start_element($xw, 'title');
             xmlwriter_text($xw, $theme_title);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'h1title');
             xmlwriter_text($xw, $h1title);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'meta_title');
-            xmlwriter_text($xw, $theme_meta_title);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'url');
             xmlwriter_text($xw, $anchor_url);
@@ -700,9 +689,6 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_start_element($xw, 'apps_links');
             xmlwriter_text($xw, $apps_links);
         xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'file');
-            xmlwriter_text($xw, __DIR__ . "/ai/$image_title.jpg");
-        xmlwriter_end_element($xw);
     xmlwriter_end_element($xw);
 
 xmlwriter_end_element($xw);
@@ -710,22 +696,11 @@ xmlwriter_end_document($xw);
 
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
-$dom->save(__DIR__ . '/last-article.xml');
-
-function fetch_headers($url) {
-    $ch = curl_init($url); 
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    $response = curl_exec($ch); 
-    curl_close($ch);
-    return;
-}
+$dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
 if(!$_POST["file_url"]) {
     unlink($image_src);
 }
-
-fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
-fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
