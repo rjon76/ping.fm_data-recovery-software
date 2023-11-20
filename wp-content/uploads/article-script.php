@@ -111,6 +111,14 @@ function writeTimeGeneration($path_to_file, $seconds) {
 
 writeTimeGeneration($file, 120);
 
+function fetch_headers($url) {
+    $ch = curl_init($url); 
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    $response = curl_exec($ch); 
+    curl_close($ch);
+    return;
+}
+
 function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text){
 	// Get height of single line
 	$rect = imagettfbbox($size, 0, $fontfile, "Tq");
@@ -667,30 +675,30 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_start_element($xw, 'page_content');
             xmlwriter_text($xw, $pageContent);
         xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'title');
-        //     xmlwriter_text($xw, $theme_title);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'h1title');
-        //     xmlwriter_text($xw, $h1title);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'url');
-        //     xmlwriter_text($xw, $anchor_url);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'url_descr');
-        //     xmlwriter_text($xw, $url_description);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'anchor');
-        //     xmlwriter_text($xw, $anchor_title);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'post_url');
-        //     xmlwriter_text($xw, $post_url);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'youtube_url');
-        //     xmlwriter_text($xw, $youtube_url);
-        // xmlwriter_end_element($xw);
-        // xmlwriter_start_element($xw, 'apps_links');
-        //     xmlwriter_text($xw, $apps_links);
-        // xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'title');
+            xmlwriter_text($xw, $theme_title);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'h1title');
+            xmlwriter_text($xw, $h1title);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'url');
+            xmlwriter_text($xw, $anchor_url);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'url_descr');
+            xmlwriter_text($xw, $url_description);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'anchor');
+            xmlwriter_text($xw, $anchor_title);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'post_url');
+            xmlwriter_text($xw, $post_url);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'youtube_url');
+            xmlwriter_text($xw, $youtube_url);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'apps_links');
+            xmlwriter_text($xw, $apps_links);
+        xmlwriter_end_element($xw);
     xmlwriter_end_element($xw);
 
 xmlwriter_end_element($xw);
@@ -703,6 +711,9 @@ $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 if(!$_POST["file_url"]) {
     unlink($image_src);
 }
+
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
