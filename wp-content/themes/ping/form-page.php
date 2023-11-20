@@ -194,6 +194,48 @@ error_reporting(E_ALL);
     br {
         display: block !important;
     }
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #3e8e41;
+    }
+    #myInput {
+        box-sizing: border-box;
+        background-image: url('searchicon.png');
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 14px 20px 12px 45px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+    #myInput:focus {outline: 3px solid #ddd;}
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        border: 1px solid #ddd;
+        z-index: 1;
+    }
+    .dropdown-content .option {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content .option:hover {background-color: #f1f1f1}
+    .show {display:block;}
     @keyframes fadeEffect {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -212,6 +254,17 @@ error_reporting(E_ALL);
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
+                            <?php if(count($arrayArticles["page"]) > 1) { ?>
+                                <div class="dropdown">
+                                    <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                        <?php for($i = 0; $i < count($arrayArticles["page"]); $i++ ) { ?>
+                                            <div class="option"><?php echo $arrayArticles["page"][$i]["title"]; ?></div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <h3>Last record:</h3>
                             <p>TITLE: <?php echo $title;?></p>
                             <p>H1 TITLE: <?php echo $h1title;?></p>
@@ -408,6 +461,26 @@ error_reporting(E_ALL);
         }
 
         document.getElementById("defaultOpen").click();
+
+        function openDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function filterFunction() {
+            let input, filter, ul, li, option, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            option = div.querySelectorAll(".option");
+            for (i = 0; i < option.length; i++) {
+                txtValue = option[i].textContent || option[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    option[i].style.display = "";
+                } else {
+                    option[i].style.display = "none";
+                }
+            }
+        }
         </script>
     </body>
 </html>
