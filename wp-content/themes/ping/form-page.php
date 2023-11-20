@@ -30,8 +30,6 @@ error_reporting(E_ALL);
 
         $arrayLastArticle = $arrayArticles;
 
-        var_dump($arrayArticles["page"][count($arrayArticles) - 1]["title"]);
-
         $title = $arrayLastArticle["page"]["title"];
         $h1title = $arrayLastArticle["page"]["h1title"];
         $meta_title = $arrayLastArticle["page"]["page_meta"];
