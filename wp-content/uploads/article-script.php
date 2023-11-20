@@ -23,7 +23,7 @@ if ($_POST["title"]) {
     $theme_title = $_POST["title"];
 }
 
-if($_POST["apps_links"]) {
+if(isset($_POST["apps_links"])) {
     if($_POST["apps_links"] == 'on') {
         $apps_links = 'true';
     } else {
@@ -85,7 +85,7 @@ if($_POST["file_url"]) {
     $image_src = $_POST["file_url"];
 }
 
-if( !$_POST["anchor"] || !$_POST["url"] || !$_POST["apikey"] ||
+if( !$_POST["anchor"] || !$_POST["url"] ||
     !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
     !$_POST["url_descr"] || !$_POST["post_url"] || !$_POST["faq_theme"] ) {
     echo 'false';
