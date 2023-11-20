@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 	get_header();
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
-    $path = __DIR__ . '/../../uploads/last-article.xml';
+    $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
 
     $title = '';
     $h1title = '';
@@ -20,23 +20,26 @@ error_reporting(E_ALL);
     $post_url = '';
     $file_url = '';
     $youtubeUrl = '';
+    $faq_theme = '';
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
         $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
         $json = json_encode($xml);
-        $arrayLastArticle = json_decode($json, TRUE);
+        $arrayArticles = json_decode($json, TRUE);
+        $arrayLastArticle = $arrayArticles[count($arrayArticles) - 1];
 
         $title = $arrayLastArticle["page"]["title"];
         $h1title = $arrayLastArticle["page"]["h1title"];
-        $meta_title = $arrayLastArticle["page"]["meta_title"];
+        $meta_title = $arrayLastArticle["page"]["page_meta"];
         $url = $arrayLastArticle["page"]["url"];
         $url_descr = $arrayLastArticle["page"]["url_descr"];
         $anchor = $arrayLastArticle["page"]["anchor"];
         $post_url = $arrayLastArticle["page"]["post_url"];
-        $file_url = $arrayLastArticle["page"]["file"];
+        $file_url = $arrayLastArticle["page"]["page_image"];
         $youtubeUrl = !empty($arrayLastArticle["page"]["youtube_url"]) ? $arrayLastArticle["page"]["youtube_url"] : '';
         $apps_links = $arrayLastArticle["page"]["apps_links"];
+        $faq_theme = $arrayLastArticle["page"]["faq_theme"];
     }
 
     $current = (int)file_get_contents($file);
@@ -90,7 +93,7 @@ error_reporting(E_ALL);
     }
 
     h1 {
-        margin-top: 200px;
+        margin-top: 50px;
         text-align: center;
     }
     .hidden {
@@ -179,13 +182,13 @@ error_reporting(E_ALL);
 		<main>
 			<div class="container">
                 <div class="loader">
-                    <h1>Article loading...please wait around 3 minutes</h1>
+                    <h1>AI is working (2-4 mins to finish, поки погодуй кота чи собаку ;-)</h1>
                     <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                 </div>
                 <?php if(time() > $current) { ?>
                     <div class="tab">
                         <button class="tablinks" onclick="openTab(event, 'createdArticles')" id="defaultOpen">Generated Articles</button>
-                        <button class="tablinks generate" onclick="openTab(event, 'generateArticle')">+ Generate Article</button>
+                        <button class="tablinks generate" onclick="openTab(event, 'generateArticle')" id="genNewArt">+ Generate Article</button>
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
@@ -203,8 +206,6 @@ error_reporting(E_ALL);
                             <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
                                 <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                 <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                                <label for="faqapikey">AI API KEY</label>
-                                <input type="text" id="faqapikey" name="apikey">
                                 <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                             </form>
                         </div>
@@ -212,8 +213,6 @@ error_reporting(E_ALL);
                     <div id="generateArticle" class="tabcontent">
                         <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
                             <h3>New record:</h3>
-                            <label for="apikey">AI API KEY</label>
-                            <input type="text" id="apikey" name="apikey">
                             <label for="title">What would you like to write about (max 150 characters)</label>
                             <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
                             <label for="h1title">H1 (Article Title) (max 150 characters)</label>
@@ -232,6 +231,8 @@ error_reporting(E_ALL);
                             <input type="file" name="file" id="file">
                             <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
                             <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
+                            <label for="faqTheme">Please provide me with either a specific niche or a top keyword for which you would like an FAQ generated</label>
+                            <input type="text" id="faqTheme" name="faq_theme" data-last="<?php echo $faq_theme;?>">
                             <label for="youtube_url">Add Youtube Link</label>
                             <input type="text" id="youtube_url" name="youtube_url" data-last="<?php echo $youtubeUrl;?>">
                             <label for="apps_links" class="checkbox">
@@ -243,7 +244,7 @@ error_reporting(E_ALL);
                     </div>
                 <?php } else { ?>
                     <div class="loader show">
-                        <h1>Article import...please wait, autoreload will happen in a 1-2 minute</h1>
+                        <h1>Article import...please wait, autoreload will happen in a 1-2 minutes, усі нагодовані :-)?</h1>
                         <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                     </div>
                     <script>
@@ -272,8 +273,7 @@ error_reporting(E_ALL);
                 event.preventDefault()
                 const formData = new FormData(this);
 
-                if( jQuery('#faqapikey')[0].value.trim().length === 0 ||
-                    jQuery('#numberFaq')[0].value.trim().length === 0 ) {
+                if( jQuery('#numberFaq')[0].value.trim().length === 0 ) {
                         alert('All fields is required (Faq questions) !!') 
                 } else {
                     jQuery('#btn-num-faq').attr('disabled','true');
@@ -322,14 +322,14 @@ error_reporting(E_ALL);
                 } else {
                     jQuery('#apps_links').prop('checked',false);
                 }
+                document.getElementById("genNewArt").click();
                 jQuery("#article").submit()
             })
             jQuery("#article").on("submit", function(event) {
                 event.preventDefault()
                 const formData = new FormData(this);
                 
-                if(jQuery('#apikey')[0].value.trim().length === 0 ||
-                    jQuery('#title')[0].value.trim().length === 0 ||
+                if( jQuery('#title')[0].value.trim().length === 0 ||
                     jQuery('#h1title')[0].value.trim().length === 0 ||
                     jQuery('#meta_title')[0].value.trim().length === 0 ||
                     jQuery('#url')[0].value.trim().length === 0 ||
