@@ -30,6 +30,8 @@ error_reporting(E_ALL);
 
         $arrayLastArticle = $arrayArticles;
 
+        var_dump($arrayArticles["page"][count($arrayArticles) - 1]["title"]);
+
         $title = $arrayLastArticle["page"]["title"];
         $h1title = $arrayLastArticle["page"]["h1title"];
         $meta_title = $arrayLastArticle["page"]["page_meta"];
@@ -183,7 +185,7 @@ error_reporting(E_ALL);
 		<main>
 			<div class="container">
                 <div class="loader">
-                    <h1>AI is working (2-4 mins to finish, поки погодуй кота чи собаку ;-)</h1>
+                    <h1>AI is working (2-4 mins to finish,<br> поки погодуй кота чи собаку ;-)</h1>
                     <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                 </div>
                 <?php if(time() > $current) { ?>
@@ -245,7 +247,7 @@ error_reporting(E_ALL);
                     </div>
                 <?php } else { ?>
                     <div class="loader show">
-                        <h1>Article import...please wait, autoreload will happen in a 1-2 minutes, усі нагодовані :-)?</h1>
+                        <h1>Article import...please wait,<br> autoreload will happen in a 1-2 minutes,<br> усі нагодовані :-)?</h1>
                         <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
                     </div>
                     <script>
