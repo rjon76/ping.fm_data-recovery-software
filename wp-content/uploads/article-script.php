@@ -449,6 +449,12 @@ function emoji_to_entity($emoji) {
 }
 
 $emoji_regex = '/[\x{23}-\x{23}\x{2a}-\x{2a}\x{30}-\x{39}\x{a9}-\x{a9}\x{ae}-\x{ae}\x{200d}-\x{200d}\x{203c}-\x{203c}\x{2049}-\x{2049}\x{20e3}-\x{20e3}\x{2122}-\x{2122}\x{2139}-\x{2139}\x{2194}-\x{2199}\x{21a9}-\x{21aa}\x{231a}-\x{231b}\x{2328}-\x{2328}\x{2388}-\x{2388}\x{23cf}-\x{23cf}\x{23e9}-\x{23f3}\x{23f8}-\x{23fa}\x{24c2}-\x{24c2}\x{25aa}-\x{25ab}\x{25b6}-\x{25b6}\x{25c0}-\x{25c0}\x{25fb}-\x{25fe}\x{2600}-\x{2605}\x{2607}-\x{2612}\x{2614}-\x{2685}\x{2690}-\x{2705}\x{2708}-\x{2712}\x{2714}-\x{2714}\x{2716}-\x{2716}\x{271d}-\x{271d}\x{2721}-\x{2721}\x{2728}-\x{2728}\x{2733}-\x{2734}\x{2744}-\x{2744}\x{2747}-\x{2747}\x{274c}-\x{274c}\x{274e}-\x{274e}\x{2753}-\x{2755}\x{2757}-\x{2757}\x{2763}-\x{2767}\x{2795}-\x{2797}\x{27a1}-\x{27a1}\x{27b0}-\x{27b0}\x{27bf}-\x{27bf}\x{2934}-\x{2935}\x{2b05}-\x{2b07}\x{2b1b}-\x{2b1c}\x{2b50}-\x{2b50}\x{2b55}-\x{2b55}\x{3030}-\x{3030}\x{303d}-\x{303d}\x{3297}-\x{3297}\x{3299}-\x{3299}\x{fe0f}-\x{fe0f}\x{1f000}-\x{1f0ff}\x{1f10d}-\x{1f10f}\x{1f12f}-\x{1f12f}\x{1f16c}-\x{1f171}\x{1f17e}-\x{1f17f}\x{1f18e}-\x{1f18e}\x{1f191}-\x{1f19a}\x{1f1ad}-\x{1f1ff}\x{1f201}-\x{1f20f}\x{1f21a}-\x{1f21a}\x{1f22f}-\x{1f22f}\x{1f232}-\x{1f23a}\x{1f23c}-\x{1f23f}\x{1f249}-\x{1f53d}\x{1f546}-\x{1f64f}\x{1f680}-\x{1f6ff}\x{1f774}-\x{1f77f}\x{1f7d5}-\x{1f7ff}\x{1f80c}-\x{1f80f}\x{1f848}-\x{1f84f}\x{1f85a}-\x{1f85f}\x{1f888}-\x{1f88f}\x{1f8ae}-\x{1f8ff}\x{1f90c}-\x{1f93a}\x{1f93c}-\x{1f945}\x{1f947}-\x{1faff}\x{1fc00}-\x{1fffd}\x{e0020}-\x{e007f}]/u';
+
+$articlesFile = __DIR__ . '/wpallimport/files/generated-post.xml';
+$xmlstring = file_get_contents($path);
+$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+$json = json_encode($xml);
+$array = json_decode($json, TRUE);
   
 $xw = xmlwriter_open_memory();
 xmlwriter_set_indent($xw, 1);
