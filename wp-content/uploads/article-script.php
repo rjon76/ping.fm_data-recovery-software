@@ -33,7 +33,7 @@ if(isset($_POST["apps_links"])) {
     $apps_links = 'false';
 }
 
-if($_POST["youtube_url"]) {
+if(isset($_POST["youtube_url"])) {
     $youtube_url = trim($_POST["youtube_url"]);
 } else {
     $youtube_url = '';
