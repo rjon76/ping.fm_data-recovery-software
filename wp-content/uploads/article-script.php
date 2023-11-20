@@ -256,23 +256,24 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
     }
 
+    // use reddit style posts and american english model;
+    //                         Add $anchor_url with exact match for this $anchor_title, like <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
+    //                         Place the link anchor $anchor_title organically as a part of the content, surrounded by the link description to ensure it looks natural - $url_description;
+    //                         Important - Do not add another name for link $anchor_url;
+    //                         provide another relevant links with anchor/title such as https://www... or at your discretion in <a> tag with attributes rel='nofollow' target='_blank';
+    //                         At one step of each method, it is important to insert a link with <a href> to the corresponding website or application.
+    //                         inside paragraphs extensively use '<b></b>' for topics, keywords;
+    //                         do not use personal names or channel names;
+    //                         do not insert links to images;
+    //                         Important when mentioning URLs make them <a href> links.
+
     $data = array(
         'model' => 'gpt-4-1106-preview',
         'messages' => [
             [
                 "role" => "system",
                 "content" => "MUST use JSON format response;
-                            Generate 1500 words in-depth blog article about $title, make it seo friendly;
-                            use reddit style posts and american english model;
-                            Add $anchor_url with exact match for this $anchor_title, like <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
-                            Place the link anchor $anchor_title organically as a part of the content, surrounded by the link description to ensure it looks natural - $url_description;
-                            Important - Do not add another name for link $anchor_url;
-                            provide another relevant links with anchor/title such as https://www... or at your discretion in <a> tag with attributes rel='nofollow' target='_blank';
-                            At one step of each method, it is important to insert a link with <a href> to the corresponding website or application.
-                            inside paragraphs extensively use '<b></b>' for topics, keywords;
-                            do not use personal names or channel names;
-                            do not insert links to images;
-                            Important when mentioning URLs make them <a href> links.",
+                            Generate 1500 words in-depth blog article about $title, make it seo friendly;",
             ],
         ],
         'functions' => [
@@ -633,20 +634,20 @@ xmlwriter_start_element($xw, 'root');
 
     }
 
-    $faq = getInfoFaq($faq_theme, 10, $OPENAI_API_KEY);
-    $page_faq = $faq->choices[0]->message->content;
-    $faqParag = explode('<p>', $page_faq);
-    $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
-    foreach($faqNoParag as $key => $p) {
-        if($key === 0) continue;
+    // $faq = getInfoFaq($faq_theme, 10, $OPENAI_API_KEY);
+    // $page_faq = $faq->choices[0]->message->content;
+    // $faqParag = explode('<p>', $page_faq);
+    // $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
+    // foreach($faqNoParag as $key => $p) {
+    //     if($key === 0) continue;
                     
-        if($key%2==1) {
-            $mainString .= '<div class="panel" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question"><div class="toggle-link"><h3 class="panel-title" itemprop="name">
-                '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer"><div itemprop="text">';
-        } else {
-            $mainString .= '<p>'.trim($p).'</p></div></div></div></div>';
-        }
-    }
+    //     if($key%2==1) {
+    //         $mainString .= '<div class="panel" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question"><div class="toggle-link"><h3 class="panel-title" itemprop="name">
+    //             '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer"><div itemprop="text">';
+    //     } else {
+    //         $mainString .= '<p>'.trim($p).'</p></div></div></div></div>';
+    //     }
+    // }
 
     $mainString.='</section>';
     $pageContent .= $contentString . $mainString . "</article>";
