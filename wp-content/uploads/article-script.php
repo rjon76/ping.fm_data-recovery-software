@@ -290,14 +290,14 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "type" => "string",
                             "description" => "Scenario1 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
                         ],
-                        "scenario2" => [
-                            "type" => "string",
-                            "description" => "Scenario2 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
-                        ],
-                        "scenario3" => [
-                            "type" => "string",
-                            "description" => "Scenario3 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
-                        ],
+                        // "scenario2" => [
+                        //     "type" => "string",
+                        //     "description" => "Scenario2 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
+                        // ],
+                        // "scenario3" => [
+                        //     "type" => "string",
+                        //     "description" => "Scenario3 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
+                        // ],
                         "step1" => [
                             "type" => "string",
                             "description" => $stepString1,
@@ -306,38 +306,38 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "type" => "string",
                             "description" => $stepString2,
                         ],
-                        "step3" => [
-                            "type" => "string",
-                            "description" => $stepString3,
-                        ],
-                        "step4" => [
-                            "type" => "string",
-                            "description" => $stepString4,
-                        ],
-                        "step5" => [
-                            "type" => "string",
-                            "description" => $stepString5,
-                        ],
-                        "step6" => [
-                            "type" => "string",
-                            "description" => $stepString6,
-                        ],
-                        "step7" => [
-                            "type" => "string",
-                            "description" => $stepString7,
-                        ],
-                        "step8" => [
-                            "type" => "string",
-                            "description" => $stepString8,
-                        ],
-                        "step9" => [
-                            "type" => "string",
-                            "description" => $stepString9,
-                        ],
-                        "step10" => [
-                            "type" => "string",
-                            "description" => $stepString10,
-                        ],
+                        // "step3" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString3,
+                        // ],
+                        // "step4" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString4,
+                        // ],
+                        // "step5" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString5,
+                        // ],
+                        // "step6" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString6,
+                        // ],
+                        // "step7" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString7,
+                        // ],
+                        // "step8" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString8,
+                        // ],
+                        // "step9" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString9,
+                        // ],
+                        // "step10" => [
+                        //     "type" => "string",
+                        //     "description" => $stepString10,
+                        // ],
                         "tips" => [
                             "type" => "array",
                             "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. extensively use emojis only in title",
@@ -359,7 +359,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "description" => "Optimized conclusion of the article. Important provide external hyperlinks for convenient user navigation",
                         ],
                     ],
-                    'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "tips", "infotitle", "information", "conclusion"],
+                    'required' => ["intro", "scenario1", "step1", "step2", "tips", "infotitle", "information", "conclusion"],
                 ],
             ]
         ],
