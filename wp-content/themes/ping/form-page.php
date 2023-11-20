@@ -28,10 +28,8 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        var_dump($arrayArticles);
-
-        if(count($arrayArticles) > 0) {
-            if(count($arrayArticles) == 1) {
+        if(count($arrayArticles["page"]) > 0) {
+            if(count($arrayArticles["page"]) == 1) {
                 $title = $arrayArticles["page"]["title"];
                 $h1title = $arrayArticles["page"]["h1title"];
                 $meta_title = $arrayArticles["page"]["page_meta"];
