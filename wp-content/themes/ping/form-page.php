@@ -232,8 +232,8 @@ error_reporting(E_ALL);
                             <input type="file" name="file" id="file">
                             <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
                             <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
-                            <label for="faqTheme">Please provide me with either a specific niche or a top keyword for which you would like an FAQ generated</label>
-                            <input type="text" id="faqTheme" name="faq_theme" data-last="<?php echo $faq_theme;?>">
+                            <label for="faq_theme">Please provide me with either a specific niche or a top keyword for which you would like an FAQ generated</label>
+                            <input type="text" id="faq_theme" name="faq_theme" data-last="<?php echo $faq_theme;?>">
                             <label for="youtube_url">Add Youtube Link</label>
                             <input type="text" id="youtube_url" name="youtube_url" data-last="<?php echo $youtubeUrl;?>">
                             <label for="apps_links" class="checkbox">
