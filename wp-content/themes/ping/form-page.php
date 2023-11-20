@@ -42,17 +42,17 @@ error_reporting(E_ALL);
                 $apps_links = $arrayArticles["page"]["apps_links"];
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
             } else {
-                $title = $arrayArticles["page"][count($arrayArticles) - 1]["title"];
-                $h1title = $arrayArticles["page"][count($arrayArticles) - 1]["h1title"];
-                $meta_title = $arrayArticles["page"][count($arrayArticles) - 1]["page_meta"];
-                $url = $arrayArticles["page"][count($arrayArticles) - 1]["url"];
-                $url_descr = $arrayArticles["page"][count($arrayArticles) - 1]["url_descr"];
-                $anchor = $arrayArticles["page"][count($arrayArticles) - 1]["anchor"];
-                $post_url = $arrayArticles["page"][count($arrayArticles) - 1]["post_url"];
-                $file_url = $arrayArticles["page"][count($arrayArticles) - 1]["page_image"];
-                $youtubeUrl = !empty($arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"]) ? $arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"] : '';
-                $apps_links = $arrayArticles["page"][count($arrayArticles) - 1]["apps_links"];
-                $faq_theme = $arrayArticles["page"][count($arrayArticles) - 1]["faq_theme"];
+                $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
+                $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
+                $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
+                $url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url"];
+                $url_descr = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url_descr"];
+                $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
+                $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
+                $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
+                $youtubeUrl = !empty($arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"]) ? $arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"] : '';
+                $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
+                $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
             }
 
             
@@ -378,7 +378,7 @@ error_reporting(E_ALL);
                         },
                         error: function(jqXHR, exception) {
                             setTimeout(function () {
-                                // location.reload()
+                                location.reload()
                             }, 20000);
                         },
                         cache: false,
