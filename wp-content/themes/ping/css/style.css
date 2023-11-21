@@ -688,7 +688,12 @@ section.banner .banner--img {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding: 100px 30px 80px 450px;
+  padding: 100px 15px 80px 550px;
+}
+@media (max-width: 1250px) {
+  section.banner .banner--img {
+    padding: 50px 20px 40px;
+  }
 }
 @media (max-width: 767px) {
   section.banner .banner--img {
