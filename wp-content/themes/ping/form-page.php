@@ -196,8 +196,12 @@ error_reporting(E_ALL);
     }
     .dropbtn {
         background-color: #04AA6D;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+Cgo8ZGVmcz4KPC9kZWZzPgo8ZyBzdHlsZT0ic3Ryb2tlOiBub25lOyBzdHJva2Utd2lkdGg6IDA7IHN0cm9rZS1kYXNoYXJyYXk6IG5vbmU7IHN0cm9rZS1saW5lY2FwOiBidXR0OyBzdHJva2UtbGluZWpvaW46IG1pdGVyOyBzdHJva2UtbWl0ZXJsaW1pdDogMTA7IGZpbGw6IG5vbmU7IGZpbGwtcnVsZTogbm9uemVybzsgb3BhY2l0eTogMTsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuNDA2NTkzNDA2NTkzNDAxNiAxLjQwNjU5MzQwNjU5MzQwMTYpIHNjYWxlKDIuODEgMi44MSkiID4KCTxwYXRoIGQ9Ik0gOTAgMjQuMjUgYyAwIC0wLjg5NiAtMC4zNDIgLTEuNzkyIC0xLjAyNSAtMi40NzUgYyAtMS4zNjYgLTEuMzY3IC0zLjU4MyAtMS4zNjcgLTQuOTQ5IDAgTCA0NSA2MC44IEwgNS45NzUgMjEuNzc1IGMgLTEuMzY3IC0xLjM2NyAtMy41ODMgLTEuMzY3IC00Ljk1IDAgYyAtMS4zNjYgMS4zNjcgLTEuMzY2IDMuNTgzIDAgNC45NSBsIDQxLjUgNDEuNSBjIDEuMzY2IDEuMzY3IDMuNTgzIDEuMzY3IDQuOTQ5IDAgbCA0MS41IC00MS41IEMgODkuNjU4IDI2LjA0MiA5MCAyNS4xNDYgOTAgMjQuMjUgeiIgc3R5bGU9InN0cm9rZTogbm9uZTsgc3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiBub25lOyBzdHJva2UtbGluZWNhcDogYnV0dDsgc3Ryb2tlLWxpbmVqb2luOiBtaXRlcjsgc3Ryb2tlLW1pdGVybGltaXQ6IDEwOyBmaWxsOiByZ2IoMjU1LDI1NSwyNTUpOyBmaWxsLXJ1bGU6IG5vbnplcm87IG9wYWNpdHk6IDE7IiB0cmFuc2Zvcm09IiBtYXRyaXgoMSAwIDAgMSAwIDApICIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgo8L2c+Cjwvc3ZnPg==");
+        background-position: center right 6px;
+        background-size: 8px 6px;
+        background-repeat: no-repeat;
         color: white;
-        padding: 16px;
+        padding: 16px 32px 16px 16px;
         font-size: 16px;
         border: none;
         cursor: pointer;
@@ -211,9 +215,11 @@ error_reporting(E_ALL);
         background-position: 14px 12px;
         background-repeat: no-repeat;
         font-size: 16px;
-        padding: 14px 20px 12px 45px;
+        padding: 14px 20px 12px;
         border: none;
         border-bottom: 1px solid #ddd;
+        margin: 10px;
+        max-width: calc(100% - 20px);
     }
     #myInput:focus {outline: 3px solid #ddd;}
     .dropdown {
@@ -224,15 +230,17 @@ error_reporting(E_ALL);
         display: none;
         position: absolute;
         background-color: #f6f6f6;
-        min-width: 230px;
+        min-width: 400px;
         border: 1px solid #ddd;
         z-index: 1;
+        border-radius: 10px;
     }
     .dropdown-content .option {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        cursor: pointer;
     }
     .dropdown-content .option:hover {background-color: #f1f1f1}
     .show {display:block;}
@@ -256,24 +264,39 @@ error_reporting(E_ALL);
                         <div>
                             <?php if(count($arrayArticles["page"]) > 1) { ?>
                                 <div class="dropdown">
-                                    <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
+                                    <button onclick="openDropdown()" class="dropbtn">Select an article to edit</button>
                                     <div id="myDropdown" class="dropdown-content">
-                                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                        <input type="text" placeholder="Search title article.." id="myInput" onkeyup="filterFunction()">
                                         <?php for($i = 0; $i < count($arrayArticles["page"]); $i++ ) { ?>
-                                            <div class="option"><?php echo $arrayArticles["page"][$i]["title"]; ?></div>
+                                            <div
+                                                class="option"
+                                                data-title="<?php echo $arrayArticles["page"][$i]["title"]; ?>"
+                                                data-h1title="<?php echo $arrayArticles["page"][$i]["h1title"]; ?>"
+                                                data-meta_title="<?php echo $arrayArticles["page"][$i]["page_meta"]; ?>"
+                                                data-url="<?php echo $arrayArticles["page"][$i]["url"]; ?>"
+                                                data-url_descr="<?php echo $arrayArticles["page"][$i]["url_descr"]; ?>"
+                                                data-anchor="<?php echo $arrayArticles["page"][$i]["anchor"]; ?>"
+                                                data-post_url="<?php echo $arrayArticles["page"][$i]["post_url"]; ?>"
+                                                data-file_url="<?php echo $arrayArticles["page"][$i]["page_image"]; ?>"
+                                                data-youtubeUrl="<?php !empty($arrayArticles["page"][$i]["youtube_url"]) ? echo $arrayArticles["page"][$i]["youtube_url"] : echo ''; ?>"
+                                                data-apps_links="<?php echo $arrayArticles["page"][$i]["apps_links"]; ?>"
+                                                data-faq_theme="<?php echo $arrayArticles["page"][$i]["faq_theme"]; ?>"
+                                            >
+                                                <?php echo $arrayArticles["page"][$i]["title"]; ?>
+                                            </div>
                                         <?php } ?>
                                     </div>
                                 </div>
                             <?php } ?>
-                            <h3>Last record:</h3>
-                            <p>TITLE: <?php echo $title;?></p>
-                            <p>H1 TITLE: <?php echo $h1title;?></p>
-                            <p>URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
-                            <p>META TITLE: <?php echo $meta_title;?></p>
-                            <p>URL: <?php echo $url;?></p>
-                            <p>URL Description: <?php echo $url_descr;?></p>
-                            <p>Anchor: <?php echo $anchor;?></p>
-                            <img src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
+                            <h3>Last/Selected article:</h3>
+                            <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
+                            <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
+                            <p id="lastPostUrl">URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                            <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
+                            <p id="lastURL">URL: <span><?php echo $url;?></span></p>
+                            <p id="lastURLDescr">URL Description: <span><?php echo $url_descr;?></span></p>
+                            <p id="lastAnchor">Anchor: <span><?php echo $anchor;?></span></p>
+                            <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                             <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
 
                             <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
@@ -441,6 +464,17 @@ error_reporting(E_ALL);
                     });
                 }
             });
+            jQuery(".option").on('click', function(e) {
+                jQuery('#lastTitle').find('span').html(jQuery(this).attr('data-title'))
+                jQuery('#lastH1').find('span').html(jQuery(this).attr('data-h1title'))
+                jQuery('#lastMeta').find('span').html(jQuery(this).attr('data-meta_title'))
+                jQuery('#lastURL').find('span').html(jQuery(this).attr('data-url'))
+                jQuery('#lastURLDescr').find('span').html(jQuery(this).attr('data-url_descr'))
+                jQuery('#lastAnchor').find('span').html(jQuery(this).attr('data-anchor'))
+                jQuery('#lastPostUrl').find('a').html(jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
+                jQuery('#lastPostUrl').find('a').attr('href', jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
+                jQuery('#lastIMG').attr('src', jQuery('#domain_url')[0].value + '/wp-content' . jQuery(this).attr('data-file_url').text().split('wp-content')[1])
+            })
         });
 
         function openTab(evt, tabName) {
