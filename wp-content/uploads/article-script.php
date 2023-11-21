@@ -265,7 +265,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $information_string = "add valuable information around 500 words at the end of article with html formats in <p> tags and links without anchors but include the address, such as https://www... in <a> tag with attributes rel='nofollow' target='_blank', to high authority relevant websites";
     }
-
+    // use reddit style posts and american english model;
     $data = array(
         'model' => 'gpt-4-1106-preview',
         'messages' => [
@@ -273,7 +273,8 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                 "role" => "system",
                 "content" => "MUST use JSON format response;
                             Generate 1500 words in-depth blog article about $title, make it seo friendly;
-                            use reddit style posts and american english model;
+                            Compose a review of these applications from a personal perspective, as if you have used them yourself. Balance your opinions, avoiding excessive promotion of the apps.
+                            Ensure the content is search engine optimized, reader-friendly, and written in American English style. The review should be entirely original and unique in its expression
                             Add $anchor_url with exact match for this $anchor_title, like <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
                             Place the link anchor $anchor_title organically as a part of the content, surrounded by the link description to ensure it looks natural - $url_description;
                             Important - Do not add another name for link $anchor_url;
