@@ -672,7 +672,7 @@ footer p a:hover {
 }
 
 section.banner {
-  background: #cae1fd;
+  background: #fff49e;
   position: relative;
   overflow: hidden;
 }
@@ -688,29 +688,27 @@ section.banner .banner--img {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding: 100px 30px 80px 300px;
+  padding: 100px 30px 80px 450px;
 }
 @media (max-width: 767px) {
   section.banner .banner--img {
     padding: 50px 20px 40px;
   }
 }
-section.banner .banner--img::after {
+section.banner::after {
   content: '';
   opacity: 100%;
   background-image: url("data-recovery-image.png") !important;
   background-size: auto 100%;
   background-position: left center;
   width: auto;  
-  transform: translateX(-50%);
-  left: 50%;
+  left: 0;
   height: 100%;
   background-repeat: no-repeat;
   right: 0;
   top: 0;
   bottom: 0;
   position: absolute;
-  z-index: -1;
 }
 section.banner .banner--img.chromecast--img::after {
   /* content: url("iPhone-stream@2x.webp"); */
@@ -733,6 +731,8 @@ section.banner .banner--img .banner--inner {
   max-width: 997px;
   width: 100%;
   color: #000;
+  position: relative;
+  z-index: 3;
 }
 section.banner .banner--img .banner--inner h1 {
   font-weight: 700;
@@ -753,8 +753,8 @@ section.banner .banner--img .banner--inner h1 a {
   }
 }
 section.banner .banner--img .banner--inner p {
-  text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000;
-  color: #FFFFFF;
+  /* text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000; */
+  color: #000;
   font-weight: 400;
   margin-bottom: 26px;
   font-size: 18px !important;
