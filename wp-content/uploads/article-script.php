@@ -368,7 +368,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "description" => "Optimized conclusion of the article. Important provide external hyperlinks for convenient user navigation",
                         ],
                     ],
-                    'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "tips", "infotitle", "information", "conclusion"],
+                    'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "step4", "step5", "tips", "infotitle", "information", "conclusion"],
                 ],
             ]
         ],
