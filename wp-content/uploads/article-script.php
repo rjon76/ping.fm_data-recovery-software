@@ -251,7 +251,21 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString8 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title8</a></h2><p>Soft/Application Description8 80-120 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $stepString9 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title9</a></h2><p>Soft/Application Description9 80-120 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $stepString10 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title10</a></h2><p>Soft/Application Description10 80-120 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
-        $information_string = "add valuable information, around 500 words at the end of article with html formats in <p> tags. add <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a> and links without anchors but include the address, such as https://www... in <a> tag with attributes rel='nofollow' target='_blank', to high authority relevant websites";
+        $information_string = "Add valuable information, around 500 words with html formats in <p> tags; Add <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a> and add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[URL]</a>";
+        $prompt = "Write a 1500-word blog article about $title from a personal perspective, as if you have firsthand experience with them. The article should:
+                • Present balanced opinions, avoiding overt promotion of the apps.
+                • Be optimized for search engines, engaging for readers, and written in American English.
+                • Be original and unique, ensuring it won't be flagged as copied or similar by plagiarism detection tools.
+                Include specific instructions for hyperlinking within the article:
+                • Add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>.
+                • Integrate this link naturally into the content, accompanied by a relevant description ($url_description).
+                • Do not refer to the link URL ($anchor_url) by any other name.
+                • Add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
+                • Include a hyperlink (<a href>) to relevant websites or applications at each step of the methods described.
+                • Emphasize key topics and keywords by enclosing them in bold tags ('<b></b>').
+                • Avoid using personal or channel names.
+                • Do not include links to images.
+                • When mentioning URLs, format them as clickable links (<a href>).";
     } else {
         $stepString1 = 'Step-by-Step Guide with HTML formats. <h3>Method 1: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString2 = 'Step-by-Step Guide with HTML formats. <h3>Method 2: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
@@ -263,7 +277,20 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString8 = 'Step-by-Step Guide with HTML formats. <h3>Method 8: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString9 = 'Step-by-Step Guide with HTML formats. <h3>Method 9: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $information_string = "add valuable information around 500 words at the end of article with html formats in <p> tags and links without anchors but include the address, such as https://www... in <a> tag with attributes rel='nofollow' target='_blank', to high authority relevant websites";
+        $information_string = "Add valuable information around 500 words at the end of article with html formats in <p> tags and links without anchors but include the address, such as https://www... in <a> tag with attributes rel='nofollow' target='_blank', to high authority relevant websites";
+        $prompt = "Generate 1500 words in-depth blog article about $title, make it seo friendly;
+                    Compose a review of these applications from a personal perspective, as if you have used them yourself. Balance your opinions, avoiding excessive promotion of the apps;
+                    Ensure the content is search engine optimized, reader-friendly, and written in American English style;
+                    Should be completely original and unique piece of content that cannot be identified as copied or similar to any existing online material by plagiarism detection tools
+                    Add $anchor_url with exact match for this $anchor_title, like <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
+                    Place the link anchor $anchor_title organically as a part of the content, surrounded by the link description to ensure it looks natural - $url_description;
+                    Important - Do not add another name for link $anchor_url;
+                    provide another relevant links with anchor/title such as https://www... or at your discretion in <a> tag with attributes rel='nofollow' target='_blank';
+                    At one step of each method, it is important to insert a link with <a href> to the corresponding website or application.
+                    inside paragraphs extensively use '<b></b>' for topics, keywords;
+                    do not use personal names or channel names;
+                    do not insert links to images;
+                    Important when mentioning URLs make them <a href> links.";
     }
     // use reddit style posts and american english model;
     $data = array(
@@ -271,19 +298,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         'messages' => [
             [
                 "role" => "system",
-                "content" => "MUST use JSON format response;
-                            Generate 1500 words in-depth blog article about $title, make it seo friendly;
-                            Compose a review of these applications from a personal perspective, as if you have used them yourself. Balance your opinions, avoiding excessive promotion of the apps;
-                            Ensure the content is search engine optimized, reader-friendly, and written in American English style. The review should be entirely original and unique in its expression;
-                            Add $anchor_url with exact match for this $anchor_title, like <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
-                            Place the link anchor $anchor_title organically as a part of the content, surrounded by the link description to ensure it looks natural - $url_description;
-                            Important - Do not add another name for link $anchor_url;
-                            provide another relevant links with anchor/title such as https://www... or at your discretion in <a> tag with attributes rel='nofollow' target='_blank';
-                            At one step of each method, it is important to insert a link with <a href> to the corresponding website or application.
-                            inside paragraphs extensively use '<b></b>' for topics, keywords;
-                            do not use personal names or channel names;
-                            do not insert links to images;
-                            Important when mentioning URLs make them <a href> links.",
+                "content" => "MUST use JSON format response. $prompt",
             ],
         ],
         'functions' => [
