@@ -756,8 +756,9 @@ error_reporting(E_ALL);
         <div class="modal">
             <div class="modal-w">
                 <h3>Are you sure you want to delete the article?</h3>
-                <p>You will only remove the article from the articles import file and will not be able to update it for the blog in the future</p>
-                <p>If you delete it, then do not forget to delete the article in the WordPress admin panel in the PAGES tab</p>
+                <p>You will only remove the article from the article import file and will not be able to update it for the blog in the future.</p>
+                <p>The page in the admin panel will switch to Draft status.</p>
+                <p>For complete removal, go to the Wordpress admin panel, Pages section, find and delete permanently</p>
                 <button id="cancelRemove">Cancel</button>
                 <button id="DeleteArticle">Remove</button>
             </div>
