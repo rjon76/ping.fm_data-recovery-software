@@ -35,8 +35,10 @@ if(isset($_POST["apps_links"])) {
 
 if(isset($_POST["youtube_url"])) {
     $youtube_url = trim($_POST["youtube_url"]);
+    $pageYoutube = trim($_POST["youtube_url"]);
 } else {
     $youtube_url = '';
+    $pageYoutube = '';
 }
 
 if ($_POST["h1title"]) {
@@ -828,7 +830,7 @@ xmlwriter_start_element($xw, 'root');
             xmlwriter_text($xw, $post_url);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'youtube_url');
-            xmlwriter_text($xw, $youtube_url);
+            xmlwriter_text($xw, $pageYoutube);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'apps_links');
             xmlwriter_text($xw, $apps_links);

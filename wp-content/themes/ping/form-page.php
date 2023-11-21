@@ -50,7 +50,7 @@ error_reporting(E_ALL);
                 $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
                 $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
                 $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
-                $youtubeUrl = $arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"];
+                $youtubeUrl = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"];
                 $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
                 $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
             }
