@@ -647,7 +647,7 @@ xmlwriter_start_element($xw, 'root');
             <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
             <p>'.$page_intro.'</p></div></div></section>
             <section><div><div>1</div><h2>Common Scenarios:</h2></div>'.$scenarious.'</section>
-            <section><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>' . $string;
+            <section class="stepByStep"><div><div>2</div><h2>Step-by-Step Guide:</h2></div>'.$steps.'</section>' . $string;
 
     }
 
