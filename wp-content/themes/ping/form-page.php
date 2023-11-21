@@ -38,11 +38,10 @@ error_reporting(E_ALL);
                 $anchor = $arrayArticles["page"]["anchor"];
                 $post_url = $arrayArticles["page"]["post_url"];
                 $file_url = $arrayArticles["page"]["page_image"];
-                $youtubeUrl = !empty($arrayArticles["page"]["youtube_url"]) ? $arrayArticles["page"]["youtube_url"] : '';
+                $youtubeUrl = $arrayArticles["page"]["youtube_url"];
                 $apps_links = $arrayArticles["page"]["apps_links"];
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
             } else {
-                print_r($arrayArticles);
                 $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
                 $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
                 $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
@@ -51,7 +50,7 @@ error_reporting(E_ALL);
                 $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
                 $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
                 $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
-                $youtubeUrl = !empty($arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"]) ? $arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"] : '';
+                $youtubeUrl = $arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"];
                 $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
                 $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
             }
@@ -379,7 +378,7 @@ error_reporting(E_ALL);
                                                 data-anchor="<?php echo $arrayArticles["page"][$i]["anchor"]; ?>"
                                                 data-post_url="<?php echo $arrayArticles["page"][$i]["post_url"]; ?>"
                                                 data-file_url="<?php echo $arrayArticles["page"][$i]["page_image"]; ?>"
-                                                data-youtubeUrl="<?php echo !empty($arrayArticles["page"][$i]["youtube_url"]) ? $arrayArticles["page"][$i]["youtube_url"] : ''; ?>"
+                                                data-youtubeUrl="<?php echo $arrayArticles["page"][$i]["youtube_url"]; ?>"
                                                 data-apps_links="<?php echo $arrayArticles["page"][$i]["apps_links"]; ?>"
                                                 data-faq_theme="<?php echo $arrayArticles["page"][$i]["faq_theme"]; ?>"
                                             >
