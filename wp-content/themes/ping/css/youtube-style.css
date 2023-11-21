@@ -827,6 +827,7 @@ article > section:not(:first-child):not(:last-child) ul p {
 }
 .stepByStep h3 {
   color: #119d58 !important;
+  font-size: 18px !important;
 }
 
 .stepByStep p + h3 {
