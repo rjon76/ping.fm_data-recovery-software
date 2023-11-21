@@ -473,7 +473,10 @@ error_reporting(E_ALL);
                 jQuery('#lastAnchor').find('span').html(jQuery(this).attr('data-anchor'))
                 jQuery('#lastPostUrl').find('a').html(jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
                 jQuery('#lastPostUrl').find('a').attr('href', jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
-                jQuery('#lastIMG').attr('src', jQuery('#domain_url')[0].value + '/wp-content' . jQuery(this).attr('data-file_url').text().split('wp-content')[1])
+                jQuery('#lastIMG').attr('src', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
+                jQuery('#lastIMG').attr('srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
+                jQuery('#lastIMG').attr('data-srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
+                jQuery('#lastIMG').attr('data-original', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
             })
         });
 
