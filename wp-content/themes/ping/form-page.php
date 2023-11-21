@@ -11,6 +11,8 @@ error_reporting(E_ALL);
     $file = __DIR__ . '/../../uploads/time_record.txt';
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
 
+    var_dump($path);
+
     $title = '';
     $h1title = '';
     $meta_title = '';
