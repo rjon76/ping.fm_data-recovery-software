@@ -96,9 +96,6 @@ if($current_language == 'de_DE') {
 					</li>
 					<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
 						<li>
-							<a href="/social-media-tutorials/" rel="dofollow"><?php pll_e('Social Media Tutorials'); ?></a>
-						</li>
-						<li>
 							<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
 						</li>
 					<?php } ?>

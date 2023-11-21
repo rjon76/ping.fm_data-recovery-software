@@ -688,7 +688,7 @@ section.banner .banner--img {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding: 100px 30px 80px;
+  padding: 100px 30px 80px 300px;
 }
 @media (max-width: 767px) {
   section.banner .banner--img {
@@ -698,11 +698,10 @@ section.banner .banner--img {
 section.banner .banner--img::after {
   content: '';
   opacity: 100%;
-  background-image: url("data_recovery_company.png") !important;
+  background-image: url("data-recovery-image.png") !important;
   background-size: auto 100%;
-  background-position: right center;
-  width: 100%;
-  min-width: 100vw;
+  background-position: left center;
+  width: auto;  
   transform: translateX(-50%);
   left: 50%;
   height: 100%;
@@ -733,7 +732,7 @@ section.banner .banner--img.chromecast--img::after {
 section.banner .banner--img .banner--inner {
   max-width: 997px;
   width: 100%;
-  color: #fff;
+  color: #000;
 }
 section.banner .banner--img .banner--inner h1 {
   font-weight: 700;
@@ -741,8 +740,8 @@ section.banner .banner--img .banner--inner h1 {
   line-height: 54px;
   margin-bottom: 20px;
   text-align: left;
-  text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000;
-  filter: drop-shadow(2px 4px 6px #000);
+  /* text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000; */
+  /* filter: drop-shadow(2px 4px 6px #000); */
 }
 section.banner .banner--img .banner--inner h1 a {
   margin: 0;
