@@ -232,9 +232,12 @@ error_reporting(E_ALL);
         position: absolute;
         background-color: #f6f6f6;
         min-width: 400px;
+        max-width: 400px;
         border: 1px solid #ddd;
         z-index: 1;
         border-radius: 10px;
+        max-height: 400px;
+        overflow-y: auto;
     }
     .dropdown-content .option {
         color: black;
@@ -479,6 +482,18 @@ error_reporting(E_ALL);
                 jQuery('#lastIMG').attr('srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
                 jQuery('#lastIMG').attr('data-srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
                 jQuery('#lastIMG').attr('data-original', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
+
+                jQuery(jQuery('#title')[0]).attr('data-last', jQuery(this).attr('data-title'))
+                jQuery(jQuery('#h1title')[0]).attr('data-last', jQuery(this).attr('data-h1title'))
+                jQuery(jQuery('#meta_title')[0]).attr('data-last', jQuery(this).attr('data-meta_title'))
+                jQuery(jQuery('#url')[0]).attr('data-last', jQuery(this).attr('data-url'))
+                jQuery(jQuery('#anchor')[0]).attr('data-last', jQuery(this).attr('data-anchor'))
+                jQuery(jQuery('#url_descr')[0]).attr('data-last', jQuery(this).attr('data-url_descr'))
+                jQuery(jQuery('#post_url')[0]).attr('data-last', jQuery(this).attr('data-post_url'))
+                jQuery(jQuery('#file_url')[0]).attr('data-last', jQuery(this).attr('data-file_url'))
+                jQuery(jQuery('#youtube_url')[0]).attr('data-last', jQuery(this).attr('data-youtubeUrl'))
+                jQuery(jQuery('#faq_theme')[0]).attr('data-last', jQuery(this).attr('data-faq_theme'))
+                jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
             })
         });
 
