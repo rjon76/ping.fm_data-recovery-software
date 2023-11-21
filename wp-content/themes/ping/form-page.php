@@ -198,7 +198,7 @@ error_reporting(E_ALL);
         background-color: #04AA6D;
         background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+Cgo8ZGVmcz4KPC9kZWZzPgo8ZyBzdHlsZT0ic3Ryb2tlOiBub25lOyBzdHJva2Utd2lkdGg6IDA7IHN0cm9rZS1kYXNoYXJyYXk6IG5vbmU7IHN0cm9rZS1saW5lY2FwOiBidXR0OyBzdHJva2UtbGluZWpvaW46IG1pdGVyOyBzdHJva2UtbWl0ZXJsaW1pdDogMTA7IGZpbGw6IG5vbmU7IGZpbGwtcnVsZTogbm9uemVybzsgb3BhY2l0eTogMTsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuNDA2NTkzNDA2NTkzNDAxNiAxLjQwNjU5MzQwNjU5MzQwMTYpIHNjYWxlKDIuODEgMi44MSkiID4KCTxwYXRoIGQ9Ik0gOTAgMjQuMjUgYyAwIC0wLjg5NiAtMC4zNDIgLTEuNzkyIC0xLjAyNSAtMi40NzUgYyAtMS4zNjYgLTEuMzY3IC0zLjU4MyAtMS4zNjcgLTQuOTQ5IDAgTCA0NSA2MC44IEwgNS45NzUgMjEuNzc1IGMgLTEuMzY3IC0xLjM2NyAtMy41ODMgLTEuMzY3IC00Ljk1IDAgYyAtMS4zNjYgMS4zNjcgLTEuMzY2IDMuNTgzIDAgNC45NSBsIDQxLjUgNDEuNSBjIDEuMzY2IDEuMzY3IDMuNTgzIDEuMzY3IDQuOTQ5IDAgbCA0MS41IC00MS41IEMgODkuNjU4IDI2LjA0MiA5MCAyNS4xNDYgOTAgMjQuMjUgeiIgc3R5bGU9InN0cm9rZTogbm9uZTsgc3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiBub25lOyBzdHJva2UtbGluZWNhcDogYnV0dDsgc3Ryb2tlLWxpbmVqb2luOiBtaXRlcjsgc3Ryb2tlLW1pdGVybGltaXQ6IDEwOyBmaWxsOiByZ2IoMjU1LDI1NSwyNTUpOyBmaWxsLXJ1bGU6IG5vbnplcm87IG9wYWNpdHk6IDE7IiB0cmFuc2Zvcm09IiBtYXRyaXgoMSAwIDAgMSAwIDApICIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgo8L2c+Cjwvc3ZnPg==");
         background-position: center right 6px;
-        background-size: 8px 6px;
+        background-size: 14px 10px;
         background-repeat: no-repeat;
         color: white;
         padding: 16px 32px 16px 16px;
@@ -225,6 +225,7 @@ error_reporting(E_ALL);
     .dropdown {
         position: relative;
         display: inline-block;
+        margin-bottom: 30px;
     }
     .dropdown-content {
         display: none;
@@ -465,6 +466,7 @@ error_reporting(E_ALL);
                 }
             });
             jQuery(".option").on('click', function(e) {
+                document.getElementById("myDropdown").classList.toggle("show");
                 jQuery('#lastTitle').find('span').html(jQuery(this).attr('data-title'))
                 jQuery('#lastH1').find('span').html(jQuery(this).attr('data-h1title'))
                 jQuery('#lastMeta').find('span').html(jQuery(this).attr('data-meta_title'))
@@ -473,10 +475,10 @@ error_reporting(E_ALL);
                 jQuery('#lastAnchor').find('span').html(jQuery(this).attr('data-anchor'))
                 jQuery('#lastPostUrl').find('a').html(jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
                 jQuery('#lastPostUrl').find('a').attr('href', jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
-                jQuery('#lastIMG').attr('src', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
-                jQuery('#lastIMG').attr('srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
-                jQuery('#lastIMG').attr('data-srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
-                jQuery('#lastIMG').attr('data-original', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').text().split('wp-content')[1])
+                jQuery('#lastIMG').attr('src', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
+                jQuery('#lastIMG').attr('srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
+                jQuery('#lastIMG').attr('data-srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
+                jQuery('#lastIMG').attr('data-original', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
             })
         });
 
