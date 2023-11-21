@@ -436,7 +436,7 @@ function getInfoFaq($title, $number, $OPENAI_API_KEY) {
 }
 
 function emoji_to_entity($emoji) {
-    if(is_numeric($emoji)) {
+    if($emoji == 3 || $emoji == 2) {
         return $emoji;
     }
     return sprintf(
