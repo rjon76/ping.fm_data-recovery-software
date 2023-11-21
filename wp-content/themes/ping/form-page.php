@@ -121,6 +121,7 @@ error_reporting(E_ALL);
         height: auto;
         margin-bottom: 40px;
     }
+    .modal,
     .loader {
         display: none;
         position: fixed;
@@ -133,12 +134,13 @@ error_reporting(E_ALL);
         justify-content: center;
         width: 100%;
         height: 100vh;
-        background-color: rgb(173 173 173 / 60%); 
+        background-color: rgb(173 173 173 / 80%);
     }
     .loader img {
         width: 100px;
         height: 100px;
     }
+    .modal.show,
     .loader.show {
         display: flex;
     }
@@ -250,6 +252,25 @@ error_reporting(E_ALL);
     }
     .dropdown-content .option:hover {background-color: #f1f1f1}
     .show {display:block;}
+    .danger {
+        background: red !important;
+    }
+    .modal-w {
+        background: #FFF;
+        padding: 40px;
+        border-radius: 16px;
+    }
+    .modal-w button {
+        display: inline-block;
+        text-align: center;
+        padding: 6px 12px;
+        width: 40%;
+        margin-right: 20px: 
+    }
+    .modal-w button:last-child {
+        background: red !important;
+        margin-right: 0;
+    }
     @keyframes fadeEffect {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -372,11 +393,13 @@ error_reporting(E_ALL);
                             <p id="lastAnchor">Anchor: <span><?php echo $anchor;?></span></p>
                             <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                             <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
+                            <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
                             <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
                                 <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                 <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                                 <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
+                                <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
                                 <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                             </form>
                         </div>
@@ -498,6 +521,16 @@ error_reporting(E_ALL);
 		</main>
         <script>
         jQuery(document).ready(function() {
+            jQuery('#btn-remove').on('click', function(e) {
+                e.preventDefault()
+
+                jQuery('.modal').addClass('show')
+            })
+            jQuery('#cancelRemove').on('click', function(e) {
+                e.preventDefault()
+
+                jQuery('.modal').removeClass('show')
+            })
             jQuery('#btn-num-faq').on('click', function(e) {
                 e.preventDefault()
 
@@ -532,11 +565,9 @@ error_reporting(E_ALL);
                             alert('Faq updated and imported. Refresh page')
                         },
                         error: function(jqXHR, exception) {
-                            if(exception === 'timeout') {     
-                                alert('Failed from timeout');
-                                return
-                            }
-                            alert('Some error occured in API. Please resend request')
+                            setTimeout(function () {
+                                location.reload()
+                            }, 20000);
                         },
                         cache: false,
                         contentType: false,
@@ -655,9 +686,7 @@ error_reporting(E_ALL);
             evt.currentTarget.className += " active";
         }
 
-        if(document.getElementById("defaultOpen").length) {
-            document.getElementById("defaultOpen").click();
-        }
+        document.getElementById("defaultOpen").click();
 
         function openDropdown() {
             document.getElementById("myDropdown").classList.toggle("show");
@@ -679,5 +708,14 @@ error_reporting(E_ALL);
             }
         }
         </script>
+        <div class="modal">
+            <div class="modal-w">
+                <h3>Are you sure you want to delete the article?</h3>
+                <p>You will only remove the article from the articles import file and will not be able to update it for the blog in the future</p>
+                <p>If you delete it, then do not forget to delete the article in the WordPress admin panel in the PAGES tab</p>
+                <button id="cancelRemove">Cancel</button>
+                <button id="DeleteArticle">Remove</button>
+            </div>
+        </div>
     </body>
 </html>
