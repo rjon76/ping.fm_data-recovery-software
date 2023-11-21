@@ -830,5 +830,5 @@ article > section:not(:first-child):not(:last-child) ul p {
 }
 
 .stepByStep p + h3 {
-  margin-top: 40px;
+  margin-top: 40px !important;
 }
