@@ -11,8 +11,6 @@ error_reporting(E_ALL);
     $file = __DIR__ . '/../../uploads/time_record.txt';
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
 
-    var_dump($path);
-
     $title = '';
     $h1title = '';
     $meta_title = '';
@@ -44,6 +42,7 @@ error_reporting(E_ALL);
                 $apps_links = $arrayArticles["page"]["apps_links"];
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
             } else {
+                print_r($arrayArticles);
                 $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
                 $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
                 $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
