@@ -289,7 +289,7 @@ error_reporting(E_ALL);
                                     </div>
                                 </div>
                             <?php } ?>
-                            <h3>Last/Selected article:</h3>
+                            <h3>Last / Selected article:</h3>
                             <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
                             <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
                             <p id="lastPostUrl">URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
