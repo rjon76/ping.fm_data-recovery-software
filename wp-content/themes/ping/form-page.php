@@ -95,7 +95,7 @@ error_reporting(E_ALL);
     .sBtn {
         background: #333 !important;
         color: white;
-        display: block;
+        display: inline-block;
         max-width: 320px;
         margin: 60px 0 0;
         width: 100%;
@@ -259,13 +259,18 @@ error_reporting(E_ALL);
         background: #FFF;
         padding: 40px;
         border-radius: 16px;
+        width: 600px;
     }
     .modal-w button {
+        background: #333;
+        color: #fff;
         display: inline-block;
         text-align: center;
-        padding: 6px 12px;
-        width: 40%;
-        margin-right: 20px: 
+        padding: 12px;
+        width: 47%;
+        margin-right: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
     }
     .modal-w button:last-child {
         background: red !important;
@@ -401,6 +406,10 @@ error_reporting(E_ALL);
                                 <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
                                 <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
                                 <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                            </form>
+
+                            <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
+                                <input class="hidden" type="text" id="removeTitle" name="remove_title" value="<?php echo $title;?>">
                             </form>
                         </div>
                     </div>
@@ -596,6 +605,37 @@ error_reporting(E_ALL);
                 document.getElementById("genNewArt").click();
                 jQuery("#article").submit()
             })
+            jQuery('#DeleteArticle').on('click', function(e) {
+                e.preventDefault()
+                jQuery('#formRemoveArt').submit()
+            })
+            jQuery('#formRemoveArt').on("submit", function(event) {
+                event.preventDefault()
+                const formData = new FormData(this);
+                jQuery.ajax({
+                    type: 'POST',
+                    url: jQuery("#formRemoveArt").attr('data-action'),
+                    data: formData,
+                    success: function(data) {
+                        if(data == 'false') {
+                            alert('Not provided article title')
+                            jQuery('.loader').removeClass('show')
+                            return
+                        }
+
+                        alert('Article removed!')
+                    },
+                    error: function(jqXHR, exception) {
+                        setTimeout(function () {
+                            location.reload()
+                        }, 20000);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    timeout: 120000
+                });
+            })
             jQuery("#article").on("submit", function(event) {
                 event.preventDefault()
                 const formData = new FormData(this);
@@ -666,6 +706,8 @@ error_reporting(E_ALL);
                 jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
 
                 jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
+
+                jQuery('#removeTitle')[0].value = jQuery(this).attr('data-title')
             })
         });
 
