@@ -278,7 +278,7 @@ error_reporting(E_ALL);
                                                 data-anchor="<?php echo $arrayArticles["page"][$i]["anchor"]; ?>"
                                                 data-post_url="<?php echo $arrayArticles["page"][$i]["post_url"]; ?>"
                                                 data-file_url="<?php echo $arrayArticles["page"][$i]["page_image"]; ?>"
-                                                data-youtubeUrl="<?php !empty($arrayArticles["page"][$i]["youtube_url"]) ? echo $arrayArticles["page"][$i]["youtube_url"] : echo ''; ?>"
+                                                data-youtubeUrl="<?php echo !empty($arrayArticles["page"][$i]["youtube_url"]) ? $arrayArticles["page"][$i]["youtube_url"] : ''; ?>"
                                                 data-apps_links="<?php echo $arrayArticles["page"][$i]["apps_links"]; ?>"
                                                 data-faq_theme="<?php echo $arrayArticles["page"][$i]["faq_theme"]; ?>"
                                             >
