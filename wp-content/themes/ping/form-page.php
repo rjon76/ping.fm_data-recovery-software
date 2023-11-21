@@ -110,7 +110,6 @@ error_reporting(E_ALL);
     }
 
     h1 {
-        margin-top: 50px;
         text-align: center;
     }
     .hidden {
@@ -656,7 +655,9 @@ error_reporting(E_ALL);
             evt.currentTarget.className += " active";
         }
 
-        document.getElementById("defaultOpen").click();
+        if(document.getElementById("defaultOpen").length) {
+            document.getElementById("defaultOpen").click();
+        }
 
         function openDropdown() {
             document.getElementById("myDropdown").classList.toggle("show");
