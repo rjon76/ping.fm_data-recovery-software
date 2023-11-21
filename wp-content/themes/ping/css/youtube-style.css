@@ -121,12 +121,6 @@ article > section:not(:first-child):not(:last-child) > div {
           align-items: center;
 }
 
-@media(max-width: 767px) {
-  article > section:not(:first-child):not(:last-child) > div {
-    align-items: flex-start;
-  }
-}
-
 article > section:not(:first-child):not(:last-child) > div > div:first-child {
   display: -webkit-box;
   display: -ms-flexbox;

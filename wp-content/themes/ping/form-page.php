@@ -624,6 +624,9 @@ error_reporting(E_ALL);
                         }
 
                         alert('Article removed!')
+                        setTimeout(function () {
+                            location.reload()
+                        }, 3000);
                     },
                     error: function(jqXHR, exception) {
                         setTimeout(function () {
