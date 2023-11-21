@@ -715,6 +715,11 @@ section.banner::after {
   bottom: 0;
   position: absolute;
 }
+@media (max-width: 500px) {
+  section.banner::after {
+    background-position: center;
+  }
+}
 section.banner .banner--img.chromecast--img::after {
   /* content: url("iPhone-stream@2x.webp"); */
   background-image: unset !important;
@@ -745,8 +750,12 @@ section.banner .banner--img .banner--inner h1 {
   line-height: 54px;
   margin-bottom: 20px;
   text-align: left;
-  /* text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000; */
-  /* filter: drop-shadow(2px 4px 6px #000); */
+}
+@media (max-width: 1250px) {
+  section.banner .banner--img .banner--inner h1 {
+    text-shadow: -1px 0 3px #fff, 0 1px 3px #fff, 1px 0px 3px #fff, 0 -1px 3px #fff;
+    filter: drop-shadow(2px 4px 6px #fff);
+  }
 }
 section.banner .banner--img .banner--inner h1 a {
   margin: 0;
@@ -758,13 +767,17 @@ section.banner .banner--img .banner--inner h1 a {
   }
 }
 section.banner .banner--img .banner--inner p {
-  /* text-shadow: -1px 0 3px #000, 0 1px 3px #000, 1px 0px 3px #000, 0 -1px 3px #000; */
   color: #000;
   font-weight: 400;
   margin-bottom: 26px;
   font-size: 18px !important;
   line-height: 28px !important;
   padding: 0 !important;
+}
+@media (max-width: 1250px) {
+  section.banner .banner--img .banner--inner p {
+    text-shadow: -1px 0 3px #fff, 0 1px 3px #fff, 1px 0px 3px #fff, 0 -1px 3px #fff;
+  }
 }
 
 p a {
