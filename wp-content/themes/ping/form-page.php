@@ -377,6 +377,7 @@ error_reporting(E_ALL);
                             <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
                                 <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                 <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
+                                <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
                                 <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
                             </form>
                         </div>
@@ -633,6 +634,8 @@ error_reporting(E_ALL);
                 jQuery(jQuery('#youtube_url')[0]).attr('data-last', jQuery(this).attr('data-youtubeUrl'))
                 jQuery(jQuery('#faq_theme')[0]).attr('data-last', jQuery(this).attr('data-faq_theme'))
                 jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
+
+                jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
             })
         });
 
