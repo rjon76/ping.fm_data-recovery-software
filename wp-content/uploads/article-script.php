@@ -591,11 +591,21 @@ xmlwriter_start_element($xw, 'root');
 
     if($apps_links == 'true') {
 
+        $st4 = '';
+        $st5 = '';
         $st6 = '';
         $st7 = '';
         $st8 = '';
         $st9 = '';
         $st10 = '';
+
+        if(!empty($page_step4)) {
+            $st4 = '<section><div class="no-medal"><div>4</div></div>'.$page_step4.'</section>';
+        }
+
+        if(!empty($page_step5)) {
+            $st5 = '<section><div class="no-medal"><div>5</div></div>'.$page_step5.'</section>';
+        }
 
         if(!empty($page_step6)) {
             $st6 = '<section><div class="no-medal"><div>6</div></div>'.$page_step6.'</section>';
@@ -622,10 +632,8 @@ xmlwriter_start_element($xw, 'root');
             <p>'.$page_intro.'</p></div></div></section>
             <section><div class="medal"><div>&#129351;</div></div>'.$page_step1.'</section>
             <section><div class="medal"><div>&#129352;</div></div>'.$page_step2.'</section>
-            <section><div class="medal"><div>&#129353;</div></div>'.$page_step3.'</section>
-            <section><div class="no-medal"><div>4</div></div>'.$page_step4.'</section>
-            <section><div class="no-medal"><div>5</div></div>'.$page_step5.'</section>'
-            . $st6 . $st7 . $st8 . $st9 . $st10 .'
+            <section><div class="medal"><div>&#129353;</div></div>'.$page_step3.'</section>'
+            . $st4 . $st5 . $st6 . $st7 . $st8 . $st9 . $st10 .'
             <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
 
     } else {
