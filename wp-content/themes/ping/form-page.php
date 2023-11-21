@@ -206,14 +206,17 @@ error_reporting(E_ALL);
         border: none;
         cursor: pointer;
     }
+    svg{
+        width: 100px;
+        height: 100px;
+        margin: 20px auto 0;
+        display:inline-block;
+    }
     .dropbtn:hover, .dropbtn:focus {
         background-color: #3e8e41;
     }
     #myInput {
         box-sizing: border-box;
-        background-image: url('searchicon.png');
-        background-position: 14px 12px;
-        background-repeat: no-repeat;
         font-size: 16px;
         padding: 14px 20px 12px;
         border: none;
@@ -257,7 +260,75 @@ error_reporting(E_ALL);
 			<div class="container">
                 <div class="loader">
                     <h1>AI is working (2-4 mins to finish,<br> поки погодуй кота чи собаку ;-)</h1>
-                    <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
+                    <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                        <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
+                            <animateTransform 
+                                attributeName="transform" 
+                                attributeType="XML" 
+                                type="rotate"
+                                dur="5s" 
+                                from="0 50 50"
+                                to="360 50 50" 
+                                repeatCount="indefinite" />
+                        </circle>
+                        <circle fill="none" stroke="#fff" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="10,10" cx="50" cy="50" r="39">
+                            <animateTransform 
+                                attributeName="transform" 
+                                attributeType="XML" 
+                                type="rotate"
+                                dur="5s" 
+                                from="0 50 50"
+                                to="-360 50 50" 
+                                repeatCount="indefinite" />
+                        </circle>
+                        <g fill="#fff">
+                            <rect x="30" y="35" width="5" height="30">
+                                <animateTransform 
+                                attributeName="transform" 
+                                dur="1s" 
+                                type="translate" 
+                                values="0 5 ; 0 -5; 0 5" 
+                                repeatCount="indefinite" 
+                                begin="0.1"/>
+                            </rect>
+                            <rect x="40" y="35" width="5" height="30" >
+                                <animateTransform 
+                                attributeName="transform" 
+                                dur="1s" 
+                                type="translate" 
+                                values="0 5 ; 0 -5; 0 5" 
+                                repeatCount="indefinite" 
+                                begin="0.2"/>
+                            </rect>
+                            <rect x="50" y="35" width="5" height="30" >
+                                <animateTransform 
+                                attributeName="transform" 
+                                dur="1s" 
+                                type="translate" 
+                                values="0 5 ; 0 -5; 0 5" 
+                                repeatCount="indefinite" 
+                                begin="0.3"/>
+                            </rect>
+                            <rect x="60" y="35" width="5" height="30" >
+                                <animateTransform 
+                                attributeName="transform" 
+                                dur="1s" 
+                                type="translate" 
+                                values="0 5 ; 0 -5; 0 5"  
+                                repeatCount="indefinite" 
+                                begin="0.4"/>
+                            </rect>
+                            <rect x="70" y="35" width="5" height="30" >
+                                <animateTransform 
+                                attributeName="transform" 
+                                dur="1s" 
+                                type="translate" 
+                                values="0 5 ; 0 -5; 0 5" 
+                                repeatCount="indefinite" 
+                                begin="0.5"/>
+                            </rect>
+                        </g>
+                    </svg>
                 </div>
                 <?php if(time() > $current) { ?>
                     <div class="tab">
@@ -345,7 +416,75 @@ error_reporting(E_ALL);
                 <?php } else { ?>
                     <div class="loader show">
                         <h1>Article import...please wait,<br> autoreload will happen in a 1-2 minutes,<br> усі нагодовані :-)?</h1>
-                        <img src="<?php echo home_url() . '/wp-content/uploads/ajax-loader.gif'; ?>" alt="loader">
+                        <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                            <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
+                                <animateTransform 
+                                    attributeName="transform" 
+                                    attributeType="XML" 
+                                    type="rotate"
+                                    dur="5s" 
+                                    from="0 50 50"
+                                    to="360 50 50" 
+                                    repeatCount="indefinite" />
+                            </circle>
+                            <circle fill="none" stroke="#fff" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="10,10" cx="50" cy="50" r="39">
+                                <animateTransform 
+                                    attributeName="transform" 
+                                    attributeType="XML" 
+                                    type="rotate"
+                                    dur="5s" 
+                                    from="0 50 50"
+                                    to="-360 50 50" 
+                                    repeatCount="indefinite" />
+                            </circle>
+                            <g fill="#fff">
+                                <rect x="30" y="35" width="5" height="30">
+                                    <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 5 ; 0 -5; 0 5" 
+                                    repeatCount="indefinite" 
+                                    begin="0.1"/>
+                                </rect>
+                                <rect x="40" y="35" width="5" height="30" >
+                                    <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 5 ; 0 -5; 0 5" 
+                                    repeatCount="indefinite" 
+                                    begin="0.2"/>
+                                </rect>
+                                <rect x="50" y="35" width="5" height="30" >
+                                    <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 5 ; 0 -5; 0 5" 
+                                    repeatCount="indefinite" 
+                                    begin="0.3"/>
+                                </rect>
+                                <rect x="60" y="35" width="5" height="30" >
+                                    <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 5 ; 0 -5; 0 5"  
+                                    repeatCount="indefinite" 
+                                    begin="0.4"/>
+                                </rect>
+                                <rect x="70" y="35" width="5" height="30" >
+                                    <animateTransform 
+                                    attributeName="transform" 
+                                    dur="1s" 
+                                    type="translate" 
+                                    values="0 5 ; 0 -5; 0 5" 
+                                    repeatCount="indefinite" 
+                                    begin="0.5"/>
+                                </rect>
+                            </g>
+                        </svg>
                     </div>
                     <script>
                         setTimeout(function(){
