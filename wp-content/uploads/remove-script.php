@@ -26,7 +26,7 @@ xmlwriter_start_element($xw, 'root');
 
     if(count($aArticles["page"]) > 0) {
 
-        if(count($aArticles["page"]) > 1 && !empty($arrayArticles["page"][0]["title"])) {
+        if(count($aArticles["page"]) > 1 && !empty($arrayArticles["page"][0]["title"]) && !empty($arrayArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
                 if($theme_title === $aArticles["page"][$i]["title"]) {
