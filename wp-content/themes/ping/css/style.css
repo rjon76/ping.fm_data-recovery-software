@@ -673,6 +673,7 @@ footer p a:hover {
 
 section.banner {
   background: #fff49e;
+  background: linear-gradient(180deg, rgba(254,211,130,1) 0%, rgba(250,204,97,1) 48%, rgba(255,245,156,1) 80%);
   position: relative;
   overflow: hidden;
 }

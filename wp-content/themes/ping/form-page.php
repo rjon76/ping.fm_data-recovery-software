@@ -28,6 +28,9 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
+        var_dump($arrayArticles);
+        echo count($arrayArticles);
+
         if(count($arrayArticles) > 0) {
             if(count($arrayArticles) == 1) {
                 $title = $arrayArticles["page"]["title"];
