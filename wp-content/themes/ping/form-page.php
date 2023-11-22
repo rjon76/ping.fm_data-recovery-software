@@ -39,7 +39,7 @@ error_reporting(E_ALL);
                 $anchor = $arrayArticles["page"]["anchor"];
                 $post_url = $arrayArticles["page"]["post_url"];
                 $file_url = $arrayArticles["page"]["page_image"];
-                $youtubeUrl = $arrayArticles["page"]["youtube_url"];
+                $youtubeUrl = is_string($arrayArticles["page"]["youtube_url"]) ? $arrayArticles["page"]["youtube_url"] : '';
                 $apps_links = $arrayArticles["page"]["apps_links"];
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
             } else {
@@ -53,7 +53,7 @@ error_reporting(E_ALL);
                     $anchor = $arrayArticles["page"][0]["anchor"];
                     $post_url = $arrayArticles["page"][0]["post_url"];
                     $file_url = $arrayArticles["page"][0]["page_image"];
-                    $youtubeUrl = $arrayArticles["page"][0]["youtube_url"];
+                    $youtubeUrl = is_string($arrayArticles["page"][0]["youtube_url"]) ? $arrayArticles["page"][0]["youtube_url"] : '';
                     $apps_links = $arrayArticles["page"][0]["apps_links"];
                     $faq_theme = $arrayArticles["page"][0]["faq_theme"];
                 }
@@ -67,7 +67,7 @@ error_reporting(E_ALL);
                     $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
                     $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
                     $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
-                    $youtubeUrl = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"];
+                    $youtubeUrl = is_string($arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"]) ? $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"] : '';
                     $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
                     $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
                 }
