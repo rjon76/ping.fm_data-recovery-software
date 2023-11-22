@@ -799,7 +799,7 @@ xmlwriter_start_element($xw, 'root');
         }
     }
 
-    if(!empty($theme_meta_title) && !empty($page_title) && !empty($h1title)) {
+    if(strlen($theme_meta_title) > 0 && strlen($h1title) > 0) {
         xmlwriter_start_element($xw, 'page');
             xmlwriter_start_element($xw, 'page_meta');
                 xmlwriter_text($xw, $theme_meta_title);
