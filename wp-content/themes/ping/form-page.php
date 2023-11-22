@@ -28,38 +28,51 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        var_dump($arrayArticles);
-
         if(count($arrayArticles) > 0) {
-            if(count($arrayArticles["page"]) == 1 && !empty($arrayArticles["page"][0]["title"])) {
-                $title = $arrayArticles["page"][0]["title"];
-                $h1title = $arrayArticles["page"][0]["h1title"];
-                $meta_title = $arrayArticles["page"][0]["page_meta"];
-                $url = $arrayArticles["page"][0]["url"];
-                $url_descr = $arrayArticles["page"][0]["url_descr"];
-                $anchor = $arrayArticles["page"][0]["anchor"];
-                $post_url = $arrayArticles["page"][0]["post_url"];
-                $file_url = $arrayArticles["page"][0]["page_image"];
-                $youtubeUrl = $arrayArticles["page"][0]["youtube_url"];
-                $apps_links = $arrayArticles["page"][0]["apps_links"];
-                $faq_theme = $arrayArticles["page"][0]["faq_theme"];
-            } 
-            
-            if(count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"])) {
-                $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
-                $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
-                $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
-                $url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url"];
-                $url_descr = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url_descr"];
-                $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
-                $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
-                $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
-                $youtubeUrl = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"];
-                $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
-                $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
-            }
 
-            
+            if(!empty($arrayArticles["page"]["title"])) {
+                $title = $arrayArticles["page"]["title"];
+                $h1title = $arrayArticles["page"]["h1title"];
+                $meta_title = $arrayArticles["page"]["page_meta"];
+                $url = $arrayArticles["page"]["url"];
+                $url_descr = $arrayArticles["page"]["url_descr"];
+                $anchor = $arrayArticles["page"]["anchor"];
+                $post_url = $arrayArticles["page"]["post_url"];
+                $file_url = $arrayArticles["page"]["page_image"];
+                $youtubeUrl = $arrayArticles["page"]["youtube_url"];
+                $apps_links = $arrayArticles["page"]["apps_links"];
+                $faq_theme = $arrayArticles["page"]["faq_theme"];
+            } else {
+
+                if(count($arrayArticles["page"]) == 1 && !empty($arrayArticles["page"][0]["title"])) {
+                    $title = $arrayArticles["page"][0]["title"];
+                    $h1title = $arrayArticles["page"][0]["h1title"];
+                    $meta_title = $arrayArticles["page"][0]["page_meta"];
+                    $url = $arrayArticles["page"][0]["url"];
+                    $url_descr = $arrayArticles["page"][0]["url_descr"];
+                    $anchor = $arrayArticles["page"][0]["anchor"];
+                    $post_url = $arrayArticles["page"][0]["post_url"];
+                    $file_url = $arrayArticles["page"][0]["page_image"];
+                    $youtubeUrl = $arrayArticles["page"][0]["youtube_url"];
+                    $apps_links = $arrayArticles["page"][0]["apps_links"];
+                    $faq_theme = $arrayArticles["page"][0]["faq_theme"];
+                }
+                
+                if(count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"])) {
+                    $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
+                    $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
+                    $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
+                    $url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url"];
+                    $url_descr = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url_descr"];
+                    $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
+                    $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
+                    $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
+                    $youtubeUrl = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"];
+                    $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
+                    $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
+                }
+
+            }
         }
     }
 
@@ -366,7 +379,7 @@ error_reporting(E_ALL);
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
-                            <?php if(count($arrayArticles["page"]) > 1) { ?>
+                            <?php if(count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][0])) { ?>
                                 <div class="dropdown">
                                     <button onclick="openDropdown()" class="dropbtn">Select an article to edit</button>
                                     <div id="myDropdown" class="dropdown-content">
@@ -394,7 +407,7 @@ error_reporting(E_ALL);
                                 </div>
                             <?php } ?>
 
-                            <?php if(count($arrayArticles["page"]) > 0) { ?>
+                            <?php if(count($arrayArticles["page"]) > 0 && !empty($arrayArticles["page"][0])) { ?>
                                 <h3>Last / Selected article:</h3>
                                 <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
                                 <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
