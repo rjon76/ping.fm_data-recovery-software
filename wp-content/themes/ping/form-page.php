@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 
         var_dump($arrayArticles);
 
-        if(count($arrayArticles["page"]) > 0) {
+        if(count($arrayArticles) > 0) {
             if(count($arrayArticles["page"]) == 1 && !empty($arrayArticles["page"][0]["title"])) {
                 $title = $arrayArticles["page"][0]["title"];
                 $h1title = $arrayArticles["page"][0]["h1title"];
@@ -45,7 +45,7 @@ error_reporting(E_ALL);
                 $faq_theme = $arrayArticles["page"][0]["faq_theme"];
             } 
             
-            if(count($arrayArticles["page"]) > 1) {
+            if(count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"])) {
                 $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
                 $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
                 $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
