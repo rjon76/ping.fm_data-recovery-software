@@ -28,11 +28,8 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        var_dump($arrayArticles);
-        echo count($arrayArticles);
-
         if(count($arrayArticles) > 0) {
-            if(count($arrayArticles) == 1) {
+            if(count($arrayArticles) == 1 && strlen($arrayArticles["page"]["title"]) > 0) {
                 $title = $arrayArticles["page"]["title"];
                 $h1title = $arrayArticles["page"]["h1title"];
                 $meta_title = $arrayArticles["page"]["page_meta"];
@@ -44,7 +41,9 @@ error_reporting(E_ALL);
                 $youtubeUrl = $arrayArticles["page"]["youtube_url"];
                 $apps_links = $arrayArticles["page"]["apps_links"];
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
-            } else {
+            } 
+            
+            if(count($arrayArticles) > 1) {
                 $title = $arrayArticles["page"][count($arrayArticles) - 1]["title"];
                 $h1title = $arrayArticles["page"][count($arrayArticles) - 1]["h1title"];
                 $meta_title = $arrayArticles["page"][count($arrayArticles) - 1]["page_meta"];
@@ -391,29 +390,34 @@ error_reporting(E_ALL);
                                     </div>
                                 </div>
                             <?php } ?>
-                            <h3>Last / Selected article:</h3>
-                            <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
-                            <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
-                            <p id="lastPostUrl">URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
-                            <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
-                            <p id="lastURL">URL: <span><?php echo $url;?></span></p>
-                            <p id="lastURLDescr">URL Description: <span><?php echo $url_descr;?></span></p>
-                            <p id="lastAnchor">Anchor: <span><?php echo $anchor;?></span></p>
-                            <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
-                            <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
-                            <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
-                            <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
-                                <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
-                                <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                                <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
-                                <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
-                                <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
-                            </form>
+                            <?php if(count($arrayArticles) > 0 && strlen($arrayArticles["page"]["title"]) > 0) { ?>
+                                <h3>Last / Selected article:</h3>
+                                <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
+                                <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
+                                <p id="lastPostUrl">URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                                <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
+                                <p id="lastURL">URL: <span><?php echo $url;?></span></p>
+                                <p id="lastURLDescr">URL Description: <span><?php echo $url_descr;?></span></p>
+                                <p id="lastAnchor">Anchor: <span><?php echo $anchor;?></span></p>
+                                <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
+                                <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
+                                <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
-                            <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
-                                <input class="hidden" type="text" id="removeTitle" name="remove_title" value="<?php echo $title;?>">
-                            </form>
+                                <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
+                                    <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                                    <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
+                                    <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
+                                    <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
+                                    <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                                </form>
+
+                                <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
+                                    <input class="hidden" type="text" id="removeTitle" name="remove_title" value="<?php echo $title;?>">
+                                </form>
+                            <?php } else { ?>
+                                <h3>There are no articles generated. Let's start!</h3>
+                            <?php } ?>
                         </div>
                     </div>
                     <div id="generateArticle" class="tabcontent">
