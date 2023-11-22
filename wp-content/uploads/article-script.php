@@ -692,7 +692,7 @@ xmlwriter_start_element($xw, 'root');
     $mainString.='</section>';
     $pageContent .= $contentString . $mainString . "</article>";
 
-    if(count($aArticles["page"]) > 0) {
+    if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
         if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) && $theme_title != $aArticles["page"]["title"] && !empty($aArticles["page"]["title"])) {
             xmlwriter_start_element($xw, 'page');
                 xmlwriter_start_element($xw, 'page_meta');
@@ -740,7 +740,7 @@ xmlwriter_start_element($xw, 'root');
             xmlwriter_end_element($xw);
         }
 
-        if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
+        if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
                 if($theme_title === $aArticles["page"][$i]["title"]) {
