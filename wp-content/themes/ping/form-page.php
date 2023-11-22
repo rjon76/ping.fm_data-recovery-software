@@ -28,8 +28,6 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        var_dump($arrayArticles);
-
         if(count($arrayArticles) > 0) {
 
             if(!empty($arrayArticles["page"]["title"])) {
