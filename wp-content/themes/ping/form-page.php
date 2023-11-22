@@ -28,10 +28,8 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        var_dump($arrayArticles);
-
-        if(count($arrayArticles["page"]) > 0) {
-            if(count($arrayArticles["page"]) == 1) {
+        if(count($arrayArticles) > 0) {
+            if(count($arrayArticles) == 1) {
                 $title = $arrayArticles["page"]["title"];
                 $h1title = $arrayArticles["page"]["h1title"];
                 $meta_title = $arrayArticles["page"]["page_meta"];
@@ -44,17 +42,17 @@ error_reporting(E_ALL);
                 $apps_links = $arrayArticles["page"]["apps_links"];
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
             } else {
-                $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
-                $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
-                $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
-                $url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url"];
-                $url_descr = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url_descr"];
-                $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
-                $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
-                $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
-                $youtubeUrl = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"];
-                $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
-                $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
+                $title = $arrayArticles["page"][count($arrayArticles) - 1]["title"];
+                $h1title = $arrayArticles["page"][count($arrayArticles) - 1]["h1title"];
+                $meta_title = $arrayArticles["page"][count($arrayArticles) - 1]["page_meta"];
+                $url = $arrayArticles["page"][count($arrayArticles) - 1]["url"];
+                $url_descr = $arrayArticles["page"][count($arrayArticles) - 1]["url_descr"];
+                $anchor = $arrayArticles["page"][count($arrayArticles) - 1]["anchor"];
+                $post_url = $arrayArticles["page"][count($arrayArticles) - 1]["post_url"];
+                $file_url = $arrayArticles["page"][count($arrayArticles) - 1]["page_image"];
+                $youtubeUrl = $arrayArticles["page"][count($arrayArticles) - 1]["youtube_url"];
+                $apps_links = $arrayArticles["page"][count($arrayArticles) - 1]["apps_links"];
+                $faq_theme = $arrayArticles["page"][count($arrayArticles) - 1]["faq_theme"];
             }
 
             
@@ -364,12 +362,12 @@ error_reporting(E_ALL);
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
-                            <?php if(count($arrayArticles["page"]) > 1) { ?>
+                            <?php if(count($arrayArticles) > 1) { ?>
                                 <div class="dropdown">
                                     <button onclick="openDropdown()" class="dropbtn">Select an article to edit</button>
                                     <div id="myDropdown" class="dropdown-content">
                                         <input type="text" placeholder="Search title article.." id="myInput" onkeyup="filterFunction()">
-                                        <?php for($i = 0; $i < count($arrayArticles["page"]); $i++ ) { ?>
+                                        <?php for($i = 0; $i < count($arrayArticles); $i++ ) { ?>
                                             <div
                                                 class="option"
                                                 data-title="<?php echo $arrayArticles["page"][$i]["title"]; ?>"
