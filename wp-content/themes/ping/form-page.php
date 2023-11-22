@@ -379,7 +379,7 @@ error_reporting(E_ALL);
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
-                            <?php if(count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][0]["title"]) && !empty($arrayArticles["page"][1]["title"])) { ?>
+                            <?php if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][0]["title"]) && !empty($arrayArticles["page"][1]["title"])) { ?>
                                 <div class="dropdown">
                                     <button onclick="openDropdown()" class="dropbtn">Select an article to edit</button>
                                     <div id="myDropdown" class="dropdown-content">
@@ -407,7 +407,7 @@ error_reporting(E_ALL);
                                 </div>
                             <?php } ?>
 
-                            <?php if(count($arrayArticles["page"]) > 0 && (!empty($arrayArticles["page"][0]["title"]) || !empty($arrayArticles["page"]["title"]))) { ?>
+                            <?php if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 0 && (!empty($arrayArticles["page"][0]["title"]) || !empty($arrayArticles["page"]["title"]))) { ?>
                                 <h3>Last / Selected article:</h3>
                                 <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
                                 <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
