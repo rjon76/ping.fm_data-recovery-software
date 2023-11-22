@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 
         if(count($arrayArticles) > 0) {
 
-            if(!empty($arrayArticles["page"]["title"])) {
+            if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"]["title"])) {
                 $title = $arrayArticles["page"]["title"];
                 $h1title = $arrayArticles["page"]["h1title"];
                 $meta_title = $arrayArticles["page"]["page_meta"];
@@ -44,7 +44,7 @@ error_reporting(E_ALL);
                 $faq_theme = $arrayArticles["page"]["faq_theme"];
             } else {
 
-                if(count($arrayArticles["page"]) == 1 && !empty($arrayArticles["page"][0]["title"])) {
+                if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"][0]["title"])) {
                     $title = $arrayArticles["page"][0]["title"];
                     $h1title = $arrayArticles["page"][0]["h1title"];
                     $meta_title = $arrayArticles["page"][0]["page_meta"];
@@ -58,7 +58,7 @@ error_reporting(E_ALL);
                     $faq_theme = $arrayArticles["page"][0]["faq_theme"];
                 }
                 
-                if(count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"])) {
+                if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"][0]["title"]) && !empty($arrayArticles["page"][1]["title"])) {
                     $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
                     $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
                     $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
