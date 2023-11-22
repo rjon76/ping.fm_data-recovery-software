@@ -29,7 +29,7 @@ error_reporting(E_ALL);
         $arrayArticles = json_decode($json, TRUE);
 
         if(count($arrayArticles) > 0) {
-            if(count($arrayArticles) == 1 && strlen($arrayArticles["page"][0]["title"]) > 0) {
+            if(count($arrayArticles) == 1 && count($arrayArticles["page"][0]["title"]) > 0) {
                 $title = $arrayArticles["page"]["title"];
                 $h1title = $arrayArticles["page"]["h1title"];
                 $meta_title = $arrayArticles["page"]["page_meta"];
@@ -391,7 +391,7 @@ error_reporting(E_ALL);
                                 </div>
                             <?php } ?>
 
-                            <?php if(count($arrayArticles) > 0 && strlen($arrayArticles["page"][0]["title"]) > 0) { ?>
+                            <?php if(count($arrayArticles) > 0 && count($arrayArticles["page"][0]["title"]) > 0) { ?>
                                 <h3>Last / Selected article:</h3>
                                 <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
                                 <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
