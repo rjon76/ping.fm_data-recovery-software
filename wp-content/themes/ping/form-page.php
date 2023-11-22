@@ -407,7 +407,7 @@ error_reporting(E_ALL);
                                 </div>
                             <?php } ?>
 
-                            <?php if(count($arrayArticles["page"]) > 0 && !empty($arrayArticles["page"][0])) { ?>
+                            <?php if(count($arrayArticles["page"]) > 0 && (!empty($arrayArticles["page"][0]) || !empty($arrayArticles["page"]["title"]) )) { ?>
                                 <h3>Last / Selected article:</h3>
                                 <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
                                 <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
