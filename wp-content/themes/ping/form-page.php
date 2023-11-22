@@ -370,6 +370,7 @@ error_reporting(E_ALL);
                                     <div id="myDropdown" class="dropdown-content">
                                         <input type="text" placeholder="Search title article.." id="myInput" onkeyup="filterFunction()">
                                         <?php for($i = 0; $i < count($arrayArticles["page"]); $i++ ) { ?>
+                                            <?php if(empty($arrayArticles["page"][$i]["title"])) { continue; } ?>
                                             <div
                                                 class="option"
                                                 data-title="<?php echo $arrayArticles["page"][$i]["title"]; ?>"
