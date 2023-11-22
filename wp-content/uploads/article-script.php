@@ -693,7 +693,7 @@ xmlwriter_start_element($xw, 'root');
     $pageContent .= $contentString . $mainString . "</article>";
 
     if(count($aArticles["page"]) > 0) {
-        if(count($aArticles["page"]) == 1 && $theme_title != $aArticles["page"][0]["title"] && !empty($aArticles["page"][0]["title"])) {
+        if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) && $theme_title != $aArticles["page"]["title"] && !empty($aArticles["page"]["title"])) {
             xmlwriter_start_element($xw, 'page');
                 xmlwriter_start_element($xw, 'page_meta');
                     xmlwriter_text($xw, $aArticles["page"]["page_meta"]);
@@ -740,7 +740,7 @@ xmlwriter_start_element($xw, 'root');
             xmlwriter_end_element($xw);
         }
 
-        if(count($aArticles["page"]) > 1) {
+        if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
                 if($theme_title === $aArticles["page"][$i]["title"]) {
@@ -799,64 +799,68 @@ xmlwriter_start_element($xw, 'root');
         }
     }
 
-    xmlwriter_start_element($xw, 'page');
-        xmlwriter_start_element($xw, 'page_meta');
-            xmlwriter_text($xw, $theme_meta_title);
+    if(!empty($theme_meta_title) && !empty($page_title) && !empty($h1title)) {
+        xmlwriter_start_element($xw, 'page');
+            xmlwriter_start_element($xw, 'page_meta');
+                xmlwriter_text($xw, $theme_meta_title);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_image');
+                xmlwriter_text($xw, $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg');
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_url');
+                xmlwriter_text($xw, $page_url);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_title');
+                xmlwriter_text($xw, $page_title);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_content');
+                xmlwriter_text($xw, $pageContent);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'title');
+                xmlwriter_text($xw, $theme_title);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'h1title');
+                xmlwriter_text($xw, $h1title);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'url');
+                xmlwriter_text($xw, $anchor_url);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'url_descr');
+                xmlwriter_text($xw, $url_description);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'anchor');
+                xmlwriter_text($xw, $anchor_title);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'post_url');
+                xmlwriter_text($xw, $post_url);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'youtube_url');
+                xmlwriter_text($xw, $pageYoutube);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'apps_links');
+                xmlwriter_text($xw, $apps_links);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'faq_theme');
+                xmlwriter_text($xw, $faq_theme);
+            xmlwriter_end_element($xw);
         xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'page_image');
-            xmlwriter_text($xw, $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg');
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'page_url');
-            xmlwriter_text($xw, $page_url);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'page_title');
-            xmlwriter_text($xw, $page_title);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'page_content');
-            xmlwriter_text($xw, $pageContent);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'title');
-            xmlwriter_text($xw, $theme_title);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'h1title');
-            xmlwriter_text($xw, $h1title);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'url');
-            xmlwriter_text($xw, $anchor_url);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'url_descr');
-            xmlwriter_text($xw, $url_description);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'anchor');
-            xmlwriter_text($xw, $anchor_title);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'post_url');
-            xmlwriter_text($xw, $post_url);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'youtube_url');
-            xmlwriter_text($xw, $pageYoutube);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'apps_links');
-            xmlwriter_text($xw, $apps_links);
-        xmlwriter_end_element($xw);
-        xmlwriter_start_element($xw, 'faq_theme');
-            xmlwriter_text($xw, $faq_theme);
-        xmlwriter_end_element($xw);
-    xmlwriter_end_element($xw);
+    } 
 
 xmlwriter_end_element($xw);
 xmlwriter_end_document($xw);
 
-$dom = new DOMDocument;
-$dom->loadXML(xmlwriter_output_memory($xw));
-$dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
+if(!empty($theme_meta_title) && !empty($page_title) && !empty($h1title)) {
+    $dom = new DOMDocument;
+    $dom->loadXML(xmlwriter_output_memory($xw));
+    $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
-if(!$_POST["file_url"]) {
-    unlink($image_src);
+    if(!$_POST["file_url"]) {
+        unlink($image_src);
+    }
+    
+    fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
+    fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
+    
+    exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
+    exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );    
 }
-
-fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
-fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
-
-exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
-exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
