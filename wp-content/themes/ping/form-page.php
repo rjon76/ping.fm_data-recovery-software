@@ -396,7 +396,7 @@ error_reporting(E_ALL);
                                                 data-anchor="<?php echo $aArticles["page"][$i]["anchor"]; ?>"
                                                 data-post_url="<?php echo $aArticles["page"][$i]["post_url"]; ?>"
                                                 data-file_url="<?php echo $aArticles["page"][$i]["page_image"]; ?>"
-                                                data-youtubeUrl="<?php echo $aArticles["page"][$i]["youtube_url"]; ?>"
+                                                data-youtubeUrl="<?php echo is_string($aArticles["page"][$i]["youtube_url"]) ? $aArticles["page"][$i]["youtube_url"] : ''; ?>"
                                                 data-apps_links="<?php echo $aArticles["page"][$i]["apps_links"]; ?>"
                                                 data-faq_theme="<?php echo $aArticles["page"][$i]["faq_theme"]; ?>"
                                             >
