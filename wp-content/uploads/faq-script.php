@@ -82,7 +82,7 @@ xmlwriter_start_element($xw, 'root');
 
     $mainString = '<h2>FAQ</h2>';
 
-    if(!empty($aArticles["page"]) && count($aArticles["page"]) == 1 && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
+    if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
         $page_content = $aArticles["page"]["page_content"];
     }
 
