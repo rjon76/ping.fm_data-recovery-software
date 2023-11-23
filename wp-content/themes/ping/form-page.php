@@ -28,7 +28,7 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        if(!empty($aArticles["page"]) && count($aArticles["page"]) == 1 && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
+        if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
             echo "1";
         }
 
