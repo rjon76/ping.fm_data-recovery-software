@@ -114,7 +114,7 @@ xmlwriter_start_element($xw, 'root');
 
     $pageContent = $aContent[0] . $mainString . $aContent[1];
 
-    if(!empty($aArticles["page"]) && count($aArticles["page"]) == 1 && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
+    if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
         xmlwriter_start_element($xw, 'page');
             xmlwriter_start_element($xw, 'page_meta');
                 xmlwriter_text($xw, $aArticles["page"]["page_meta"]);
