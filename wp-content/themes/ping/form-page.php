@@ -29,7 +29,7 @@ error_reporting(E_ALL);
         $arrayArticles = json_decode($json, TRUE);
 
         if(empty($arrayArticles["page"][1]) && empty($arrayArticles["page"][2]) &&
-            'Best software for the crypto industry 2023' != $arrayArticles["page"]["title"] && 'Best software for the crypto industry 2023' != $arrayArticles["page"][0]["title"] &&
+            (!empty($arrayArticles["page"]["title"]) && 'Best software for the crypto industry 2023' != $arrayArticles["page"]["title"]) && (!empty($arrayArticles["page"][0]["title"]) && 'Best software for the crypto industry 2023' != $arrayArticles["page"][0]["title"]) &&
             (!empty($arrayArticles["page"]["title"]) || !empty($arrayArticles["page"][0]["title"]))) {
                 echo "1";
         } else {
