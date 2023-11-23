@@ -82,11 +82,11 @@ xmlwriter_start_element($xw, 'root');
 
     $mainString = '<h2>FAQ</h2>';
 
-    if(count($aArticles["page"]) == 1) {
+    if(!empty($aArticles["page"]) && count($aArticles["page"]) == 1 && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
         $page_content = $aArticles["page"]["page_content"];
     }
 
-    if(count($aArticles["page"]) > 1) {
+    if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
         for($i = 0; $i < count($aArticles["page"]); $i++ ) {
             if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
                 $page_content = $aArticles["page"][$i]["page_content"];
