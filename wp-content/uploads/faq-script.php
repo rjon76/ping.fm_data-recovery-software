@@ -114,7 +114,7 @@ xmlwriter_start_element($xw, 'root');
 
     $pageContent = $aContent[0] . $mainString . $aContent[1];
 
-    if(count($aArticles["page"]) == 1) {
+    if(!empty($aArticles["page"]) && count($aArticles["page"]) == 1 && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
         xmlwriter_start_element($xw, 'page');
             xmlwriter_start_element($xw, 'page_meta');
                 xmlwriter_text($xw, $aArticles["page"]["page_meta"]);
@@ -161,7 +161,7 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_end_element($xw);
     }
 
-    if(count($aArticles["page"]) > 1) {
+    if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
         for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
             if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
