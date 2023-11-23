@@ -88,6 +88,8 @@ $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
+sleep(5);
+
 function fetch_headers($url) {
     $ch = curl_init($url); 
     curl_setopt($ch, CURLOPT_HEADER, 1);
