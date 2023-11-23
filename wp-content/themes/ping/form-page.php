@@ -26,52 +26,50 @@ error_reporting(E_ALL);
         $xmlstring = file_get_contents($path);
         $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
         $json = json_encode($xml);
-        $arrayArticles = json_decode($json, TRUE);
+        $aArticles = json_decode($json, TRUE);
 
-        var_dump($arrayArticles);
+        if(count($aArticles) > 0) {
 
-        if(count($arrayArticles) > 0) {
-
-            if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"]["title"])) {
-                $title = $arrayArticles["page"]["title"];
-                $h1title = $arrayArticles["page"]["h1title"];
-                $meta_title = $arrayArticles["page"]["page_meta"];
-                $url = $arrayArticles["page"]["url"];
-                $url_descr = $arrayArticles["page"]["url_descr"];
-                $anchor = $arrayArticles["page"]["anchor"];
-                $post_url = $arrayArticles["page"]["post_url"];
-                $file_url = $arrayArticles["page"]["page_image"];
-                $youtubeUrl = is_string($arrayArticles["page"]["youtube_url"]) ? $arrayArticles["page"]["youtube_url"] : '';
-                $apps_links = $arrayArticles["page"]["apps_links"];
-                $faq_theme = $arrayArticles["page"]["faq_theme"];
+            if(!empty($aArticles["page"]) && !empty($aArticles["page"]["title"])) {
+                $title = $aArticles["page"]["title"];
+                $h1title = $aArticles["page"]["h1title"];
+                $meta_title = $aArticles["page"]["page_meta"];
+                $url = $aArticles["page"]["url"];
+                $url_descr = $aArticles["page"]["url_descr"];
+                $anchor = $aArticles["page"]["anchor"];
+                $post_url = $aArticles["page"]["post_url"];
+                $file_url = $aArticles["page"]["page_image"];
+                $youtubeUrl = is_string($aArticles["page"]["youtube_url"]) ? $aArticles["page"]["youtube_url"] : '';
+                $apps_links = $aArticles["page"]["apps_links"];
+                $faq_theme = $aArticles["page"]["faq_theme"];
             } else {
 
-                if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"][0]["title"])) {
-                    $title = $arrayArticles["page"][0]["title"];
-                    $h1title = $arrayArticles["page"][0]["h1title"];
-                    $meta_title = $arrayArticles["page"][0]["page_meta"];
-                    $url = $arrayArticles["page"][0]["url"];
-                    $url_descr = $arrayArticles["page"][0]["url_descr"];
-                    $anchor = $arrayArticles["page"][0]["anchor"];
-                    $post_url = $arrayArticles["page"][0]["post_url"];
-                    $file_url = $arrayArticles["page"][0]["page_image"];
-                    $youtubeUrl = is_string($arrayArticles["page"][0]["youtube_url"]) ? $arrayArticles["page"][0]["youtube_url"] : '';
-                    $apps_links = $arrayArticles["page"][0]["apps_links"];
-                    $faq_theme = $arrayArticles["page"][0]["faq_theme"];
+                if(!empty($aArticles["page"]) && !empty($aArticles["page"][0]["title"])) {
+                    $title = $aArticles["page"][0]["title"];
+                    $h1title = $aArticles["page"][0]["h1title"];
+                    $meta_title = $aArticles["page"][0]["page_meta"];
+                    $url = $aArticles["page"][0]["url"];
+                    $url_descr = $aArticles["page"][0]["url_descr"];
+                    $anchor = $aArticles["page"][0]["anchor"];
+                    $post_url = $aArticles["page"][0]["post_url"];
+                    $file_url = $aArticles["page"][0]["page_image"];
+                    $youtubeUrl = is_string($aArticles["page"][0]["youtube_url"]) ? $aArticles["page"][0]["youtube_url"] : '';
+                    $apps_links = $aArticles["page"][0]["apps_links"];
+                    $faq_theme = $aArticles["page"][0]["faq_theme"];
                 }
                 
-                if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"][0]["title"]) && !empty($arrayArticles["page"][1]["title"])) {
-                    $title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["title"];
-                    $h1title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["h1title"];
-                    $meta_title = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_meta"];
-                    $url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url"];
-                    $url_descr = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["url_descr"];
-                    $anchor = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["anchor"];
-                    $post_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["post_url"];
-                    $file_url = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["page_image"];
-                    $youtubeUrl = is_string($arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"]) ? $arrayArticles["page"][count($arrayArticles["page"]) - 1]["youtube_url"] : '';
-                    $apps_links = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["apps_links"];
-                    $faq_theme = $arrayArticles["page"][count($arrayArticles["page"]) - 1]["faq_theme"];
+                if(!empty($aArticles["page"]) && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
+                    $title = $aArticles["page"][count($aArticles["page"]) - 1]["title"];
+                    $h1title = $aArticles["page"][count($aArticles["page"]) - 1]["h1title"];
+                    $meta_title = $aArticles["page"][count($aArticles["page"]) - 1]["page_meta"];
+                    $url = $aArticles["page"][count($aArticles["page"]) - 1]["url"];
+                    $url_descr = $aArticles["page"][count($aArticles["page"]) - 1]["url_descr"];
+                    $anchor = $aArticles["page"][count($aArticles["page"]) - 1]["anchor"];
+                    $post_url = $aArticles["page"][count($aArticles["page"]) - 1]["post_url"];
+                    $file_url = $aArticles["page"][count($aArticles["page"]) - 1]["page_image"];
+                    $youtubeUrl = is_string($aArticles["page"][count($aArticles["page"]) - 1]["youtube_url"]) ? $aArticles["page"][count($aArticles["page"]) - 1]["youtube_url"] : '';
+                    $apps_links = $aArticles["page"][count($aArticles["page"]) - 1]["apps_links"];
+                    $faq_theme = $aArticles["page"][count($aArticles["page"]) - 1]["faq_theme"];
                 }
 
             }
@@ -381,35 +379,35 @@ error_reporting(E_ALL);
                     </div>
                     <div id="createdArticles" class="tabcontent">
                         <div>
-                            <?php if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][0]["title"]) && !empty($arrayArticles["page"][1]["title"])) { ?>
+                            <?php if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) { ?>
                                 <div class="dropdown">
                                     <button onclick="openDropdown()" class="dropbtn">Select an article to edit</button>
                                     <div id="myDropdown" class="dropdown-content">
                                         <input type="text" placeholder="Search title article.." id="myInput" onkeyup="filterFunction()">
-                                        <?php for($i = 0; $i < count($arrayArticles["page"]); $i++ ) { ?>
-                                            <?php if(empty($arrayArticles["page"][$i]["title"])) { continue; } ?>
+                                        <?php for($i = 0; $i < count($aArticles["page"]); $i++ ) { ?>
+                                            <?php if(empty($aArticles["page"][$i]["title"])) { continue; } ?>
                                             <div
                                                 class="option"
-                                                data-title="<?php echo $arrayArticles["page"][$i]["title"]; ?>"
-                                                data-h1title="<?php echo $arrayArticles["page"][$i]["h1title"]; ?>"
-                                                data-meta_title="<?php echo $arrayArticles["page"][$i]["page_meta"]; ?>"
-                                                data-url="<?php echo $arrayArticles["page"][$i]["url"]; ?>"
-                                                data-url_descr="<?php echo $arrayArticles["page"][$i]["url_descr"]; ?>"
-                                                data-anchor="<?php echo $arrayArticles["page"][$i]["anchor"]; ?>"
-                                                data-post_url="<?php echo $arrayArticles["page"][$i]["post_url"]; ?>"
-                                                data-file_url="<?php echo $arrayArticles["page"][$i]["page_image"]; ?>"
-                                                data-youtubeUrl="<?php echo $arrayArticles["page"][$i]["youtube_url"]; ?>"
-                                                data-apps_links="<?php echo $arrayArticles["page"][$i]["apps_links"]; ?>"
-                                                data-faq_theme="<?php echo $arrayArticles["page"][$i]["faq_theme"]; ?>"
+                                                data-title="<?php echo $aArticles["page"][$i]["title"]; ?>"
+                                                data-h1title="<?php echo $aArticles["page"][$i]["h1title"]; ?>"
+                                                data-meta_title="<?php echo $aArticles["page"][$i]["page_meta"]; ?>"
+                                                data-url="<?php echo $aArticles["page"][$i]["url"]; ?>"
+                                                data-url_descr="<?php echo $aArticles["page"][$i]["url_descr"]; ?>"
+                                                data-anchor="<?php echo $aArticles["page"][$i]["anchor"]; ?>"
+                                                data-post_url="<?php echo $aArticles["page"][$i]["post_url"]; ?>"
+                                                data-file_url="<?php echo $aArticles["page"][$i]["page_image"]; ?>"
+                                                data-youtubeUrl="<?php echo $aArticles["page"][$i]["youtube_url"]; ?>"
+                                                data-apps_links="<?php echo $aArticles["page"][$i]["apps_links"]; ?>"
+                                                data-faq_theme="<?php echo $aArticles["page"][$i]["faq_theme"]; ?>"
                                             >
-                                                <?php echo $arrayArticles["page"][$i]["title"]; ?>
+                                                <?php echo $aArticles["page"][$i]["title"]; ?>
                                             </div>
                                         <?php } ?>
                                     </div>
                                 </div>
                             <?php } ?>
 
-                            <?php if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 0 && (!empty($arrayArticles["page"][0]["title"]) || !empty($arrayArticles["page"]["title"]))) { ?>
+                            <?php if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0 && (!empty($aArticles["page"][0]["title"]) || !empty($aArticles["page"]["title"]))) { ?>
                                 <h3>Last / Selected article:</h3>
                                 <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
                                 <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
