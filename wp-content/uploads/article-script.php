@@ -741,7 +741,7 @@ xmlwriter_start_element($xw, 'root');
             xmlwriter_end_element($xw);
         }
 
-        if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
+        if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
                 if($theme_title === $aArticles["page"][$i]["title"]) {
