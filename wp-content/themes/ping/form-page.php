@@ -28,6 +28,14 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
+        if(!empty($aArticles["page"]) && count($aArticles["page"]) == 1 && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
+            echo "1";
+        }
+
+        if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
+            echo "2";
+        }
+
         if(count($arrayArticles) > 0) {
 
             if(!empty($arrayArticles["page"]) && !empty($arrayArticles["page"]["title"])) {
