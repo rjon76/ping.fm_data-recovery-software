@@ -28,12 +28,14 @@ error_reporting(E_ALL);
         $json = json_encode($xml);
         $arrayArticles = json_decode($json, TRUE);
 
-        if(!empty($arrayArticles["page"]) && empty($arrayArticles["page"][1]) && empty($arrayArticles["page"][2])) {
-            echo "1";
-        }
-
-        if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][1])) {
-            echo "2";
+        if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 0) {
+            if(empty($arrayArticles["page"][1]) && empty($arrayArticles["page"][2]) && (!empty($arrayArticles["page"]["title"]) || !empty($arrayArticles["page"][0]["title"]))) {
+                echo "2";
+            }
+    
+            if(!empty($arrayArticles["page"]) && count($arrayArticles["page"]) > 1 && !empty($arrayArticles["page"][1])) {
+                echo "1";
+            }
         }
 
         if(count($arrayArticles) > 0) {

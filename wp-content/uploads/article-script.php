@@ -693,7 +693,9 @@ xmlwriter_start_element($xw, 'root');
     $pageContent .= $contentString . $mainString . "</article>";
 
     if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
-        if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) && $theme_title != $aArticles["page"]["title"] && (!empty($aArticles["page"]["title"]) || !empty($aArticles["page"][0]["title"]))) {
+        if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) &&
+            ($theme_title != $aArticles["page"]["title"] || $theme_title != $aArticles["page"][0]["title"]) &&
+            (!empty($aArticles["page"]["title"]) || !empty($aArticles["page"][0]["title"]))) {
             xmlwriter_start_element($xw, 'page');
                 xmlwriter_start_element($xw, 'page_meta');
                     xmlwriter_text($xw, $aArticles["page"]["page_meta"]);
