@@ -88,8 +88,6 @@ $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
-sleep(5);
-
 function fetch_headers($url) {
     $ch = curl_init($url); 
     curl_setopt($ch, CURLOPT_HEADER, 1);
@@ -103,3 +101,22 @@ fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
+
+sleep(10);
+
+if(file_exists($path)) {
+    $xmlstring = file_get_contents($path);
+    $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+    $json = json_encode($xml);
+    $aArticles = json_decode($json, TRUE);
+} else {
+    $aArticles = [];
+}
+
+if(empty($aArticles) || empty($aArticles["page"])) {
+    fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
+    fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
+
+    exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
+    exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
+}
