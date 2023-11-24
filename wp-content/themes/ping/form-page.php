@@ -620,6 +620,7 @@ error_reporting(E_ALL);
                             url: jQuery("#faqQuestions").attr('data-stepsf'),
                             dataType: 'text',
                             success: function (data) {
+                                console.log(data)
                                 if(data == 'done') {
                                     jQuery('.stepTitle').html('All done! autoreload will happen in 3 seconds')
                                     clearInterval(faqInterval);
@@ -735,6 +736,7 @@ error_reporting(E_ALL);
                             url: jQuery("#article").attr('data-stepsf'),
                             dataType: 'text',
                             success: function (data) {
+                                console.log(data)
                                 if(data == 'done') {
                                     jQuery('.stepTitle').html('All done! autoreload will happen in 3 seconds')
                                     clearInterval(articleInterval);
