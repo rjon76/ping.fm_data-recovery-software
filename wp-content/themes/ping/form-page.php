@@ -607,8 +607,7 @@ error_reporting(E_ALL);
                             console.log(data, "dataSuccess")
                         },
                         error: function(jqXHR, exception) {
-                            console.log(jqXHR, "jqXHR")
-                            console.log(exception, "exception")
+                            location.reload()
                         },
                         cache: false,
                         contentType: false,
@@ -723,6 +722,7 @@ error_reporting(E_ALL);
                         error: function(jqXHR, exception) {
                             console.log(jqXHR, "jqXHR")
                             console.log(exception, "exception")
+                            location.reload()
                         },
                         cache: false,
                         contentType: false,
