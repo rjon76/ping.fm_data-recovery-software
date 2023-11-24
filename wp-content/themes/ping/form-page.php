@@ -389,7 +389,7 @@ error_reporting(E_ALL);
                         </g>
                     </svg>
                 </div>
-                <?php if($current == 'done') { ?>
+                <?php if($current !== 'faq' && $current !== 'start' && $current !== 'import') { ?>
                     <div class="tab">
                         <button class="tablinks" onclick="openTab(event, 'createdArticles')" id="defaultOpen">Generated Articles</button>
                         <button class="tablinks generate" onclick="openTab(event, 'generateArticle')" id="genNewArt">+ Generate Article</button>
