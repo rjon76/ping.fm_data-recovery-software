@@ -99,19 +99,12 @@ if( !$_POST["anchor"] || !$_POST["url"] ||
 $OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
 
 $file = __DIR__ . '/time_record.txt';
-function writeTimeGeneration($path_to_file, $seconds) {
-    if(file_exists($path_to_file)) {
-        $current = (int)file_get_contents($path_to_file);
 
-        if(time() > $current) {
-            file_put_contents($path_to_file, time() + $seconds);
-        }
-    } else {
-        file_put_contents($path_to_file, time());
-    }
+function writeTimeGeneration($path_to_file, $action) {
+    file_put_contents($path_to_file, $action);
 }
 
-writeTimeGeneration($file, 120);
+writeTimeGeneration($file, 'start');
 
 function fetch_headers($url) {
     $ch = curl_init($url); 
@@ -481,15 +474,16 @@ $res = xmlwriter_set_indent_string($xw, ' ');
 xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
-    $a = getInfoTitle($theme_title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY);
-    
-    if( is_null( $a->choices[0]->message->function_call->arguments ) || 
-        empty( $a->choices[0]->message->function_call->arguments ) ) {
-            echo 'false';
-            writeTimeGeneration($file, 0);
-            exit();
-    }
-    $b = json_decode($a->choices[0]->message->function_call->arguments);
+    $b = null;
+
+    do {
+        $a = getInfoTitle($theme_title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY);
+        if( isset($a->choices[0]->message->function_call) ) {
+            $b = json_decode($a->choices[0]->message->function_call->arguments);
+        }
+    } while ( is_null($b) || is_null($b->step1) );
+
+    writeTimeGeneration($file, 'faq');
 
     $page_url = $post_url;
 
@@ -529,11 +523,7 @@ xmlwriter_start_element($xw, 'root');
         $b->scenario3
     ) : '';
     $scenarious = $page_scenario1 . $page_scenario2 . $page_scenario3;
-    if( !is_string($b->step1) ) {
-        echo 'false';
-        writeTimeGeneration($file, 0);
-        exit();
-    }
+    
     $page_step1 = preg_replace_callback(
         $emoji_regex,
         function($a) { return emoji_to_entity($a[0]); },
@@ -642,13 +632,21 @@ xmlwriter_start_element($xw, 'root');
             $st10 = '<section><div class="no-medal"><div>10</div></div>'.$page_step10.'</section>';
         }
 
+        if(empty($youtube_url)) {
+            $videoString = '';
+        } else {
+            $videoString = '<section><h2>Youtube video to watch</h2><div class="nonp iframe">' . 
+            preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $youtube_url)
+                . '</div></section>';
+        }
+
         $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
             <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
             <p>'.$page_intro.'</p></div></div></section>
             <section><div class="medal"><div>&#129351;</div></div>'.$page_step1.'</section>
             <section><div class="medal"><div>&#129352;</div></div>'.$page_step2.'</section>
             <section><div class="medal"><div>&#129353;</div></div>'.$page_step3.'</section>'
-            . $st4 . $st5 . $st6 . $st7 . $st8 . $st9 . $st10 .'
+            . $st4 . $st5 . $st6 . $st7 . $st8 . $st9 . $st10 . $videoString . '
             <section><h2>Conclusion:</h2><div class="nonp">'.$page_infomation.'</div></section>';
 
     } else {
@@ -674,8 +672,17 @@ xmlwriter_start_element($xw, 'root');
 
     }
 
-    $faq = getInfoFaq($faq_theme, 10, $OPENAI_API_KEY);
-    $page_faq = $faq->choices[0]->message->content;
+    $page_faq = null;
+
+    do {
+        $faq = getInfoFaq($faq_theme, 10, $OPENAI_API_KEY);
+        if( isset($faq->choices[0]->message) ) {
+            $page_faq = $faq->choices[0]->message->content;
+        }
+    } while ( is_null($page_faq) );
+
+    writeTimeGeneration($file, 'import');
+    
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
     foreach($faqNoParag as $key => $p) {
@@ -730,7 +737,11 @@ xmlwriter_start_element($xw, 'root');
                     xmlwriter_text($xw, $aArticles["page"]["post_url"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'youtube_url');
-                    xmlwriter_text($xw, $aArticles["page"]["youtube_url"]);
+                    if(empty($aArticles["page"]["youtube_url"])) {
+                        xmlwriter_text($xw, '');
+                    } else {
+                        xmlwriter_text($xw, $aArticles["page"]["youtube_url"]);
+                    }
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'apps_links');
                     xmlwriter_text($xw, $aArticles["page"]["apps_links"]);
@@ -787,7 +798,11 @@ xmlwriter_start_element($xw, 'root');
                         xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'youtube_url');
-                        xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                        if(empty($aArticles["page"][$i]["youtube_url"])) {
+                            xmlwriter_text($xw, '');
+                        } else {
+                            xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                        }
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'apps_links');
                         xmlwriter_text($xw, $aArticles["page"][$i]["apps_links"]);
@@ -862,3 +877,5 @@ fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
+
+writeTimeGeneration($file, 'done');

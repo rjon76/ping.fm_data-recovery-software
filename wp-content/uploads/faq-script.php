@@ -64,6 +64,14 @@ function getInfoFaq($title, $number, $OPENAI_API_KEY) {
     curl_close($ch);
 }
 
+$file = __DIR__ . '/time_record.txt';
+
+function writeTimeGeneration($path_to_file, $action) {
+    file_put_contents($path_to_file, $action);
+}
+
+writeTimeGeneration($file, 'faq');
+
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
 if(file_exists($path)) {
     $xmlstring = file_get_contents($path);
@@ -97,8 +105,17 @@ xmlwriter_start_element($xw, 'root');
 
     $aContent = explode('<h2>FAQ</h2>', $page_content);
 
-    $faq = getInfoFaq($themeFaq, $numberFaq, $OPENAI_API_KEY);
-    $page_faq = $faq->choices[0]->message->content;
+    $page_faq = null;
+
+    do {
+        $faq = getInfoFaq($themeFaq, $numberFaq, $OPENAI_API_KEY);
+        if( isset($faq->choices[0]->message) ) {
+            $page_faq = $faq->choices[0]->message->content;
+        }
+    } while ( is_null($page_faq) );
+
+    writeTimeGeneration($file, 'import');
+    
     $faqParag = explode('<p>', $page_faq);
     $faqNoParag = str_replace(["<p>", "</p>", "</section>", '"', "</article>"], '', $faqParag);
     foreach($faqNoParag as $key => $p) {
@@ -150,7 +167,11 @@ xmlwriter_start_element($xw, 'root');
                 xmlwriter_text($xw, $aArticles["page"]["post_url"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'youtube_url');
-                xmlwriter_text($xw, $aArticles["page"]["youtube_url"]);
+                if(empty($aArticles["page"]["youtube_url"])) {
+                    xmlwriter_text($xw, '');
+                } else {
+                    xmlwriter_text($xw, $aArticles["page"]["youtube_url"]);
+                }
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'apps_links');
                 xmlwriter_text($xw, $aArticles["page"]["apps_links"]);
@@ -205,7 +226,11 @@ xmlwriter_start_element($xw, 'root');
                     xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'youtube_url');
-                    xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                    if(empty($aArticles["page"][$i]["youtube_url"])) {
+                        xmlwriter_text($xw, '');
+                    } else {
+                        xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                    }
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'apps_links');
                     xmlwriter_text($xw, $aArticles["page"][$i]["apps_links"]);
@@ -237,3 +262,5 @@ fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key
 
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
+
+writeTimeGeneration($file, 'done');
