@@ -615,6 +615,8 @@ error_reporting(E_ALL);
                         timeout: 120000
                     });
 
+                    jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
+
                     const faqInterval = setInterval(() => {
                         jQuery.ajax({
                             url: jQuery("#faqQuestions").attr('data-stepsf'),
@@ -730,6 +732,8 @@ error_reporting(E_ALL);
                         processData: false,
                         timeout: 120000
                     });
+
+                    jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
 
                     const articleInterval = setInterval(() => {
                         jQuery.ajax({
