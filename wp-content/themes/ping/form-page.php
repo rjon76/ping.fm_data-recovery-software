@@ -21,6 +21,7 @@ error_reporting(E_ALL);
     $file_url = '';
     $youtubeUrl = '';
     $faq_theme = '';
+    $apps_links = '';
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
@@ -76,7 +77,23 @@ error_reporting(E_ALL);
         }
     }
 
-    $current = (int)file_get_contents($file);
+    if(file_exists($file)) {
+        $current = file_get_contents($file);
+      } else {
+          $current = 'done';
+      }
+  
+      $infoStepText = '';
+  
+      if($current == 'start') {
+          $infoStepText = 'AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹';
+      } else if($current == 'faq') {
+          $infoStepText = 'FAQ content generation…';
+      } else if($current == 'import') {
+          $infoStepText = 'Article import...please wait,<br>  усі нагодовані 🐈?';
+      } else {
+          $infoStepText = 'AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹';
+      }
 	
 ?>
 <style>
@@ -301,7 +318,7 @@ error_reporting(E_ALL);
 		<main>
 			<div class="container">
                 <div class="loader">
-                    <h1>AI is working (2-4 mins to finish,<br> поки погодуй кота чи собаку ;-)</h1>
+                    <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
                     <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                         <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
                             <animateTransform 
@@ -372,7 +389,7 @@ error_reporting(E_ALL);
                         </g>
                     </svg>
                 </div>
-                <?php if(time() > $current) { ?>
+                <?php if($current == 'done') { ?>
                     <div class="tab">
                         <button class="tablinks" onclick="openTab(event, 'createdArticles')" id="defaultOpen">Generated Articles</button>
                         <button class="tablinks generate" onclick="openTab(event, 'generateArticle')" id="genNewArt">+ Generate Article</button>
@@ -420,7 +437,7 @@ error_reporting(E_ALL);
                                 <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
                                 <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
-                                <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>">
+                                <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/time_record.txt'; ?>">
                                     <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                     <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                                     <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
@@ -437,7 +454,7 @@ error_reporting(E_ALL);
                         </div>
                     </div>
                     <div id="generateArticle" class="tabcontent">
-                        <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>">
+                        <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/time_record.txt'; ?>">
                             <h3>New record:</h3>
                             <label for="title">What would you like to write about (max 150 characters)</label>
                             <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
@@ -470,7 +487,7 @@ error_reporting(E_ALL);
                     </div>
                 <?php } else { ?>
                     <div class="loader show">
-                        <h1>Article import...please wait,<br> autoreload will happen in 1-2 minutes,<br> усі нагодовані :-)?</h1>
+                        <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
                         <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                             <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
                                 <animateTransform 
@@ -541,13 +558,13 @@ error_reporting(E_ALL);
                             </g>
                         </svg>
                     </div>
-                    <script>
+                    <!-- <script>
                         setTimeout(function(){
                             let fullUrl = window.location.href
                             const needUrl = fullUrl.split('?')
                             window.location = needUrl[0]+'?eraseCache=' + Math.floor(Math.random() * 1000000000)
                         }, 120000);
-                    </script>
+                    </script> -->
                 <?php } ?>
 			</div>
 		</main>
@@ -587,25 +604,45 @@ error_reporting(E_ALL);
                         url: jQuery("#faqQuestions").attr('data-action'),
                         data: formData,
                         success: function(data) {
-                            if(data == 'false') {
-                                alert('Some error occured in API. Please resend request')
-                                jQuery('#btn').prop("disabled", false)
-                                jQuery('.loader').removeClass('show')
-                                return
-                            }
-
-                            alert('Faq updated and imported. Refresh page')
+                            console.log(data, "dataSuccess")
                         },
                         error: function(jqXHR, exception) {
-                            setTimeout(function () {
-                                location.reload()
-                            }, 20000);
+                            console.log(jqXHR, "jqXHR")
+                            console.log(exception, "exception")
                         },
                         cache: false,
                         contentType: false,
                         processData: false,
                         timeout: 120000
                     });
+
+                    const faqInterval = setInterval(() => {
+                        jQuery.ajax({
+                            url: jQuery("#faqQuestions").attr('data-stepsf'),
+                            dataType: 'text',
+                            success: function (data) {
+                                if(data == 'done') {
+                                    jQuery('.stepTitle').html('All done! autoreload will happen in 3 seconds')
+                                    clearInterval(faqInterval);
+                                    setTimeout(() => {
+                                        location.reload()
+                                    }, 3000);
+                                }
+
+                                if(data == 'start') {
+                                    jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
+                                }
+
+                                if(data == 'faq') {
+                                    jQuery('.stepTitle').html('FAQ content generation…')
+                                }
+
+                                if(data == 'import') {
+                                    jQuery('.stepTitle').html('Article import...please wait,<br>  усі нагодовані 🐈?')
+                                }
+                            }
+                        });
+                    }, 5000);
                 }
             });
             jQuery('#btn-reg').on('click', function(e) {
@@ -647,14 +684,12 @@ error_reporting(E_ALL);
                         }
 
                         alert('Article removed!')
-                        setTimeout(function () {
-                            location.reload()
-                        }, 3000);
+                        location.reload()
                     },
                     error: function(jqXHR, exception) {
                         setTimeout(function () {
                             location.reload()
-                        }, 20000);
+                        }, 1000);
                     },
                     cache: false,
                     contentType: false,
@@ -683,25 +718,45 @@ error_reporting(E_ALL);
                         url: jQuery("#article").attr('data-action'),
                         data: formData,
                         success: function(data) {
-                            if(data == 'false') {
-                                alert('Some error occured in API. Please resend request')
-                                jQuery('#btn').prop("disabled", false)
-                                jQuery('.loader').removeClass('show')
-                                return
-                            }
-
-                            alert('Article imported. Refresh page')
+                            console.log(data, "dataSuccess")
                         },
                         error: function(jqXHR, exception) {
-                            setTimeout(function () {
-                                location.reload()
-                            }, 20000);
+                            console.log(jqXHR, "jqXHR")
+                            console.log(exception, "exception")
                         },
                         cache: false,
                         contentType: false,
                         processData: false,
                         timeout: 120000
                     });
+
+                    const articleInterval = setInterval(() => {
+                        jQuery.ajax({
+                            url: jQuery("#article").attr('data-stepsf'),
+                            dataType: 'text',
+                            success: function (data) {
+                                if(data == 'done') {
+                                    jQuery('.stepTitle').html('All done! autoreload will happen in 3 seconds')
+                                    clearInterval(articleInterval);
+                                    setTimeout(() => {
+                                        location.reload()
+                                    }, 3000);
+                                }
+
+                                if(data == 'start') {
+                                    jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
+                                }
+
+                                if(data == 'faq') {
+                                    jQuery('.stepTitle').html('FAQ content generation…')
+                                }
+
+                                if(data == 'import') {
+                                    jQuery('.stepTitle').html('Article import...please wait,<br>  усі нагодовані 🐈?')
+                                }
+                            }
+                        });
+                    }, 5000);
                 }
             });
             jQuery(".option").on('click', function(e) {
@@ -735,6 +790,30 @@ error_reporting(E_ALL);
 
                 jQuery('#removeTitle')[0].value = jQuery(this).attr('data-title')
             })
+
+            const startInterval = setInterval(() => {
+                jQuery.ajax({
+                    url: jQuery("#article").attr('data-stepsf'),
+                    dataType: 'text',
+                    success: function (data) {
+                        if(data == 'done') {
+                            clearInterval(startInterval);
+                        }
+
+                        if(data == 'start') {
+                            jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
+                        }
+
+                        if(data == 'faq') {
+                            jQuery('.stepTitle').html('FAQ content generation…')
+                        }
+
+                        if(data == 'import') {
+                            jQuery('.stepTitle').html('Article import...please wait,<br>  усі нагодовані 🐈?')
+                        }
+                    }
+                });
+            }, 5000);
         });
 
         function openTab(evt, tabName) {

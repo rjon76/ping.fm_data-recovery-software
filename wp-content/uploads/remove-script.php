@@ -68,7 +68,11 @@ xmlwriter_start_element($xw, 'root');
                         xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'youtube_url');
-                        xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                        if(empty($aArticles["page"][$i]["youtube_url"])) {
+                            xmlwriter_text($xw, '');
+                        } else {
+                            xmlwriter_text($xw, $aArticles["page"][$i]["youtube_url"]);
+                        }
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'apps_links');
                         xmlwriter_text($xw, $aArticles["page"][$i]["apps_links"]);
