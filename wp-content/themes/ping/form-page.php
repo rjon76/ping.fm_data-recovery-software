@@ -800,7 +800,11 @@ error_reporting(E_ALL);
                     success: function (data) {
                         console.log(data)
                         if(data == 'done') {
+                            jQuery('.stepTitle').html('All done! autoreload will happen in 3 seconds')
                             clearInterval(startInterval);
+                            setTimeout(() => {
+                                location.reload()
+                            }, 3000);
                         }
 
                         if(data == 'start') {
