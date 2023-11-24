@@ -798,6 +798,7 @@ error_reporting(E_ALL);
                     url: jQuery("#article").attr('data-stepsf'),
                     dataType: 'text',
                     success: function (data) {
+                        console.log(data)
                         if(data == 'done') {
                             clearInterval(startInterval);
                         }
