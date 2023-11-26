@@ -276,7 +276,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $prompt = "Write a 1500-word detailed, how-to style article about a specific topic (referred to as $title).
                     The article should read as though it's written from a personal experience, detailing various methods and steps you've supposedly used.
                     Ensure the content is original, unique, and SEO-friendly, using American English.
-                    Incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article.
+                    Incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description).
                     The link should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content.
                     Avoid using alternative names for this link. Additionally must include other relevant high-authority links as needed, with the format <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
                     For each method described, insert a corresponding link where appropriate. Emphasize key topics and keywords using bold text (<b></b>).
