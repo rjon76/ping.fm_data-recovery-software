@@ -426,13 +426,13 @@ error_reporting(E_ALL);
 
                             <?php if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0 && (!empty($aArticles["page"][0]["title"]) || !empty($aArticles["page"]["title"]))) { ?>
                                 <h3>Last / Selected article:</h3>
-                                <p id="lastTitle">TITLE: <span><?php echo $title;?></span></p>
-                                <p id="lastH1">H1 TITLE: <span><?php echo $h1title;?></span></p>
-                                <p id="lastPostUrl">URL for Post: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                                <p id="lastTitle">What would you like to write about: <span><?php echo $title;?></span></p>
+                                <p id="lastH1">H1 (Article Title): <span><?php echo $h1title;?></span></p>
+                                <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
                                 <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
-                                <p id="lastURL">URL: <span><?php echo $url;?></span></p>
-                                <p id="lastURLDescr">URL Description: <span><?php echo $url_descr;?></span></p>
-                                <p id="lastAnchor">Anchor: <span><?php echo $anchor;?></span></p>
+                                <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo $url;?></span></p>
+                                <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo $url_descr;?></span></p>
+                                <p id="lastAnchor">Link Anchor: <span><?php echo $anchor;?></span></p>
                                 <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                                 <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
                                 <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
@@ -664,7 +664,7 @@ error_reporting(E_ALL);
                 } else {
                     jQuery('#apps_links').prop('checked',false);
                 }
-                jQuery(jQuery('#url')[0]).prop('disabled', true);
+                jQuery(jQuery('#post_url')[0]).prop('disabled', true);
                 document.getElementById("genNewArt").click();
             })
             jQuery('#DeleteArticle').on('click', function(e) {
