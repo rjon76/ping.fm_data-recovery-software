@@ -235,7 +235,7 @@ function generateImageDall3($title, $OPENAI_API_KEY) {
 
     $data = array(
         'model' => 'dall-e-3',
-        'prompt' => "Create an image in a simple 3D cartoon style that represents the concept of $title. The image should visually depict the idea without any use of text or captions. It could include elements  and visual metaphors for ‘Data Recovery Software’, but should not contain any written words",
+        'prompt' => "Create an image in a simple 3D cartoon style that represents the concept of $title. The image should visually depict the idea without any use of text or captions. It could include elements  and visual metaphors for $title, but should not contain any written words",
         'n' => 1,
         'quality' => 'hd',
         'size' => "1792x1024",
