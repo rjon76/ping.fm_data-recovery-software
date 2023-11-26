@@ -664,8 +664,8 @@ error_reporting(E_ALL);
                 } else {
                     jQuery('#apps_links').prop('checked',false);
                 }
+                jQuery(jQuery('#url')[0]).prop('disabled', true);
                 document.getElementById("genNewArt").click();
-                jQuery("#article").submit()
             })
             jQuery('#DeleteArticle').on('click', function(e) {
                 e.preventDefault()
