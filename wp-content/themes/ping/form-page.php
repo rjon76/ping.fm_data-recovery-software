@@ -701,6 +701,7 @@ error_reporting(E_ALL);
             })
             jQuery("#article").on("submit", function(event) {
                 event.preventDefault()
+                jQuery(jQuery('#post_url')[0]).prop('disabled', false);
                 const formData = new FormData(this);
                 
                 if( jQuery('#title')[0].value.trim().length === 0 ||
