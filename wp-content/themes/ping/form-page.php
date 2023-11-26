@@ -317,7 +317,7 @@ error_reporting(E_ALL);
 </style>
 		<main>
 			<div class="container">
-                <div class="loader filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/time_record.txt'; ?>">
+                <div class="loader filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                     <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
                     <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                         <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
@@ -437,7 +437,7 @@ error_reporting(E_ALL);
                                 <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
                                 <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
-                                <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/time_record.txt'; ?>">
+                                <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                                     <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                     <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                                     <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
@@ -454,7 +454,7 @@ error_reporting(E_ALL);
                         </div>
                     </div>
                     <div id="generateArticle" class="tabcontent">
-                        <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/time_record.txt'; ?>">
+                        <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                             <h3>New record:</h3>
                             <label for="title">What would you like to write about (max 150 characters)</label>
                             <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
@@ -485,7 +485,7 @@ error_reporting(E_ALL);
                         </form>
                     </div>
                 <?php } else { ?>
-                    <div class="loader show filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/time_record.txt'; ?>">
+                    <div class="loader show filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                         <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
                         <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                             <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
