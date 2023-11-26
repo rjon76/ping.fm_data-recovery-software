@@ -73,16 +73,16 @@ if($_POST["faq_theme"]) {
     $faq_theme = $_POST["faq_theme"];
 }
 
-if($_POST["file_url"]) {
-    $image_src = $_POST["file_url"];
-}
-
-if ($_FILES['file']) {
+if (!empty($_FILES['file']["tmp_name"])) {
     $moved = move_uploaded_file($_FILES["file"]["tmp_name"], $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]));
 
     if( $moved ) {
         $image_src = $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]);
     }
+}
+
+if(empty($_FILES['file']["tmp_name"]) && $faq_theme) {
+    $image_src = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $faq_theme))).'.jpg';
 }
 
 if( !$_POST["anchor"] || !$_POST["url"] ||
@@ -155,7 +155,7 @@ function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text)
 	return $rect;
 }
 
-function generateImgWithTitle($title, $image_src) {
+function generateImgWithTitle($title, $image_src, $isAi = false) {
     $capture        = imagecreatefromjpeg($image_src);
     $font_path      = __DIR__ . "/fonts/Inter-Bold.ttf";
     $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $title))).'.jpg';
@@ -176,9 +176,11 @@ function generateImgWithTitle($title, $image_src) {
     $transformY = rand(140, $h - $h_new - 140);
 
     $bgColor = imagecolorallocatealpha($capture, 1, 1, 1, 127);
-    $capture = imagerotate($capture, $degrees, $bgColor);
 
-    $capture = imagecrop($capture, ['x' => $transformX, 'y' => $transformY, 'width' => $width, 'height' => $height]);
+    if(!$isAi) {
+        $capture = imagerotate($capture, $degrees, $bgColor);
+        $capture = imagecrop($capture, ['x' => $transformX, 'y' => $transformY, 'width' => $width, 'height' => $height]);
+    }
 
     # Add Title
     $color = imagecolorallocate($capture, 0x00, 0x00, 0x00);
@@ -227,6 +229,60 @@ function generateImgWithTitle($title, $image_src) {
     # Save Image  
     imagejpeg($capture, $save_file, 70);
     imagedestroy($capture);
+}
+
+function generateImageDall3($title, $OPENAI_API_KEY) {
+
+    $data = array(
+        'model' => 'dall-e-3',
+        'prompt' => "Create an image in a simple 3D cartoon style that represents the concept of $title. The image should visually depict the idea without any use of text or captions. It could include elements  and visual metaphors for ‘Data Recovery Software’, but should not contain any written words",
+        'n' => 1,
+        'quality' => 'hd',
+        'size' => "1792x1024",
+    );
+
+    $post_json = json_encode($data);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/images/generations');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_json);
+
+    $headers = array();
+    $headers[] = 'Content-Type: application/json';
+    $headers[] = "Authorization: Bearer $OPENAI_API_KEY";
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result = curl_exec($ch);
+    return json_decode($result);
+
+    curl_close($ch);
+}
+
+function saveAiImage($url, $path) {
+    $image = imagecreatefrompng($url);
+    $bg = imagecreatetruecolor(imagesx($image), imagesy($image));
+
+    imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
+    imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+
+    $w = imagesx($image);
+    $h = imagesy($image);
+
+    imagedestroy($image);
+
+    $w_div_h = $w / $h;
+    $w_new = 1280;
+    $h_new = $w_new / $w_div_h;
+
+    $capture33 = imagecreatetruecolor($w_new, $h_new);
+    imagecopyresampled($capture33, $bg, 0, 0, 0, 0, $w_new, $h_new, $w, $h);
+
+    $quality = 70;
+    imagejpeg($capture33, $path, $quality);
+    imagedestroy($capture33);
 }
 
 function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY) {
@@ -586,6 +642,20 @@ xmlwriter_start_element($xw, 'root');
 
     $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $h1title)));
 
+    if(empty($_FILES['file']["tmp_name"])) {
+        $gen_image_src = null;
+
+        do {
+            $gen_image = generateImageDall3($faq_theme, $OPENAI_API_KEY);
+            if( isset($gen_image->data[0]->url) ) {
+                $gen_image_src = $gen_image->data[0]->url;
+            }
+        } while ( is_null($gen_image_src) );
+
+        saveAiImage($gen_image_src, $image_src);
+        generateImgWithTitle($h1title, $image_src, true);
+    }
+
     if($moved) {
         generateImgWithTitle($h1title, $image_src);
     }
@@ -864,9 +934,7 @@ $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
-if($moved) {
-    unlink($image_src);
-}
+unlink($image_src);
 
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');

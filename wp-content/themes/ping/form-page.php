@@ -472,7 +472,6 @@ error_reporting(E_ALL);
                             <input type="text" id="anchor" name="anchor" data-last="<?php echo $anchor;?>">
                             <label for="file">Featured Image (JPG only)</label>
                             <input type="file" name="file" id="file">
-                            <input type="text" name="file_url" id="file_url" class="hidden" data-last="<?php echo $file_url;?>">
                             <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
                             <label for="faq_theme">Please provide me with a keyword or niche for which you want to generate a (FAQ) section and an AI image.</label>
                             <input type="text" id="faq_theme" name="faq_theme" data-last="<?php echo $faq_theme;?>">
@@ -656,7 +655,6 @@ error_reporting(E_ALL);
                 jQuery('#anchor')[0].value = jQuery(jQuery('#anchor')[0]).attr('data-last')
                 jQuery('#url_descr')[0].value = jQuery(jQuery('#url_descr')[0]).attr('data-last')
                 jQuery('#post_url')[0].value = jQuery(jQuery('#post_url')[0]).attr('data-last')
-                jQuery('#file_url')[0].value = jQuery(jQuery('#file_url')[0]).attr('data-last')
                 jQuery('#youtube_url')[0].value = jQuery(jQuery('#youtube_url')[0]).attr('data-last')
                 jQuery('#faq_theme')[0].value = jQuery(jQuery('#faq_theme')[0]).attr('data-last')
                 if(jQuery(jQuery('#apps_links')[0]).attr('data-checked') == 'true') {
@@ -709,7 +707,6 @@ error_reporting(E_ALL);
                     jQuery('#meta_title')[0].value.trim().length === 0 ||
                     jQuery('#url')[0].value.trim().length === 0 ||
                     jQuery('#anchor')[0].value.trim().length === 0 ||
-                    (jQuery('#file')[0].files.length === 0 && jQuery('#file_url')[0].value.trim().length === 0) ||
                     jQuery('#url_descr')[0].value.trim().length === 0 ||
                     jQuery('#post_url')[0].value.trim().length === 0) {
                     alert('All fields is required (Create new article) !!')
@@ -788,7 +785,6 @@ error_reporting(E_ALL);
                 jQuery(jQuery('#anchor')[0]).attr('data-last', jQuery(this).attr('data-anchor'))
                 jQuery(jQuery('#url_descr')[0]).attr('data-last', jQuery(this).attr('data-url_descr'))
                 jQuery(jQuery('#post_url')[0]).attr('data-last', jQuery(this).attr('data-post_url'))
-                jQuery(jQuery('#file_url')[0]).attr('data-last', jQuery(this).attr('data-file_url'))
                 jQuery(jQuery('#youtube_url')[0]).attr('data-last', jQuery(this).attr('data-youtubeUrl'))
                 jQuery(jQuery('#faq_theme')[0]).attr('data-last', jQuery(this).attr('data-faq_theme'))
                 jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
