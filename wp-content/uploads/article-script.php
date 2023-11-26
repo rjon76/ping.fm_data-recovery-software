@@ -73,20 +73,16 @@ if($_POST["faq_theme"]) {
     $faq_theme = $_POST["faq_theme"];
 }
 
-if ($_FILES['file'] && empty($_POST["file_url"])) {
+if($_POST["file_url"]) {
+    $image_src = $_POST["file_url"];
+}
+
+if ($_FILES['file']) {
     $moved = move_uploaded_file($_FILES["file"]["tmp_name"], $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]));
 
     if( $moved ) {
         $image_src = $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]);
-    } else {
-        $image_src = '';
-        echo 'false';
-        exit();
     }
-}
-
-if($_POST["file_url"]) {
-    $image_src = $_POST["file_url"];
 }
 
 if( !$_POST["anchor"] || !$_POST["url"] ||
@@ -590,7 +586,7 @@ xmlwriter_start_element($xw, 'root');
 
     $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $h1title)));
 
-    if(!$_POST["file_url"]) {
+    if($moved) {
         generateImgWithTitle($h1title, $image_src);
     }
 
@@ -868,7 +864,7 @@ $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
-if(!$_POST["file_url"]) {
+if($moved) {
     unlink($image_src);
 }
 
