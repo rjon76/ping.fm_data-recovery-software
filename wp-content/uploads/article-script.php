@@ -304,7 +304,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                 • Be optimized for search engines, engaging for readers, and written in American English.
                 • Be original and unique, ensuring it won't be flagged as copied or similar by plagiarism detection tools.
                 Include specific instructions for hyperlinking within the article:
-                • Add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>.
+                • Add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>. Apply this rule just once for each article.
                 • Integrate this link naturally into the content, accompanied by a relevant description ($url_description).
                 • Do not refer to the link URL ($anchor_url) by any other name.
                 • Add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
@@ -329,7 +329,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                     The article should read as though it's written from a personal experience, detailing various methods and steps you've supposedly used.
                     Ensure the content is original, unique, and SEO-friendly, using American English.
                     Incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description).
-                    The link should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content.
+                    The link should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content. Apply this rule just once for each article.
                     Avoid using alternative names for this link. Additionally must include other relevant high-authority links as needed, with the format <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
                     For each method described, insert a corresponding link where appropriate. Emphasize key topics and keywords using bold text (<b></b>).
                     Refrain from using personal or channel names, and do not include links to images. When referencing URLs, always use the <a href> format.";
