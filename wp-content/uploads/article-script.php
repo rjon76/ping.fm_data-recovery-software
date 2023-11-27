@@ -219,7 +219,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false) {
     $cY = ($length * 70) - 105;
 
     $image = imagecreatetruecolor(400, 400);
-    $black = imagecolorallocate($image, 0, 0, 0);
+    $black = imagecolorallocatealpha($image, 0, 0, 0, 30);
 
     imagefill($image, 0, 0, $black);
       
