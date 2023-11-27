@@ -291,10 +291,12 @@ error_reporting(E_ALL);
         background: red !important;
     }
     .modal-w {
-        background: #FFF;
         padding: 40px;
         border-radius: 16px;
         width: 600px;
+    }
+    .modal-w.body {
+        background: #FFF;
     }
     .modal-w .modal-b {
         display: none;
