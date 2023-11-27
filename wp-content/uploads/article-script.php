@@ -328,11 +328,11 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $prompt = "Write a 1500-word detailed, how-to style article about a specific topic (referred to as $title).
                     The article should read as though it's written from a personal experience, detailing various methods and steps you've supposedly used.
                     Ensure the content is original, unique, and SEO-friendly, using American English.
-                    Incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description).
+                    Incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description), only 1 link per article.
                     The link should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content. Apply this rule just once for each article.
                     Avoid using alternative names for this link. Additionally must include other relevant high-authority links as needed, with the format <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
                     For each method described, insert a corresponding link where appropriate. Emphasize key topics and keywords using bold text (<b></b>).
-                    Refrain from using personal or channel names, and do not include links to images. When referencing URLs, always use the <a href> format.";
+                    Refrain from using personal or channel names, and do not include links to images. When referencing URLs, always use the <a href> format";
     }
     // use reddit style posts and american english model;
     $data = array(
@@ -355,15 +355,15 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                         ],
                         "scenario1" => [
                             "type" => "string",
-                            "description" => "Scenario1 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
+                            "description" => "Scenario1 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. Don't use scenario word",
                         ],
                         "scenario2" => [
                             "type" => "string",
-                            "description" => "Scenario2 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
+                            "description" => "Scenario2 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. Don't use scenario word",
                         ],
                         "scenario3" => [
                             "type" => "string",
-                            "description" => "Scenario3 with HTML formats.<h3>Common Scenario Description with 1 emoji</h3>. <ul>2-5 Brief overviews of the solution inside <li></li></ul>. Don't use scenario word",
+                            "description" => "Scenario3 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. Don't use scenario word",
                         ],
                         "step1" => [
                             "type" => "string",
