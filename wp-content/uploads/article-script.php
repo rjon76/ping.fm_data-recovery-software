@@ -331,7 +331,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                     Incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description), only 1 link per article.
                     The link should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content. Apply this rule just once for each article.
                     Avoid using alternative names for this link. Additionally must include other relevant high-authority links as needed, with the format <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
-                    For each method described, insert a corresponding link where appropriate. Emphasize key topics and keywords using bold text (<b></b>).
+                    For each method described, insert a corresponding link where appropriate. Emphasize key words, including the names of steps and any text within quotation marks, by making them bold (<b></b>).
                     Refrain from using personal or channel names, and do not include links to images. When referencing URLs, always use the <a href> format";
     }
     // use reddit style posts and american english model;
