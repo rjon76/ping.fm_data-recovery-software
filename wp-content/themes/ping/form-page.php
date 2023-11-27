@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 	get_header();
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
-    file_put_contents($file, 'done');
+    // file_put_contents($file, 'done');
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
 
     $title = '';
