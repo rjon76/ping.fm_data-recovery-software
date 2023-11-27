@@ -83,9 +83,9 @@ if($current_language == 'de_DE') {
 							<?php echo $curr_lang; ?>
 						</a>
 					</div>
-					<ul class="langList">
+					<!-- <ul class="langList">
 						<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
-					</ul>
+					</ul> -->
 				</div>
 				<ul>
 					<li>

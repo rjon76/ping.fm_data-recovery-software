@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 	get_header();
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
+    file_put_contents($file, 'done');
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
 
     $title = '';
@@ -88,7 +89,7 @@ error_reporting(E_ALL);
       if($current == 'start') {
           $infoStepText = 'AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹';
       } else if($current == 'faq') {
-          $infoStepText = 'FAQ content generation…';
+          $infoStepText = 'FAQ generation…';
       } else if($current == 'import') {
           $infoStepText = 'Article import...please wait,<br>  усі нагодовані 🐈?';
       } else {
@@ -647,7 +648,7 @@ error_reporting(E_ALL);
                                 }
 
                                 if(data == 'faq') {
-                                    jQuery('.stepTitle').html('FAQ content generation…')
+                                    jQuery('.stepTitle').html('FAQ generation…')
                                 }
 
                                 if(data == 'import') {
@@ -763,7 +764,7 @@ error_reporting(E_ALL);
                                 }
 
                                 if(data == 'faq') {
-                                    jQuery('.stepTitle').html('FAQ content generation…')
+                                    jQuery('.stepTitle').html('FAQ generation…')
                                 }
 
                                 if(data == 'import') {
@@ -821,7 +822,7 @@ error_reporting(E_ALL);
                         }
 
                         if(data == 'faq') {
-                            jQuery('.stepTitle').html('FAQ content generation…')
+                            jQuery('.stepTitle').html('FAQ generation…')
                         }
 
                         if(data == 'import') {
