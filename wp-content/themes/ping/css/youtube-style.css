@@ -161,6 +161,8 @@ article > section:not(:first-child):not(:last-child) p {
 article > section:not(:first-child):not(:last-child) .iframe iframe {
   width: 100% !important;
   border-radius: 16px;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
 }
 article > section:not(:first-child):not(:last-child) ol,
 article > section:not(:first-child):not(:last-child) ul {
