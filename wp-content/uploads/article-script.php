@@ -298,7 +298,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString8 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title8</a></h2><p>Soft/Application Description8 80-120 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $stepString9 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title9</a></h2><p>Soft/Application Description9 80-120 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $stepString10 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title10</a></h2><p>Soft/Application Description10 80-120 words</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
-        $information_string = "Add valuable information, around 500 words with html formats in <p> tags; Add <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a> and add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[URL]</a>";
+        $information_string = "Add valuable information, around 500 words with html formats in <p> tags; inside paragraphs extensively use '<b></b>' for topics, keywords; Add <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a> and add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[URL]</a>";
         $prompt = "Write a 1500-word blog article about $title from a personal perspective, as if you have firsthand experience with them. The article should:
                 • Present balanced opinions, avoiding overt promotion of the apps.
                 • Be optimized for search engines, engaging for readers, and written in American English.
@@ -324,7 +324,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString8 = 'Step-by-Step Guide with HTML formats. <h3>Method 8: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString9 = 'Step-by-Step Guide with HTML formats. <h3>Method 9: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method] with 1 emoji</h3> <ul>3-5 steps inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $information_string = "Add valuable information, around 500 words with html formats in <p> tags; Add <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a> and add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[URL]</a>";
+        $information_string = "Add valuable information, around 500 words with html formats in <p> tags; inside paragraphs extensively use '<b></b>' for topics, keywords; Add <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a> and add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[URL]</a>";
         $prompt = "Write a 1500-word detailed, how-to style article about a specific topic (referred to as $title).
 
                 The article should read as though it's written from a personal experience, detailing various methods and steps you've supposedly used.
@@ -359,19 +359,19 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                     "properties" => [
                         "intro" => [
                             "type" => "string",
-                            "description" => "Introduction paragraph of the article. Important provide external hyperlinks for convenient user navigation",
+                            "description" => "Introduction paragraph of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords.",
                         ],
                         "scenario1" => [
                             "type" => "string",
-                            "description" => "Scenario1 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. Emphasize key words, including text within quotation (‘’) marks, by making them bold (<b></b>). Don't use scenario word",
+                            "description" => "Scenario1 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. inside paragraphs and <li> extensively use '<b></b>' for topics, keywords.",
                         ],
                         "scenario2" => [
                             "type" => "string",
-                            "description" => "Scenario2 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. Emphasize key words, including text within quotation (‘’) marks, by making them bold (<b></b>). Don't use scenario word",
+                            "description" => "Scenario2 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. inside paragraphs and <li> extensively use '<b></b>' for topics, keywords.",
                         ],
                         "scenario3" => [
                             "type" => "string",
-                            "description" => "Scenario3 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. Emphasize key words, including text within quotation (‘’) marks, by making them bold (<b></b>). Don't use scenario word",
+                            "description" => "Scenario3 with HTML formats.<h3>Frequent scenario of the problem's occurrence with 1 emoji</h3>. <ul>description for scenario inside <li></li></ul>. inside paragraphs and <li> extensively use '<b></b>' for topics, keywords.",
                         ],
                         "step1" => [
                             "type" => "string",
@@ -415,7 +415,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                         ],
                         "tips" => [
                             "type" => "array",
-                            "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. extensively use emojis only in title. Emphasize key words, including text within quotation (‘’) marks, by making them bold (<b></b>)",
+                            "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. extensively use emojis only in title. inside paragraphs extensively use '<b></b>' for topics, keywords.",
                             "items" => [
                                 "type" => "string",
                                 "description" => "Precautions and Tips description.",
@@ -423,7 +423,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                         ],
                         "infotitle" => [
                             "type" => "string",
-                            "description" => "Optimized title for block with text 1-2 words, not conclusion: added valuable information around 500 words at the end of article with links to high authority relevant websites. Emphasize key words, including text within quotation (‘’) marks, by making them bold (<b></b>)",
+                            "description" => "Optimized title for block with text 1-2 words, not conclusion: added valuable information around 500 words at the end of article with links to high authority relevant websites. inside paragraphs extensively use '<b></b>' for topics, keywords.",
                         ],
                         "information" => [
                             "type" => "string",
@@ -431,7 +431,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                         ],
                         "conclusion" => [
                             "type" => "string",
-                            "description" => "Optimized conclusion of the article. Important provide external hyperlinks for convenient user navigation. Emphasize key words, including text within quotation (‘’) marks, by making them bold (<b></b>)",
+                            "description" => "Optimized conclusion of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords.",
                         ],
                     ],
                     'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "step4", "step5", "tips", "infotitle", "information", "conclusion"],
