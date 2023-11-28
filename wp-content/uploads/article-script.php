@@ -624,7 +624,7 @@ xmlwriter_start_element($xw, 'root');
     ) : '';
     $steps = $page_step1 . $page_step2 . $page_step3 . $page_step4 . $page_step5 . $page_step6 . $page_step7 . $page_step8;
     // ================
-    $tips = isset($b->tips) ? $b->tips : '';
+    $tips = isset($b->tips) ? $b->tips : [];
     // ================
     $page_conclusion = preg_replace_callback(
         $emoji_regex,
@@ -636,14 +636,16 @@ xmlwriter_start_element($xw, 'root');
     $mainString = '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
     $contentString = '';
     $tipsString = '';
-                        
-    foreach($tips as $ke => $step) {
-        $stepTmp = preg_replace_callback(
-            $emoji_regex,
-            function($a) { return emoji_to_entity($a[0]); },
-            $step
-        );
-        $tipsString .= '<li>'.$stepTmp.'</li>';
+             
+    if(!empty($tips)) {
+        foreach($tips as $ke => $step) {
+            $stepTmp = preg_replace_callback(
+                $emoji_regex,
+                function($a) { return emoji_to_entity($a[0]); },
+                $step
+            );
+            $tipsString .= '<li>'.$stepTmp.'</li>';
+        }
     }
 
     $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $h1title)));
