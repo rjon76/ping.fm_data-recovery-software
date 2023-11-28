@@ -625,6 +625,9 @@ xmlwriter_start_element($xw, 'root');
     $steps = $page_step1 . $page_step2 . $page_step3 . $page_step4 . $page_step5 . $page_step6 . $page_step7 . $page_step8;
     // ================
     $tips = isset($b->tips) ? $b->tips : [];
+    if(!is_array($tips)) {
+        $tips = [];
+    }
     // ================
     $page_conclusion = preg_replace_callback(
         $emoji_regex,
