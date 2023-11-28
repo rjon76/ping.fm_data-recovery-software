@@ -539,7 +539,7 @@ xmlwriter_start_element($xw, 'root');
         if( isset($a->choices[0]->message->function_call) ) {
             $b = json_decode($a->choices[0]->message->function_call->arguments);
         }
-    } while ( is_null($b) || is_null($b->step1) );
+    } while ( is_null($b) || !isset($b->step1) || !isset($b->intro) || !isset($b->conclusion) );
 
     writeTimeGeneration($file, 'faq');
 
