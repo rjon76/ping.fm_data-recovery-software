@@ -109,7 +109,7 @@ xmlwriter_start_element($xw, 'root');
 
     do {
         $faq = getInfoFaq($themeFaq, $numberFaq, $OPENAI_API_KEY);
-        if( isset($faq->choices[0]->message) ) {
+        if( isset($faq->choices) && !empty($faq->choices[0]) && isset($faq->choices[0]->message) && isset($faq->choices[0]->message->content) ) {
             $page_faq = $faq->choices[0]->message->content;
         }
     } while ( is_null($page_faq) );

@@ -331,7 +331,6 @@ error_reporting(E_ALL);
     }
 </style>
 		<main>
-            <div class="hidden">123</div>
 			<div class="container">
                 <div class="loader filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                     <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
