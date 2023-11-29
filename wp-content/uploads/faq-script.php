@@ -263,4 +263,6 @@ fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
 
+sleep(30);
+
 writeTimeGeneration($file, 'done');
