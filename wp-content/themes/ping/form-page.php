@@ -446,9 +446,9 @@ error_reporting(E_ALL);
                                 <p id="lastH1">H1 (Article Title): <span><?php echo $h1title;?></span></p>
                                 <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
                                 <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
-                                <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo $url;?></span></p>
-                                <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo $url_descr;?></span></p>
-                                <p id="lastAnchor">Link Anchor: <span><?php echo $anchor;?></span></p>
+                                <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo !empty($url) ? $url : 'not provided';?></span></p>
+                                <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
+                                <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
                                 <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                                 <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
                                 <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
