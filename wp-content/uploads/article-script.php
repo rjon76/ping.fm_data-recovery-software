@@ -297,8 +297,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
     if($apps_links == 'true') {
 
         if( !empty($anchor_url) && !empty($anchor_title) && !empty($url_description) ) {
-            $request_string = "Important, only once add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
-                                Integrate this link naturally into the content, accompanied by a relevant description ($url_description); Do not refer to the link URL ($anchor_url) by any other name;";
+            $request_string = "Important, only once add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>; Integrate this link naturally into the content, accompanied by a relevant description ($url_description); Do not refer to the link URL ($anchor_url) by any other name;";
         }
 
         $stepString1 = '<h2><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title1</a></h2><p>Soft/Application Description1 80-120 words, extensively use <b></b> for topics, keywords</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
@@ -351,8 +350,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                 Avoid using alternative names for this link. Additionally must include other relevant high-authority links as needed, with the format <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
                 For each method described, insert a corresponding link where appropriate. Emphasize key topics and keywords using bold text (<b></b>).
                 Refrain from using personal or channel names, and do not include links to images. When referencing URLs, always use the <a href> format";
-        $introstring = "Introduction paragraph of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords.
-                ";
+        $introstring = "Introduction paragraph of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords. $request_string";
     }
     // use reddit style posts and american english model;
     $data = array(
