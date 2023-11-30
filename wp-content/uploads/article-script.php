@@ -50,15 +50,21 @@ if ($_POST["meta_title"]) {
 }
 
 if ($_POST["url"]) {
-    $anchor_url = $_POST["url"];
+    $anchor_url = trim($_POST["url"]);
+} else {
+    $anchor_url = '';
 }
 
 if ($_POST["url_descr"]) {
-    $url_description = $_POST["url_descr"];
+    $url_description = trim($_POST["url_descr"]);
+} else {
+    $url_description = '';
 }
 
 if ($_POST["anchor"]) {
-    $anchor_title = $_POST["anchor"];
+    $anchor_title = trim($_POST["anchor"]);
+} else {
+    $anchor_title = '';
 }
 
 if ($_POST["post_url"]) {
@@ -85,9 +91,8 @@ if(empty($_FILES['file']["tmp_name"]) && $faq_theme) {
     $image_src = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $faq_theme))).'.jpg';
 }
 
-if( !$_POST["anchor"] || !$_POST["url"] ||
-    !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
-    !$_POST["url_descr"] || !$_POST["post_url"] || !$_POST["faq_theme"] ) {
+if( !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
+    !$_POST["post_url"] || !$_POST["faq_theme"] ) {
     echo 'false';
     exit();
 }
@@ -286,8 +291,16 @@ function saveAiImage($url, $path) {
 }
 
 function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY) {
+
+    $request_string = '';
     
     if($apps_links == 'true') {
+
+        if( !empty($anchor_url) && !empty($anchor_title) && !empty($url_description) ) {
+            $request_string = "Important, only once add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
+                                Integrate this link naturally into the content, accompanied by a relevant description ($url_description); Do not refer to the link URL ($anchor_url) by any other name;";
+        }
+
         $stepString1 = '<h2><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title1</a></h2><p>Soft/Application Description1 80-120 words, extensively use <b></b> for topics, keywords</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $stepString2 = '<h2><a href="url to soft/app" rel="nofollow" target="_blank">Soft/Application Title2</a></h2><p>Soft/Application Description2 80-120 words, extensively use <b></b> for topics, keywords</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $stepString3 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title3</a></h2><p>Soft/Application Description3 80-120 words, extensively use <b></b> for topics, keywords</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
@@ -300,8 +313,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
         $stepString10 = '<h2><a href="url to web/app" rel="nofollow" target="_blank">Soft/Application Title10</a></h2><p>Soft/Application Description10 80-120 words, extensively use <b></b> for topics, keywords</p><a href="url to soft/app" rel="nofollow" target="_blank" class="ofWSite">Official Website</a><h3 class="prosTitle">Pros</h3><ul class="listpc pros"><li>PROS1</li><li>PROS2</li></ul><h3 class="consTitle">Cons</h3><ul class="listpc cons"><li>CONS1</li><li>CONS2</li></ul>';
         $information_string = "Add valuable information, around 500 words with html formats in <p> tags;
                                 inside paragraphs extensively use '<b></b>' for topics, keywords;
-                                Important, only once add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>;
-                                Integrate this link naturally into the content, accompanied by a relevant description ($url_description); Do not refer to the link URL ($anchor_url) by any other name;
+                                $request_string
                                 Add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.";
         $prompt = "Write a 1500-word blog article about $title from a personal perspective, as if you have firsthand experience with them. The article should:
                 • Present balanced opinions, avoiding overt promotion of the apps.
@@ -316,16 +328,21 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                 • When mentioning URLs, format them as clickable links (<a href>).";
         $introstring = "Introduction paragraph of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords.";
     } else {
-        $stepString1 = 'Step-by-Step Guide with HTML formats. <h3>Method 1: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString2 = 'Step-by-Step Guide with HTML formats. <h3>Method 2: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString3 = 'Step-by-Step Guide with HTML formats. <h3>Method 3: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString4 = 'Step-by-Step Guide with HTML formats. <h3>Method 4: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString5 = 'Step-by-Step Guide with HTML formats. <h3>Method 5: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString6 = 'Step-by-Step Guide with HTML formats. <h3>Method 6: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString7 = 'Step-by-Step Guide with HTML formats. <h3>Method 7: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString8 = 'Step-by-Step Guide with HTML formats. <h3>Method 8: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString9 = 'Step-by-Step Guide with HTML formats. <h3>Method 9: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
-        $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application, not '.$anchor_url.'</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+
+        if( !empty($anchor_url) && !empty($anchor_title) && !empty($url_description) ) {
+            $request_string = "Important, only once incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description), should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content.";
+        }
+
+        $stepString1 = 'Step-by-Step Guide with HTML formats. <h3>Method 1: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString2 = 'Step-by-Step Guide with HTML formats. <h3>Method 2: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString3 = 'Step-by-Step Guide with HTML formats. <h3>Method 3: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString4 = 'Step-by-Step Guide with HTML formats. <h3>Method 4: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString5 = 'Step-by-Step Guide with HTML formats. <h3>Method 5: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString6 = 'Step-by-Step Guide with HTML formats. <h3>Method 6: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString7 = 'Step-by-Step Guide with HTML formats. <h3>Method 7: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString8 = 'Step-by-Step Guide with HTML formats. <h3>Method 8: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString9 = 'Step-by-Step Guide with HTML formats. <h3>Method 9: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
+        $stepString10 = 'Step-by-Step Guide with HTML formats. <h3>Method 10: [Name of the Method in <h3> tag] with 1 emoji</h3> <ul>3-5 steps, extensively use <b></b> for topics, keywords, inside <li></li> at one of the step, important insert link with <a href> to the corresponding website or application</ul><p><b>Note:</b> Note</p>, <p><b>Conclusion:</b> Conclusion</p>';
         $information_string = "Add valuable information, around 500 words with html formats in <p> tags; inside paragraphs extensively use '<b></b>' for topics, keywords; Add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[URL]</a>";
         $prompt = "Write a 1500-word detailed, how-to style article about a specific topic (referred to as $title).
                 The article should read as though it's written from a personal experience, detailing various methods and steps you've supposedly used.
@@ -335,7 +352,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                 For each method described, insert a corresponding link where appropriate. Emphasize key topics and keywords using bold text (<b></b>).
                 Refrain from using personal or channel names, and do not include links to images. When referencing URLs, always use the <a href> format";
         $introstring = "Introduction paragraph of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords.
-                Important, only once incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description), should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content.";
+                ";
     }
     // use reddit style posts and american english model;
     $data = array(

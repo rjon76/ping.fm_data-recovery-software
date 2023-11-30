@@ -36,9 +36,9 @@ error_reporting(E_ALL);
                 $title = $aArticles["page"]["title"];
                 $h1title = $aArticles["page"]["h1title"];
                 $meta_title = $aArticles["page"]["page_meta"];
-                $url = $aArticles["page"]["url"];
-                $url_descr = $aArticles["page"]["url_descr"];
-                $anchor = $aArticles["page"]["anchor"];
+                $url = is_string($aArticles["page"]["url"]) ? $aArticles["page"]["url"] : '';
+                $url_descr = is_string($aArticles["page"]["url_descr"]) ? $aArticles["page"]["url_descr"] : '';
+                $anchor = is_string($aArticles["page"]["anchor"]) ? $aArticles["page"]["anchor"] : '';
                 $post_url = $aArticles["page"]["post_url"];
                 $file_url = $aArticles["page"]["page_image"];
                 $youtubeUrl = is_string($aArticles["page"]["youtube_url"]) ? $aArticles["page"]["youtube_url"] : '';
@@ -50,9 +50,9 @@ error_reporting(E_ALL);
                     $title = $aArticles["page"][0]["title"];
                     $h1title = $aArticles["page"][0]["h1title"];
                     $meta_title = $aArticles["page"][0]["page_meta"];
-                    $url = $aArticles["page"][0]["url"];
-                    $url_descr = $aArticles["page"][0]["url_descr"];
-                    $anchor = $aArticles["page"][0]["anchor"];
+                    $url = is_string($aArticles["page"][0]["url"]) ? $aArticles["page"][0]["url"] : '';
+                    $url_descr = is_string($aArticles["page"][0]["url_descr"]) ? $aArticles["page"][0]["url_descr"] : '';
+                    $anchor = is_string($aArticles["page"][0]["anchor"]) ? $aArticles["page"][0]["anchor"] : '';
                     $post_url = $aArticles["page"][0]["post_url"];
                     $file_url = $aArticles["page"][0]["page_image"];
                     $youtubeUrl = is_string($aArticles["page"][0]["youtube_url"]) ? $aArticles["page"][0]["youtube_url"] : '';
@@ -64,9 +64,9 @@ error_reporting(E_ALL);
                     $title = $aArticles["page"][count($aArticles["page"]) - 1]["title"];
                     $h1title = $aArticles["page"][count($aArticles["page"]) - 1]["h1title"];
                     $meta_title = $aArticles["page"][count($aArticles["page"]) - 1]["page_meta"];
-                    $url = $aArticles["page"][count($aArticles["page"]) - 1]["url"];
-                    $url_descr = $aArticles["page"][count($aArticles["page"]) - 1]["url_descr"];
-                    $anchor = $aArticles["page"][count($aArticles["page"]) - 1]["anchor"];
+                    $url = is_string($aArticles["page"][count($aArticles["page"]) - 1]["url"]) ? $aArticles["page"][count($aArticles["page"]) - 1]["url"] : '';
+                    $url_descr = is_string($aArticles["page"][count($aArticles["page"]) - 1]["url_descr"]) ? $aArticles["page"][count($aArticles["page"]) - 1]["url_descr"] : '';
+                    $anchor = is_string($aArticles["page"][count($aArticles["page"]) - 1]["anchor"]) ? $aArticles["page"][count($aArticles["page"]) - 1]["anchor"] : '';
                     $post_url = $aArticles["page"][count($aArticles["page"]) - 1]["post_url"];
                     $file_url = $aArticles["page"][count($aArticles["page"]) - 1]["page_image"];
                     $youtubeUrl = is_string($aArticles["page"][count($aArticles["page"]) - 1]["youtube_url"]) ? $aArticles["page"][count($aArticles["page"]) - 1]["youtube_url"] : '';
@@ -423,9 +423,9 @@ error_reporting(E_ALL);
                                                 data-title="<?php echo $aArticles["page"][$i]["title"]; ?>"
                                                 data-h1title="<?php echo $aArticles["page"][$i]["h1title"]; ?>"
                                                 data-meta_title="<?php echo $aArticles["page"][$i]["page_meta"]; ?>"
-                                                data-url="<?php echo $aArticles["page"][$i]["url"]; ?>"
-                                                data-url_descr="<?php echo $aArticles["page"][$i]["url_descr"]; ?>"
-                                                data-anchor="<?php echo $aArticles["page"][$i]["anchor"]; ?>"
+                                                data-url="<?php echo is_string($aArticles["page"][$i]["url"]) ? $aArticles["page"][$i]["url"] : ''; ?>"
+                                                data-url_descr="<?php echo is_string($aArticles["page"][$i]["url_descr"]) ? $aArticles["page"][$i]["url_descr"] : ''; ?>"
+                                                data-anchor="<?php echo is_string($aArticles["page"][$i]["anchor"]) ? $aArticles["page"][$i]["anchor"] : ''; ?>"
                                                 data-post_url="<?php echo $aArticles["page"][$i]["post_url"]; ?>"
                                                 data-file_url="<?php echo $aArticles["page"][$i]["page_image"]; ?>"
                                                 data-youtubeUrl="<?php echo is_string($aArticles["page"][$i]["youtube_url"]) ? $aArticles["page"][$i]["youtube_url"] : ''; ?>"
@@ -719,9 +719,6 @@ error_reporting(E_ALL);
                 if( jQuery('#title')[0].value.trim().length === 0 ||
                     jQuery('#h1title')[0].value.trim().length === 0 ||
                     jQuery('#meta_title')[0].value.trim().length === 0 ||
-                    jQuery('#url')[0].value.trim().length === 0 ||
-                    jQuery('#anchor')[0].value.trim().length === 0 ||
-                    jQuery('#url_descr')[0].value.trim().length === 0 ||
                     jQuery('#post_url')[0].value.trim().length === 0) {
                     alert('All fields is required (Create new article) !!')
                 } else {
