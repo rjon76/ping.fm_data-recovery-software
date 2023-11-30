@@ -178,6 +178,7 @@ article > section:not(:first-child):not(:last-child) li {
   margin: 16px 0 6px;
   line-height: 24px;
   font-size: 16px;
+  word-break: break-word;
 }
 article > section:not(:first-child):not(:last-child) li a {
   margin-bottom: 0;
