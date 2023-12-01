@@ -425,13 +425,17 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "type" => "string",
                             "description" => $stepString10,
                         ],
-                        "tips" => [
-                            "type" => "array",
-                            "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. Provide <h3>[Precautions and Tips Title add 1 emoji in <h3> tag, don't use Precautions and Tips words]</h3> as a first element. Inside paragraphs extensively use '<b></b>' for topics, keywords.",
-                            "items" => [
-                                "type" => "string",
-                                "description" => "Precautions and Tips description.",
-                            ],
+                        "tip1" => [
+                            "type" => "string",
+                            "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. Provide <h3>[Precautions and Tips Title add 1 emoji in <h3> tag, don't use Precautions and Tips words]</h3> as a first element. <ul>description for Precautions and Tips inside <li></li></ul>. inside paragraphs and <li> extensively use '<b></b>' for topics, keywords.",
+                        ],
+                        "tip2" => [
+                            "type" => "string",
+                            "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. Provide <h3>[Precautions and Tips Title add 1 emoji in <h3> tag, don't use Precautions and Tips words]</h3> as a first element. <ul>description for Precautions and Tips inside <li></li></ul>. inside paragraphs and <li> extensively use '<b></b>' for topics, keywords.",
+                        ],
+                        "tip3" => [
+                            "type" => "string",
+                            "description" => "Precautions and Tips. Important provide external hyperlinks for convenient user navigation. Provide <h3>[Precautions and Tips Title add 1 emoji in <h3> tag, don't use Precautions and Tips words]</h3> as a first element. <ul>description for Precautions and Tips inside <li></li></ul>. inside paragraphs and <li> extensively use '<b></b>' for topics, keywords.",
                         ],
                         "infotitle" => [
                             "type" => "string",
@@ -446,7 +450,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                             "description" => "Optimized conclusion of the article. Important provide external hyperlinks for convenient user navigation. inside paragraphs extensively use '<b></b>' for topics, keywords.",
                         ],
                     ],
-                    'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "step4", "step5", "tips", "infotitle", "information", "conclusion"],
+                    'required' => ["intro", "scenario1", "scenario2", "scenario3", "step1", "step2", "step3", "step4", "step5", "tip1", "infotitle", "information", "conclusion"],
                 ],
             ]
         ],
@@ -550,7 +554,7 @@ xmlwriter_start_element($xw, 'root');
         if( isset($a->choices[0]->message->function_call) ) {
             $b = json_decode($a->choices[0]->message->function_call->arguments);
         }
-    } while ( is_null($b) || !isset($b->step1) || !isset($b->intro) || !isset($b->conclusion) || !isset($b->tips) );
+    } while ( is_null($b) || !isset($b->step1) || !isset($b->intro) || !isset($b->conclusion) || !isset($b->tip1) );
 
     writeTimeGeneration($file, 'faq');
 
@@ -635,10 +639,21 @@ xmlwriter_start_element($xw, 'root');
     ) : '';
     $steps = $page_step1 . $page_step2 . $page_step3 . $page_step4 . $page_step5 . $page_step6 . $page_step7 . $page_step8;
     // ================
-    $tips = isset($b->tips) ? $b->tips : [];
-    if(!is_array($tips)) {
-        $tips = [];
-    }
+    $page_tip1 = isset($b->tip1) ? preg_replace_callback(
+        $emoji_regex,
+        function($a) { return emoji_to_entity($a[0]); },
+        $b->tip1
+    ) : '';
+    $page_tip2 = isset($b->tip2) ? preg_replace_callback(
+        $emoji_regex,
+        function($a) { return emoji_to_entity($a[0]); },
+        $b->tip2
+    ) : '';
+    $page_tip3 = isset($b->tip3) ? preg_replace_callback(
+        $emoji_regex,
+        function($a) { return emoji_to_entity($a[0]); },
+        $b->tip3
+    ) : '';
     // ================
     $page_conclusion = preg_replace_callback(
         $emoji_regex,
@@ -649,19 +664,7 @@ xmlwriter_start_element($xw, 'root');
     $pageContent = '';
     $mainString = '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
     $contentString = '';
-    $tipsString = '';
-             
-    if(!empty($tips)) {
-        foreach($tips as $ke => $step) {
-            $stepTmp = preg_replace_callback(
-                $emoji_regex,
-                function($a) { return emoji_to_entity($a[0]); },
-                $step
-            );
-            
-            $tipsString .= $stepTmp;
-        }
-    }
+    $tipsString = $page_tip1 . $page_tip2 . $page_tip3;
 
     $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $h1title)));
 
