@@ -330,7 +330,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
     } else {
 
         if( !empty($anchor_url) && !empty($anchor_title) && !empty($url_description) ) {
-            $request_string = "Important, only once incorporate the provided link ($anchor_url) with its exact title ($anchor_title) in a natural, contextual manner within the article, accompanied by a relevant description ($url_description), should be formatted as <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>, and should blend seamlessly into the content.";
+            $request_string = "Important, only once add a dofollow link to a specified URL ($anchor_url) using the exact text of $anchor_title in the format: <a href='$anchor_url' rel='dofollow' target='_blank'>$anchor_title</a>; Integrate this link naturally into the content, accompanied by a relevant description ($url_description); Do not refer to the link URL ($anchor_url) by any other name;";
             $not_anchor = "Important, don't use $anchor_url or $anchor_title.";
         }
 
