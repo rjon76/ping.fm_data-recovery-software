@@ -748,7 +748,7 @@ xmlwriter_start_element($xw, 'root');
             $string = '<section><div><div>3</div><h2>Youtube video to watch</h2></div><div class="iframe">' . 
                             preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $youtube_url)
                         . '</div></section>
-                        <section><div><div>4</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
+                        <section><div><div>4</div><h2>Precautions and Tips:</h2></div>'.$tipsString.'</section>
                         <section><div><div>5</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
                         <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
         }
