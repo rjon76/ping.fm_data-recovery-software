@@ -658,11 +658,8 @@ xmlwriter_start_element($xw, 'root');
                 function($a) { return emoji_to_entity($a[0]); },
                 $step
             );
-            if( strripos($stepTmp, 'h3') === false ) {
-                $tipsString .= '<li>'.$stepTmp.'</li>';
-            } else {
-                $tipsString .= $stepTmp;
-            }
+            
+            $tipsString .= $stepTmp;
         }
     }
 
@@ -744,7 +741,7 @@ xmlwriter_start_element($xw, 'root');
     } else {
 
         if(empty($youtube_url)) {
-            $string = '<section><div><div>3</div><h2>Precautions and Tips:</h2></div><ol>'.$tipsString.'</ol></section>
+            $string = '<section><div><div>3</div><h2>Precautions and Tips:</h2></div>'.$tipsString.'</section>
                         <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
                         <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
         } else {
