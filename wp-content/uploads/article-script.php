@@ -529,7 +529,8 @@ function emoji_to_entity($emoji) {
     );
 }
 
-$emoji_regex = '%(?:\xF0[\x90-\xBF][\x80-\xBF]{2} | [\xF1-\xF3][\x80-\xBF]{3} | \xF4[\x80-\x8F][\x80-\xBF]{2})%xs';
+// $emoji_regex = '%(?:\xF0[\x90-\xBF][\x80-\xBF]{2} | [\xF1-\xF3][\x80-\xBF]{3} | \xF4[\x80-\x8F][\x80-\xBF]{2})%xs';
+$emoji_regex = '/([^-\p{L}\x00-\x7F]+)/u';
 
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
 if(file_exists($path)) {
