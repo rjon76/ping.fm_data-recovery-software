@@ -533,6 +533,9 @@ function emoji_to_entity($emoji) {
 $emoji_regex = '/([^-\p{L}\x00-\x7F]+)/u';
 
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
+$copy = __DIR__ . '/wpallimport/files/generated-post-copy.xml';
+copy($path, $copy);
+
 if(file_exists($path)) {
     $xmlstring = file_get_contents($path);
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
@@ -663,7 +666,7 @@ xmlwriter_start_element($xw, 'root');
     );
     
     $pageContent = '';
-    $mainString = '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
+    $faqString = '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
     $contentString = '';
     $tipsString = $page_tip1 . $page_tip2 . $page_tip3;
 
@@ -733,7 +736,7 @@ xmlwriter_start_element($xw, 'root');
                 . '</div></section>';
         }
 
-        $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
+        $contentString .= '<section><h1>'.$page_title.'</h1><div class="inbrief"><div>
             <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
             <p>'.$page_intro.'</p></div></div></section>
             <section><div class="medal"><div>&#129351;</div></div>'.$page_step1.'</section>
@@ -757,7 +760,7 @@ xmlwriter_start_element($xw, 'root');
                         <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
         }
     
-        $contentString .= '<article><section><h1>'.$page_title.'</h1><div class="inbrief"><div>
+        $contentString .= '<section><h1>'.$page_title.'</h1><div class="inbrief"><div>
             <img src="' . $domain_url . '/wp-content/uploads/ai/'.$image_title.'.jpg" alt="'.$h1title.'" title="'.$h1title.'" width="1280" height="720">
             <p>'.$page_intro.'</p></div></div></section>
             <section><div><div>1</div><h2>Common Scenarios:</h2></div>'.$scenarious.'</section>
@@ -782,15 +785,15 @@ xmlwriter_start_element($xw, 'root');
         if($key === 0) continue;
                     
         if($key%2==1) {
-            $mainString .= '<div class="panel" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question"><div class="toggle-link"><h3 class="panel-title" itemprop="name">
+            $faqString .= '<div class="panel" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question"><div class="toggle-link"><h3 class="panel-title" itemprop="name">
                 '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer"><div itemprop="text">';
         } else {
-            $mainString .= '<p>'.trim($p).'</p></div></div></div></div>';
+            $faqString .= '<p>'.trim($p).'</p></div></div></div></div>';
         }
     }
 
-    $mainString.='</section>';
-    $pageContent .= $contentString . $mainString . "</article>";
+    $faqString.='</section>';
+    $pageContent .= $contentString;
 
     if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
         if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) &&
@@ -810,6 +813,9 @@ xmlwriter_start_element($xw, 'root');
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'page_content');
                     xmlwriter_text($xw, $aArticles["page"]["page_content"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_faq');
+                    xmlwriter_text($xw, $aArticles["page"]["page_faq"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'title');
                     xmlwriter_text($xw, $aArticles["page"]["title"]);
@@ -872,6 +878,9 @@ xmlwriter_start_element($xw, 'root');
                     xmlwriter_start_element($xw, 'page_content');
                         xmlwriter_text($xw, $aArticles["page"][$i]["page_content"]);
                     xmlwriter_end_element($xw);
+                    xmlwriter_start_element($xw, 'page_faq');
+                        xmlwriter_text($xw, $aArticles["page"][$i]["page_faq"]);
+                    xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'title');
                         xmlwriter_text($xw, $aArticles["page"][$i]["title"]);
                     xmlwriter_end_element($xw);
@@ -923,6 +932,9 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'page_content');
             xmlwriter_text($xw, $pageContent);
+        xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'page_faq');
+            xmlwriter_text($xw, $faqString);
         xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'title');
             xmlwriter_text($xw, $theme_title);

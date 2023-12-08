@@ -91,13 +91,13 @@ xmlwriter_start_element($xw, 'root');
     $mainString = '<h2>FAQ</h2>';
 
     if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
-        $page_content = $aArticles["page"]["page_content"];
+        $page_content = $aArticles["page"]["page_faq"];
     }
 
     if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
         for($i = 0; $i < count($aArticles["page"]); $i++ ) {
             if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
-                $page_content = $aArticles["page"][$i]["page_content"];
+                $page_content = $aArticles["page"][$i]["page_faq"];
                 break;
             }
         }
@@ -146,6 +146,9 @@ xmlwriter_start_element($xw, 'root');
                 xmlwriter_text($xw, $aArticles["page"]["page_title"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'page_content');
+                xmlwriter_text($xw, $aArticles["page"]["page_content"]);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'page_faq');
                 xmlwriter_text($xw, $pageContent);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'title');
@@ -188,7 +191,7 @@ xmlwriter_start_element($xw, 'root');
             if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
                 $content = $pageContent;
             } else {
-                $content = $aArticles["page"][$i]["page_content"];
+                $content = $aArticles["page"][$i]["page_faq"];
             }
 
             xmlwriter_start_element($xw, 'page');
@@ -205,6 +208,9 @@ xmlwriter_start_element($xw, 'root');
                     xmlwriter_text($xw, $aArticles["page"][$i]["page_title"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'page_content');
+                    xmlwriter_text($xw, $aArticles["page"][$i]["page_content"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_faq');
                     xmlwriter_text($xw, $content);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'title');

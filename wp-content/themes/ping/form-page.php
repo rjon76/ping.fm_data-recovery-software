@@ -23,6 +23,8 @@ error_reporting(E_ALL);
     $youtubeUrl = '';
     $faq_theme = '';
     $apps_links = '';
+    $page_content = '';
+    $page_faq = '';
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
@@ -44,6 +46,8 @@ error_reporting(E_ALL);
                 $youtubeUrl = is_string($aArticles["page"]["youtube_url"]) ? $aArticles["page"]["youtube_url"] : '';
                 $apps_links = $aArticles["page"]["apps_links"];
                 $faq_theme = $aArticles["page"]["faq_theme"];
+                $page_content = $aArticles["page"]["page_content"];
+                $page_faq = $aArticles["page"]["page_faq"] ?? '';
             } else {
 
                 if(!empty($aArticles["page"]) && !empty($aArticles["page"][0]["title"])) {
@@ -58,6 +62,8 @@ error_reporting(E_ALL);
                     $youtubeUrl = is_string($aArticles["page"][0]["youtube_url"]) ? $aArticles["page"][0]["youtube_url"] : '';
                     $apps_links = $aArticles["page"][0]["apps_links"];
                     $faq_theme = $aArticles["page"][0]["faq_theme"];
+                    $page_content = $aArticles["page"][0]["page_content"];
+                    $page_faq = $aArticles["page"][0]["page_faq"] ?? '';
                 }
                 
                 if(!empty($aArticles["page"]) && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
@@ -72,6 +78,8 @@ error_reporting(E_ALL);
                     $youtubeUrl = is_string($aArticles["page"][count($aArticles["page"]) - 1]["youtube_url"]) ? $aArticles["page"][count($aArticles["page"]) - 1]["youtube_url"] : '';
                     $apps_links = $aArticles["page"][count($aArticles["page"]) - 1]["apps_links"];
                     $faq_theme = $aArticles["page"][count($aArticles["page"]) - 1]["faq_theme"];
+                    $page_content = $aArticles["page"][count($aArticles["page"]) - 1]["page_content"];
+                    $page_faq = $aArticles["page"][count($aArticles["page"]) - 1]["page_faq"] ?? '';
                 }
 
             }
@@ -114,6 +122,14 @@ error_reporting(E_ALL);
         margin: 0;
         padding: 0;
         width: 100%;
+    }
+    #editPage {
+        max-width: 100%;
+    }
+    #editPage textarea {
+        width: 100%;
+        resize: none;
+        height: 500px;
     }
     label, input {
         display: block;
@@ -290,6 +306,9 @@ error_reporting(E_ALL);
     .danger {
         background: red !important;
     }
+    .green {
+        background: green !important;
+    }
     .modal-w {
         padding: 40px;
         border-radius: 16px;
@@ -432,6 +451,8 @@ error_reporting(E_ALL);
                                                 data-youtubeUrl="<?php echo is_string($aArticles["page"][$i]["youtube_url"]) ? $aArticles["page"][$i]["youtube_url"] : ''; ?>"
                                                 data-apps_links="<?php echo $aArticles["page"][$i]["apps_links"]; ?>"
                                                 data-faq_theme="<?php echo $aArticles["page"][$i]["faq_theme"]; ?>"
+                                                data-page-content="<?php echo htmlspecialchars($aArticles["page"][$i]["page_content"]) ?? ''; ?>"
+                                                data-page-faq="<?php echo htmlspecialchars(is_string($aArticles["page"][$i]["page_faq"]) ? $aArticles["page"][$i]["page_faq"] : ''); ?>"
                                             >
                                                 <?php echo $aArticles["page"][$i]["title"]; ?>
                                             </div>
@@ -451,6 +472,7 @@ error_reporting(E_ALL);
                                 <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
                                 <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                                 <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
+                                <button type="button" class="sBtn green" id="btn-edit">EDIT ARTICLE</button>
                                 <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
                                 <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
@@ -459,6 +481,16 @@ error_reporting(E_ALL);
                                     <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
                                     <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
                                     <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                                </form>
+
+                                <form id="editPage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/edit-script.php'; ?>">
+                                    <label for="pageContent" id="moreFAq">Article content</label>
+                                    <textarea name="pageContent" id="pageContentField" class="textareaField"><?php echo $page_content; ?></textarea>
+                                    <label for="pageFaq" id="moreFAq">Article faq</label>
+                                    <textarea name="pageFaq" id="pageFaqField" class="textareaField"><?php echo $page_faq; ?></textarea>
+                                    <input class="hidden" type="text" id="editFaqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
+                                    <button  class="sBtn" type="button" id="btn-cancel-edit">Cancel</button>
+                                    <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
                                 </form>
 
                                 <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
@@ -585,6 +617,55 @@ error_reporting(E_ALL);
 		</main>
         <script>
         jQuery(document).ready(function() {
+            jQuery('#btn-edit').on('click', function(e) {
+                e.preventDefault()
+
+                jQuery('#articleInformation').addClass('hidden')
+                jQuery('#faqQuestions').addClass('hidden')
+                jQuery('.dropdown').addClass('hidden')
+                jQuery('#editPage').removeClass('hidden')
+            })
+            jQuery('#btn-cancel-edit').on('click', function(e) {
+                e.preventDefault()
+
+                jQuery('#articleInformation').removeClass('hidden')
+                jQuery('#faqQuestions').removeClass('hidden')
+                jQuery('.dropdown').removeClass('hidden')
+                jQuery('#editPage').addClass('hidden')
+            })
+            jQuery('#btn-save-edit').on('click', function(e) {
+                e.preventDefault()
+                jQuery("#editPage").submit()
+            })
+            jQuery('#editPage').on("submit", function(event) {
+                event.preventDefault()
+                jQuery('.loader').addClass('show')
+                const formData = new FormData(this);
+                jQuery.ajax({
+                    type: 'POST',
+                    url: jQuery("#editPage").attr('data-action'),
+                    data: formData,
+                    success: function(data) {
+                        if(data == 'false') {
+                            alert('Not provided article faq')
+                            jQuery('.loader').removeClass('show')
+                            return
+                        }
+
+                        alert('Article edited!')
+                        // location.reload()
+                    },
+                    error: function(jqXHR, exception) {
+                        // setTimeout(function () {
+                        //     location.reload()
+                        // }, 1000);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    timeout: 120000
+                });
+            })
             jQuery('#btn-remove').on('click', function(e) {
                 e.preventDefault()
 
@@ -789,6 +870,8 @@ error_reporting(E_ALL);
                 jQuery('#lastIMG').attr('srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
                 jQuery('#lastIMG').attr('data-srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
                 jQuery('#lastIMG').attr('data-original', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
+                jQuery('#pageContentField').val(jQuery(this).attr('data-page-content'))
+                jQuery('#pageFaqField').val(jQuery(this).attr('data-page-faq'))
 
                 jQuery(jQuery('#title')[0]).attr('data-last', jQuery(this).attr('data-title'))
                 jQuery(jQuery('#h1title')[0]).attr('data-last', jQuery(this).attr('data-h1title'))
@@ -802,6 +885,7 @@ error_reporting(E_ALL);
                 jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
 
                 jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
+                jQuery('#editFaqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
 
                 jQuery('#removeTitle')[0].value = jQuery(this).attr('data-title')
             })

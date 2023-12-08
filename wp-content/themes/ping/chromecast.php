@@ -28,9 +28,11 @@
 					</div>
 					<p class="updated"><?php if ( get_the_modified_time() != get_the_time()) pll_e('Last update on '); ?> <time datetime="<?php echo the_modified_time( 'c' ); ?>"><?php echo ' '. the_modified_date('F d, Y'); ?></time></p>
 				</div>
-				<?php
-					the_content();
-				?>
+				<article>
+					<?php
+						the_content();
+					?>
+				</article>
 				<aside>
 					<div class="h2">
 						<?php pll_e('More Articles'); ?>
