@@ -164,7 +164,7 @@ error_reporting(E_ALL);
         text-align: center;
     }
     .hidden {
-        display: none;
+        display: none !important;
     }
     .img {
         display: block;
@@ -462,26 +462,28 @@ error_reporting(E_ALL);
                             <?php } ?>
 
                             <?php if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0 && (!empty($aArticles["page"][0]["title"]) || !empty($aArticles["page"]["title"]))) { ?>
-                                <h3>Last / Selected article:</h3>
-                                <p id="lastTitle">What would you like to write about: <span><?php echo $title;?></span></p>
-                                <p id="lastH1">H1 (Article Title): <span><?php echo $h1title;?></span></p>
-                                <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
-                                <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
-                                <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo !empty($url) ? $url : 'not provided';?></span></p>
-                                <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
-                                <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
-                                <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
-                                <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
-                                <button type="button" class="sBtn green" id="btn-edit">EDIT ARTICLE</button>
-                                <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
+                                <div id="articleInformation">
+                                    <h3>Last / Selected article:</h3>
+                                    <p id="lastTitle">What would you like to write about: <span><?php echo $title;?></span></p>
+                                    <p id="lastH1">H1 (Article Title): <span><?php echo $h1title;?></span></p>
+                                    <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                                    <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
+                                    <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo !empty($url) ? $url : 'not provided';?></span></p>
+                                    <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
+                                    <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
+                                    <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
+                                    <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
+                                    <button type="button" class="sBtn green" id="btn-edit">EDIT ARTICLE</button>
+                                    <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
-                                <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
-                                    <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
-                                    <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                                    <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
-                                    <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
-                                    <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
-                                </form>
+                                    <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
+                                        <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                                        <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
+                                        <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
+                                        <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
+                                        <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                                    </form>
+                                </div>
 
                                 <form id="editPage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/edit-script.php'; ?>">
                                     <label for="pageContent" id="moreFAq">Article content</label>
@@ -621,7 +623,6 @@ error_reporting(E_ALL);
                 e.preventDefault()
 
                 jQuery('#articleInformation').addClass('hidden')
-                jQuery('#faqQuestions').addClass('hidden')
                 jQuery('.dropdown').addClass('hidden')
                 jQuery('#editPage').removeClass('hidden')
             })
@@ -629,7 +630,6 @@ error_reporting(E_ALL);
                 e.preventDefault()
 
                 jQuery('#articleInformation').removeClass('hidden')
-                jQuery('#faqQuestions').removeClass('hidden')
                 jQuery('.dropdown').removeClass('hidden')
                 jQuery('#editPage').addClass('hidden')
             })
