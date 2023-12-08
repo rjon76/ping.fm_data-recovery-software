@@ -640,6 +640,7 @@ error_reporting(E_ALL);
             jQuery('#editPage').on("submit", function(event) {
                 event.preventDefault()
                 jQuery('.loader').addClass('show')
+                jQuery('.stepTitle').html('Wait... save the article! autoreload will happen')
                 const formData = new FormData(this);
                 jQuery.ajax({
                     type: 'POST',
@@ -653,12 +654,12 @@ error_reporting(E_ALL);
                         }
 
                         alert('Article edited!')
-                        // location.reload()
+                        location.reload()
                     },
                     error: function(jqXHR, exception) {
-                        // setTimeout(function () {
-                        //     location.reload()
-                        // }, 1000);
+                        setTimeout(function () {
+                            location.reload()
+                        }, 1000);
                     },
                     cache: false,
                     contentType: false,
