@@ -280,6 +280,7 @@ img {
 p a {
   color: #6366f1;
   margin: 0;
+  word-break: break-word;
 }
 
 div > a {
