@@ -200,5 +200,3 @@ exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?impor
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
 
 sleep(20);
-
-writeTimeGeneration($file, 'done');
