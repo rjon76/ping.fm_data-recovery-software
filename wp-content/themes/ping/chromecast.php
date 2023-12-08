@@ -33,7 +33,7 @@
 						the_content();
 					?>
 					<?php if ( get_field('faq' ) ): ?>
-						<?php echo esc_html( get_field('faq') ); ?>
+						<?php echo get_field('faq'); ?>
 					<?php endif; ?>
 				</article>
 				<aside>
