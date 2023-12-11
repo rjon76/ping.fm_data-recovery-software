@@ -118,7 +118,6 @@ error_reporting(E_ALL);
         gap: 100px;
     }
     form {
-        max-width: 600px;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -350,7 +349,7 @@ error_reporting(E_ALL);
     }
 </style>
 		<main>
-            <!-- <div class="hidden">true</div> -->
+            <div class="hidden">true</div>
 			<div class="container">
                 <div class="loader filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                     <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
