@@ -5,11 +5,7 @@ ini_set('max_execution_time', 300);
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-$part1 = 'sk-';
-$part2 = 'w72LW8bySt9XV';
-$part3 = '9wfD1YjT3Blbk';
-$part4 = 'FJHpJFuE4XU';
-$part5 = 'uqUVWrXOLQf';
+require_once( __DIR__ . "/env.php");
 
 if ($_POST["numberFaq"]) {
     $numberFaq = $_POST["numberFaq"];
@@ -19,56 +15,7 @@ if ($_POST["themeFaq"]) {
     $themeFaq = $_POST["themeFaq"];
 }
 
-$OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
-
-function getInfoFaq($title, $number, $OPENAI_API_KEY) {
-
-    $data = array(
-        'model' => 'gpt-4-1106-preview',
-        'messages' => [
-            [
-                "role" => "system",
-                "content" => "Generate a set of $number related to this keyword questions and $number their corresponding answers for $title.
-                            write about $title, not only about soft;
-                            provide 1-2 another external hyperlinks only on homepages for convenient user navigation, with attributes rel='nofollow' target='_blank';
-                            MUST be $number related questions and $number their corresponding answers.
-                            Question ONLY inside once <p> and answer ONLY inside once <p> without QUESTION and ANSWER words and without Q and A letters, and don't numeric.
-                            A fully rewritten unique original content that can't be identified by artificial intelligence or plagiarism detection tools.
-                            When outlining procedures or services, always provide external hyperlinks for convenient user navigation.
-                            Inside paragraphs extensively use '<b></b>' for topics, keywords and objects of actions;
-                            use American English;
-                            do not use personal names or channel names;
-                            do not insert links to images;
-                            when mentioning URLs make them <a href> links",
-            ],
-        ],
-    );
-
-    $post_json = json_encode($data);
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_json);
-
-    $headers = array();
-    $headers[] = 'Content-Type: application/json';
-    $headers[] = "Authorization: Bearer $OPENAI_API_KEY";
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-    $result = curl_exec($ch);
-    return json_decode($result);
-
-    curl_close($ch);
-}
-
 $file = __DIR__ . '/time_record.txt';
-
-function writeTimeGeneration($path_to_file, $action) {
-    file_put_contents($path_to_file, $action);
-}
 
 writeTimeGeneration($file, 'faq');
 
@@ -254,14 +201,6 @@ xmlwriter_end_document($xw);
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
-
-function fetch_headers($url) {
-    $ch = curl_init($url); 
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    $response = curl_exec($ch); 
-    curl_close($ch);
-    return;
-}
 
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');

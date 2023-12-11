@@ -5,20 +5,10 @@ ini_set('max_execution_time', 300);
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
+require_once( __DIR__ . "/env.php");
+
 $pageContent = '';
 $pageFaq = '';
-
-function emoji_to_entity($emoji) {
-    return sprintf(
-        '&#%s;',
-        unpack(
-            'Ntgt',
-            mb_convert_encoding($emoji, 'UTF-32', 'UTF-8')
-        )['tgt']
-    );
-}
-
-$emoji_regex = '/([^-\p{L}\x00-\x7F]+)/u';
 
 if ($_POST["pageContent"]) {
     $pageContent = preg_replace_callback(
@@ -182,14 +172,6 @@ xmlwriter_end_document($xw);
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
-
-function fetch_headers($url) {
-    $ch = curl_init($url); 
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    $response = curl_exec($ch); 
-    curl_close($ch);
-    return;
-}
 
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
