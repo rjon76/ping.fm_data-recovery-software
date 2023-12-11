@@ -350,7 +350,7 @@ error_reporting(E_ALL);
     }
 </style>
 		<main>
-            <div class="hidden">true</div>
+            <!-- <div class="hidden">true</div> -->
 			<div class="container">
                 <div class="loader filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                     <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
@@ -477,11 +477,13 @@ error_reporting(E_ALL);
                                     <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
 
                                     <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
-                                        <label for="btn-num-faq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                                        <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                         <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                                         <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
                                         <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
-                                        <button  class="sBtn" type="button" id="btn-num-faq">ADD MORE QUESTIONS</button>
+                                        <input class="hidden" type="checkbox" name="regenerate-faq" id="regenerateFaq">
+                                        <button  class="sBtn" type="button" id="btn-reg-faq">Regenerate faq</button>
+                                        <button  class="sBtn green" type="button" id="btn-num-faq">Add more questions</button>
                                     </form>
                                 </div>
 
@@ -686,6 +688,12 @@ error_reporting(E_ALL);
 
                 jQuery("#faqQuestions").submit()
                 
+            })
+            jQuery('#btn-reg-faq').on('click', function(e) {
+                e.preventDefault()
+                jQuery('#numberFaq')[0].value = 10
+                jQuery('#regenerateFaq').prop('checked',true);
+                jQuery("#faqQuestions").submit()
             })
             jQuery("#faqQuestions").on("submit", function(event) {
                 event.preventDefault()

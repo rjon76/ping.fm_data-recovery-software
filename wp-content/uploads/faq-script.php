@@ -7,6 +7,16 @@ error_reporting(E_ALL);
 
 require_once( __DIR__ . "/env.php");
 
+if(isset($_POST["regenerate-faq"])) {
+    if($_POST["regenerate-faq"] == 'on') {
+        $regenerate_faq = 'true';
+    } else {
+        $regenerate_faq = 'false';
+    }
+} else {
+    $regenerate_faq = 'false';
+}
+
 if ($_POST["numberFaq"]) {
     $numberFaq = $_POST["numberFaq"];
 }
@@ -35,22 +45,24 @@ $res = xmlwriter_set_indent_string($xw, ' ');
 xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
-    $mainString = '<h2>FAQ</h2>';
+    $mainString = $regenerate_faq == 'false' ? '<h2>FAQ</h2>' : '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
 
-    if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
-        $page_content = $aArticles["page"]["page_faq"];
-    }
+    if($regenerate_faq == 'false') {
+        if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
+            $page_content = $aArticles["page"]["page_faq"];
+        }
 
-    if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
-        for($i = 0; $i < count($aArticles["page"]); $i++ ) {
-            if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
-                $page_content = $aArticles["page"][$i]["page_faq"];
-                break;
+        if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
+            for($i = 0; $i < count($aArticles["page"]); $i++ ) {
+                if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
+                    $page_content = $aArticles["page"][$i]["page_faq"];
+                    break;
+                }
             }
         }
-    }
 
-    $aContent = explode('<h2>FAQ</h2>', $page_content);
+        $aContent = explode('<h2>FAQ</h2>', $page_content);
+    }
 
     $page_faq = null;
 
@@ -76,7 +88,7 @@ xmlwriter_start_element($xw, 'root');
         }
     }
 
-    $pageContent = $aContent[0] . $mainString . $aContent[1];
+    $pageContent = $regenerate_faq == 'false' ? $aContent[0] . $mainString . $aContent[1] : $mainString . '</section>';
 
     if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
         xmlwriter_start_element($xw, 'page');
