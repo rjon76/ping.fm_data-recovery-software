@@ -25,6 +25,10 @@ if ($_POST["themeFaq"]) {
     $themeFaq = $_POST["themeFaq"];
 }
 
+if ($_POST["faqPostUrl"]) {
+    $faqPostUrl = $_POST["faqPostUrl"];
+}
+
 $file = __DIR__ . '/time_record.txt';
 
 writeTimeGeneration($file, 'faq');
@@ -54,7 +58,7 @@ xmlwriter_start_element($xw, 'root');
 
         if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
-                if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
+                if($faqPostUrl == $aArticles["page"][$i]["page_url"]) {
                     $page_content = $aArticles["page"][$i]["page_faq"];
                     break;
                 }
@@ -117,13 +121,13 @@ xmlwriter_start_element($xw, 'root');
                 xmlwriter_text($xw, $aArticles["page"]["h1title"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'url');
-                xmlwriter_text($xw, $aArticles["page"]["url"]);
+                xmlwriter_text($xw, is_array($aArticles["page"]["url"]) ? '' : $aArticles["page"]["url"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'url_descr');
-                xmlwriter_text($xw, $aArticles["page"]["url_descr"]);
+                xmlwriter_text($xw, is_array($aArticles["page"]["url_descr"]) ? '' : $aArticles["page"]["url_descr"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'anchor');
-                xmlwriter_text($xw, $aArticles["page"]["anchor"]);
+                xmlwriter_text($xw, is_array($aArticles["page"]["anchor"]) ? '' : $aArticles["page"]["anchor"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'post_url');
                 xmlwriter_text($xw, $aArticles["page"]["post_url"]);
@@ -147,7 +151,7 @@ xmlwriter_start_element($xw, 'root');
     if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
         for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-            if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
+            if($faqPostUrl == $aArticles["page"][$i]["page_url"]) {
                 $content = $pageContent;
             } else {
                 $content = $aArticles["page"][$i]["page_faq"];
@@ -179,13 +183,13 @@ xmlwriter_start_element($xw, 'root');
                     xmlwriter_text($xw, $aArticles["page"][$i]["h1title"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'url');
-                    xmlwriter_text($xw, $aArticles["page"][$i]["url"]);
+                    xmlwriter_text($xw, is_array($aArticles["page"][$i]["url"]) ? '' : $aArticles["page"][$i]["url"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'url_descr');
-                    xmlwriter_text($xw, $aArticles["page"][$i]["url_descr"]);
+                    xmlwriter_text($xw, is_array($aArticles["page"][$i]["url_descr"]) ? '' : $aArticles["page"][$i]["url_descr"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'anchor');
-                    xmlwriter_text($xw, $aArticles["page"][$i]["anchor"]);
+                    xmlwriter_text($xw, is_array($aArticles["page"][$i]["anchor"]) ? '' : $aArticles["page"][$i]["anchor"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'post_url');
                     xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);

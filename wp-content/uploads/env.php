@@ -9,6 +9,13 @@ $part5 = 'uqUVWrXOLQf';
 
 $OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
 
+$languages = [
+    // 'Dutch',
+    'French',
+    'German',
+    // 'Spanish',
+];
+
 function writeTimeGeneration($path_to_file, $action) {
     file_put_contents($path_to_file, $action);
 }
@@ -66,7 +73,7 @@ function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text)
 	return $rect;
 }
 
-function generateImgWithTitle($title, $image_src, $isAi = false) {
+function generateImgWithTitle($title, $image_src, $isAi = false, $languages = [], $OPENAI_API_KEY = '') {
     $capture        = imagecreatefromjpeg($image_src);
     $font_path      = __DIR__ . "/fonts/Inter-Bold.ttf";
     $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $title))).'.jpg';
@@ -140,6 +147,88 @@ function generateImgWithTitle($title, $image_src, $isAi = false) {
     # Save Image  
     imagejpeg($capture, $save_file, 70);
     imagedestroy($capture);
+
+    if(!empty($languages) && !empty($OPENAI_API_KEY)) {
+        foreach($languages as $lang) {
+
+            $titleLang = null;
+
+            do {
+                $titleLang_gen = getTranslate($title, $lang, $OPENAI_API_KEY);
+                if( isset($titleLang_gen->choices[0]->message->content) ) {
+                    $titleLang = $titleLang_gen->choices[0]->message->content;
+                }
+            } while ( is_null($titleLang) );
+            
+            $capture        = imagecreatefromjpeg($image_src);
+            $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $title))). "-$lang" .'.jpg'; 
+
+            $imagesize = getimagesize($image_src);
+            $w = $imagesize[0];
+            $h = $imagesize[1];
+
+            $w_div_h = $w / $h;
+            $h_new = $w_new / $w_div_h;
+
+            $transformX = rand(140, $w - $w_new - 140);
+            $transformY = rand(140, $h - $h_new - 140);
+
+            $bgColor = imagecolorallocatealpha($capture, 1, 1, 1, 127);
+
+            if(!$isAi) {
+                $capture = imagerotate($capture, $degrees, $bgColor);
+                $capture = imagecrop($capture, ['x' => $transformX, 'y' => $transformY, 'width' => $width, 'height' => $height]);
+            }
+
+            # Add Title
+            $color = imagecolorallocate($capture, 0x00, 0x00, 0x00);
+            $white = imagecolorallocate($capture, 255, 255, 255);
+            $rTitle = $titleLang;
+            
+            $rTitle = ucwords($rTitle);
+            $text = wordwrap($rTitle, 16, "\n");
+            $strings = explode("\n", $text);
+            $length = count($strings);
+            if($length >=5 ) {
+                $hSq = 530;
+
+                if($length == 6) {
+                    $hSq = 600;  
+                }
+                if($length == 7) {
+                    $hSq = 670;  
+                }
+                if($length == 8) {
+                    $hSq = 800;
+                }
+                if($length == 9) {
+                    $hSq = 900;
+                }
+            } elseif($length == 4) {
+                $hSq = 470;
+            } elseif($length == 3) {
+                $hSq = 350;
+            } elseif($length == 2) {
+                $hSq = 260;
+            } else {
+                $hSq = 160;
+            }
+
+            $cY = ($length * 70) - 105;
+
+            $image = imagecreatetruecolor(400, 400);
+            $black = imagecolorallocatealpha($image, 0, 0, 0, 30);
+
+            imagefill($image, 0, 0, $black);
+            
+            imagecopyresampled($capture, $image, $width / 2.6, round(($height - $hSq) / 2), 0, 0, round($width - $width / 2.6), $hSq, 400, 400);
+            imagettftextcenter($capture, 48, 0, $width / 2.1, round(($height - $cY) / 2), $white, $font_path, $text);
+
+            # Save Image  
+            imagejpeg($capture, $save_file, 70);
+            imagedestroy($capture);
+        }
+    }
 }
 
 function generateImageDall3($title, $OPENAI_API_KEY) {
@@ -437,3 +526,35 @@ function emoji_to_entity($emoji) {
 
 // $emoji_regex = '%(?:\xF0[\x90-\xBF][\x80-\xBF]{2} | [\xF1-\xF3][\x80-\xBF]{3} | \xF4[\x80-\x8F][\x80-\xBF]{2})%xs';
 $emoji_regex = '/([^-\p{L}\x00-\x7F]+)/u';
+
+function getTranslate($language, $text, $OPENAI_API_KEY) {
+
+    $data = array(
+        'model' => 'gpt-4-1106-preview',
+        'messages' => [
+            [
+                "role" => "system",
+                "content" => "Important do not remove the html tags. Translate this into $language: $text",
+            ],
+        ],
+    );
+
+    $post_json = json_encode($data);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_json);
+
+    $headers = array();
+    $headers[] = 'Content-Type: application/json';
+    $headers[] = "Authorization: Bearer $OPENAI_API_KEY";
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result = curl_exec($ch);
+    return json_decode($result);
+
+    curl_close($ch);
+}

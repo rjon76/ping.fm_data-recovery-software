@@ -1,8 +1,8 @@
 <?php
 
 
-if ($_POST["remove_title"]) {
-    $theme_title = $_POST["remove_title"];
+if ($_POST["remove_url"]) {
+    $theme_url = $_POST["remove_url"];
 } else {
     return 'false';
     exit();
@@ -31,7 +31,7 @@ xmlwriter_start_element($xw, 'root');
         if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-                if($theme_title === $aArticles["page"][$i]["title"]) {
+                if($theme_url === $aArticles["page"][$i]["page_url"]) {
                     continue;
                 }
 
@@ -61,13 +61,13 @@ xmlwriter_start_element($xw, 'root');
                         xmlwriter_text($xw, $aArticles["page"][$i]["h1title"]);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'url');
-                        xmlwriter_text($xw, $aArticles["page"][$i]["url"]);
+                    xmlwriter_text($xw, is_array($aArticles["page"][$i]["url"]) ? '' : $aArticles["page"][$i]["url"]);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'url_descr');
-                        xmlwriter_text($xw, $aArticles["page"][$i]["url_descr"]);
+                        xmlwriter_text($xw, is_array($aArticles["page"][$i]["url_descr"]) ? '' : $aArticles["page"][$i]["url_descr"]);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'anchor');
-                        xmlwriter_text($xw, $aArticles["page"][$i]["anchor"]);
+                        xmlwriter_text($xw, is_array($aArticles["page"][$i]["anchor"]) ? '' : $aArticles["page"][$i]["anchor"]);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'post_url');
                         xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);

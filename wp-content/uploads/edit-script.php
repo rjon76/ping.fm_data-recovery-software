@@ -26,8 +26,8 @@ if ($_POST["pageFaq"]) {
     );
 }
 
-if ($_POST["themeFaq"]) {
-    $themeFaq = $_POST["themeFaq"];
+if ($_POST["postUrl"]) {
+    $postUrl = $_POST["postUrl"];
 }
 
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
@@ -73,13 +73,13 @@ xmlwriter_start_element($xw, 'root');
                 xmlwriter_text($xw, $aArticles["page"]["h1title"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'url');
-                xmlwriter_text($xw, $aArticles["page"]["url"]);
+                xmlwriter_text($xw, is_array($aArticles["page"]["url"]) ? '' : $aArticles["page"]["url"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'url_descr');
-                xmlwriter_text($xw, $aArticles["page"]["url_descr"]);
+                xmlwriter_text($xw, is_array($aArticles["page"]["url_descr"]) ? '' : $aArticles["page"]["url_descr"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'anchor');
-                xmlwriter_text($xw, $aArticles["page"]["anchor"]);
+                xmlwriter_text($xw, is_array($aArticles["page"]["anchor"]) ? '' : $aArticles["page"]["anchor"]);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'post_url');
                 xmlwriter_text($xw, $aArticles["page"]["post_url"]);
@@ -103,7 +103,7 @@ xmlwriter_start_element($xw, 'root');
     if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][1])) {
         for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-            if($themeFaq == $aArticles["page"][$i]["faq_theme"]) {
+            if($postUrl == $aArticles["page"][$i]["post_url"]) {
                 $content = $pageContent;
                 $faq = $pageFaq;
             } else {

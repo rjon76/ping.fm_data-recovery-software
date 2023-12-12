@@ -478,7 +478,8 @@ error_reporting(E_ALL);
                                     <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                                         <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                         <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                                        <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
+                                        <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="faqLastTheme">
+                                        <input class="hidden" type="text" id="faqPostUrl" value="<?php echo $post_url; ?>" name="faqPostUrl">
                                         <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
                                         <input class="hidden" type="checkbox" name="regenerate-faq" id="regenerateFaq">
                                         <button  class="sBtn" type="button" id="btn-reg-faq">Regenerate faq</button>
@@ -491,13 +492,13 @@ error_reporting(E_ALL);
                                     <textarea name="pageContent" id="pageContentField" class="textareaField"><?php echo $page_content; ?></textarea>
                                     <label for="pageFaq" id="moreFAq">Article faq</label>
                                     <textarea name="pageFaq" id="pageFaqField" class="textareaField"><?php echo $page_faq; ?></textarea>
-                                    <input class="hidden" type="text" id="editFaqLastTheme" value="<?php echo $faq_theme; ?>" name="themeFaq">
+                                    <input class="hidden" type="text" id="editFaqPostUrl" value="<?php echo $post_url; ?>" name="postUrl">
                                     <button  class="sBtn" type="button" id="btn-cancel-edit">Cancel</button>
                                     <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
                                 </form>
 
                                 <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
-                                    <input class="hidden" type="text" id="removeTitle" name="remove_title" value="<?php echo $title;?>">
+                                    <input class="hidden" type="text" id="remove_url" name="remove_url" value="<?php echo $title;?>">
                                 </form>
                             <?php } else { ?>
                                 <h3>There are no articles generated. Let's start!</h3>
@@ -893,9 +894,10 @@ error_reporting(E_ALL);
                 jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
 
                 jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
-                jQuery('#editFaqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
+                jQuery('#faqPostUrl')[0].value = jQuery(this).attr('data-post_url')
+                jQuery('#editFaqPostUrl')[0].value = jQuery(this).attr('data-post_url')
 
-                jQuery('#removeTitle')[0].value = jQuery(this).attr('data-title')
+                jQuery('#remove_url')[0].value = jQuery(this).attr('data-post_url')
             })
 
             const startInterval = setInterval(() => {
