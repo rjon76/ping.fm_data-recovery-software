@@ -17,7 +17,7 @@
 				<div class="info">
 					<div class="author">
 						<div class="img">
-							<img src="<?php echo home_url();?>/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
+							<img src="<?php echo get_site_url();?>/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
 							<div class="authorpost">Written by:</div>
