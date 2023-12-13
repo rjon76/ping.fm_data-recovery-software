@@ -56,6 +56,7 @@ if($current_language == 'de_DE') {
 		<?php } else { ?>
 			<link rel="stylesheet" id="stylecss-css" href="<?php echo home_url();?>/wp-content/themes/ping/css/style.css" media="all">
 		<?php } ?>
+		<?php var_dump(parse_url(home_url())); ?>
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-H1RBTQZ91E"></script>
 		<script>
