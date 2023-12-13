@@ -502,7 +502,7 @@ error_reporting(E_ALL);
                                     <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
                                 </form>
 
-                                <form id="translatePage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/translate-script.php'; ?>">
+                                <form id="translatePage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/translates-script.php'; ?>">
                                     <input class="hidden" type="text" id="tranlateUrl" value="<?php echo $post_url;?>" name="tranlateUrl">
                                     <input type="checkbox" name="onlyFaq" id="onlyFaq">
                                 </form>
