@@ -308,6 +308,9 @@ error_reporting(E_ALL);
     .green {
         background: green !important;
     }
+    .orange {
+        background: orange !important;
+    }
     .modal-w {
         padding: 40px;
         border-radius: 16px;
@@ -471,9 +474,10 @@ error_reporting(E_ALL);
                                     <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
                                     <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
                                     <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
-                                    <button type="button" class="sBtn" id="btn-reg">REGENERATE</button>
-                                    <button type="button" class="sBtn green" id="btn-edit">EDIT ARTICLE</button>
-                                    <button type="button" class="sBtn danger" id="btn-remove">REMOVE ARTICLE</button>
+                                    <button type="button" class="sBtn" id="btn-reg">Regenerate article</button>
+                                    <button type="button" class="sBtn green" id="btn-edit">Edit article</button>
+                                    <button type="button" class="sBtn orange" id="btn-translate">Translate article</button>
+                                    <button type="button" class="sBtn danger" id="btn-remove">Remove article</button>
 
                                     <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
                                         <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
@@ -482,8 +486,9 @@ error_reporting(E_ALL);
                                         <input class="hidden" type="text" id="faqPostUrl" value="<?php echo $post_url; ?>" name="faqPostUrl">
                                         <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
                                         <input class="hidden" type="checkbox" name="regenerate-faq" id="regenerateFaq">
-                                        <button  class="sBtn" type="button" id="btn-reg-faq">Regenerate faq</button>
                                         <button  class="sBtn green" type="button" id="btn-num-faq">Add more questions</button>
+                                        <button  class="sBtn orange" type="button" id="btn-translate-faq">Translate faq</button>
+                                        <button  class="sBtn danger" type="button" id="btn-reg-faq">Regenerate faq</button>
                                     </form>
                                 </div>
 
@@ -495,6 +500,11 @@ error_reporting(E_ALL);
                                     <input class="hidden" type="text" id="editFaqPostUrl" value="<?php echo $post_url; ?>" name="postUrl">
                                     <button  class="sBtn" type="button" id="btn-cancel-edit">Cancel</button>
                                     <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
+                                </form>
+
+                                <form id="translatePage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/translate-script.php'; ?>">
+                                    <input class="hidden" type="text" id="tranlateUrl" value="<?php echo $post_url;?>" name="tranlateUrl">
+                                    <input type="checkbox" name="onlyFaq" id="onlyFaq">
                                 </form>
 
                                 <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
@@ -695,6 +705,66 @@ error_reporting(E_ALL);
                 jQuery('#regenerateFaq').prop('checked',true);
                 jQuery("#faqQuestions").submit()
             })
+            jQuery('#btn-translate').on('click', function(e) {
+                e.preventDefault()
+                jQuery("#translatePage").submit()
+            })
+            jQuery('#btn-translate-faq').on('click', function(e) {
+                e.preventDefault()
+                jQuery('#onlyFaq').prop('checked',true);
+                jQuery("#translatePage").submit()
+            })
+            jQuery("#translatePage").on("submit", function(event) {
+                event.preventDefault()
+                const formData = new FormData(this);
+
+                jQuery('.loader').addClass('show');
+                jQuery.ajax({
+                    type: 'POST',
+                    url: jQuery("#translatePage").attr('data-action'),
+                    data: formData,
+                    success: function(data) {
+                        console.log(data, "dataSuccess")
+                    },
+                    error: function(jqXHR, exception) {
+                        console.log(jqXHR, "jqXHR")
+                        console.log(exception, "exception")
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    timeout: 120000
+                });
+
+                const faqInterval = setInterval(() => {
+                    jQuery.ajax({
+                        url: jQuery("#article").attr('data-stepsf'),
+                        dataType: 'text',
+                        success: function (data) {
+                            console.log(data)
+                            if(data == 'done') {
+                                jQuery('.stepTitle').html('All done! autoreload will happen in 3 seconds')
+                                clearInterval(faqInterval);
+                                setTimeout(() => {
+                                    location.reload()
+                                }, 3000);
+                            }
+
+                            if(data == 'start') {
+                                jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
+                            }
+
+                            if(data == 'faq') {
+                                jQuery('.stepTitle').html('FAQ content generation…')
+                            }
+
+                            if(data == 'import') {
+                                jQuery('.stepTitle').html('Article import...please wait,<br>  усі нагодовані 🐈?')
+                            }
+                        }
+                    });
+                }, 5000);
+            });
             jQuery("#faqQuestions").on("submit", function(event) {
                 event.preventDefault()
                 const formData = new FormData(this);
@@ -898,6 +968,7 @@ error_reporting(E_ALL);
                 jQuery('#editFaqPostUrl')[0].value = jQuery(this).attr('data-post_url')
 
                 jQuery('#remove_url')[0].value = jQuery(this).attr('data-post_url')
+                jQuery('#tranlateUrl')[0].value = jQuery(this).attr('data-post_url')
             })
 
             const startInterval = setInterval(() => {
