@@ -347,7 +347,12 @@ foreach($languages as $lang) {
                 xmlwriter_text($xw, $page_meta);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'page_image');
-                xmlwriter_text($xw, str_replace($image_title, $image_title . "-$lang", $page_image));
+                $pos = stripos($page_image, $image_title . "-$lang");
+                if($pos === false) {
+                    xmlwriter_text($xw, str_replace($image_title, $image_title . "-$lang", $page_image));
+                } else {
+                    xmlwriter_text($xw, $page_image);
+                }
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'page_url');
                 xmlwriter_text($xw, $page_url);

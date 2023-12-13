@@ -736,6 +736,8 @@ error_reporting(E_ALL);
                     timeout: 120000
                 });
 
+                jQuery('.stepTitle').html('AI is working (Article content generation),<br> поки погодуй кота чи собаку 😹')
+
                 const faqInterval = setInterval(() => {
                     jQuery.ajax({
                         url: jQuery("#article").attr('data-stepsf'),
