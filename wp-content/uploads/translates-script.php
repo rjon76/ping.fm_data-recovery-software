@@ -21,6 +21,7 @@ if(isset($_POST["onlyFaq"])) {
     $onlyFaq = 'false';
 }
 
+$file = __DIR__ . '/time_record.txt';
 writeTimeGeneration($file, 'start');
 
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
