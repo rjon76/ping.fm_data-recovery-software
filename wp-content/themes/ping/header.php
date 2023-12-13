@@ -52,7 +52,7 @@ if($current_language == 'de_DE') {
 		<?php
 			if($fileName === 'chromecast.php') {
 		?>
-			<link rel="stylesheet" id="youtubecss-css" href="<?php echo get_home_url();?>/wp-content/themes/ping/css/youtube-style.css" media="all">
+			<link rel="stylesheet" id="youtubecss-css" href="<?php echo get_bloginfo('url');?>/wp-content/themes/ping/css/youtube-style.css" media="all">
 		<?php } else { ?>
 			<link rel="stylesheet" id="stylecss-css" href="<?php echo home_url();?>/wp-content/themes/ping/css/style.css" media="all">
 		<?php } ?>
