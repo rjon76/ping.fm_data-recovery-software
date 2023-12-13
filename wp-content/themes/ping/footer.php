@@ -58,6 +58,6 @@
 				<p> • +12023358465 • <a href="mailto:support@electronic.us">support@electronic.us</a></p>
 			</div>
 		</footer>
-		<script src="<?php echo home_url();?>/wp-content/themes/ping/js/main.js"></script>
+		<script src="<?php echo get_site_url();?>/wp-content/themes/ping/js/main.js"></script>
 	</body>
 </html>
