@@ -54,7 +54,7 @@
 									<div class="article">
 										<div><?php echo $date ?></div>
 										<div class="innerart">
-											<img srcset="<?php echo home_url();?>/wp-content/uploads/note.png" src="<?php echo home_url();?>/wp-content/uploads/note.png" width="512" height="512" alt="Note icon">
+											<img srcset="<?php echo get_site_url();?>/wp-content/uploads/note.png" src="<?php echo get_site_url();?>/wp-content/uploads/note.png" width="512" height="512" alt="Note icon">
 											<a href="<?php echo esc_url( get_permalink($post->id) ); ?>" rel="follow"><?php echo $post->post_title ?></a>
 										</div>
 									</div>
