@@ -272,6 +272,8 @@ foreach($languages as $lang) {
                             $apps_links = $aArticles["page"][$i]["apps_links"];
                             $faq_theme = $aArticles["page"][$i]["faq_theme"];
                         }
+
+                        continue;
                     }
 
                     if(empty($aArticles["page"][$i]["title"])) {
