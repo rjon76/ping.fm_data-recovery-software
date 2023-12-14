@@ -20,7 +20,7 @@
 							<img src="<?php echo get_site_url();?>/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
-							<div class="authorpost"><?php pll_e('Written by:'); ?></div>
+							<div class="authorpost"><?php pll_e('Written by'); ?>:</div>
 							<div class="title">
 								<a href="https://www.linkedin.com/in/kropachek/" rel="nofollow" target="_blank">Roman Kropachek</a>
 							</div>

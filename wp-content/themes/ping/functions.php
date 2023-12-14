@@ -59,5 +59,5 @@ pll_register_string( 'Tutorial', 'Tutorial written from original video by:' );
 pll_register_string( 'More IP', 'More IP / WiFi / Router Tutorials' );
 pll_register_string( 'Last update', 'Last update on ' );
 pll_register_string( 'Chat GPT', 'Chat GPT' );
-pll_register_string( 'Written by', 'Written by:' );
+pll_register_string( 'Written by', 'Written by' );
 pll_register_string( 'More Articles', 'More Articles' );
