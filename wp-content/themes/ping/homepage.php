@@ -22,7 +22,7 @@
 					?>
                     <div class="article">
                         <div class="innerart">
-                            <img srcset="<?php echo home_url();?>/wp-content/uploads/note.png" src="<?php echo home_url();?>/wp-content/uploads/note.png" width="512" height="512" alt="Note icon">
+                            <img srcset="<?php echo get_site_url();?>/wp-content/uploads/note.png" src="<?php echo get_site_url();?>/wp-content/uploads/note.png" width="512" height="512" alt="Note icon">
                             <h2><a href="<?php echo esc_url( get_permalink($post->id) ); ?>"><?php echo $post->post_title ?></a></h2>
                         </div>
                    </div>
