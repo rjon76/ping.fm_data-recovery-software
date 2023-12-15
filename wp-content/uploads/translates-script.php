@@ -91,6 +91,8 @@ $englishH1 = $h1title;
 foreach($languages as $lang) {
 
     $path = __DIR__ . "/wpallimport/files/generated-post-$lang.xml";
+    $copy = __DIR__ . "/wpallimport/files/generated-post-$lang-copy.xml";
+    copy($path, $copy);
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
@@ -420,7 +422,7 @@ sleep(5);
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=processing' );
 
-sleep(20);
+sleep(10);
 
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=processing');
@@ -430,6 +432,16 @@ sleep(5);
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=processing' );
 
-sleep(20);
+sleep(10);
+
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=trigger');
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=processing');
+
+sleep(5);
+
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=trigger' );
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=processing' );
+
+sleep(10);
 
 writeTimeGeneration($file, 'done');
