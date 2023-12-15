@@ -523,7 +523,7 @@ error_reporting(E_ALL);
                             <label for="h1title">H1 (Article Title) (max 150 characters)</label>
                             <input type="text" id="h1title" name="h1title" maxlength="150" data-last="<?php echo $h1title;?>">
                             <label for="post_url">URL (/folder/url/)</label>
-                            <input type="text" id="post_url" placeholder="slug" name="post_url" data-last="<?php echo $post_url;?>">
+                            <input type="text" id="post_url" placeholder="slug without /" name="post_url" data-last="<?php echo $post_url;?>">
                             <label for="title">META TITLE</label>
                             <input type="text" id="meta_title" name="meta_title" data-last="<?php echo $meta_title;?>">
                             <label for="url">URL to pass link juice (Dofollow)</label>
