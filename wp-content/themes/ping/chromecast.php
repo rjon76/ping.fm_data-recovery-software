@@ -43,7 +43,7 @@
 					<ul>
 						<?php
 							$pages = get_pages( [
-								'exclude' => [get_the_ID(), 9, 2074, 2076]
+								'exclude' => [get_the_ID(), 9, 2074, 2076, 2103]
 							] );
 							shuffle($pages);
 							$output = array_slice($pages, 0, 14);

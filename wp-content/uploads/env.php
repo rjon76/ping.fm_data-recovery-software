@@ -13,7 +13,7 @@ $languages = [
     // 'Dutch',
     'French',
     'German',
-    // 'Spanish',
+    'Spanish',
 ];
 
 function writeTimeGeneration($path_to_file, $action) {
