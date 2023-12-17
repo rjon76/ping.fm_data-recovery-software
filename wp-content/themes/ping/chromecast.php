@@ -4,7 +4,16 @@
 */
 	get_header();
 ?>
-		<main>
+<script>
+	jQuery('.langList a').on('click', function(e) {
+		e.preventDefault();
+		const lang = jQuery(this).attr('lang');
+		const site = jQuery('#mainTag').attr('data-href');
+		const uri = jQuery('#mainTag').attr('data-uri');
+		console.log(lang, site, uri);
+	})
+</script>
+		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $_SERVER['REQUEST_URI']; ?>">
 			<div class="container">
 				<div class="breadcrumb">
 					<?php
