@@ -8,6 +8,9 @@ error_reporting(E_ALL);
 
 	get_header();
 
+    $current_language = get_locale();
+    var_dump(pll_current_language( $current_language ));
+
     $file = __DIR__ . '/../../uploads/time_record.txt';
     // file_put_contents($file, 'done');
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
@@ -354,7 +357,7 @@ error_reporting(E_ALL);
 		<main>
             <div class="hidden">true</div>
 			<div class="container">
-                <div class="loader filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
+                <div class="loader filePath" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
                     <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
                     <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                         <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
@@ -468,18 +471,18 @@ error_reporting(E_ALL);
                                     <h3>Last / Selected article:</h3>
                                     <p id="lastTitle">What would you like to write about: <span><?php echo $title;?></span></p>
                                     <p id="lastH1">H1 (Article Title): <span><?php echo $h1title;?></span></p>
-                                    <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo home_url() . '/' . $post_url . '/'; ?>"><?php echo home_url() . '/' . $post_url . '/';?></a></p>
+                                    <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo get_site_url() . '/' . $post_url . '/'; ?>"><?php echo get_site_url() . '/' . $post_url . '/';?></a></p>
                                     <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
                                     <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo !empty($url) ? $url : 'not provided';?></span></p>
                                     <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
                                     <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
-                                    <img id="lastIMG" src="<?php echo home_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
+                                    <img id="lastIMG" src="<?php echo get_site_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
                                     <button type="button" class="sBtn" id="btn-reg">Regenerate article</button>
                                     <button type="button" class="sBtn green" id="btn-edit">Edit article</button>
                                     <button type="button" class="sBtn orange" id="btn-translate">Translate article</button>
                                     <button type="button" class="sBtn danger" id="btn-remove">Remove article</button>
 
-                                    <form id="faqQuestions" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
+                                    <form id="faqQuestions" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
                                         <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                         <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
                                         <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="faqLastTheme">
@@ -492,7 +495,7 @@ error_reporting(E_ALL);
                                     </form>
                                 </div>
 
-                                <form id="editPage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/edit-script.php'; ?>">
+                                <form id="editPage" class="hidden" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/edit-script.php'; ?>">
                                     <label for="pageContent" id="moreFAq">Article content</label>
                                     <textarea name="pageContent" id="pageContentField" class="textareaField"><?php echo $page_content; ?></textarea>
                                     <label for="pageFaq" id="moreFAq">Article faq</label>
@@ -502,12 +505,12 @@ error_reporting(E_ALL);
                                     <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
                                 </form>
 
-                                <form id="translatePage" class="hidden" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/translates-script.php'; ?>">
+                                <form id="translatePage" class="hidden" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/translates-script.php'; ?>">
                                     <input class="hidden" type="text" id="tranlateUrl" value="<?php echo $post_url;?>" name="tranlateUrl">
                                     <input type="checkbox" name="onlyFaq" id="onlyFaq">
                                 </form>
 
-                                <form id="formRemoveArt" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/remove-script.php'; ?>">
+                                <form id="formRemoveArt" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/remove-script.php'; ?>">
                                     <input class="hidden" type="text" id="remove_url" name="remove_url" value="<?php echo $title;?>">
                                 </form>
                             <?php } else { ?>
@@ -516,7 +519,7 @@ error_reporting(E_ALL);
                         </div>
                     </div>
                     <div id="generateArticle" class="tabcontent">
-                        <form id="article" action="/" data-action="<?php echo home_url() . '/wp-content/uploads/article-script.php'; ?>" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
+                        <form id="article" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/article-script.php'; ?>" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
                             <h3>New record:</h3>
                             <label for="title">What would you like to write about (max 150 characters)</label>
                             <input type="text" id="title" name="title" maxlength="150" data-last="<?php echo $title;?>">
@@ -534,7 +537,7 @@ error_reporting(E_ALL);
                             <input type="text" id="anchor" name="anchor" data-last="<?php echo $anchor;?>">
                             <label for="file">Featured Image (JPG only)</label>
                             <input type="file" name="file" id="file">
-                            <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo home_url(); ?>">
+                            <input type="text" name="domain_url" id="domain_url" class="hidden" value="<?php echo get_site_url(); ?>">
                             <label for="faq_theme">Please provide me with a keyword or niche for which you want to generate a (FAQ) section and an AI image.</label>
                             <input type="text" id="faq_theme" name="faq_theme" data-last="<?php echo $faq_theme;?>">
                             <label for="youtube_url">Add Youtube Link</label>
@@ -547,7 +550,7 @@ error_reporting(E_ALL);
                         </form>
                     </div>
                 <?php } else { ?>
-                    <div class="loader show filePath" data-stepsf="<?php echo home_url() . '/wp-content/uploads/steps-script.php'; ?>">
+                    <div class="loader show filePath" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
                         <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
                         <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                             <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
