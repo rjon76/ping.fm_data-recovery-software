@@ -13,7 +13,7 @@
 		const lang = jQuery(this).attr('lang');
 		const site = jQuery('#mainTag').attr('data-href');
 		const uri = jQuery('#mainTag').attr('data-uri');
-		console.log(site + '/' + lang[0] + lang[1] + '/' + uri + '/');
+		window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
 	})
 </script>
 		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $articleUrl; ?>">
