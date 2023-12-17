@@ -3,6 +3,9 @@
 	Template Name: ChromeCast Page
 */
 	get_header();
+
+	$aUrl = explode("/", $_SERVER['REQUEST_URI']);
+	$articleUrl = $aUrl[count($aUrl) - 2];
 ?>
 <script>
 	jQuery('.langList a').on('click', function(e) {
@@ -10,10 +13,10 @@
 		const lang = jQuery(this).attr('lang');
 		const site = jQuery('#mainTag').attr('data-href');
 		const uri = jQuery('#mainTag').attr('data-uri');
-		console.log(lang, site, uri);
+		console.log(site + '/' + lang[0] + lang[1] + '/' + uri + '/');
 	})
 </script>
-		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $_SERVER['REQUEST_URI']; ?>">
+		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $articleUrl; ?>">
 			<div class="container">
 				<div class="breadcrumb">
 					<?php
