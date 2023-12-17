@@ -9,11 +9,33 @@ error_reporting(E_ALL);
 	get_header();
 
     $current_language = get_locale();
-    var_dump(pll_current_language( $current_language ));
+
+    if($current_language == 'de_DE') {
+        $curr_url = 'de/';
+        $curr_lang = 'German';
+    } elseif ($current_language == 'es_ES') {
+        $curr_url = 'es/';
+        $curr_lang = 'Spanish';
+    } elseif ($current_language == 'fr_FR') {
+        $curr_url = 'fr/';
+        $curr_lang = 'French';
+    } elseif ($current_language == 'nl_NL') {
+        $curr_url = 'nl/';
+        $curr_lang = 'Dutch';
+    } else {
+        $curr_url = '';
+        $curr_lang = '';
+    }
+
+    $fileLangName = '';
+
+    if($curr_lang !== '') {
+        $fileLangName = '-' . $curr_lang;   
+    }
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
     // file_put_contents($file, 'done');
-    $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post.xml';
+    $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post' . $fileLangName . '.xml';
 
     $title = '';
     $h1title = '';
@@ -471,7 +493,7 @@ error_reporting(E_ALL);
                                     <h3>Last / Selected article:</h3>
                                     <p id="lastTitle">What would you like to write about: <span><?php echo $title;?></span></p>
                                     <p id="lastH1">H1 (Article Title): <span><?php echo $h1title;?></span></p>
-                                    <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo get_site_url() . '/' . $post_url . '/'; ?>"><?php echo get_site_url() . '/' . $post_url . '/';?></a></p>
+                                    <p id="lastPostUrl">URL: <a target="_blank" href="<?php echo get_site_url() . '/' . $curr_url . str_replace("/", "", $post_url) . '/'; ?>"><?php echo get_site_url() . '/' . $curr_url . str_replace("/", "", $post_url) . '/';?></a></p>
                                     <p id="lastMeta">META TITLE: <span><?php echo $meta_title;?></span></p>
                                     <p id="lastURL">URL to pass link juice (Dofollow): <span><?php echo !empty($url) ? $url : 'not provided';?></span></p>
                                     <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
