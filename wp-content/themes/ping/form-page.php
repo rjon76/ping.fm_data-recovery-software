@@ -499,22 +499,28 @@ error_reporting(E_ALL);
                                     <p id="lastURLDescr">What does this link lead to, and where will users be directed if they click on it?: <span><?php echo !empty($url_descr) ? $url_descr : 'not provided';?></span></p>
                                     <p id="lastAnchor">Link Anchor: <span><?php echo !empty($anchor) ? $anchor : 'not provided';?></span></p>
                                     <img id="lastIMG" src="<?php echo get_site_url() . '/wp-content' . explode('wp-content', $file_url)[1];?>" alt="img" class="img">
-                                    <button type="button" class="sBtn" id="btn-reg">Regenerate article</button>
+                                    <?php if($curr_lang === '') { ?>
+                                        <button type="button" class="sBtn" id="btn-reg">Regenerate article</button>
+                                    <?php } ?>
                                     <button type="button" class="sBtn green" id="btn-edit">Edit article</button>
-                                    <button type="button" class="sBtn orange" id="btn-translate">Translate article</button>
-                                    <button type="button" class="sBtn danger" id="btn-remove">Remove article</button>
+                                    <?php if($curr_lang === '') { ?>
+                                        <button type="button" class="sBtn orange" id="btn-translate">Translate article</button>
+                                        <button type="button" class="sBtn danger" id="btn-remove">Remove article</button>
+                                    <?php } ?>
 
-                                    <form id="faqQuestions" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
-                                        <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
-                                        <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
-                                        <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="faqLastTheme">
-                                        <input class="hidden" type="text" id="faqPostUrl" value="<?php echo $post_url; ?>" name="faqPostUrl">
-                                        <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
-                                        <input class="hidden" type="checkbox" name="regenerate-faq" id="regenerateFaq">
-                                        <button  class="sBtn green" type="button" id="btn-num-faq">Add more questions</button>
-                                        <button  class="sBtn orange" type="button" id="btn-translate-faq">Translate faq</button>
-                                        <button  class="sBtn danger" type="button" id="btn-reg-faq">Regenerate faq</button>
-                                    </form>
+                                    <?php if($curr_lang === '') { ?>
+                                        <form id="faqQuestions" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
+                                            <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
+                                            <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
+                                            <input class="hidden" type="text" id="faqLastTheme" value="<?php echo $faq_theme; ?>" name="faqLastTheme">
+                                            <input class="hidden" type="text" id="faqPostUrl" value="<?php echo $post_url; ?>" name="faqPostUrl">
+                                            <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
+                                            <input class="hidden" type="checkbox" name="regenerate-faq" id="regenerateFaq">
+                                            <button  class="sBtn green" type="button" id="btn-num-faq">Add more questions</button>
+                                            <button  class="sBtn orange" type="button" id="btn-translate-faq">Translate faq</button>
+                                            <button  class="sBtn danger" type="button" id="btn-reg-faq">Regenerate faq</button>
+                                        </form>
+                                    <?php } ?>
                                 </div>
 
                                 <form id="editPage" class="hidden" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/edit-script.php'; ?>">
