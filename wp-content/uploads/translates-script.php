@@ -414,6 +414,8 @@ foreach($languages as $lang) {
 
 writeTimeGeneration($file, 'import');
 
+sleep(5);
+
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=processing');
 

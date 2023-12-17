@@ -190,6 +190,8 @@ foreach($languages as $lang) {
     $dom->save(__DIR__ . "/wpallimport/files/generated-post-$lang.xml");
 }
 
+sleep(5);
+
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
 

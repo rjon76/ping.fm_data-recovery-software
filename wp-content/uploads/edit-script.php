@@ -30,7 +30,17 @@ if ($_POST["postUrl"]) {
     $postUrl = $_POST["postUrl"];
 }
 
-$path = __DIR__ . '/wpallimport/files/generated-post.xml';
+if ($_POST["postLanguage"]) {
+    $postLanguage = $_POST["postLanguage"];
+}
+
+$fileLangName = '';
+
+if($postLanguage !== '') {
+    $fileLangName = '-' . $postLanguage;   
+}
+
+$path = __DIR__ . '/wpallimport/files/generated-post' . $fileLangName . '.xml';
 if(file_exists($path)) {
     $xmlstring = file_get_contents($path);
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
@@ -171,7 +181,9 @@ xmlwriter_end_document($xw);
 
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
-$dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
+$dom->save(__DIR__ . '/wpallimport/files/generated-post' . $fileLangName . '.xml');
+
+sleep(5);
 
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger');
 fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing');
@@ -181,4 +193,34 @@ sleep(5);
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=trigger' );
 exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=4&action=processing' );
 
-sleep(20);
+sleep(10);
+
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=trigger');
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=processing');
+
+sleep(5);
+
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=trigger' );
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=10&action=processing' );
+
+sleep(10);
+
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=trigger');
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=processing');
+
+sleep(5);
+
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=trigger' );
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=11&action=processing' );
+
+sleep(10);
+
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=trigger');
+fetch_headers('https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=processing');
+
+sleep(5);
+
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=trigger' );
+exec( 'wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=12&action=processing' );
+
+sleep(10);

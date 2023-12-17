@@ -506,9 +506,7 @@ error_reporting(E_ALL);
                                     <?php if($curr_lang === '') { ?>
                                         <button type="button" class="sBtn orange" id="btn-translate">Translate article</button>
                                         <button type="button" class="sBtn danger" id="btn-remove">Remove article</button>
-                                    <?php } ?>
 
-                                    <?php if($curr_lang === '') { ?>
                                         <form id="faqQuestions" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
                                             <label for="numberFaq" id="moreFAq">ADD MORE FAQ QUESTIONS (default + 10)</label>
                                             <input type="number" id="numberFaq" name="numberFaq" min="1" max="30" placeholder="Quantity questions (number only)">
@@ -529,6 +527,7 @@ error_reporting(E_ALL);
                                     <label for="pageFaq" id="moreFAq">Article faq</label>
                                     <textarea name="pageFaq" id="pageFaqField" class="textareaField"><?php echo $page_faq; ?></textarea>
                                     <input class="hidden" type="text" id="editFaqPostUrl" value="<?php echo $post_url; ?>" name="postUrl">
+                                    <input class="hidden" type="text" id="postLanguage" value="<?php echo $curr_lang; ?>" name="postLanguage">
                                     <button  class="sBtn" type="button" id="btn-cancel-edit">Cancel</button>
                                     <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
                                 </form>
