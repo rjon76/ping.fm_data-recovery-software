@@ -999,7 +999,9 @@ error_reporting(E_ALL);
                 jQuery(jQuery('#faq_theme')[0]).attr('data-last', jQuery(this).attr('data-faq_theme'))
                 jQuery(jQuery('#apps_links')[0]).attr('data-checked', jQuery(this).attr('data-apps_links'))
 
-                jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
+                if(jQuery('main').attr('data-lang').length === 0) {
+                    jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
+                }
                 jQuery('#faqPostUrl')[0].value = jQuery(this).attr('data-post_url')
                 jQuery('#editFaqPostUrl')[0].value = jQuery(this).attr('data-post_url')
 
