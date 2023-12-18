@@ -50,6 +50,7 @@ error_reporting(E_ALL);
     $apps_links = '';
     $page_content = '';
     $page_faq = '';
+    $page_title = '';
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
@@ -60,6 +61,7 @@ error_reporting(E_ALL);
         if(count($aArticles) > 0) {
 
             if(!empty($aArticles["page"]) && !empty($aArticles["page"]["title"])) {
+                $page_title = $aArticles["page"]["page_title"];
                 $title = $aArticles["page"]["title"];
                 $h1title = $aArticles["page"]["h1title"];
                 $meta_title = $aArticles["page"]["page_meta"];
@@ -76,6 +78,7 @@ error_reporting(E_ALL);
             } else {
 
                 if(!empty($aArticles["page"]) && !empty($aArticles["page"][0]["title"])) {
+                    $page_title = $aArticles["page"][0]["page_title"];
                     $title = $aArticles["page"][0]["title"];
                     $h1title = $aArticles["page"][0]["h1title"];
                     $meta_title = $aArticles["page"][0]["page_meta"];
@@ -92,6 +95,7 @@ error_reporting(E_ALL);
                 }
                 
                 if(!empty($aArticles["page"]) && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
+                    $page_title = $aArticles["page"][count($aArticles["page"]) - 1]["page_title"];
                     $title = $aArticles["page"][count($aArticles["page"]) - 1]["title"];
                     $h1title = $aArticles["page"][count($aArticles["page"]) - 1]["h1title"];
                     $meta_title = $aArticles["page"][count($aArticles["page"]) - 1]["page_meta"];
@@ -481,7 +485,7 @@ error_reporting(E_ALL);
                                                 data-page-content="<?php echo htmlspecialchars($aArticles["page"][$i]["page_content"]) ?? ''; ?>"
                                                 data-page-faq="<?php echo htmlspecialchars(is_string($aArticles["page"][$i]["page_faq"]) ? $aArticles["page"][$i]["page_faq"] : ''); ?>"
                                             >
-                                                <?php echo $aArticles["page"][$i]["title"]; ?>
+                                                <?php echo $aArticles["page"][$i]["page_title"]; ?>
                                             </div>
                                         <?php } ?>
                                     </div>
