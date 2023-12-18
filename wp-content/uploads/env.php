@@ -478,10 +478,10 @@ function getInfoFaq($title, $number, $OPENAI_API_KEY) {
         'messages' => [
             [
                 "role" => "system",
-                "content" => "Generate a set of $number related to this keyword questions and $number their corresponding answers (around 50 words) for $title.
+                "content" => "Generate a set of $number related to this keyword questions and $number their corresponding answers (around 80 words) for $title.
                             write about $title, not only about soft;
                             provide 1-2 another external hyperlinks only on homepages for convenient user navigation, with attributes rel='nofollow' target='_blank';
-                            MUST be $number related questions and $number their corresponding answers (around 50 words).
+                            MUST be $number related questions and $number their corresponding answers (around 80 words).
                             Question ONLY inside once <p> and answer ONLY inside once <p> without QUESTION and ANSWER words and without Q and A letters, and don't numeric.
                             A fully rewritten unique original content that can't be identified by artificial intelligence or plagiarism detection tools.
                             When outlining procedures or services, always provide external hyperlinks for convenient user navigation.
@@ -534,7 +534,7 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
         'messages' => [
             [
                 "role" => "system",
-                "content" => "Please translate the content of this $text, which is in XML/HTML format, into $language. While translating, ensure that the translation is optimized for local SEO in Italy. Also, it is important to maintain the same structure and formatting as the original web page.",
+                "content" => "Translate text into $language - {{$text}}. It is important not to remove html tags and do not add anything of your own. Translation only.",
             ],
         ],
     );
