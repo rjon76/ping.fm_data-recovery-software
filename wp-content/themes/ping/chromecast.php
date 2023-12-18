@@ -6,6 +6,20 @@
 
 	$aUrl = explode("/", $_SERVER['REQUEST_URI']);
 	$articleUrl = $aUrl[count($aUrl) - 2];
+
+	$current_language = get_locale();
+
+    if($current_language == 'de_DE') {
+        $curr_url = 'de/';
+    } elseif ($current_language == 'es_ES') {
+        $curr_url = 'es/';
+    } elseif ($current_language == 'fr_FR') {
+        $curr_url = 'fr/';
+    } elseif ($current_language == 'nl_NL') {
+        $curr_url = 'nl/';
+    } else {
+        $curr_url = '';
+    }
 ?>
 <script>
 	jQuery('.langList a').on('click', function(e) {
@@ -15,8 +29,10 @@
 		const uri = jQuery('#mainTag').attr('data-uri');
 		window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
 	})
+
+	jQuery('.breadcrumb a').attr('href', jQuery('#mainTag').attr('data-href') + '/' + jQuery('#mainTag').attr('data-lang'));
 </script>
-		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $articleUrl; ?>">
+		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $articleUrl; ?>" data-lang="<?php echo $curr_url; ?>">
 			<div class="container">
 				<div class="breadcrumb">
 					<?php
