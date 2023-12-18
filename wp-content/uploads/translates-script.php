@@ -231,7 +231,7 @@ foreach($languages as $lang) {
                     $page_title = $aArticles["page"]["page_title"];
                     $page_content = $aArticles["page"]["page_content"];
                     $page_faq = $translate_faq;
-                    $title = $aArticles["page"]["title"];
+                    $title_translate = $aArticles["page"]["title"];
                     $h1title = $aArticles["page"]["h1title"];
                     $url = $aArticles["page"]["url"];
                     $url_descr = $aArticles["page"]["url_descr"];
@@ -260,7 +260,7 @@ foreach($languages as $lang) {
                             $page_title = $aArticles["page"][$i]["page_title"];
                             $page_content = $aArticles["page"][$i]["page_content"];
                             $page_faq = $translate_faq;
-                            $title = $aArticles["page"][$i]["title"];
+                            $title_translate = $aArticles["page"][$i]["title"];
                             $h1title = $aArticles["page"][$i]["h1title"];
                             $url = $aArticles["page"][$i]["url"];
                             $url_descr = $aArticles["page"][$i]["url_descr"];
@@ -342,7 +342,7 @@ foreach($languages as $lang) {
             $page_title = $translate_title;
             $page_content = $translate_content;
             $page_faq = $translate_faq;
-            $title = $translate_title_2;
+            $title_translate = $translate_title_2;
             $h1title = $translate_h1title;
         }
 
@@ -376,7 +376,7 @@ foreach($languages as $lang) {
                 xmlwriter_text($xw, $page_faq);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'title');
-                xmlwriter_text($xw, $title);
+                xmlwriter_text($xw, $title_translate);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'h1title');
                 xmlwriter_text($xw, $h1title);
