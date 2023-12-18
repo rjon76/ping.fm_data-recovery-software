@@ -534,7 +534,7 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
         'messages' => [
             [
                 "role" => "system",
-                "content" => "Translate text into $language - {{$text}}. It is important not to remove html tags and do not add anything of your own. Translation only.",
+                "content" => "Please translate the content of this $text, which is in XML/HTML format, into $language. While translating, ensure that the translation is optimized for local SEO in Italy. Also, it is important to maintain the same structure and formatting as the original web page.",
             ],
         ],
     );
