@@ -376,7 +376,7 @@ error_reporting(E_ALL);
         to {opacity: 1;}
     }
 </style>
-		<main>
+		<main data-lang="<?php echo $curr_url; ?>">
             <div class="hidden">true</div>
 			<div class="container">
                 <div class="loader filePath" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
@@ -975,8 +975,12 @@ error_reporting(E_ALL);
                 jQuery('#lastURL').find('span').html(jQuery(this).attr('data-url'))
                 jQuery('#lastURLDescr').find('span').html(jQuery(this).attr('data-url_descr'))
                 jQuery('#lastAnchor').find('span').html(jQuery(this).attr('data-anchor'))
-                jQuery('#lastPostUrl').find('a').html(jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
-                jQuery('#lastPostUrl').find('a').attr('href', jQuery('#domain_url')[0].value + '/' + jQuery(this).attr('data-post_url') + '/')
+                jQuery('#lastPostUrl').find('a').html(
+                    jQuery('#domain_url')[0].value + '/' + jQuery('main').attr('data-lang') + jQuery(this).attr('data-post_url').replaceAll('/', '') + '/'
+                )
+                jQuery('#lastPostUrl').find('a').attr('href',
+                    jQuery('#domain_url')[0].value + '/' + jQuery('main').attr('data-lang') + jQuery(this).attr('data-post_url').replaceAll('/', '') + '/'
+                )
                 jQuery('#lastIMG').attr('src', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
                 jQuery('#lastIMG').attr('srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
                 jQuery('#lastIMG').attr('data-srcset', jQuery('#domain_url')[0].value + '/wp-content' + jQuery(this).attr('data-file_url').split('wp-content')[1])
