@@ -1001,8 +1001,8 @@ error_reporting(E_ALL);
 
                 if(jQuery('main').attr('data-lang').length === 0) {
                     jQuery('#faqLastTheme')[0].value = jQuery(this).attr('data-faq_theme')
+                    jQuery('#faqPostUrl')[0].value = jQuery(this).attr('data-post_url')
                 }
-                jQuery('#faqPostUrl')[0].value = jQuery(this).attr('data-post_url')
                 jQuery('#editFaqPostUrl')[0].value = jQuery(this).attr('data-post_url')
 
                 jQuery('#remove_url')[0].value = jQuery(this).attr('data-post_url')
