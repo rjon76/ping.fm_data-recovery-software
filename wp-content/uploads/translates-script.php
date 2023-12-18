@@ -86,6 +86,8 @@ if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
     }
 }
 
+echo $title;
+
 $englishH1 = $h1title;
 
 foreach($languages as $lang) {
