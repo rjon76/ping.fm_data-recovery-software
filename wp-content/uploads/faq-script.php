@@ -21,8 +21,8 @@ if ($_POST["numberFaq"]) {
     $numberFaq = $_POST["numberFaq"];
 }
 
-if ($_POST["themeFaq"]) {
-    $themeFaq = $_POST["themeFaq"];
+if ($_POST["faqLastTheme"]) {
+    $themeFaq = $_POST["faqLastTheme"];
 }
 
 if ($_POST["faqPostUrl"]) {
