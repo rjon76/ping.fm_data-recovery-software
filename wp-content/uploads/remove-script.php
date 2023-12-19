@@ -2,7 +2,7 @@
 
 
 if ($_POST["remove_url"]) {
-    $theme_url = $_POST["remove_url"];
+    $postUrl = $_POST["remove_url"];
 } else {
     return 'false';
     exit();
@@ -31,7 +31,7 @@ xmlwriter_start_element($xw, 'root');
         if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-                if($theme_url === $aArticles["page"][$i]["page_url"]) {
+                if($postUrl === $aArticles["page"][$i]["page_url"]) {
                     continue;
                 }
 
@@ -122,7 +122,7 @@ foreach($languages as $lang) {
         if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-                if($theme_url === $aArticles["page"][$i]["page_url"]) {
+                if($postUrl === $aArticles["page"][$i]["page_url"]) {
                     continue;
                 }
 
