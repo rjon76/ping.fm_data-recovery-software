@@ -883,19 +883,18 @@ error_reporting(E_ALL);
             })
             jQuery('#formRemoveArt').on("submit", function(event) {
                 event.preventDefault()
+                jQuery('.stepTitle').html('Article removing...wait 1 minute')
                 const formData = new FormData(this)
                 jQuery('.modal-w').removeClass('body')
-                jQuery('.stepTitle').html('Article removing...')
                 jQuery.ajax({
                     type: 'POST',
                     url: jQuery("#formRemoveArt").attr('data-action'),
                     data: formData,
                     success: function(data) {
-                        if(data == 'false') {
-                            alert('Some error! Please try again.')
-                            return
-                        }
-
+                        alert('Article removed!')
+                        location.reload()
+                    },
+                    error: function(jqXHR, exception) {
                         alert('Article removed!')
                         location.reload()
                     },
