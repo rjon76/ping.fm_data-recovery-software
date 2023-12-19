@@ -885,6 +885,7 @@ error_reporting(E_ALL);
                 event.preventDefault()
                 const formData = new FormData(this)
                 jQuery('.modal-w').removeClass('body')
+                jQuery('.stepTitle').html('Article removing...')
                 jQuery.ajax({
                     type: 'POST',
                     url: jQuery("#formRemoveArt").attr('data-action'),
@@ -896,10 +897,6 @@ error_reporting(E_ALL);
                         }
 
                         alert('Article removed!')
-                        location.reload()
-                    },
-                    error: function(jqXHR, exception) {
-                        alert('Some error! Please try again.')
                         location.reload()
                     },
                     cache: false,
