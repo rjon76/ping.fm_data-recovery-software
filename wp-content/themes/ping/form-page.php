@@ -542,7 +542,7 @@ error_reporting(E_ALL);
                                 </form>
 
                                 <form id="formRemoveArt" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/remove-script.php'; ?>">
-                                    <input class="hidden" type="text" id="remove_url" name="remove_url" value="<?php echo $aArticles["page"][$i]["post_url"]; ?>">
+                                    <input class="hidden" type="text" id="remove_url" name="remove_url" value="<?php echo $post_url;?>">
                                 </form>
                             <?php } else { ?>
                                 <h3>There are no articles generated. Let's start!</h3>
