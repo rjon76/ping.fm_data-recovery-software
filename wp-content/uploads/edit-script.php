@@ -30,6 +30,8 @@ if ($_POST["postUrl"]) {
     $postUrl = $_POST["postUrl"];
 }
 
+$postLanguage = '';
+
 if ($_POST["postLanguage"]) {
     $postLanguage = $_POST["postLanguage"];
 }
