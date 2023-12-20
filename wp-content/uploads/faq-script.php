@@ -49,7 +49,7 @@ $res = xmlwriter_set_indent_string($xw, ' ');
 xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
-    $mainString = $regenerate_faq == 'false' ? '<h2>FAQ</h2>' : '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
+    $mainString = $regenerate_faq == 'false' ? '<h2>FAQ</h2>' : '<section class="faq"><h2>FAQ</h2>';
 
     if($regenerate_faq == 'false') {
         if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
@@ -85,8 +85,8 @@ xmlwriter_start_element($xw, 'root');
         if($key === 0) continue;
                     
         if($key%2==1) {
-            $mainString .= '<div class="panel" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question"><div class="toggle-link"><h3 class="panel-title" itemprop="name">
-                '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer"><div itemprop="text">';
+            $mainString .= '<div class="panel"><div class="toggle-link"><h3 class="panel-title">
+                '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body"><div>';
         } else {
             $mainString .= '<p>'.trim($p).'</p></div></div></div></div>';
         }

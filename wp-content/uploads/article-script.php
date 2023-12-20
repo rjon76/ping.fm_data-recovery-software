@@ -231,7 +231,7 @@ xmlwriter_start_element($xw, 'root');
     );
     
     $pageContent = '';
-    $faqString = '<section class="faq" itemscope="" itemtype="https://schema.org/FAQPage"><h2>FAQ</h2>';
+    $faqString = '<section class="faq"><h2>FAQ</h2>';
     $contentString = '';
     $tipsString = $page_tip1 . $page_tip2 . $page_tip3;
 
@@ -350,8 +350,8 @@ xmlwriter_start_element($xw, 'root');
         if($key === 0) continue;
                     
         if($key%2==1) {
-            $faqString .= '<div class="panel" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question"><div class="toggle-link"><h3 class="panel-title" itemprop="name">
-                '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body" itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer"><div itemprop="text">';
+            $faqString .= '<div class="panel"><div class="toggle-link"><h3 class="panel-title">
+                '.trim($p).'</h3></div><div class="panel-collapse"><div class="panel-body"><div>';
         } else {
             $faqString .= '<p>'.trim($p).'</p></div></div></div></div>';
         }

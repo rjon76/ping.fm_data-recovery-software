@@ -104,10 +104,18 @@ list($aFaqFirst, $aFaqSecond) = array_chunk($aFaqSections, ceil(count($aFaqSecti
 $sFaqFirst = $sFaqSecond = '';
 
 foreach($aFaqFirst as $fF) {
-    $sFaqFirst .= $fF . '</p>';
+    if($fF !== '') {
+        $sFaqFirst .= $fF . '</p>';
+    }
 }
-foreach($aFaqSecond as $fS) {
-    $sFaqSecond .= $fS . '</p>';
+foreach($aFaqSecond as $key => $fS) {
+    if($fS !== '') {
+        if($key !== count($aFaqSecond) - 1) {
+            $sFaqSecond .= $fS . '</p>';
+        } else {
+            $sFaqSecond .= $fS;
+        }
+    }
 }
 
 $englishH1 = $h1title;
