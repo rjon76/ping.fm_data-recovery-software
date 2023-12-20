@@ -86,6 +86,30 @@ if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
     }
 }
 
+$aContentFirst = $aContentSecond = [];
+$aContentSections = explode("</section>", $page_content);
+list($aContentFirst, $aContentSecond) = array_chunk($aContentSections, ceil(count($aContentSections)/2));
+$sContentFirst = $sContentSecond = '';
+
+foreach($aContentFirst as $cF) {
+    $sContentFirst .= $cF . '</section>';
+}
+foreach($aContentSecond as $cS) {
+    $sContentSecond .= $cS . '</section>';
+}
+
+$aFaqFirst = $aFaqSecond = [];
+$aFaqSections = explode("</p>", $page_faq);
+list($aFaqFirst, $aFaqSecond) = array_chunk($aFaqSections, ceil(count($aFaqSections)/2));
+$sFaqFirst = $sFaqSecond = '';
+
+foreach($aFaqFirst as $fF) {
+    $sFaqFirst .= $fF . '</p>';
+}
+foreach($aFaqSecond as $fS) {
+    $sFaqSecond .= $fS . '</p>';
+}
+
 $englishH1 = $h1title;
 
 foreach($languages as $lang) {
@@ -129,14 +153,23 @@ foreach($languages as $lang) {
                 }
             } while ( is_null($translate_title) );
 
-            $translate_content = null;
+            $translate_content_first = null;
 
             do {
-                $content = getTranslate($page_content, $lang, $OPENAI_API_KEY);
-                if( isset($content->choices) && !empty($content->choices[0]) && isset($content->choices[0]->message) && isset($content->choices[0]->message->content) ) {
-                    $translate_content = $content->choices[0]->message->content;
+                $content_first = getTranslate($sContentFirst, $lang, $OPENAI_API_KEY);
+                if( isset($content_first->choices) && !empty($content_first->choices[0]) && isset($content_first->choices[0]->message) && isset($content_first->choices[0]->message->content) ) {
+                    $translate_content_first = $content_first->choices[0]->message->content;
                 }
-            } while ( is_null($translate_content) );
+            } while ( is_null($translate_content_first) );
+
+            $translate_content_second = null;
+
+            do {
+                $content_second = getTranslate($sContentSecond, $lang, $OPENAI_API_KEY);
+                if( isset($content_second->choices) && !empty($content_second->choices[0]) && isset($content_second->choices[0]->message) && isset($content_second->choices[0]->message->content) ) {
+                    $translate_content_second = $content_second->choices[0]->message->content;
+                }
+            } while ( is_null($translate_content_second) );
 
             $translate_h1title = null;
 
@@ -148,14 +181,23 @@ foreach($languages as $lang) {
             } while ( is_null($translate_h1title) );
         }
 
-        $translate_faq = null;
+        $translate_faq_first = null;
 
         do {
-            $faq = getTranslate($page_faq, $lang, $OPENAI_API_KEY);
-            if( isset($faq->choices) && !empty($faq->choices[0]) && isset($faq->choices[0]->message) && isset($faq->choices[0]->message->content) ) {
-                $translate_faq = $faq->choices[0]->message->content;
+            $faq_first = getTranslate($sFaqFirst, $lang, $OPENAI_API_KEY);
+            if( isset($faq_first->choices) && !empty($faq_first->choices[0]) && isset($faq_first->choices[0]->message) && isset($faq_first->choices[0]->message->content) ) {
+                $translate_faq_first = $faq_first->choices[0]->message->content;
             }
-        } while ( is_null($translate_faq) );
+        } while ( is_null($translate_faq_first) );
+
+        $translate_faq_second = null;
+
+        do {
+            $faq_second = getTranslate($sFaqSecond, $lang, $OPENAI_API_KEY);
+            if( isset($faq_second->choices) && !empty($faq_second->choices[0]) && isset($faq_second->choices[0]->message) && isset($faq_second->choices[0]->message->content) ) {
+                $translate_faq_second = $faq_second->choices[0]->message->content;
+            }
+        } while ( is_null($translate_faq_second) );
 
         $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $englishH1)));
 
@@ -221,7 +263,7 @@ foreach($languages as $lang) {
                     $page_url = $aArticles["page"]["page_url"];
                     $page_title = $aArticles["page"]["page_title"];
                     $page_content = $aArticles["page"]["page_content"];
-                    $page_faq = $translate_faq;
+                    $page_faq = $translate_faq_first . $translate_faq_second;
                     $title = $aArticles["page"]["title"];
                     $h1title = $aArticles["page"]["h1title"];
                     $url = $aArticles["page"]["url"];
@@ -250,7 +292,7 @@ foreach($languages as $lang) {
                             $page_url = $aArticles["page"][$i]["page_url"];
                             $page_title = $aArticles["page"][$i]["page_title"];
                             $page_content = $aArticles["page"][$i]["page_content"];
-                            $page_faq = $translate_faq;
+                            $page_faq = $translate_faq_first . $translate_faq_second;
                             $title = $aArticles["page"][$i]["title"];
                             $h1title = $aArticles["page"][$i]["h1title"];
                             $url = $aArticles["page"][$i]["url"];
@@ -331,8 +373,8 @@ foreach($languages as $lang) {
         if($onlyFaq == 'false') {
             $page_meta = $translate_meta;
             $page_title = $translate_title;
-            $page_content = $translate_content;
-            $page_faq = $translate_faq;
+            $page_content = $translate_content_first . $translate_content_second;
+            $page_faq = $translate_faq_first . $translate_faq_second;
             $h1title = $translate_h1title;
         }
 
