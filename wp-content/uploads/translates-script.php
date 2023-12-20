@@ -86,10 +86,12 @@ if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
     }
 }
 
-$aContentFirst = $aContentSecond = [];
+$aContentFirst = [];
+$aContentSecond = [];
 $aContentSections = explode("</section>", $page_content);
 list($aContentFirst, $aContentSecond) = array_chunk($aContentSections, ceil(count($aContentSections)/2));
-$sContentFirst = $sContentSecond = '';
+$sContentFirst = '';
+$sContentSecond = '';
 
 foreach($aContentFirst as $cF) {
     $sContentFirst .= $cF . '</section>';
@@ -104,10 +106,12 @@ foreach($aContentSecond as $key => $cS) {
     }
 }
 
-$aFaqFirst = $aFaqSecond = [];
-$aFaqSections = explode("</p>", $page_faq);
+$aFaqFirst = [];
+$aFaqSecond = [];
+$aFaqSections = explode("</p>", str_replace(['<section class="faq">', '</section>'], '', $page_faq));
 list($aFaqFirst, $aFaqSecond) = array_chunk($aFaqSections, ceil(count($aFaqSections)/2));
-$sFaqFirst = $sFaqSecond = '';
+$sFaqFirst = '';
+$sFaqSecond = '';
 
 foreach($aFaqFirst as $fF) {
     if($fF !== '') {
@@ -277,7 +281,7 @@ foreach($languages as $lang) {
                     $page_url = $aArticles["page"]["page_url"];
                     $page_title = $aArticles["page"]["page_title"];
                     $page_content = $aArticles["page"]["page_content"];
-                    $page_faq = $translate_faq_first . $translate_faq_second;
+                    $page_faq = '<section class="faq">' . $translate_faq_first . $translate_faq_second . '</section>';
                     $title = $aArticles["page"]["title"];
                     $h1title = $aArticles["page"]["h1title"];
                     $url = $aArticles["page"]["url"];
@@ -306,7 +310,7 @@ foreach($languages as $lang) {
                             $page_url = $aArticles["page"][$i]["page_url"];
                             $page_title = $aArticles["page"][$i]["page_title"];
                             $page_content = $aArticles["page"][$i]["page_content"];
-                            $page_faq = $translate_faq_first . $translate_faq_second;
+                            $page_faq = '<section class="faq">' . $translate_faq_first . $translate_faq_second . '</section>';
                             $title = $aArticles["page"][$i]["title"];
                             $h1title = $aArticles["page"][$i]["h1title"];
                             $url = $aArticles["page"][$i]["url"];
@@ -388,7 +392,7 @@ foreach($languages as $lang) {
             $page_meta = $translate_meta;
             $page_title = $translate_title;
             $page_content = $translate_content_first . $translate_content_second;
-            $page_faq = $translate_faq_first . $translate_faq_second;
+            $page_faq = '<section class="faq">' . $translate_faq_first . $translate_faq_second . '</section>';
             $h1title = $translate_h1title;
         }
 
