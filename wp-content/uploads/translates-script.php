@@ -108,20 +108,20 @@ foreach($aContentSecond as $key => $cS) {
 
 $aFaqFirst = [];
 $aFaqSecond = [];
-$aFaqSections = explode("</p>", str_replace(['<section class="faq">', '</section>'], '', $page_faq));
+$aFaqSections = explode("</p></div></div></div></div>", str_replace(['<section class="faq">', '</section>'], '', $page_faq));
 list($aFaqFirst, $aFaqSecond) = array_chunk($aFaqSections, ceil(count($aFaqSections)/2));
 $sFaqFirst = '';
 $sFaqSecond = '';
 
 foreach($aFaqFirst as $fF) {
     if($fF !== '') {
-        $sFaqFirst .= $fF . '</p>';
+        $sFaqFirst .= $fF . '</p></div></div></div></div>';
     }
 }
 foreach($aFaqSecond as $key => $fS) {
     if($fS !== '') {
         if($key !== count($aFaqSecond) - 1) {
-            $sFaqSecond .= $fS . '</p>';
+            $sFaqSecond .= $fS . '</p></div></div></div></div>';
         } else {
             $sFaqSecond .= $fS;
         }
