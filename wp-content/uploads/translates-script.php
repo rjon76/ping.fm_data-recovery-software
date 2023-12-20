@@ -94,8 +94,14 @@ $sContentFirst = $sContentSecond = '';
 foreach($aContentFirst as $cF) {
     $sContentFirst .= $cF . '</section>';
 }
-foreach($aContentSecond as $cS) {
-    $sContentSecond .= $cS . '</section>';
+foreach($aContentSecond as $key => $cS) {
+    if($cS !== '') {
+        if($key !== count($aContentSecond) - 1) {
+            $sContentSecond .= $cS . '</section>';
+        } else {
+            $sContentSecond .= $cS;
+        }
+    }
 }
 
 $aFaqFirst = $aFaqSecond = [];
