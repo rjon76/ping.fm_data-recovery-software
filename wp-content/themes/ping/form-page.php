@@ -765,7 +765,7 @@ error_reporting(E_ALL);
             })
             jQuery("#translatePage").on("submit", function(event) {
                 event.preventDefault()
-                jQuery('.modal-w').removeClass('body')
+                jQuery('.modal').removeClass('show')
                 jQuery('.modal-w').removeClass('translate')
                 const formData = new FormData(this);
 
