@@ -106,7 +106,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $languages = []
     $rTitle = $title;
     //  $text = $title;
     $rTitle = ucwords($rTitle);
-    $text = wordwrap($rTitle, 16, "\n");
+    $text = wordwrap($rTitle, 16, "\n", true);
     $strings = explode("\n", $text);
     $length = count($strings);
     if($length >=5 ) {
@@ -186,7 +186,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $languages = []
             $rTitle = $titleLang;
             
             $rTitle = ucwords($rTitle);
-            $text = wordwrap($rTitle, 16, "\n");
+            $text = wordwrap($rTitle, 16, "\n", true);
             $strings = explode("\n", $text);
             $length = count($strings);
             if($length >=5 ) {
