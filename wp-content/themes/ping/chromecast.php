@@ -88,7 +88,7 @@
 				const lang = jQuery(el).attr('lang');
 				const site = jQuery('#mainTag').attr('data-href');
 				const uri = jQuery('#mainTag').attr('data-uri');
-				$(el).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
+				jQuery(el).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
 			})
 			jQuery('.langList a').on('click', function(e) {
 				e.preventDefault();
