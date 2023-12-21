@@ -21,17 +21,6 @@
         $curr_url = '';
     }
 ?>
-<script>
-	jQuery('.langList a').on('click', function(e) {
-		e.preventDefault();
-		const lang = jQuery(this).attr('lang');
-		const site = jQuery('#mainTag').attr('data-href');
-		const uri = jQuery('#mainTag').attr('data-uri');
-		window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
-	})
-
-	jQuery('.breadcrumb a').attr('href', jQuery('#mainTag').attr('data-href') + '/' + jQuery('#mainTag').attr('data-lang'));
-</script>
 		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $articleUrl; ?>" data-lang="<?php echo $curr_url; ?>">
 			<div class="container">
 				<div class="breadcrumb">
@@ -94,5 +83,22 @@
 				</aside>
 			</div>
 		</main>
+		<script>
+			jQuery('.langList a').each(function(el) {
+				const lang = jQuery(el).attr('lang');
+				const site = jQuery('#mainTag').attr('data-href');
+				const uri = jQuery('#mainTag').attr('data-uri');
+				$(el).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
+			})
+			jQuery('.langList a').on('click', function(e) {
+				e.preventDefault();
+				const lang = jQuery(this).attr('lang');
+				const site = jQuery('#mainTag').attr('data-href');
+				const uri = jQuery('#mainTag').attr('data-uri');
+				window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
+			})
+
+			jQuery('.breadcrumb a').attr('href', jQuery('#mainTag').attr('data-href') + '/' + jQuery('#mainTag').attr('data-lang'));
+		</script>
 <?php
 	get_footer();
