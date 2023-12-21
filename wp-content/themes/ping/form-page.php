@@ -1105,12 +1105,10 @@ error_reporting(E_ALL);
                     <button id="DeleteArticle">Remove</button>
                 </div>
                 <div class="modal-translate">
-                    <h3>Are you sure you want to delete the article?</h3>
-                    <p>You will only remove the article from the article import file and will not be able to update it for the blog in the future.</p>
-                    <p>The page in the admin panel will switch to Draft status.</p>
-                    <p>For complete removal, go to the Wordpress admin panel, Pages section, find and delete permanently</p>
+                    <h3>Are you sure you want to translate the article?</h3>
+                    <p>The translation will take about 15 minutes</p>
                     <button class="cancelRemove">Cancel</button>
-                    <button id="TranslateArticle">Translate</button>
+                    <button id="TranslateArticle green">Translate</button>
                 </div>
                 <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                 <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
