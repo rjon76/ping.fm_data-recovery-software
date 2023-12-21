@@ -380,8 +380,11 @@ error_reporting(E_ALL);
         border-radius: 10px;
         margin-top: 20px;
     }
-    .modal-w button:last-child {
+    .modal-w button:last-child:not(.green) {
         background: red !important;
+        margin-right: 0;
+    }
+    .modal-w button.green {
         margin-right: 0;
     }
     @keyframes fadeEffect {
