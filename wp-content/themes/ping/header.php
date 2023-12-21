@@ -113,7 +113,7 @@ if($current_language == 'de_DE') {
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<?php if($isPageHasTranslate || !empty($aArticles["page"])) { ?>
+				<?php if($isPageHasTranslate && !empty($aArticles["page"])) { ?>
 					<div class="language-switcher">
 						<div class="trp-ls-shortcode-current-language" style="width: 166px;">
 							<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
