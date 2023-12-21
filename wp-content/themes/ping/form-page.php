@@ -695,7 +695,7 @@ error_reporting(E_ALL);
             jQuery('#editPage').on("submit", function(event) {
                 event.preventDefault()
                 jQuery('.loader').addClass('show')
-                jQuery('.stepTitle').html('Wait... save the article! autoreload will happen')
+                jQuery('.stepTitle').html('Updating Article')
                 const formData = new FormData(this);
                 jQuery.ajax({
                     type: 'POST',
