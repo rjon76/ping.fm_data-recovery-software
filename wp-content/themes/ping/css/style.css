@@ -752,6 +752,7 @@ section.banner .banner--img .banner--inner h1 {
   line-height: 54px;
   margin-bottom: 20px;
   text-align: left;
+  word-break: break-word;
 }
 @media (max-width: 1250px) {
   section.banner .banner--img .banner--inner h1 {
@@ -960,6 +961,7 @@ div > a {
   font-weight: normal;
   text-align: left;
   margin: 0;
+  word-break: break-word;
 }
 .homePosts .article .innerart,
 .homePosts article .innerart {

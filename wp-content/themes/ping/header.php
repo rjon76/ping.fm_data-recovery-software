@@ -13,6 +13,42 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 $current_language = get_locale();
 
+$aUrl = explode("/", $_SERVER['REQUEST_URI']);
+$articleUrl = $aUrl[count($aUrl) - 2];
+
+if($fileName === 'chromecast.php') {
+
+	$isPageHasTranslate = false;
+
+	$path = __DIR__ . '/../../uploads/wpallimport/files/generated-post-German.xml';
+	$xmlstring = file_get_contents($path);
+	$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+	$json = json_encode($xml);
+	$aArticles = json_decode($json, TRUE);
+
+	if(count($aArticles) > 0) {
+		if(!empty($aArticles["page"]) && !empty($aArticles["page"]["post_url"])) {
+			$post_url = str_replace("/", "", $aArticles["page"]["post_url"]);
+			if($post_url === $articleUrl) {
+				$isPageHasTranslate = true;
+			}
+		} else {
+			if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["post_url"]) && !empty($aArticles["page"][1]["post_url"])) {
+				for($i = 0; $i < count($aArticles["page"]); $i++ ) {
+					if(empty($aArticles["page"][$i]["post_url"])) { continue; }
+
+					if(str_replace("/", "", $aArticles["page"][$i]["post_url"]) === $articleUrl) {
+						$isPageHasTranslate = true;
+						break;
+					}
+				}
+			}
+		}
+	}
+} else {
+	$isPageHasTranslate = true;
+}
+
 if($current_language == 'de_DE') {
 	$curr_url = 'de/';
 	$ping_url = '/de';
@@ -77,25 +113,27 @@ if($current_language == 'de_DE') {
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<div class="language-switcher">
-					<div class="trp-ls-shortcode-current-language" style="width: 166px;">
-						<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
-							<img srcset="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" src="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" width="18" height="12" alt="<?php echo $current_language; ?>" title="<?php echo $curr_lang; ?>">
-							<?php echo $curr_lang; ?>
-						</a>
+				<?php if($isPageHasTranslate) { ?>
+					<div class="language-switcher">
+						<div class="trp-ls-shortcode-current-language" style="width: 166px;">
+							<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
+								<img srcset="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" src="https://www.ping.fm/wp-content/plugins/translatepress-multilingual/assets/images/flags/<?php echo $current_language; ?>.png" width="18" height="12" alt="<?php echo $current_language; ?>" title="<?php echo $curr_lang; ?>">
+								<?php echo $curr_lang; ?>
+							</a>
+						</div>
+						<ul class="langList">
+							<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
+						</ul>
 					</div>
-					<ul class="langList">
-						<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
-					</ul>
-				</div>
+				<?php } ?>
 				<ul>
 					<li>
 						<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
 					</li>
-					<li>
-						<a href="<?php echo get_site_url();?>/<?php echo $curr_url; ?>" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
-					</li>
 					<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
+						<li>
+							<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
+						</li>
 						<li>
 							<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
 						</li>
