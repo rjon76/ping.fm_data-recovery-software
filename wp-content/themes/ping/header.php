@@ -16,15 +16,15 @@ $current_language = get_locale();
 $aUrl = explode("/", $_SERVER['REQUEST_URI']);
 $articleUrl = $aUrl[count($aUrl) - 2];
 
+$path = __DIR__ . '/../../uploads/wpallimport/files/generated-post-German.xml';
+$xmlstring = file_get_contents($path);
+$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+$json = json_encode($xml);
+$aArticles = json_decode($json, TRUE);
+
 if($fileName === 'chromecast.php') {
 
 	$isPageHasTranslate = false;
-
-	$path = __DIR__ . '/../../uploads/wpallimport/files/generated-post-German.xml';
-	$xmlstring = file_get_contents($path);
-	$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
-	$json = json_encode($xml);
-	$aArticles = json_decode($json, TRUE);
 
 	if(count($aArticles) > 0) {
 		if(!empty($aArticles["page"]) && !empty($aArticles["page"]["post_url"])) {
@@ -113,7 +113,7 @@ if($current_language == 'de_DE') {
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<?php if($isPageHasTranslate) { ?>
+				<?php if($isPageHasTranslate || !empty($aArticles["page"])) { ?>
 					<div class="language-switcher">
 						<div class="trp-ls-shortcode-current-language" style="width: 166px;">
 							<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
