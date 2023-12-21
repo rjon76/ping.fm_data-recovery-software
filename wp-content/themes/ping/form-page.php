@@ -351,10 +351,19 @@ error_reporting(E_ALL);
     .modal-w .modal-b {
         display: none;
     }
+    .modal-w .modal-translate {
+        display: none;
+    }
     .modal-w svg {
         display: block;
     }
     .modal-w.body .modal-b {
+        display: block;
+    }
+    .modal-w.body.translate .modal-b {
+        display: none;
+    }
+    .modal-w.translate .modal-translate {
         display: block;
     }
     .modal-w.body svg {
@@ -718,9 +727,9 @@ error_reporting(E_ALL);
 
                 jQuery('.modal').addClass('show')
             })
-            jQuery('#cancelRemove').on('click', function(e) {
+            jQuery('.cancelRemove').on('click', function(e) {
                 e.preventDefault()
-
+                jQuery('.modal-w').removeClass('translate')
                 jQuery('.modal').removeClass('show')
             })
             jQuery('#btn-num-faq').on('click', function(e) {
@@ -741,6 +750,12 @@ error_reporting(E_ALL);
             })
             jQuery('#btn-translate').on('click', function(e) {
                 e.preventDefault()
+
+                jQuery('.modal-w').addClass('translate')
+                jQuery('.modal').addClass('show')
+            })
+            jQuery('#TranslateArticle').on('click', function(e) {
+                e.preventDefault()
                 jQuery("#translatePage").submit()
             })
             jQuery('#btn-translate-faq').on('click', function(e) {
@@ -750,6 +765,7 @@ error_reporting(E_ALL);
             })
             jQuery("#translatePage").on("submit", function(event) {
                 event.preventDefault()
+                jQuery('.modal-w').removeClass('translate')
                 const formData = new FormData(this);
 
                 jQuery('.loader').addClass('show');
@@ -1085,8 +1101,16 @@ error_reporting(E_ALL);
                     <p>You will only remove the article from the article import file and will not be able to update it for the blog in the future.</p>
                     <p>The page in the admin panel will switch to Draft status.</p>
                     <p>For complete removal, go to the Wordpress admin panel, Pages section, find and delete permanently</p>
-                    <button id="cancelRemove">Cancel</button>
+                    <button class="cancelRemove">Cancel</button>
                     <button id="DeleteArticle">Remove</button>
+                </div>
+                <div class="modal-translate">
+                    <h3>Are you sure you want to delete the article?</h3>
+                    <p>You will only remove the article from the article import file and will not be able to update it for the blog in the future.</p>
+                    <p>The page in the admin panel will switch to Draft status.</p>
+                    <p>For complete removal, go to the Wordpress admin panel, Pages section, find and delete permanently</p>
+                    <button class="cancelRemove">Cancel</button>
+                    <button id="TranslateArticle">Translate</button>
                 </div>
                 <svg version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                 <circle fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
