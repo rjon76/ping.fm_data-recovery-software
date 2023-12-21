@@ -50,7 +50,7 @@ if(count($aArticles) > 0) {
     }
 }
 
-if(!$isPageHasTranslate && $onlyFaq) {
+if(!$isPageHasTranslate && $onlyFaq !== 'false') {
     echo "not";
     exit();
 }
