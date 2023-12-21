@@ -14,7 +14,7 @@
                 <div class="container">
                 <?php
 					$pages = get_pages( [
-                        'exclude' => get_the_ID()
+                        'exclude' => [get_the_ID(), 2371, 2373, 2340]
 					] );
                 ?>
                    <?php foreach( $pages as $post ) {
