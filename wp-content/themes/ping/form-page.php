@@ -910,6 +910,7 @@ error_reporting(E_ALL);
                 jQuery('.stepTitle').html('Article removing...wait 1 minute')
                 const formData = new FormData(this)
                 jQuery('.modal-w').removeClass('body')
+                jQuery('.modal-w').removeClass('article')
                 jQuery.ajax({
                     type: 'POST',
                     url: jQuery("#formRemoveArt").attr('data-action'),
