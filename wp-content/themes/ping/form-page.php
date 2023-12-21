@@ -758,6 +758,9 @@ error_reporting(E_ALL);
                     url: jQuery("#translatePage").attr('data-action'),
                     data: formData,
                     success: function(data) {
+                        if(data === 'not') {
+                            alert('Translate the article first!');
+                        }
                         console.log(data, "dataSuccess")
                     },
                     error: function(jqXHR, exception) {

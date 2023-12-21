@@ -21,6 +21,40 @@ if(isset($_POST["onlyFaq"])) {
     $onlyFaq = 'false';
 }
 
+$isPageHasTranslate = false;
+
+$path = __DIR__ . '/wpallimport/files/generated-post-German.xml';
+
+$xmlstring = file_get_contents($path);
+$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+$json = json_encode($xml);
+$aArticles = json_decode($json, TRUE);
+
+if(count($aArticles) > 0) {
+    if(!empty($aArticles["page"]) && !empty($aArticles["page"]["post_url"])) {
+        $post_url = $aArticles["page"]["post_url"];
+        if($post_url === $tranlateUrl) {
+            $isPageHasTranslate = true;
+        }
+    } else {
+        if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["post_url"]) && !empty($aArticles["page"][1]["post_url"])) {
+            for($i = 0; $i < count($aArticles["page"]); $i++ ) {
+                if(empty($aArticles["page"][$i]["post_url"])) { continue; }
+
+                if($aArticles["page"][$i]["post_url"] === $tranlateUrl) {
+                    $isPageHasTranslate = true;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+if(!$isPageHasTranslate && $onlyFaq) {
+    echo "not";
+    exit();
+}
+
 $file = __DIR__ . '/time_record.txt';
 writeTimeGeneration($file, 'start');
 
