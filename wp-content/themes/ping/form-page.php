@@ -222,6 +222,7 @@ error_reporting(E_ALL);
     .modal.show,
     .loader.show {
         display: flex;
+        z-index: 999999;
     }
     #moreFAq {
         margin-top: 65px;
