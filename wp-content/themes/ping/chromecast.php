@@ -84,11 +84,11 @@
 			</div>
 		</main>
 		<script>
-			jQuery('.langList a').each(function(el) {
-				const lang = jQuery(el).attr('lang');
+			jQuery('.langList a').each(function(index) {
+				const lang = jQuery(this).attr('lang');
 				const site = jQuery('#mainTag').attr('data-href');
 				const uri = jQuery('#mainTag').attr('data-uri');
-				jQuery(el).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
+				jQuery(this).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
 			})
 			jQuery('.langList a').on('click', function(e) {
 				e.preventDefault();
