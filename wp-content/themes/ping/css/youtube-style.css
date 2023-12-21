@@ -157,6 +157,7 @@ article > section:not(:first-child):not(:last-child) p {
   font-size: 16px;
   padding: 0 10px 0 56px;
   line-height: 24px;
+  word-break: break-word;
 }
 article > section:not(:first-child):not(:last-child) .iframe iframe {
   width: 100% !important;
