@@ -81,15 +81,15 @@ if($current_language == 'de_DE') {
 	$curr_lang = 'Dutch';
 } elseif ($current_language == 'ar') {
 	$curr_url = 'ar/';
-	$curr_url = '/ar';
+	$ping_url = '/ar';
 	$curr_lang = 'Arabic';
 } elseif ($current_language == 'zh-CN') {
 	$curr_url = 'zh/';
-	$curr_url = '/zh';
+	$ping_url = '/zh';
 	$curr_lang = 'Chinese';
 } elseif ($current_language == 'sv-SE') {
 	$curr_url = 'sv/';
-	$curr_url = '/sv';
+	$ping_url = '/sv';
 	$curr_lang = 'Swedish';
 } else {
 	$curr_url = '';
