@@ -7,6 +7,27 @@ error_reporting(E_ALL);
 
 require_once( __DIR__ . "/env.php");
 
+foreach($languages as $lang) {
+
+    $path = __DIR__ . "/wpallimport/files/generated-post-$lang.xml";
+
+    $xw = xmlwriter_open_memory();
+    xmlwriter_set_indent($xw, 1);
+    $res = xmlwriter_set_indent_string($xw, ' ');
+    xmlwriter_start_document($xw, '1.0', 'UTF-8');
+    xmlwriter_start_element($xw, 'root');
+
+    xmlwriter_end_element($xw);
+    xmlwriter_end_document($xw);
+
+    $dom = new DOMDocument;
+    $dom->loadXML(xmlwriter_output_memory($xw));
+    $dom->save(__DIR__ . "/wpallimport/files/generated-post-$lang.xml");
+}
+
+exit();
+die();
+
 if ($_POST["tranlateUrl"]) {
     $tranlateUrl = $_POST["tranlateUrl"];
 }
