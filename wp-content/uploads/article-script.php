@@ -79,12 +79,12 @@ if (!empty($_FILES['file']["tmp_name"])) {
     $moved = move_uploaded_file($_FILES["file"]["tmp_name"], $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]));
 
     if( $moved ) {
-        $image_src = $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]);
+        $image_src = $image_folder . '/original-' . str_replace(" ", '-', $_FILES["file"]["name"]);
     }
 }
 
 if(empty($_FILES['file']["tmp_name"]) && $faq_theme) {
-    $image_src = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $faq_theme))).'.jpg';
+    $image_src = $image_folder . '/original-' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $faq_theme))).'.jpg';
 }
 
 if( !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
@@ -248,11 +248,11 @@ xmlwriter_start_element($xw, 'root');
         } while ( is_null($gen_image_src) );
 
         saveAiImage($gen_image_src, $image_src);
-        generateImgWithTitle($h1title, $image_src, true, $languages, $OPENAI_API_KEY);
+        generateImgWithTitle($h1title, $image_src, true, '');
     }
 
     if($moved) {
-        generateImgWithTitle($h1title, $image_src, false, $languages, $OPENAI_API_KEY);
+        generateImgWithTitle($h1title, $image_src, false, '');
     }
 
     if($apps_links == 'true') {
@@ -397,6 +397,9 @@ xmlwriter_start_element($xw, 'root');
                 xmlwriter_start_element($xw, 'anchor');
                     xmlwriter_text($xw, is_array($aArticles["page"]["anchor"]) ? '' : $aArticles["page"]["anchor"]);
                 xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'original_image');
+                    xmlwriter_text($xw, is_array($aArticles["page"]["original_image"]) ? '' : $aArticles["page"]["original_image"]);
+                xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'post_url');
                     xmlwriter_text($xw, $aArticles["page"]["post_url"]);
                 xmlwriter_end_element($xw);
@@ -461,6 +464,9 @@ xmlwriter_start_element($xw, 'root');
                     xmlwriter_start_element($xw, 'anchor');
                         xmlwriter_text($xw, is_array($aArticles["page"][$i]["anchor"]) ? '' : $aArticles["page"][$i]["anchor"]);
                     xmlwriter_end_element($xw);
+                    xmlwriter_start_element($xw, 'original_image');
+                        xmlwriter_text($xw, is_array($aArticles["page"][$i]["original_image"]) ? '' : $aArticles["page"][$i]["original_image"]);
+                    xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'post_url');
                         xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);
                     xmlwriter_end_element($xw);
@@ -516,6 +522,9 @@ xmlwriter_start_element($xw, 'root');
         xmlwriter_start_element($xw, 'anchor');
             xmlwriter_text($xw, $anchor_title);
         xmlwriter_end_element($xw);
+        xmlwriter_start_element($xw, 'original_image');
+            xmlwriter_text($xw, $image_src);
+        xmlwriter_end_element($xw);
         xmlwriter_start_element($xw, 'post_url');
             xmlwriter_text($xw, $post_url);
         xmlwriter_end_element($xw);
@@ -537,8 +546,6 @@ xmlwriter_end_document($xw);
 $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
-
-unlink($image_src);
 
 sleep(5);
 

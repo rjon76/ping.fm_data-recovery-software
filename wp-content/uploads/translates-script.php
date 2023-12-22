@@ -88,6 +88,7 @@ if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
             $url = $aArticles["page"]["url"];
             $url_descr = $aArticles["page"]["url_descr"];
             $anchor = $aArticles["page"]["anchor"];
+            $image_src = $aArticles["page"]["original_image"];
             $post_url = $aArticles["page"]["post_url"];
             if(empty($aArticles["page"]["youtube_url"])) {
                 $youtube_url = '';
@@ -112,6 +113,7 @@ if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
                 $url = $aArticles["page"][$i]["url"];
                 $url_descr = $aArticles["page"][$i]["url_descr"];
                 $anchor = $aArticles["page"][$i]["anchor"];
+                $image_src = $aArticles["page"][$i]["original_image"];
                 $post_url = $aArticles["page"][$i]["post_url"];
                 if(empty($aArticles["page"][$i]["youtube_url"])) {
                     $youtube_url = '';
@@ -241,6 +243,8 @@ foreach($languages as $lang) {
                     $translate_h1title = $th1title->choices[0]->message->content;
                 }
             } while ( is_null($translate_h1title) );
+
+            generateImgWithTitle($th1title, $image_src, true, $lang, $englishH1);
         }
 
         $translate_faq_first = null;
