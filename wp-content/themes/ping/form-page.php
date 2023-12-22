@@ -52,7 +52,7 @@ error_reporting(E_ALL);
     }
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
-    // file_put_contents($file, 'done');
+    file_put_contents($file, 'done');
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post' . $fileLangName . '.xml';
 
     $title = '';
@@ -573,6 +573,7 @@ error_reporting(E_ALL);
                                 <form id="translatePage" class="hidden" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/translates-script.php'; ?>">
                                     <input class="hidden" type="text" id="tranlateUrl" value="<?php echo $post_url;?>" name="tranlateUrl">
                                     <input class="hidden" type="text" id="fullLanguage" value="<?php echo $curr_lang;?>" name="fullLanguage">
+                                    <input class="hidden" type="text" id="langQuant" value="0" name="langQuant">
                                     <input type="checkbox" name="onlyFaq" id="onlyFaq">
                                 </form>
 
@@ -800,6 +801,28 @@ error_reporting(E_ALL);
                     type: 'POST',
                     url: jQuery("#translatePage").attr('data-action'),
                     data: formData,
+                    success: function(data) {
+                        if(data === 'not') {
+                            alert('Translate the article first!');
+                        }
+                        console.log(data, "dataSuccess")
+                    },
+                    error: function(jqXHR, exception) {
+                        console.log(jqXHR, "jqXHR")
+                        console.log(exception, "exception")
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    timeout: 120000
+                });
+
+                jQuery('#langQuant')[0].value = '5';
+                const formDataNew = new FormData(this);
+                jQuery.ajax({
+                    type: 'POST',
+                    url: jQuery("#translatePage").attr('data-action'),
+                    data: formDataNew,
                     success: function(data) {
                         if(data === 'not') {
                             alert('Translate the article first!');

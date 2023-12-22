@@ -11,6 +11,10 @@ if ($_POST["tranlateUrl"]) {
     $tranlateUrl = $_POST["tranlateUrl"];
 }
 
+if ($_POST["langQuant"]) {
+    $langQuant = (int)$_POST["langQuant"];
+}
+
 $fullLanguage = '';
 
 if ($_POST["fullLanguage"]) {
@@ -172,10 +176,22 @@ foreach($aFaqSecond as $key => $fS) {
 
 $englishH1 = $h1title;
 
-foreach($languages as $lang) {
+foreach($languages as $key => $lang) {
 
     if($fullLanguage !== '' && $fullLanguage !== $lang) {
         continue;
+    }
+
+    if($fullLanguage === '' && $langQuant == 0) {
+        if($key > 4) {
+            continue;
+        }
+    }
+
+    if($fullLanguage === '' && $langQuant == 5) {
+        if($key < 5) {
+            continue;
+        }
     }
 
     $path = __DIR__ . "/wpallimport/files/generated-post-$lang.xml";
