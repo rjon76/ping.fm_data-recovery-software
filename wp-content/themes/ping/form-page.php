@@ -34,7 +34,7 @@ error_reporting(E_ALL);
     }
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
-    file_put_contents($file, 'done');
+    // file_put_contents($file, 'done');
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post' . $fileLangName . '.xml';
 
     $title = '';
@@ -394,7 +394,7 @@ error_reporting(E_ALL);
     }
 </style>
 		<main data-lang="<?php echo $curr_url; ?>">
-            <!-- <div class="hidden">true</div> -->
+            <div class="hidden">true</div>
 			<div class="container">
                 <div class="loader filePath" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
                     <h1 class="stepTitle"><?php echo $infoStepText; ?></h1>
