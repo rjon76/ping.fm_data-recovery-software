@@ -304,6 +304,9 @@ foreach($languages as $lang) {
                         xmlwriter_start_element($xw, 'anchor');
                             xmlwriter_text($xw, is_array($aArticles["page"]["anchor"]) ? '' : $aArticles["page"]["anchor"]);
                         xmlwriter_end_element($xw);
+                        xmlwriter_start_element($xw, 'original_image');
+                            xmlwriter_text($xw, is_array($aArticles["page"]["original_image"]) ? '' : $aArticles["page"]["original_image"]);
+                        xmlwriter_end_element($xw);
                         xmlwriter_start_element($xw, 'post_url');
                             xmlwriter_text($xw, $aArticles["page"]["post_url"]);
                         xmlwriter_end_element($xw);
@@ -415,6 +418,9 @@ foreach($languages as $lang) {
                         xmlwriter_start_element($xw, 'anchor');
                             xmlwriter_text($xw, is_array($aArticles["page"][$i]["anchor"]) ? '' : $aArticles["page"][$i]["anchor"]);
                         xmlwriter_end_element($xw);
+                        xmlwriter_start_element($xw, 'original_image');
+                            xmlwriter_text($xw, is_array($aArticles["page"][$i]["original_image"]) ? '' : $aArticles["page"][$i]["original_image"]);
+                        xmlwriter_end_element($xw);
                         xmlwriter_start_element($xw, 'post_url');
                             xmlwriter_text($xw, $aArticles["page"][$i]["post_url"]);
                         xmlwriter_end_element($xw);
@@ -487,6 +493,9 @@ foreach($languages as $lang) {
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'anchor');
                 xmlwriter_text($xw, is_array($anchor) ? '' : $anchor);
+            xmlwriter_end_element($xw);
+            xmlwriter_start_element($xw, 'original_image');
+                xmlwriter_text($xw, $image_src);
             xmlwriter_end_element($xw);
             xmlwriter_start_element($xw, 'post_url');
                 xmlwriter_text($xw, $post_url);

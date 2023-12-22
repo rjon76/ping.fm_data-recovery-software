@@ -15,8 +15,20 @@
         $curr_url = 'es/';
     } elseif ($current_language == 'fr_FR') {
         $curr_url = 'fr/';
+    } elseif ($current_language == 'it_IT') {
+        $curr_url = 'it/';
+    } elseif ($current_language == 'ja') {
+        $curr_url = 'ja/';
+    } elseif ($current_language == 'pt_PT') {
+        $curr_url = 'pt/';
     } elseif ($current_language == 'nl_NL') {
         $curr_url = 'nl/';
+    } elseif ($current_language == 'ar') {
+        $curr_url = 'ar/'; 
+    } elseif ($current_language == 'zh_CN') {
+        $curr_url = 'zh/';
+    } elseif ($current_language == 'sv_SE') {
+        $curr_url = 'sv/';
     } else {
         $curr_url = '';
     }

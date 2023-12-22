@@ -10,10 +10,16 @@ $part5 = 'uqUVWrXOLQf';
 $OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
 
 $languages = [
-    // 'Dutch',
     'French',
     'German',
     'Spanish',
+    'Italian',
+    'Japanese',
+    'Portuguese',
+    'Dutch',
+    'Arabic',
+    'Chinese',
+    'Swedish',
 ];
 
 function writeTimeGeneration($path_to_file, $action) {

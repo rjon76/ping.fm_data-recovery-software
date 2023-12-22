@@ -61,10 +61,34 @@ if($current_language == 'de_DE') {
 	$curr_url = 'fr/';
 	$ping_url = '/fr';
 	$curr_lang = 'French';
+}  elseif ($current_language == 'it_IT') {
+	$curr_url = 'it/';
+	$ping_url = '/it';
+	$curr_lang = 'Italian';
+} elseif ($current_language == 'ja') {
+	$curr_url = 'ja/';
+	$ping_url = '/ja';
+	$curr_lang = 'Japanese';
+} elseif ($current_language == 'pt_PT') {
+	$curr_url = 'pt/';
+	$ping_url = '/pt';
+	$curr_lang = 'Portuguese';
 } elseif ($current_language == 'nl_NL') {
 	$curr_url = 'nl/';
 	$ping_url = '/nl';
 	$curr_lang = 'Dutch';
+} elseif ($current_language == 'ar') {
+	$curr_url = 'ar/';
+	$curr_url = '/ar';
+	$curr_lang = 'Arabic';
+} elseif ($current_language == 'zh_CN') {
+	$curr_url = 'zh/';
+	$curr_url = '/zh';
+	$curr_lang = 'Chinese';
+} elseif ($current_language == 'sv_SE') {
+	$curr_url = 'sv/';
+	$curr_url = '/sv';
+	$curr_lang = 'Swedish';
 } else {
 	$curr_url = '';
 	$ping_url = '';

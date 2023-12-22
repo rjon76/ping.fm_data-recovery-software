@@ -19,9 +19,27 @@ error_reporting(E_ALL);
     } elseif ($current_language == 'fr_FR') {
         $curr_url = 'fr/';
         $curr_lang = 'French';
+    } elseif ($current_language == 'it_IT') {
+        $curr_url = 'it/';
+        $curr_lang = 'Italian';
+    } elseif ($current_language == 'ja') {
+        $curr_url = 'ja/';
+        $curr_lang = 'Japanese';
+    } elseif ($current_language == 'pt_PT') {
+        $curr_url = 'pt/';
+        $curr_lang = 'Portuguese';
     } elseif ($current_language == 'nl_NL') {
         $curr_url = 'nl/';
         $curr_lang = 'Dutch';
+    } elseif ($current_language == 'ar') {
+        $curr_url = 'ar/';
+        $curr_lang = 'Arabic';
+    } elseif ($current_language == 'zh_CN') {
+        $curr_url = 'zh/';
+        $curr_lang = 'Chinese';
+    } elseif ($current_language == 'sv_SE') {
+        $curr_url = 'sv/';
+        $curr_lang = 'Swedish';
     } else {
         $curr_url = '';
         $curr_lang = '';
@@ -34,7 +52,7 @@ error_reporting(E_ALL);
     }
 
     $file = __DIR__ . '/../../uploads/time_record.txt';
-    // file_put_contents($file, 'done');
+    file_put_contents($file, 'done');
     $path = __DIR__ . '/../../uploads/wpallimport/files/generated-post' . $fileLangName . '.xml';
 
     $title = '';
