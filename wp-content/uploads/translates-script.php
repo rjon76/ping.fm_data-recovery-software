@@ -244,7 +244,7 @@ foreach($languages as $lang) {
                 }
             } while ( is_null($translate_h1title) );
 
-            generateImgWithTitle($th1title, $image_src, true, $lang, $englishH1);
+            generateImgWithTitle($translate_h1title, $image_src, true, $lang, $englishH1);
         }
 
         $translate_faq_first = null;
