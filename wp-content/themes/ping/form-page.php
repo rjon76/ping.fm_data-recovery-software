@@ -519,9 +519,12 @@ error_reporting(E_ALL);
                                     <?php if($curr_lang === '') { ?>
                                         <button type="button" class="sBtn" id="btn-reg">Regenerate article</button>
                                     <?php } ?>
+                                    <?php if($curr_lang !== '') { ?>
+                                        <button type="button" class="sBtn orange btnTranslates" id="btn-reTranslate">Re-translate article</button>
+                                    <?php } ?>
                                     <button type="button" class="sBtn green" id="btn-edit">Edit article</button>
                                     <?php if($curr_lang === '') { ?>
-                                        <button type="button" class="sBtn orange" id="btn-translate">Translate article</button>
+                                        <button type="button" class="sBtn orange btnTranslates" id="btn-translate">Translate article</button>
                                         <button type="button" class="sBtn danger" id="btn-remove">Remove article</button>
 
                                         <form id="faqQuestions" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/faq-script.php'; ?>" data-stepsf="<?php echo get_site_url() . '/wp-content/uploads/steps-script.php'; ?>">
@@ -551,6 +554,7 @@ error_reporting(E_ALL);
 
                                 <form id="translatePage" class="hidden" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/translates-script.php'; ?>">
                                     <input class="hidden" type="text" id="tranlateUrl" value="<?php echo $post_url;?>" name="tranlateUrl">
+                                    <input class="hidden" type="text" id="fullLanguage" value="<?php echo $curr_lang;?>" name="fullLanguage">
                                     <input type="checkbox" name="onlyFaq" id="onlyFaq">
                                 </form>
 
@@ -752,7 +756,7 @@ error_reporting(E_ALL);
                 jQuery('#regenerateFaq').prop('checked',true);
                 jQuery("#faqQuestions").submit()
             })
-            jQuery('#btn-translate').on('click', function(e) {
+            jQuery('.btnTranslates').on('click', function(e) {
                 e.preventDefault()
 
                 jQuery('.modal-w').addClass('translate')
@@ -1112,7 +1116,7 @@ error_reporting(E_ALL);
                 </div>
                 <div class="modal-translate">
                     <h3>Are you sure you want to translate the article?</h3>
-                    <p>The translation will take about 15 minutes</p>
+                    <p>The translation will take about 3-5 minutes per 1 translation language.</p>
                     <button class="cancelRemove">Cancel</button>
                     <button id="TranslateArticle" class="green">Translate</button>
                 </div>

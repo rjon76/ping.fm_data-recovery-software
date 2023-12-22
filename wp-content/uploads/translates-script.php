@@ -11,6 +11,12 @@ if ($_POST["tranlateUrl"]) {
     $tranlateUrl = $_POST["tranlateUrl"];
 }
 
+$fullLanguage = '';
+
+if ($_POST["fullLanguage"]) {
+    $fullLanguage = $_POST["fullLanguage"];
+}
+
 if(isset($_POST["onlyFaq"])) {
     if($_POST["onlyFaq"] == 'on') {
         $onlyFaq = 'true';
@@ -165,6 +171,10 @@ foreach($aFaqSecond as $key => $fS) {
 $englishH1 = $h1title;
 
 foreach($languages as $lang) {
+
+    if($fullLanguage !== '' && $fullLanguage !== $lang) {
+        continue;
+    }
 
     $path = __DIR__ . "/wpallimport/files/generated-post-$lang.xml";
     $copy = __DIR__ . "/wpallimport/files/generated-post-$lang-copy.xml";
