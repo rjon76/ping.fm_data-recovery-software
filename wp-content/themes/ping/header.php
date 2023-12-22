@@ -13,6 +13,8 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 $current_language = get_locale();
 
+var_dump($current_language);
+
 $aUrl = explode("/", $_SERVER['REQUEST_URI']);
 $articleUrl = $aUrl[count($aUrl) - 2];
 
@@ -81,11 +83,11 @@ if($current_language == 'de_DE') {
 	$curr_url = 'ar/';
 	$curr_url = '/ar';
 	$curr_lang = 'Arabic';
-} elseif ($current_language == 'zh_CN') {
+} elseif ($current_language == 'zh-CN') {
 	$curr_url = 'zh/';
 	$curr_url = '/zh';
 	$curr_lang = 'Chinese';
-} elseif ($current_language == 'sv_SE') {
+} elseif ($current_language == 'sv-SE') {
 	$curr_url = 'sv/';
 	$curr_url = '/sv';
 	$curr_lang = 'Swedish';
