@@ -25,9 +25,9 @@
         $curr_url = 'nl/';
     } elseif ($current_language == 'ar') {
         $curr_url = 'ar/'; 
-    } elseif ($current_language == 'zh-CN') {
+    } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN') {
         $curr_url = 'zh/';
-    } elseif ($current_language == 'sv-SE') {
+    } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
         $curr_url = 'sv/';
     } else {
         $curr_url = '';

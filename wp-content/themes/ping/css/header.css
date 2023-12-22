@@ -113,6 +113,10 @@ header {
     height: 12px !important;
     border-radius: 0;
   }
+  .rtl header .language-switcher .langList img,
+  .rtl header .language-switcher > div > a > img {
+    margin: 0 0 0 5px !important;
+  }
   header .language-switcher .langList a,
   header .language-switcher > div > a {
     line-height: 26px;
@@ -158,6 +162,10 @@ header {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  .rtl header .language-switcher {
+    left: unset;
+    right: 250px;
+  }
   @media(max-width: 1199px) {
     header .language-switcher {
       left: unset;
@@ -165,6 +173,10 @@ header {
       bottom: 0;
       transform: unset;
       top: unset;
+    }
+    .rtl header .language-switcher {
+      right: unset;
+      left: 5px;
     }
   }
   @media(max-width: 767px) {
