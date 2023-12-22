@@ -65,15 +65,20 @@
 						<?php echo get_field('faq'); ?>
 					<?php endif; ?>
 				</article>
+				<?php
+					$pages = get_pages( [
+						'exclude' => [get_the_ID(), 9, 2074, 2076, 2103, 2371, 2373, 2340, 2503, 2499, 2494, 2489, 2484, 2480, 2474]
+					] );
+
+					if(count($pages) > 0) {
+				?>
+
 				<aside>
 					<div class="h2">
 						<?php pll_e('More Articles'); ?>
 					</div>
 					<ul>
 						<?php
-							$pages = get_pages( [
-								'exclude' => [get_the_ID(), 9, 2074, 2076, 2103, 2371, 2373, 2340, 2503, 2499, 2494, 2489, 2484, 2480, 2474]
-							] );
 							shuffle($pages);
 							$output = array_slice($pages, 0, 14);
 							foreach( $output as $post ) {
@@ -93,6 +98,7 @@
 						?>
 					</ul>
 				</aside>
+				<?php } ?>
 			</div>
 		</main>
 		<script>
