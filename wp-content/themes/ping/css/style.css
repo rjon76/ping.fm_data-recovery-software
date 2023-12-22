@@ -609,9 +609,17 @@ footer ul {
 footer ul li:not(:last-child) {
   margin-right: 25px;
 }
+.rtl footer ul li:not(:last-child) {
+  margin-right: 0;
+  margin-left: 25px;
+}
 @media (max-width: 767px) {
   footer ul li:not(:last-child) {
     margin-right: 5px;
+  }
+  .rtl footer ul li:not(:last-child) {
+    margin-right: 0;
+    margin-left: 5px;
   }
 }
 footer ul li a {
@@ -648,9 +656,17 @@ footer ul li a:active svg path, footer ul li a:hover svg path {
 footer ul li a svg {
   margin-right: 8px;
 }
+.rtl footer ul li a svg {
+  margin-right: 0;
+  margin-left: 8px;
+}
 @media (max-width: 767px) {
   footer ul li a svg {
     margin-right: 5px;
+  }
+  .rtl footer ul li a svg {
+    margin-right: 0;
+    margin-left: 5px;
   }
 }
 footer p {
@@ -753,6 +769,9 @@ section.banner .banner--img .banner--inner h1 {
   margin-bottom: 20px;
   text-align: left;
   word-break: break-word;
+}
+.rtl section.banner .banner--img .banner--inner h1 {
+  text-align: right;
 }
 @media (max-width: 1250px) {
   section.banner .banner--img .banner--inner h1 {
@@ -1083,6 +1102,9 @@ header > a img {
   background: transparent;
   -webkit-box-shadow: unset;
           box-shadow: unset;
+}
+.rtl header > a img {
+  margin: 0 0 0 12px;
 }
 address {
   display: inline-block;

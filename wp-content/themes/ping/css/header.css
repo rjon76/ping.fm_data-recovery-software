@@ -229,6 +229,10 @@ header {
         position: relative;
         margin-right: 10px;
     }
+    .rtl .menu-button {
+      margin-right: 0p;
+      margin-left: 10px;
+    }
     .menu-button::before,
     .menu-button::after {
         content: '';
