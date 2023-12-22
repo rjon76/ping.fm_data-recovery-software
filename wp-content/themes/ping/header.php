@@ -13,8 +13,6 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 $current_language = get_locale();
 
-var_dump($current_language);
-
 $aUrl = explode("/", $_SERVER['REQUEST_URI']);
 $articleUrl = $aUrl[count($aUrl) - 2];
 
@@ -80,7 +78,7 @@ if($current_language == 'de_DE') {
 	$ping_url = '/nl';
 	$curr_lang = 'Dutch';
 } elseif ($current_language == 'ar') {
-	$curr_url = 'ar/';
+	$curr_url = '';
 	$ping_url = '/ar';
 	$curr_lang = 'Arabic';
 } elseif ($current_language == 'zh-CN') {
@@ -152,18 +150,20 @@ if($current_language == 'de_DE') {
 						</ul>
 					</div>
 				<?php } ?>
-				<ul>
-					<li>
-						<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
-					</li>
-					<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
+				<?php if ($current_language !== 'ar') { ?>
+					<ul>
 						<li>
-							<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
+							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
 						</li>
-						<li>
-							<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
-						</li>
-					<?php } ?>
-				</ul>
+						<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
+							<li>
+								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
+							</li>
+							<li>
+								<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
+							</li>
+						<?php } ?>
+					</ul>
+				<?php } ?>
 			</div>
 		</header>
