@@ -535,19 +535,13 @@ foreach($languages as $key => $lang) {
     $dom->save(__DIR__ . "/wpallimport/files/generated-post-$lang.xml");
 }
 
-$step = file_get_contents($file);
-
-if($step !== 'import') {
-    writeTimeGeneration($file, 'import');
-}
+writeTimeGeneration($file, 'import');
 
 if($langQuant == 0) {
-    sleep(20);
-    autoImport([10, 11, 12, 13, 14]);    
+    autoImport([10, 11, 12, 13, 14]);
 }
 
-if($langQuant == 5) {
-    sleep(20);
+if($langQuant != 0) {
     autoImport([15, 16, 17, 18, 19]);
 }
     

@@ -82,6 +82,14 @@ header {
     height: 50px;
     border-radius: 6px;
   }
+  .rtl header .language-switcher > div {
+    margin-right: 20px;
+  }
+  @media(max-width: 767px) {
+    .rtl header .language-switcher > div {
+      margin-right: 0;
+    }
+  }
   header .language-switcher > div {
     background-image: url('/wp-content/plugins/translatepress-multilingual/assets/images/arrow-down-3101.svg') !important;
     background-position: calc(100% - 10px) calc(1em + 4px),calc(100% - 3px) calc(1em + 0px) !important;

@@ -73,7 +73,7 @@ function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text,
         $_x = $x;
 
         if($lang === 'Arabic') {
-            $_x = 1366 - $width - 100;
+            $_x = 1366 - $width - 200;
         }
 		
 		imagettftext($image, $size, 0, $_x, $y, $color, $fontfile, $txt);
@@ -587,16 +587,13 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
 function autoImport($array) {
 
     foreach($array as $id) {
-        sleep(5);
-
         fetch_headers( "https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=trigger" );
         sleep(5);
         fetch_headers( "https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=processing" );
-
-        sleep(5);
-
+        sleep(20);
         exec( "wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=trigger" );
         sleep(5);
         exec( "wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=processing" );
+        sleep(5);
     }
 }
