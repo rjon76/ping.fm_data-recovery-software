@@ -144,6 +144,10 @@ article > section:not(:first-child):not(:last-child) > div > div:first-child {
   margin-right: 16px;
   font-weight: 700;
 }
+.rtl article > section:not(:first-child):not(:last-child) > div > div:first-child {
+  margin-right: unset;
+  margin-left: 16px;
+}
 
 article h2 {
   font-weight: 700;
@@ -159,6 +163,11 @@ article > section:not(:first-child):not(:last-child) p {
   line-height: 24px;
   word-break: break-word;
 }
+.rtl article > section:not(:first-child):not(:last-child) .iframe,
+.rtl article > section:not(:first-child):not(:last-child) h3,
+.rtl article > section:not(:first-child):not(:last-child) p {
+  padding: 0 56px 0 10px;
+}
 article > section:not(:first-child):not(:last-child) .iframe iframe {
   width: 100% !important;
   border-radius: 16px;
@@ -170,9 +179,17 @@ article > section:not(:first-child):not(:last-child) ul {
   list-style-type: disc;
   padding: 0 10px 0 72px;
 }
+.rtl article > section:not(:first-child):not(:last-child) ol,
+.rtl article > section:not(:first-child):not(:last-child) ul {
+  padding: 0 72px 0 10px;
+}
 article > section:not(:first-child):not(:last-child) ul > li > ol,
 article > section:not(:first-child):not(:last-child) ol > li > ul {
   padding-left: 0;
+}
+.rtl article > section:not(:first-child):not(:last-child) ul > li > ol,
+.rtl article > section:not(:first-child):not(:last-child) ol > li > ul {
+  padding-right: 0;
 }
 
 article > section:not(:first-child):not(:last-child) li {
@@ -189,6 +206,11 @@ article > section:not(:first-child):not(:last-child) li a {
 .nonp + p,
 .nonp p {
   padding-left: 0 !important;
+}
+.rtl .nonp,
+.rtl .nonp + p,
+.rtl .nonp p {
+  padding-right: 0 !important;
 }
 .nonp {
   display: block !important;
@@ -350,6 +372,10 @@ section:last-child h2 {
 
 .auhordata {
   margin-left: 12px;
+}
+.rtl .auhordata {
+  margin-left: unset;
+  margin-right: 12px;
 }
 .info {
   margin-bottom: 40px;
@@ -601,6 +627,9 @@ header > a img {
   -webkit-box-shadow: unset;
           box-shadow: unset;
 }
+.rtl header > a img {
+  margin: 0 0 0 12px;
+}
 .breadcrumb {
   margin-bottom: 30px;
 }
@@ -655,6 +684,11 @@ address + p {
   font-size: 16px;
   line-height: 24px;
 }
+.rtl .panel .toggle-link .panel-title {
+  padding-right: 0;
+  padding-left: 30px;
+  text-align: right;
+}
 .panel .toggle-link .panel-title:after {
   content: '';
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8cGF0aCBkPSJNNyw3IEw3LDAgTDksMCBMOSw3IEwxNiw3IEwxNiw5IEw5LDkgTDksMTYgTDcsMTYgTDcsOSBMMCw5IEwwLDcgTDcsNyBaIiBmaWxsPSIjMDAwMDAwIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==");
@@ -667,6 +701,10 @@ address + p {
   right: 0;
   top: 2px;
   transition: all .2s linear;
+}
+.rtl .panel .toggle-link .panel-title:after {
+  right: unset;
+  left: 0;
 }
 .panel.active .toggle-link .panel-title:after {
   transform: rotate(45deg);
@@ -703,6 +741,9 @@ address + p {
 }
 .panel-collapse p {
   color: rgba(17, 17, 17, 0.6);
+}
+.rtl .panel-collapse p {
+  text-align: right;
 }
 .panel-collapse p:last-child {
   margin-bottom: 0;

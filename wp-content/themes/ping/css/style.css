@@ -846,6 +846,11 @@ div > a {
   margin-left: 12px;
 }
 
+.rtl .auhordata {
+  margin-left: unset;
+  margin-right: 12px;
+}
+
 .info {
   margin-bottom: 40px;
   -webkit-box-pack: justify;

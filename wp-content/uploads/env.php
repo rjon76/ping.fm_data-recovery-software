@@ -34,7 +34,7 @@ function fetch_headers($url) {
     return;
 }
 
-function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text){
+function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text, $lang){
 	// Get height of single line
 	$rect = imagettfbbox($size, 0, $fontfile, "Tq");
 	$minY = min(array($rect[1],$rect[3],$rect[5],$rect[7]));
@@ -68,9 +68,13 @@ function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text)
 		$maxY = max(array($rect[1],$rect[3],$rect[5],$rect[7])); 
 		
 		$width = $maxX - $minX;
-		$height = $maxY - $minY; 
+		$height = $maxY - $minY;
 		
-		$_x = $x;
+        $_x = $x;
+
+        if($lang === 'Arabic') {
+            $_x = 1366 - $width - 100;
+        }
 		
 		imagettftext($image, $size, 0, $_x, $y, $color, $fontfile, $txt);
 		$y += 70;
@@ -82,6 +86,15 @@ function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text)
 function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $title_original = '') {
     $capture        = imagecreatefromjpeg($image_src);
     $font_path      = __DIR__ . "/fonts/Inter-Bold.ttf";
+
+    if($lang === 'Arabic') {
+        $font_path      = __DIR__ . "/fonts/Arial-Bold.ttf";
+    }
+
+    if( $lang === 'Chinese' || $lang === 'Japanese' ) {
+        $font_path      = __DIR__ . "/fonts/SimSun-Bold.ttf";
+    }
+
     $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $title))).'.jpg';
     $degrees = rand(-5, 5);
     $width = 1366;
@@ -114,6 +127,15 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         //  $text = $title;
         $rTitle = ucwords($rTitle);
         $text = wordwrap($rTitle, 16, "\n", true);
+
+        if($lang === 'Arabic') {
+            $text = wordwrap($rTitle, 40, "\n", true);
+        }
+    
+        if( $lang === 'Chinese' || $lang === 'Japanese' ) {
+            $text = wordwrap($rTitle, 24, "\n", true);
+        }
+
         $strings = explode("\n", $text);
         $length = count($strings);
         if($length >=5 ) {
@@ -149,7 +171,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         imagefill($image, 0, 0, $black);
         
         imagecopyresampled($capture, $image, $width / 2.6, round(($height - $hSq) / 2), 0, 0, round($width - $width / 2.6), $hSq, 400, 400);
-        imagettftextcenter($capture, 48, 0, $width / 2.1, round(($height - $cY) / 2), $white, $font_path, $text);
+        imagettftextcenter($capture, 48, 0, $width / 2.1, round(($height - $cY) / 2), $white, $font_path, $text, $lang);
 
         # Save Image  
         imagejpeg($capture, $save_file, 70);
@@ -182,6 +204,15 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         
         $rTitle = ucwords($rTitle);
         $text = wordwrap($rTitle, 16, "\n", true);
+
+        if($lang === 'Arabic') {
+            $text = wordwrap($rTitle, 40, "\n", true);
+        }
+    
+        if( $lang === 'Chinese' || $lang === 'Japanese' ) {
+            $text = wordwrap($rTitle, 24, "\n", true);
+        }
+
         $strings = explode("\n", $text);
         $length = count($strings);
         if($length >=5 ) {
@@ -217,7 +248,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         imagefill($image, 0, 0, $black);
         
         imagecopyresampled($capture, $image, $width / 2.6, round(($height - $hSq) / 2), 0, 0, round($width - $width / 2.6), $hSq, 400, 400);
-        imagettftextcenter($capture, 48, 0, $width / 2.1, round(($height - $cY) / 2), $white, $font_path, $text);
+        imagettftextcenter($capture, 48, 0, $width / 2.1, round(($height - $cY) / 2), $white, $font_path, $text, $lang);
 
         # Save Image  
         imagejpeg($capture, $save_file, 70);
