@@ -536,16 +536,39 @@ foreach($languages as $key => $lang) {
     $dom = new DOMDocument;
     $dom->loadXML(xmlwriter_output_memory($xw));
     $dom->save(__DIR__ . "/wpallimport/files/generated-post-$lang.xml");
-}
 
-writeTimeGeneration($file, 'import');
+    sleep(5);
 
-if($langQuant == 0 && $isUpdateLanguage) {
-    autoImport([10, 11, 12, 13, 14]);
-}
-
-if($langQuant != 0 && $isUpdateLanguage) {
-    autoImport([15, 16, 17, 18, 19]);
+    if($lang == 'French') {
+        autoImport([11]);
+    }
+    if($lang == 'German') {
+        autoImport([10]);
+    }
+    if($lang == 'Spanish') {
+        autoImport([12]);
+    }
+    if($lang == 'Italian') {
+        autoImport([13]);
+    }
+    if($lang == 'Japanese') {
+        autoImport([14]);
+    }
+    if($lang == 'Portuguese') {
+        autoImport([15]);
+    }
+    if($lang == 'Dutch') {
+        autoImport([16]);
+    }
+    if($lang == 'Arabic') {
+        autoImport([17]);
+    }
+    if($lang == 'Chinese') {
+        autoImport([18]);
+    }
+    if($lang == 'Swedish') {
+        autoImport([19]);
+    }
 }
     
 writeTimeGeneration($file, 'done');
