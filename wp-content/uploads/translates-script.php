@@ -11,6 +11,8 @@ if ($_POST["tranlateUrl"]) {
     $tranlateUrl = $_POST["tranlateUrl"];
 }
 
+$langQuant = '';
+
 if ($_POST["langQuant"]) {
     $langQuant = (int)$_POST["langQuant"];
 }
