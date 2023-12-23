@@ -183,13 +183,13 @@ foreach($languages as $key => $lang) {
         continue;
     }
 
-    if($fullLanguage === '' && $langQuant == 0) {
+    if($langQuant == 0) {
         if($key > 4) {
             continue;
         }
     }
 
-    if($fullLanguage === '' && $langQuant == 5) {
+    if($langQuant == 5) {
         if($key < 5) {
             continue;
         }
@@ -570,5 +570,11 @@ foreach($languages as $key => $lang) {
         autoImport([19]);
     }
 }
-    
-writeTimeGeneration($file, 'done');
+
+if($fullLanguage !== '' && $isUpdateLanguage) {
+    writeTimeGeneration($file, 'done');
+}
+
+if($fullLanguage === '') {
+    writeTimeGeneration($file, 'done');
+}
