@@ -175,6 +175,7 @@ foreach($aFaqSecond as $key => $fS) {
 }
 
 $englishH1 = $h1title;
+$isUpdateLanguage = false;
 
 foreach($languages as $key => $lang) {
 
@@ -193,6 +194,8 @@ foreach($languages as $key => $lang) {
             continue;
         }
     }
+
+    $isUpdateLanguage = true;
 
     $path = __DIR__ . "/wpallimport/files/generated-post-$lang.xml";
     $copy = __DIR__ . "/wpallimport/files/generated-post-$lang-copy.xml";
@@ -537,11 +540,11 @@ foreach($languages as $key => $lang) {
 
 writeTimeGeneration($file, 'import');
 
-if($langQuant == 0) {
+if($langQuant == 0 && $isUpdateLanguage) {
     autoImport([10, 11, 12, 13, 14]);
 }
 
-if($langQuant != 0) {
+if($langQuant != 0 && $isUpdateLanguage) {
     autoImport([15, 16, 17, 18, 19]);
 }
     
