@@ -96,9 +96,22 @@ header {
     background-size: 10px 10px, 10px 10px !important;
     background-repeat: no-repeat !important;
     border: 0 !important;
+    padding: 0 0 0 20px;
   }
   header .language-switcher .trp-ls-shortcode-disabled-language {
     cursor: default !important;
+  }
+  header .wpml-ls-legacy-dropdown .wpml-ls-current-language:focus .wpml-ls-sub-menu,
+  header .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover .wpml-ls-sub-menu {
+    display: flex !important;
+    flex-direction: column;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  header .wpml-ls-legacy-dropdown a span {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   header .language-switcher:focus .langList,
   header .language-switcher:hover .langList {
@@ -116,11 +129,20 @@ header {
   header .language-switcher .langList img,
   header .language-switcher > div > a > img,
   header .wpml-ls-legacy-dropdown .wpml-ls-flag {
+    display: flex;
+    align-items: center;
     margin: 0 5px 0 0 !important;
-    display: inline;
     width: 18px !important;
     height: 12px !important;
     border-radius: 0;
+  }
+  header .wpml-ls-statics-shortcode_actions a,
+  header .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu a,
+  header .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu a:link,
+  header .wpml-ls-statics-shortcode_actions li:not(.wpml-ls-current-language) .wpml-ls-link,
+  header .wpml-ls-statics-shortcode_actions li:not(.wpml-ls-current-language) .wpml-ls-link:link {
+    display: flex !important;
+    align-items: center;
   }
   .rtl header .language-switcher .langList img,
   .rtl header .language-switcher > div > a > img {
@@ -143,10 +165,16 @@ header {
     letter-spacing: .0928571px;
     padding: 7px 12px;
     border-radius: 3px;
+    margin-left: 0;
   }
   header .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle:after {
     border: 0.15em solid transparent;
     border-top: 0.15em solid;
+    top: 50%;
+  }
+  header .wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a {
+    display: flex !important;
+    align-items: center;
   }
   header .language-switcher .langList a:hover {
     background: #f0f0f0;
