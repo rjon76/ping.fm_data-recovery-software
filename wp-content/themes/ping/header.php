@@ -137,7 +137,7 @@ if($current_language == 'de_DE') {
 			</a>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<?php if($isPageHasTranslate && !empty($aArticles["page"])) { ?>
+				<!-- <?php if($isPageHasTranslate && !empty($aArticles["page"])) { ?>
 					<div class="language-switcher">
 						<div class="trp-ls-shortcode-current-language" style="width: 166px;">
 							<a href="#" class="trp-ls-shortcode-disabled-language trp-ls-disabled-language" title="<?php echo $curr_lang; ?>" onclick="event.preventDefault()">
@@ -149,18 +149,18 @@ if($current_language == 'de_DE') {
 							<?php pll_the_languages( array( 'show_flags' => 1,'show_names' => 1, 'hide_current' => 1, ) ); ?>	
 						</ul>
 					</div>
-				<?php } ?>
+				<?php } ?> -->
 				<?php if ($current_language !== 'ar') { ?>
 					<ul>
 						<li>
-							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php pll_e('Chromecast Screen Mirroring'); ?></a>
+							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow">Chromecast Screen Mirroring</a>
 						</li>
 						<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
 							<li>
-								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php pll_e('Router Login & IP Address'); ?></a>
+								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow">Router Login & IP Address</a>
 							</li>
 							<li>
-								<a href="/app-vs-app/" rel="dofollow"><?php pll_e('App Vs App'); ?></a>
+								<a href="/app-vs-app/" rel="dofollow">App Vs App</a>
 							</li>
 						<?php } ?>
 					</ul>

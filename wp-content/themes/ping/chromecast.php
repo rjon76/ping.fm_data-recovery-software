@@ -49,13 +49,13 @@
 							<img src="<?php echo get_site_url();?>/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
-							<div class="authorpost"><?php pll_e('Written by'); ?>:</div>
+							<div class="authorpost">Written by:</div>
 							<div class="title">
 								<a href="https://www.linkedin.com/in/kropachek/" rel="nofollow" target="_blank">Roman Kropachek</a>
 							</div>
 						</div>
 					</div>
-					<p class="updated"><?php if ( get_the_modified_time() != get_the_time()) pll_e('Last update on '); ?> <time datetime="<?php echo the_modified_time( 'c' ); ?>"><?php echo ' '. the_modified_date('F d, Y'); ?></time></p>
+					<p class="updated"><?php if ( get_the_modified_time() != get_the_time()) 'Last update on '; ?> <time datetime="<?php echo the_modified_time( 'c' ); ?>"><?php echo ' '. the_modified_date('F d, Y'); ?></time></p>
 				</div>
 				<article>
 					<?php
@@ -79,7 +79,7 @@
 
 				<aside>
 					<div class="h2">
-						<?php pll_e('More Articles'); ?>
+						More Articles
 					</div>
 					<ul>
 						<?php
