@@ -135,6 +135,12 @@ if($current_language == 'de_DE') {
 				<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
 				ping.fm
 			</a>
+			<?php
+				echo '<div class="wpml-floating-language-switcher">';
+					//PHP action to display the language switcher (see https://wpml.org/documentation/getting-started-guide/language-setup/language-switcher-options/#using-php-actions)
+					do_action('wpml_add_language_selector');
+				echo '</div>';
+			?>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
 				<?php if ($current_language !== 'ar') { ?>
