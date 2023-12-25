@@ -119,6 +119,9 @@ header {
     max-height: 400px;
     overflow-y: auto;
   }
+  header .wpml-ls-legacy-dropdown .wpml-ls-flag+span {
+    overflow: visible !important;
+  }
   header .wpml-ls-legacy-dropdown a span {
     overflow: hidden;
     text-overflow: ellipsis;
