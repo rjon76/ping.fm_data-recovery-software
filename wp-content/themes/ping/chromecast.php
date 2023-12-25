@@ -115,17 +115,17 @@
 					jQuery(this).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
 				}
 			})
-			jQuery('.langList a').on('click', function(e) {
-				e.preventDefault();
-				const lang = jQuery(this).attr('lang');
-				const site = jQuery('#mainTag').attr('data-href');
-				const uri = jQuery('#mainTag').attr('data-uri');
-				if(lang === 'en-US') {
-					window.location.href = site + '/' + uri + '/';
-				} else {
-					window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
-				}
-			})
+			// jQuery('.langList a').on('click', function(e) {
+			// 	e.preventDefault();
+			// 	const lang = jQuery(this).attr('lang');
+			// 	const site = jQuery('#mainTag').attr('data-href');
+			// 	const uri = jQuery('#mainTag').attr('data-uri');
+			// 	if(lang === 'en-US') {
+			// 		window.location.href = site + '/' + uri + '/';
+			// 	} else {
+			// 		window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
+			// 	}
+			// })
 
 			jQuery('.breadcrumb a').attr('href', jQuery('#mainTag').attr('data-href') + '/' + jQuery('#mainTag').attr('data-lang'));
 		</script>
