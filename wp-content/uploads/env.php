@@ -213,8 +213,12 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
             $text = wordwrap($rTitle, 40, "\n", true);
         }
     
-        if( $lang === 'Chinese' || $lang === 'Japanese' ) {
+        if( $lang === 'Japanese' ) {
             $text = wordwrap($rTitle, 24, "\n", true);
+        }
+
+        if( $lang === 'Chinese' ) {
+            $text = wordwrap($rTitle, 12, "\n", true);
         }
 
         $strings = explode("\n", $text);
