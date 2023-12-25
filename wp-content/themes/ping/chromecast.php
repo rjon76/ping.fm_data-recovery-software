@@ -20,13 +20,13 @@
     } elseif ($current_language == 'ja') {
         $curr_url = 'ja/';
     } elseif ($current_language == 'pt_PT') {
-        $curr_url = 'pt/';
+        $curr_url = 'pt-pt/';
     } elseif ($current_language == 'nl_NL') {
         $curr_url = 'nl/';
     } elseif ($current_language == 'ar') {
         $curr_url = 'ar/'; 
     } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN') {
-        $curr_url = 'zh/';
+        $curr_url = 'zh-hans/';
     } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
         $curr_url = 'sv/';
     } else {
