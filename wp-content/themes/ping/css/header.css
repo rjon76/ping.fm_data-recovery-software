@@ -106,6 +106,9 @@ header {
   header .language-switcher .trp-ls-shortcode-disabled-language {
     cursor: default !important;
   }
+  header .wpml-ls-legacy-dropdown .wpml-ls-sub-menu {
+    display: none;
+  }
   header .wpml-ls-legacy-dropdown .wpml-ls-current-language:focus .wpml-ls-sub-menu,
   header .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover .wpml-ls-sub-menu {
     display: flex !important;
