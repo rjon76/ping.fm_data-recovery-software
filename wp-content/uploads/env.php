@@ -128,12 +128,16 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         $rTitle = ucwords($rTitle);
         $text = wordwrap($rTitle, 16, "\n", true);
 
-        if($lang === 'Arabic') {
+        if( $lang === 'Arabic' ) {
             $text = wordwrap($rTitle, 40, "\n", true);
         }
     
-        if( $lang === 'Chinese' || $lang === 'Japanese' ) {
+        if( $lang === 'Japanese' ) {
             $text = wordwrap($rTitle, 16, "\n", true);
+        }
+
+        if( $lang === 'Chinese' ) {
+            $text = wordwrap($rTitle, 12, "\n", true);
         }
 
         $strings = explode("\n", $text);
