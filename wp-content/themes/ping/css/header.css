@@ -25,7 +25,7 @@ header {
     header ul {
       padding: 0 10px;
       max-width: 100%;
-      overflow: auto;
+      /* overflow: auto; */
       scrollbar-width: none;
     }
     header ul::-webkit-scrollbar {
@@ -98,6 +98,11 @@ header {
     border: 0 !important;
     padding: 0 0 0 20px;
   }
+  @media(max-width: 767px) {
+    header .language-switcher > div {
+      padding-left: 10px;
+    }
+  }
   header .language-switcher .trp-ls-shortcode-disabled-language {
     cursor: default !important;
   }
@@ -105,9 +110,11 @@ header {
   header .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover .wpml-ls-sub-menu {
     display: flex !important;
     flex-direction: column;
-    width: 300px;
-    overflow: hidden;
+    min-width: 300px;
+    overflow-x: hidden;
     text-overflow: ellipsis;
+    max-height: 400px;
+    overflow-y: auto;
   }
   header .wpml-ls-legacy-dropdown a span {
     overflow: hidden;
