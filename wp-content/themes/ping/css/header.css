@@ -114,7 +114,8 @@ header {
     min-height: auto;
   }
   header .language-switcher .langList img,
-  header .language-switcher > div > a > img {
+  header .language-switcher > div > a > img,
+  header .wpml-ls-legacy-dropdown .wpml-ls-flag {
     margin: 0 5px 0 0 !important;
     display: inline;
     width: 18px !important;
@@ -126,7 +127,8 @@ header {
     margin: 0 0 0 5px !important;
   }
   header .language-switcher .langList a,
-  header .language-switcher > div > a {
+  header .language-switcher > div > a,
+  header .wpml-ls-legacy-dropdown .wpml-ls-flag+span {
     line-height: 26px;
     display: block !important;
     text-align: left;
@@ -136,6 +138,15 @@ header {
     border-radius: 3px;
     font-style: normal;
     font-weight: 400;
+    color: #000;
+    font-size: 16px;
+    letter-spacing: .0928571px;
+    padding: 7px 12px;
+    border-radius: 3px;
+  }
+  header .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle:after {
+    border: 0.15em solid transparent;
+    border-top: 0.15em solid;
   }
   header .language-switcher .langList a:hover {
     background: #f0f0f0;
