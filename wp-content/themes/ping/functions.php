@@ -61,3 +61,12 @@ function fetch_headers($url) {
 // pll_register_string( 'Chat GPT', 'Chat GPT' );
 // pll_register_string( 'Written by', 'Written by' );
 // pll_register_string( 'More Articles', 'More Articles' );
+
+add_action('wp_header', 'wpml_floating_language_switcher'); 
+  
+ function wpml_floating_language_switcher() { 
+    echo '<div class="wpml-floating-language-switcher">';
+        //PHP action to display the language switcher (see https://wpml.org/documentation/getting-started-guide/language-setup/language-switcher-options/#using-php-actions)
+        do_action('wpml_add_language_selector');
+    echo '</div>'; 
+}
