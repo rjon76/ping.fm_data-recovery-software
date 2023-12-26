@@ -52,7 +52,7 @@
 					</li>
 				</ul>
 				<p>
-					Copyright © <?php echo date("Y"); ?> Electronic Team, Inc., its affiliates and licensors. <a href="https://www.electronic.us/legal/" title="Legal Information" rel="nofollow">Legal Information.</a><br>
+					<?php _e('Copyright', 'custom-string-translation'); ?> © <?php echo date("Y"); ?> <?php _e('Electronic Team, Inc., its affiliates and licensors.', 'custom-string-translation'); ?> <a href="https://www.electronic.us/legal/" title="Legal Information" rel="nofollow"><?php _e('Legal Information.', 'custom-string-translation'); ?></a><br>
 				</p>
 				<address>1800 Diagonal Road, Ste 600, Alexandria, VA 22314, USA</address>
 				<p> • +12023358465 • <a href="mailto:support@electronic.us">support@electronic.us</a></p>

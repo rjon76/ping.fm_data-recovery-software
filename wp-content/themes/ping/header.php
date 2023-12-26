@@ -151,14 +151,14 @@ if($current_language == 'de_DE') {
 				<?php if ($current_language !== 'ar') { ?>
 					<ul>
 						<li>
-							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow">Chromecast Screen Mirroring</a>
+							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
 						</li>
 						<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
 							<li>
-								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow">Router Login & IP Address</a>
+								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
 							</li>
 							<li>
-								<a href="/app-vs-app/" rel="dofollow">App Vs App</a>
+								<a href="/app-vs-app/" rel="dofollow"><?php _e('App Vs App', 'custom-string-translation'); ?></a>
 							</li>
 						<?php } ?>
 					</ul>
