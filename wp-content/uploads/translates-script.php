@@ -17,6 +17,10 @@ if ($_POST["langQuant"]) {
     $langQuant = (int)$_POST["langQuant"];
 }
 
+if($langQuant == 5) {
+    sleep(60);
+}
+
 $fullLanguage = '';
 
 if ($_POST["fullLanguage"]) {
