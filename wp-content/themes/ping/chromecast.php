@@ -11,25 +11,47 @@
 
     if($current_language == 'de_DE') {
         $curr_url = 'de/';
+		$written = 'Verfasst von:';
+		$moreArticles = 'Mehr Artikel';
     } elseif ($current_language == 'es_ES') {
         $curr_url = 'es/';
+		$written = 'Escrito por:';
+		$moreArticles = 'Más artículos';
     } elseif ($current_language == 'fr_FR') {
         $curr_url = 'fr/';
+		$written = 'Rédigé par :';
+		$moreArticles = "Plus d'articles";
     } elseif ($current_language == 'it_IT') {
         $curr_url = 'it/';
+		$written = 'Scritto da:';
+		$moreArticles = 'Altri Articoli';
     } elseif ($current_language == 'ja') {
         $curr_url = 'ja/';
+		$written = '著者：';
+		$moreArticles = 'より多くの記事';
     } elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
         $curr_url = 'pt/';
+		$written = 'Escrito por:';
+		$moreArticles = 'Mais Artigos';
     } elseif ($current_language == 'nl_NL') {
         $curr_url = 'nl/';
+		$written = 'Geschreven door:';
+		$moreArticles = 'Meer artikelen';
     } elseif ($current_language == 'ar') {
-        $curr_url = 'ar/'; 
+        $curr_url = 'ar/';
+		$written = 'كتب بواسطة:';
+		$moreArticles = 'المزيد من المقالات';
     } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
         $curr_url = 'zh/';
+		$written = '编写者：';
+		$moreArticles = '更多文章';
     } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
         $curr_url = 'sv/';
+		$written = 'Skrivet av:';
+		$moreArticles = 'Fler Artiklar';
     } else {
+		$written = 'Written by:';
+		$moreArticles = 'More Articles';
         $curr_url = '';
     }
 ?>
@@ -49,7 +71,7 @@
 							<img src="<?php echo get_site_url();?>/wp-content/uploads/roman-krop.jpeg" alt="Roman Kropachek Photo" title="Roman Kropachek Photo" width="400" height="400">
 						</div>
 						<div class="auhordata">
-							<div class="authorpost">Written by:</div>
+							<div class="authorpost"><?php echo $written; ?></div>
 							<div class="title">
 								<a href="https://www.linkedin.com/in/kropachek/" rel="nofollow" target="_blank">Roman Kropachek</a>
 							</div>
@@ -79,7 +101,7 @@
 
 				<aside>
 					<div class="h2">
-						More Articles
+						<?php echo $moreArticles; ?>
 					</div>
 					<ul>
 						<?php
