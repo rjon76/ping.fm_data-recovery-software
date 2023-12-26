@@ -196,4 +196,8 @@ foreach($languages as $lang) {
     $dom->save(__DIR__ . "/wpallimport/files/generated-post-$lang.xml");
 }
 
-autoImport([4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
+autoImport([4, 10, 11, 12]);
+sleep(30);
+autoImport([13, 14, 15, 16]);
+sleep(30);
+autoImport([17, 18, 19]);
