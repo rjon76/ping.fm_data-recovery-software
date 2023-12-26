@@ -126,6 +126,9 @@ header {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  header .wpml-ls-legacy-dropdown a span.wpml-ls-display {
+    display: none !important;
+  }
   header .language-switcher:focus .langList,
   header .language-switcher:hover .langList {
     padding: 4px !important;
