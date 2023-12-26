@@ -225,6 +225,9 @@ header {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  header .language-switcher.hidden {
+    display: none !important;
+  }
   .rtl header .language-switcher {
     left: unset;
     right: 250px;

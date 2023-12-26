@@ -127,10 +127,9 @@ if($current_language == 'de_DE') {
 			gtag('config', 'G-H1RBTQZ91E');
 		</script>
 		<script>
-			console.log(jQuery('.language-switcher .wpml-ls-sub-menu'), "LOG");
-			console.log(jQuery('.language-switcher .wpml-ls-sub-menu').length, "LOG LENGTH");
-			console.log(jQuery('.language-switcher .wpml-ls-sub-menu').children(), "LOG CHILDREN");
-			console.log(jQuery('.language-switcher .wpml-ls-sub-menu').children().length, "LOG CHILDREN LENGTH");
+			if(jQuery('.language-switcher .wpml-ls-sub-menu').children().length === 0) {
+				jQuery('.language-switcher').addCLass('hidden');
+			}
 		</script>
 	</head>
 
