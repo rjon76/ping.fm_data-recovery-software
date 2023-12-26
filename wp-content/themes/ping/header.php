@@ -52,47 +52,36 @@ if($fileName === 'chromecast.php') {
 if($current_language == 'de_DE') {
 	$curr_url = 'de/';
 	$ping_url = '/de';
-	$curr_lang = 'Deutsch';
 } elseif ($current_language == 'es_ES') {
 	$curr_url = 'es/';
 	$ping_url = '/es';
-	$curr_lang = 'Español';
 } elseif ($current_language == 'fr_FR') {
 	$curr_url = 'fr/';
 	$ping_url = '/fr';
-	$curr_lang = 'Français';
 }  elseif ($current_language == 'it_IT') {
 	$curr_url = 'it/';
 	$ping_url = '/it';
-	$curr_lang = 'Italiano';
 } elseif ($current_language == 'ja') {
 	$curr_url = 'ja/';
 	$ping_url = '/ja';
-	$curr_lang = '日本語';
 } elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
 	$curr_url = 'pt/';
 	$ping_url = '/pt';
-	$curr_lang = 'Português';
 } elseif ($current_language == 'nl_NL') {
 	$curr_url = 'nl/';
 	$ping_url = '/nl';
-	$curr_lang = 'Nederlands';
 } elseif ($current_language == 'ar') {
 	$curr_url = '';
 	$ping_url = '/ar';
-	$curr_lang = 'العربية';
 } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
 	$curr_url = 'zh/';
 	$ping_url = '/zh';
-	$curr_lang = '中文';
 } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
 	$curr_url = 'sv/';
 	$ping_url = '/sv';
-	$curr_lang = 'Svenska';
 } else {
 	$curr_url = '';
 	$ping_url = '';
-	$curr_lang = 'English';
 }
 
 ?><!DOCTYPE html>

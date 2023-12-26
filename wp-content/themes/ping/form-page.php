@@ -45,8 +45,6 @@ error_reporting(E_ALL);
         $curr_lang = '';
     }
 
-    var_dump($curr_lang);
-
     $fileLangName = '';
 
     if($curr_lang !== '') {
