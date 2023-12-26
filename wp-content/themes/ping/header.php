@@ -95,6 +95,8 @@ if($current_language == 'de_DE') {
 	$curr_lang = 'English';
 }
 
+var_dump($curr_lang);
+
 ?><!DOCTYPE html>
 
 <html class="no-js" <?php language_attributes(); ?>>
