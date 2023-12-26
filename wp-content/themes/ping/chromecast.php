@@ -19,14 +19,14 @@
         $curr_url = 'it/';
     } elseif ($current_language == 'ja') {
         $curr_url = 'ja/';
-    } elseif ($current_language == 'pt_PT') {
-        $curr_url = 'pt-pt/';
+    } elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
+        $curr_url = 'pt/';
     } elseif ($current_language == 'nl_NL') {
         $curr_url = 'nl/';
     } elseif ($current_language == 'ar') {
         $curr_url = 'ar/'; 
-    } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN') {
-        $curr_url = 'zh-hans/';
+    } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
+        $curr_url = 'zh/';
     } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
         $curr_url = 'sv/';
     } else {
@@ -106,28 +106,6 @@
 			</div>
 		</main>
 		<script>
-			jQuery('.langList a').each(function(index) {
-				const lang = jQuery(this).attr('lang');
-				const site = jQuery('#mainTag').attr('data-href');
-				const uri = jQuery('#mainTag').attr('data-uri');
-				if(lang === 'en-US') {
-					jQuery(this).attr('href', site + '/' + uri + '/');
-				} else {
-					jQuery(this).attr('href', site + '/' + lang[0] + lang[1] + '/' + uri + '/')
-				}
-			})
-			// jQuery('.langList a').on('click', function(e) {
-			// 	e.preventDefault();
-			// 	const lang = jQuery(this).attr('lang');
-			// 	const site = jQuery('#mainTag').attr('data-href');
-			// 	const uri = jQuery('#mainTag').attr('data-uri');
-			// 	if(lang === 'en-US') {
-			// 		window.location.href = site + '/' + uri + '/';
-			// 	} else {
-			// 		window.location.href = site + '/' + lang[0] + lang[1] + '/' + uri + '/';
-			// 	}
-			// })
-
 			jQuery('.breadcrumb a').attr('href', jQuery('#mainTag').attr('data-href') + '/' + jQuery('#mainTag').attr('data-lang'));
 		</script>
 <?php

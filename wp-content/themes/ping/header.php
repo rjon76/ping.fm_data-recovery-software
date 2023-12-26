@@ -69,8 +69,8 @@ if($current_language == 'de_DE') {
 	$curr_url = 'ja/';
 	$ping_url = '/ja';
 	$curr_lang = '日本語';
-} elseif ($current_language == 'pt_PT') {
-	$curr_url = 'pt-pt/';
+} elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
+	$curr_url = 'pt/';
 	$ping_url = '/pt';
 	$curr_lang = 'Português';
 } elseif ($current_language == 'nl_NL') {
@@ -81,8 +81,8 @@ if($current_language == 'de_DE') {
 	$curr_url = '';
 	$ping_url = '/ar';
 	$curr_lang = 'العربية';
-} elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN') {
-	$curr_url = 'zh-hans/';
+} elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
+	$curr_url = 'zh/';
 	$ping_url = '/zh';
 	$curr_lang = '中文';
 } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
@@ -126,7 +126,12 @@ if($current_language == 'de_DE') {
 
 			gtag('config', 'G-H1RBTQZ91E');
 		</script>
-
+		<script>
+			console.log(jQuery('.language-switcher .wpml-ls-sub-menu'), "LOG");
+			console.log(jQuery('.language-switcher .wpml-ls-sub-menu').length, "LOG LENGTH");
+			console.log(jQuery('.language-switcher .wpml-ls-sub-menu').children(), "LOG CHILDREN");
+			console.log(jQuery('.language-switcher .wpml-ls-sub-menu').children().length, "LOG CHILDREN LENGTH");
+		</script>
 	</head>
 
 	<body <?php body_class(); ?>>
