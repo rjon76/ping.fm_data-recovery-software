@@ -128,7 +128,7 @@ if($current_language == 'de_DE') {
 		</script>
 		<script>
 			if(jQuery('.language-switcher .wpml-ls-sub-menu').children().length === 0) {
-				jQuery('.language-switcher').addCLass('hidden');
+				jQuery('.language-switcher').addClass('hidden');
 			}
 		</script>
 	</head>
