@@ -25,7 +25,7 @@ error_reporting(E_ALL);
     } elseif ($current_language == 'ja') {
         $curr_url = 'ja/';
         $curr_lang = 'Japanese';
-    } elseif ($current_language == 'pt_PT') {
+    } elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
         $curr_url = 'pt-pt/';
         $curr_lang = 'Portuguese';
     } elseif ($current_language == 'nl_NL') {
@@ -34,7 +34,7 @@ error_reporting(E_ALL);
     } elseif ($current_language == 'ar') {
         $curr_url = 'ar/';
         $curr_lang = 'Arabic';
-    } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN') {
+    } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
         $curr_url = 'zh-hans/';
         $curr_lang = 'Chinese';
     } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
