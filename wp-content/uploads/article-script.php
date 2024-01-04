@@ -84,7 +84,7 @@ if (!empty($_FILES['file']["tmp_name"])) {
 }
 
 if(empty($_FILES['file']["tmp_name"]) && $faq_theme) {
-    $image_src = $image_folder . '/original-' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $faq_theme))).'.jpg';
+    $image_src = $image_folder . '/original-' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";", "/"], "-", $faq_theme))).'.jpg';
 }
 
 if( !$_POST["title"] || !$_POST["meta_title"] || !$_POST["h1title"] ||
@@ -235,7 +235,7 @@ xmlwriter_start_element($xw, 'root');
     $contentString = '';
     $tipsString = $page_tip1 . $page_tip2 . $page_tip3;
 
-    $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $h1title)));
+    $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";", "/"], "-", $h1title)));
 
     if(empty($_FILES['file']["tmp_name"])) {
         $gen_image_src = null;

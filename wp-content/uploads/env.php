@@ -95,7 +95,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         $font_path      = __DIR__ . "/fonts/SimSun-Bold.ttf";
     }
 
-    $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $title))).'.jpg';
+    $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";", "/"], "-", $title))).'.jpg';
     $degrees = rand(-5, 5);
     $width = 1366;
     $height = 768;
@@ -182,7 +182,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         imagedestroy($capture);
     } else {
         $capture        = imagecreatefromjpeg($image_src);
-        $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";"], "-", $title_original))). "-$lang" .'.jpg';
+        $save_file      = __DIR__ . "/ai" . '/' .str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";", "/"], "-", $title_original))). "-$lang" .'.jpg';
 
         $imagesize = getimagesize($image_src);
         $w = $imagesize[0];
