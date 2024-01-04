@@ -982,8 +982,9 @@ error_reporting(E_ALL);
                 if( jQuery('#title')[0].value.trim().length === 0 ||
                     jQuery('#h1title')[0].value.trim().length === 0 ||
                     jQuery('#meta_title')[0].value.trim().length === 0 ||
+                    jQuery('#faq_theme')[0].value.trim().length === 0 ||
                     jQuery('#post_url')[0].value.trim().length === 0) {
-                    alert('All fields is required (Create new article) !!')
+                    alert('Required Fields: Title, H1, Meta, Faq, Url');
                 } else {
                     jQuery('#btn').attr('disabled','true');
                     jQuery('.loader').addClass('show');
