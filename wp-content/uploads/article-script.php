@@ -118,14 +118,6 @@ xmlwriter_start_element($xw, 'root');
 
     $b = null;
 
-    if($domain_url === 'https://www.ping.fm/howto') {
-        sleep(60);
-        echo "START REQUEST";
-        writeTimeGeneration($file, 'done');
-        exit();
-        die();
-    }
-
     do {
         $a = getInfoTitle($theme_title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY);
         if( isset($a->choices[0]->message->function_call) ) {
