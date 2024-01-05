@@ -120,6 +120,66 @@ foreach($languages as $lang) {
     xmlwriter_start_document($xw, '1.0', 'UTF-8');
     xmlwriter_start_element($xw, 'root');
 
+    if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
+
+        if($postUrl !== $aArticles["page"]["page_url"]) {
+            xmlwriter_start_element($xw, 'page');
+                xmlwriter_start_element($xw, 'page_meta');
+                    xmlwriter_text($xw, $aArticles["page"]["page_meta"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_image');
+                    xmlwriter_text($xw, $aArticles["page"]["page_image"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_url');
+                    xmlwriter_text($xw, $aArticles["page"]["page_url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_title');
+                    xmlwriter_text($xw, $aArticles["page"]["page_title"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_content');
+                    xmlwriter_text($xw, $pageContent);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'page_faq');
+                    xmlwriter_text($xw, $pageFaq);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'title');
+                    xmlwriter_text($xw, $aArticles["page"]["title"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'h1title');
+                    xmlwriter_text($xw, $aArticles["page"]["h1title"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'url');
+                    xmlwriter_text($xw, is_array($aArticles["page"]["url"]) ? '' : $aArticles["page"]["url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'url_descr');
+                    xmlwriter_text($xw, is_array($aArticles["page"]["url_descr"]) ? '' : $aArticles["page"]["url_descr"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'anchor');
+                    xmlwriter_text($xw, is_array($aArticles["page"]["anchor"]) ? '' : $aArticles["page"]["anchor"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'original_image');
+                    xmlwriter_text($xw, is_array($aArticles["page"]["original_image"]) ? '' : $aArticles["page"]["original_image"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'post_url');
+                    xmlwriter_text($xw, $aArticles["page"]["post_url"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'youtube_url');
+                    if(empty($aArticles["page"]["youtube_url"])) {
+                        xmlwriter_text($xw, '');
+                    } else {
+                        xmlwriter_text($xw, $aArticles["page"]["youtube_url"]);
+                    }
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'apps_links');
+                    xmlwriter_text($xw, $aArticles["page"]["apps_links"]);
+                xmlwriter_end_element($xw);
+                xmlwriter_start_element($xw, 'faq_theme');
+                    xmlwriter_text($xw, $aArticles["page"]["faq_theme"]);
+                xmlwriter_end_element($xw);
+            xmlwriter_end_element($xw);
+        }
+    }
+
     if(count($aArticles["page"]) > 0) {
 
         if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
