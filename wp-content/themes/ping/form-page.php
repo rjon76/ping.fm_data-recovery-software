@@ -552,6 +552,7 @@ error_reporting(E_ALL);
                                             <input class="hidden" type="text" id="faqPostUrl" value="<?php echo $post_url; ?>" name="faqPostUrl">
                                             <input class="hidden" type="text" id="removeArticle" value="false" name="remove_article">
                                             <input class="hidden" type="checkbox" name="regenerate-faq" id="regenerateFaq">
+                                            <input type="text" name="domain_url" class="hidden" value="<?php echo get_site_url(); ?>">
                                             <button  class="sBtn green" type="button" id="btn-num-faq">Add more questions</button>
                                             <button  class="sBtn orange" type="button" id="btn-translate-faq">Translate faq</button>
                                             <button  class="sBtn danger" type="button" id="btn-reg-faq">Regenerate faq</button>
@@ -566,6 +567,7 @@ error_reporting(E_ALL);
                                     <textarea name="pageFaq" id="pageFaqField" class="textareaField"><?php echo $page_faq; ?></textarea>
                                     <input class="hidden" type="text" id="editFaqPostUrl" value="<?php echo $post_url; ?>" name="postUrl">
                                     <input class="hidden" type="text" id="postLanguage" value="<?php echo $curr_lang; ?>" name="postLanguage">
+                                    <input type="text" name="domain_url" class="hidden" value="<?php echo get_site_url(); ?>">
                                     <button  class="sBtn" type="button" id="btn-cancel-edit">Cancel</button>
                                     <button  class="sBtn green" type="button" id="btn-save-edit">Save</button>
                                 </form>
@@ -573,12 +575,14 @@ error_reporting(E_ALL);
                                 <form id="translatePage" class="hidden" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/translates-script.php'; ?>">
                                     <input class="hidden" type="text" id="tranlateUrl" value="<?php echo $post_url;?>" name="tranlateUrl">
                                     <input class="hidden" type="text" id="fullLanguage" value="<?php echo $curr_lang;?>" name="fullLanguage">
+                                    <input type="text" name="domain_url" class="hidden" value="<?php echo get_site_url(); ?>">
                                     <input class="hidden" type="text" id="langQuant" value="0" name="langQuant">
                                     <input type="checkbox" name="onlyFaq" id="onlyFaq">
                                 </form>
 
                                 <form id="formRemoveArt" action="/" data-action="<?php echo get_site_url() . '/wp-content/uploads/remove-script.php'; ?>">
                                     <input class="hidden" type="text" id="remove_url" name="remove_url" value="<?php echo $post_url;?>">
+                                    <input type="text" name="domain_url" class="hidden" value="<?php echo get_site_url(); ?>">
                                 </form>
                             <?php } else { ?>
                                 <h3>There are no articles generated. Let's start!</h3>

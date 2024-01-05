@@ -17,6 +17,10 @@ if(isset($_POST["regenerate-faq"])) {
     $regenerate_faq = 'false';
 }
 
+if ($_POST["domain_url"]) {
+    $domain_url = $_POST["domain_url"];
+}
+
 if ($_POST["numberFaq"]) {
     $numberFaq = $_POST["numberFaq"];
 }
@@ -224,6 +228,6 @@ $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post.xml');
 
-autoImport([4]);
+autoImport([4], $domain_url);
 
 writeTimeGeneration($file, 'done');

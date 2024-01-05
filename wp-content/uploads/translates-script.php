@@ -21,6 +21,10 @@ if($langQuant == 5) {
     sleep(60);
 }
 
+if ($_POST["domain_url"]) {
+    $domain_url = $_POST["domain_url"];
+}
+
 $fullLanguage = '';
 
 if ($_POST["fullLanguage"]) {
@@ -546,34 +550,34 @@ foreach($languages as $key => $lang) {
     sleep(5);
 
     if($lang == 'French') {
-        autoImport([11]);
+        autoImport([11], $domain_url);
     }
     if($lang == 'German') {
-        autoImport([10]);
+        autoImport([10], $domain_url);
     }
     if($lang == 'Spanish') {
-        autoImport([12]);
+        autoImport([12], $domain_url);
     }
     if($lang == 'Italian') {
-        autoImport([13]);
+        autoImport([13], $domain_url);
     }
     if($lang == 'Japanese') {
-        autoImport([14]);
+        autoImport([14], $domain_url);
     }
     if($lang == 'Portuguese') {
-        autoImport([15]);
+        autoImport([15], $domain_url);
     }
     if($lang == 'Dutch') {
-        autoImport([16]);
+        autoImport([16], $domain_url);
     }
     if($lang == 'Arabic') {
-        autoImport([17]);
+        autoImport([17], $domain_url);
     }
     if($lang == 'Chinese') {
-        autoImport([18]);
+        autoImport([18], $domain_url);
     }
     if($lang == 'Swedish') {
-        autoImport([19]);
+        autoImport([19], $domain_url);
     }
 }
 

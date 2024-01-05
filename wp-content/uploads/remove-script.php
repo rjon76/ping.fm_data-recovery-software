@@ -8,6 +8,10 @@ if ($_POST["remove_url"]) {
     exit();
 }
 
+if ($_POST["domain_url"]) {
+    $domain_url = $_POST["domain_url"];
+}
+
 require_once( __DIR__ . "/env.php");
 
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
@@ -256,8 +260,8 @@ foreach($languages as $lang) {
     $dom->save(__DIR__ . "/wpallimport/files/generated-post-$lang.xml");
 }
 
-autoImport([4, 10, 11, 12]);
+autoImport([4, 10, 11, 12], $domain_url);
 sleep(30);
-autoImport([13, 14, 15, 16]);
+autoImport([13, 14, 15, 16], $domain_url);
 sleep(30);
-autoImport([17, 18, 19]);
+autoImport([17, 18, 19], $domain_url);

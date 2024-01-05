@@ -26,6 +26,10 @@ if ($_POST["pageFaq"]) {
     );
 }
 
+if ($_POST["domain_url"]) {
+    $domain_url = $_POST["domain_url"];
+}
+
 if ($_POST["postUrl"]) {
     $postUrl = $_POST["postUrl"];
 }
@@ -191,4 +195,4 @@ $dom = new DOMDocument;
 $dom->loadXML(xmlwriter_output_memory($xw));
 $dom->save(__DIR__ . '/wpallimport/files/generated-post' . $fileLangName . '.xml');
 
-autoImport([4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
+autoImport([4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], $domain_url);

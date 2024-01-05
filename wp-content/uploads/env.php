@@ -585,16 +585,16 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
     curl_close($ch);
 }
 
-function autoImport($array) {
+function autoImport($array, $domain_url) {
 
     foreach($array as $id) {
-        fetch_headers( "https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=trigger" );
+        fetch_headers( "$domain_url/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=trigger" );
         sleep(5);
-        fetch_headers( "https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=processing" );
+        fetch_headers( "$domain_url/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=processing" );
         sleep(5);
-        exec( "wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=trigger" );
+        exec( "wget -q -O - $domain_url/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=trigger" );
         sleep(5);
-        exec( "wget -q -O - https://www.ping.fm/data-recovery-software/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=processing" );
+        exec( "wget -q -O - $domain_url/wp-load.php?import_key=G7p0uoGRK&import_id=$id&action=processing" );
         sleep(5);
     }
 }
