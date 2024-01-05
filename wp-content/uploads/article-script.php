@@ -97,13 +97,6 @@ $file = __DIR__ . '/time_record.txt';
 
 writeTimeGeneration($file, 'start');
 
-if($domain_url === 'https://www.ping.fm/howto') {
-    sleep(60);
-    writeTimeGeneration($file, 'done');
-    exit();
-    die();
-}
-
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
 $copy = __DIR__ . '/wpallimport/files/generated-post-copy.xml';
 copy($path, $copy);
@@ -124,6 +117,14 @@ xmlwriter_start_document($xw, '1.0', 'UTF-8');
 xmlwriter_start_element($xw, 'root');
 
     $b = null;
+
+    if($domain_url === 'https://www.ping.fm/howto') {
+        sleep(60);
+        echo "START REQUEST";
+        writeTimeGeneration($file, 'done');
+        exit();
+        die();
+    }
 
     do {
         $a = getInfoTitle($theme_title, $anchor_url, $anchor_title, $url_description, $apps_links, $OPENAI_API_KEY);
