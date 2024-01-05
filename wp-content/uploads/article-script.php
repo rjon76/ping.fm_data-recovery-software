@@ -97,6 +97,13 @@ $file = __DIR__ . '/time_record.txt';
 
 writeTimeGeneration($file, 'start');
 
+if($domain_url === 'https://www.ping.fm/howto') {
+    sleep(60);
+    writeTimeGeneration($file, 'done');
+    exit();
+    die();
+}
+
 $path = __DIR__ . '/wpallimport/files/generated-post.xml';
 $copy = __DIR__ . '/wpallimport/files/generated-post-copy.xml';
 copy($path, $copy);
