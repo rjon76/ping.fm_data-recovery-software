@@ -733,6 +733,12 @@ section.banner::after {
   bottom: 0;
   position: absolute;
 }
+section.howto.banner {
+  background: linear-gradient(180deg,rgb(143 158 160) 0%,rgb(154 169 175) 54%,rgb(212 230 253) 80%);
+}
+section.howto.banner::after {
+  background-image: url('https://www.ping.fm/howto/wp-content/uploads/2024/01/DALL·E_2024_01_05_09_54_29_A_simple_3D_character_holding_a_tech.png') !important;
+}
 @media (max-width: 500px) {
   section.banner::after {
     background-position: center;
