@@ -923,3 +923,16 @@ article > section:not(:first-child):not(:last-child) ul p {
 .stepByStep p + h3 {
   margin-top: 40px !important;
 }
+.fflex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.fflex ul {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
