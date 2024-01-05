@@ -1,13 +1,6 @@
 <?php
 
-
-$part1 = 'sk-';
-$part2 = 'w72LW8bySt9XV';
-$part3 = '9wfD1YjT3Blbk';
-$part4 = 'FJHpJFuE4XU';
-$part5 = 'uqUVWrXOLQf';
-
-$OPENAI_API_KEY = $part1.$part2.$part3.$part4.$part5;
+require_once( __DIR__ . "/gpt-key.php");
 
 $languages = [
     'French',
