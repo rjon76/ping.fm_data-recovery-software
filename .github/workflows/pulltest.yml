@@ -19,4 +19,5 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: "cd /home/www/t.ping.fm/www/data-recovery-software && git config core.filemode false
- &&  git pull origin test && cd /home/www/t.ping.fm/www/ && chown -R ping.fm:ping.fm data-recovery-software"
+ &&  git pull origin test && cd /home/www/t.ping.fm/www/ && chown -R ping.fm:ping.fm data-recovery-software && cd /home/www/t.ping.fm/www/howto && git config core.filemode false
+ &&  git pull origin test && cd /home/www/t.ping.fm/www/ && chown -R ping.fm:ping.fm howto"
