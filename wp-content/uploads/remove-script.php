@@ -141,10 +141,10 @@ foreach($languages as $lang) {
                     xmlwriter_text($xw, $aArticles["page"]["page_title"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'page_content');
-                    xmlwriter_text($xw, $pageContent);
+                    xmlwriter_text($xw, $aArticles["page"]["page_content"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'page_faq');
-                    xmlwriter_text($xw, $pageFaq);
+                    xmlwriter_text($xw, $aArticles["page"]["page_faq"]);
                 xmlwriter_end_element($xw);
                 xmlwriter_start_element($xw, 'title');
                     xmlwriter_text($xw, $aArticles["page"]["title"]);

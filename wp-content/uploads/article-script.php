@@ -75,6 +75,8 @@ if($_POST["faq_theme"]) {
     $faq_theme = $_POST["faq_theme"];
 }
 
+$moved = false;
+
 if (!empty($_FILES['file']["tmp_name"])) {
     $moved = move_uploaded_file($_FILES["file"]["tmp_name"], $image_folder . '/' . str_replace(" ", '-', $_FILES["file"]["name"]));
 
