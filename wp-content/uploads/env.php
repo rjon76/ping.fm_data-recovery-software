@@ -341,7 +341,7 @@ function getInfoTitle($title, $anchor_url, $anchor_title, $url_description, $app
                 • Be optimized for search engines, engaging for readers, and written in American English.
                 • Be original and unique, ensuring it won't be flagged as copied or similar by plagiarism detection tools.
                 Include specific instructions for hyperlinking within the article:
-                • Replace {{URL to Soft/Application}} with relevant URL website for Soft/Application.
+                • Replace URL to Soft/Application with relevant URL to website for Soft/Application.
                 • Add additional relevant links. These should be nofollow links in the format: <a href='[URL]' rel='nofollow' target='_blank'>[anchor/title]</a>.
                 • Include a hyperlink (<a href>) to relevant websites or applications at each step of the methods described.
                 • Emphasize key topics and keywords by enclosing them in bold tags ('<b></b>').
