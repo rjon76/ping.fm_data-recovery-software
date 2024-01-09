@@ -142,6 +142,12 @@ if($current_language == 'de_DE') {
 						<li>
 							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
 						</li>
+						<li>
+							<a href="/howto/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('How To & Best Software', 'custom-string-translation'); ?></a>
+						</li>
+						<li>
+							<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
+						</li>
 						<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
 							<li>
 								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
