@@ -298,8 +298,14 @@ xmlwriter_start_element($xw, 'root');
         if(empty($youtube_url)) {
             $videoString = '';
         } else {
+            preg_match(
+                "/(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:\S*&)?vi?=|(?:embed|v|vi|user|shorts)\/))([^?&\"'>\s]+)/",
+                $youtube_url,
+                $matches
+            );
+            
             $videoString = '<section><h2>Youtube video to watch</h2><div class="nonp iframe">' . 
-            preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $youtube_url)
+                "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$matches[1]\" frameborder=\"0\" allowfullscreen></iframe>"
                 . '</div></section>';
         }
 
@@ -319,8 +325,13 @@ xmlwriter_start_element($xw, 'root');
                         <section><div><div>4</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
                         <section><h2>Conclusion:</h2><div class="nonp">'.$page_conclusion.'</div></section>';
         } else {
+            preg_match(
+                "/(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:\S*&)?vi?=|(?:embed|v|vi|user|shorts)\/))([^?&\"'>\s]+)/",
+                $youtube_url,
+                $matches
+            );
             $string = '<section><div><div>3</div><h2>Youtube video to watch</h2></div><div class="iframe">' . 
-                            preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $youtube_url)
+                            "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$matches[1]\" frameborder=\"0\" allowfullscreen></iframe>"
                         . '</div></section>
                         <section><div><div>4</div><h2>Precautions and Tips:</h2></div>'.$tipsString.'</section>
                         <section><div><div>5</div><h2>'.$page_infotitle.'</h2></div>'.$page_infomation.'</section>
