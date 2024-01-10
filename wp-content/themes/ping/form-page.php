@@ -26,7 +26,7 @@ error_reporting(E_ALL);
         $curr_url = 'ja/';
         $curr_lang = 'Japanese';
     } elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
-        $curr_url = 'pt-pt/';
+        $curr_url = 'pt/';
         $curr_lang = 'Portuguese';
     } elseif ($current_language == 'nl_NL') {
         $curr_url = 'nl/';
@@ -35,7 +35,7 @@ error_reporting(E_ALL);
         $curr_url = 'ar/';
         $curr_lang = 'Arabic';
     } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
-        $curr_url = 'zh-hans/';
+        $curr_url = 'zh/';
         $curr_lang = 'Chinese';
     } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
         $curr_url = 'sv/';
