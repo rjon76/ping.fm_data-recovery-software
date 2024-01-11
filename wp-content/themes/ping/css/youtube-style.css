@@ -607,6 +607,9 @@ aside ul article a {
   box-shadow: none;
   margin: 10px 10px 0 0;
 }
+.rtl .innerart img {
+  margin: 10px 0 0 10px;
+}
 .website {
   display: none !important;
 }
