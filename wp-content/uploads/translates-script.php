@@ -233,7 +233,7 @@ foreach($languages as $key => $lang) {
             do {
                 $meta = getTranslate($page_meta, $lang, $OPENAI_API_KEY);
                 if( isset($meta->choices) && !empty($meta->choices[0]) && isset($meta->choices[0]->message) && isset($meta->choices[0]->message->content) ) {
-                    $translate_meta = str_replace(["- $lang", "-$lang"], "", $meta->choices[0]->message->content);
+                    $translate_meta = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $meta->choices[0]->message->content);
                 }
             } while ( is_null($translate_meta) );
             
@@ -242,7 +242,7 @@ foreach($languages as $key => $lang) {
             do {
                 $titlepage = getTranslate($page_title, $lang, $OPENAI_API_KEY);
                 if( isset($titlepage->choices) && !empty($titlepage->choices[0]) && isset($titlepage->choices[0]->message) && isset($titlepage->choices[0]->message->content) ) {
-                    $translate_title = str_replace(["- $lang", "-$lang"], "", $titlepage->choices[0]->message->content);
+                    $translate_title = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $titlepage->choices[0]->message->content);
                 }
             } while ( is_null($translate_title) );
 
@@ -251,7 +251,7 @@ foreach($languages as $key => $lang) {
             do {
                 $content_first = getTranslate($sContentFirst, $lang, $OPENAI_API_KEY);
                 if( isset($content_first->choices) && !empty($content_first->choices[0]) && isset($content_first->choices[0]->message) && isset($content_first->choices[0]->message->content) ) {
-                    $translate_content_first = str_replace(["- $lang", "-$lang"], "", $content_first->choices[0]->message->content);
+                    $translate_content_first = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $content_first->choices[0]->message->content);
                 }
             } while ( is_null($translate_content_first) );
 
@@ -260,7 +260,7 @@ foreach($languages as $key => $lang) {
             do {
                 $content_second = getTranslate($sContentSecond, $lang, $OPENAI_API_KEY);
                 if( isset($content_second->choices) && !empty($content_second->choices[0]) && isset($content_second->choices[0]->message) && isset($content_second->choices[0]->message->content) ) {
-                    $translate_content_second = str_replace(["- $lang", "-$lang"], "", $content_second->choices[0]->message->content);
+                    $translate_content_second = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $content_second->choices[0]->message->content);
                 }
             } while ( is_null($translate_content_second) );
 
@@ -269,7 +269,7 @@ foreach($languages as $key => $lang) {
             do {
                 $th1title = getTranslate($h1title, $lang, $OPENAI_API_KEY);
                 if( isset($th1title->choices) && !empty($th1title->choices[0]) && isset($th1title->choices[0]->message) && isset($th1title->choices[0]->message->content) ) {
-                    $translate_h1title = str_replace(["- $lang", "-$lang"], "", $th1title->choices[0]->message->content);
+                    $translate_h1title = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $th1title->choices[0]->message->content);
                 }
             } while ( is_null($translate_h1title) );
 
@@ -281,7 +281,7 @@ foreach($languages as $key => $lang) {
         do {
             $faq_first = getTranslate($sFaqFirst, $lang, $OPENAI_API_KEY);
             if( isset($faq_first->choices) && !empty($faq_first->choices[0]) && isset($faq_first->choices[0]->message) && isset($faq_first->choices[0]->message->content) ) {
-                $translate_faq_first = str_replace(["- $lang", "-$lang"], "", $faq_first->choices[0]->message->content);
+                $translate_faq_first = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $faq_first->choices[0]->message->content);
             }
         } while ( is_null($translate_faq_first) );
 
@@ -290,7 +290,7 @@ foreach($languages as $key => $lang) {
         do {
             $faq_second = getTranslate($sFaqSecond, $lang, $OPENAI_API_KEY);
             if( isset($faq_second->choices) && !empty($faq_second->choices[0]) && isset($faq_second->choices[0]->message) && isset($faq_second->choices[0]->message->content) ) {
-                $translate_faq_second = str_replace(["- $lang", "-$lang"], "", $faq_second->choices[0]->message->content);
+                $translate_faq_second = str_replace(["- $lang", "- 中文", "– Português", "– Nederlands", "– العربية", "– Deutsch", "– Español"], "", $faq_second->choices[0]->message->content);
             }
         } while ( is_null($translate_faq_second) );
 
