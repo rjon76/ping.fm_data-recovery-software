@@ -122,7 +122,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         $text = wordwrap($rTitle, 16, "\n", true);
 
         if( $lang === 'Arabic' ) {
-            $text = wordwrap($rTitle, 40, "\n", true);
+            $text = wordwrap($rTitle, 28, "\n", true);
         }
     
         if( $lang === 'Japanese' ) {
@@ -203,7 +203,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         $text = wordwrap($rTitle, 16, "\n", true);
 
         if($lang === 'Arabic') {
-            $text = wordwrap($rTitle, 40, "\n", true);
+            $text = wordwrap($rTitle, 28, "\n", true);
         }
     
         if( $lang === 'Japanese' ) {
