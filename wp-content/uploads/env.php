@@ -121,18 +121,6 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         $rTitle = ucwords($rTitle);
         $text = wordwrap($rTitle, 16, "\n", true);
 
-        if( $lang === 'Arabic' ) {
-            $text = wordwrap($rTitle, 20, "\n", true);
-        }
-    
-        if( $lang === 'Japanese' ) {
-            $text = wordwrap($rTitle, 16, "\n", true);
-        }
-
-        if( $lang === 'Chinese' ) {
-            $text = wordwrap($rTitle, 16, "\n", true);
-        }
-
         $strings = explode("\n", $text);
         $length = count($strings);
         if($length >=5 ) {
@@ -201,18 +189,6 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         
         $rTitle = ucwords($rTitle);
         $text = wordwrap($rTitle, 16, "\n", true);
-
-        if($lang === 'Arabic') {
-            $text = wordwrap($rTitle, 20, "\n", true);
-        }
-    
-        if( $lang === 'Japanese' ) {
-            $text = wordwrap($rTitle, 16, "\n", true);
-        }
-
-        if( $lang === 'Chinese' ) {
-            $text = wordwrap($rTitle, 16, "\n", true);
-        }
 
         $strings = explode("\n", $text);
         $length = count($strings);
