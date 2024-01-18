@@ -72,7 +72,7 @@ error_reporting(E_ALL);
 
     if(file_exists($path)) {
         $xmlstring = file_get_contents($path);
-        $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
+        $xml = simplexml_load_file($path, "SimpleXMLElement", LIBXML_NOCDATA);
         $json = json_encode($xml);
         $aArticles = json_decode($json, TRUE);
 
