@@ -294,7 +294,7 @@ foreach($languages as $key => $lang) {
             }
         } while ( is_null($translate_faq_second) );
 
-        $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";", "/"], "-", $englishH1)));
+        $image_title = str_replace("--", "-", str_replace("---", "-", str_replace([" ", "?", '&', '.', ":", ";", "/", "‘", "’", "'"], "-", $englishH1)));
 
         if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
             if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) &&
