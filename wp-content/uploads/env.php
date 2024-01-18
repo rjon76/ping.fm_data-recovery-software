@@ -173,6 +173,7 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
         $w = $imagesize[0];
         $h = $imagesize[1];
 
+        $w_new = 1280;
         $w_div_h = $w / $h;
         $h_new = $w_new / $w_div_h;
 
