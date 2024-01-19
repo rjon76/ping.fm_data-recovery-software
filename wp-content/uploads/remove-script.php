@@ -35,7 +35,7 @@ xmlwriter_start_element($xw, 'root');
         if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-                if($postUrl === $aArticles["page"][$i]["page_url"]) {
+                if($postUrl === $aArticles["page"][$i]["page_url"] || empty($aArticles["page"][$i]["page_content"])) {
                     continue;
                 }
 
@@ -189,7 +189,7 @@ foreach($languages as $lang) {
         if(count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["title"]) && !empty($aArticles["page"][1]["title"])) {
             for($i = 0; $i < count($aArticles["page"]); $i++ ) {
 
-                if($postUrl === $aArticles["page"][$i]["page_url"]) {
+                if($postUrl === $aArticles["page"][$i]["page_url"] || empty($aArticles["page"][$i]["page_content"])) {
                     continue;
                 }
 

@@ -409,7 +409,7 @@ foreach($languages as $key => $lang) {
                         continue;
                     }
 
-                    if(empty($aArticles["page"][$i]["title"])) {
+                    if(empty($aArticles["page"][$i]["title"]) || empty($aArticles["page"][$i]["page_content"])) {
                         continue;
                     }
 
