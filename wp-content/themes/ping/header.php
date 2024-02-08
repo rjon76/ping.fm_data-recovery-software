@@ -16,39 +16,6 @@ $current_language = get_locale();
 $aUrl = explode("/", $_SERVER['REQUEST_URI']);
 $articleUrl = $aUrl[count($aUrl) - 2];
 
-$path = __DIR__ . '/../../uploads/wpallimport/files/generated-post-German.xml';
-$xmlstring = file_get_contents($path);
-$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
-$json = json_encode($xml);
-$aArticles = json_decode($json, TRUE);
-
-if($fileName === 'chromecast.php') {
-
-	$isPageHasTranslate = false;
-
-	if(count($aArticles) > 0) {
-		if(!empty($aArticles["page"]) && !empty($aArticles["page"]["post_url"])) {
-			$post_url = str_replace("/", "", $aArticles["page"]["post_url"]);
-			if($post_url === $articleUrl) {
-				$isPageHasTranslate = true;
-			}
-		} else {
-			if(!empty($aArticles["page"]) && count($aArticles["page"]) > 1 && !empty($aArticles["page"][0]["post_url"]) && !empty($aArticles["page"][1]["post_url"])) {
-				for($i = 0; $i < count($aArticles["page"]); $i++ ) {
-					if(empty($aArticles["page"][$i]["post_url"])) { continue; }
-
-					if(str_replace("/", "", $aArticles["page"][$i]["post_url"]) === $articleUrl) {
-						$isPageHasTranslate = true;
-						break;
-					}
-				}
-			}
-		}
-	}
-} else {
-	$isPageHasTranslate = true;
-}
-
 if($current_language == 'de_DE') {
 	$curr_url = 'de/';
 	$ping_url = '/de';

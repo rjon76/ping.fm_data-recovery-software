@@ -91,7 +91,7 @@ header {
     }
   }
   header .language-switcher > div {
-    background-image: url('/wp-content/plugins/translatepress-multilingual/assets/images/arrow-down-3101.svg') !important;
+    background-image: url('../images/arrow-down-3101.svg') !important;
     background-position: calc(100% - 10px) calc(1em + 4px),calc(100% - 3px) calc(1em + 0px) !important;
     background-size: 10px 10px, 10px 10px !important;
     background-repeat: no-repeat !important;

@@ -1,24 +1,24 @@
 @font-face {
   font-family: "Public Sans";
-  src: local("Public Sans"), url("/wp-content/uploads/fonts/PublicSans/PublicSans-Regular.ttf");
+  src: local("Public Sans"), url("../fonts/PublicSans/PublicSans-Regular.ttf");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Public Sans";
-  src: local("Public Sans"), url("/wp-content/uploads/fonts/PublicSans/PublicSans-Medium.ttf");
+  src: local("Public Sans"), url("../fonts/PublicSans/PublicSans-Medium.ttf");
   font-weight: 500;
   font-display: swap;
 }
 @font-face {
   font-family: "Public Sans";
-  src: local("Public Sans"), url("/wp-content/uploads/fonts/PublicSans/PublicSans-Bold.ttf");
+  src: local("Public Sans"), url("../fonts/PublicSans/PublicSans-Bold.ttf");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: local("Poppins"), url("/wp-content/uploads/fonts/Popins/Poppins-Bold.ttf");
+  src: local("Poppins"), url("../fonts/Popins/Poppins-Bold.ttf");
   font-weight: 700;
   font-display: swap;
 }
