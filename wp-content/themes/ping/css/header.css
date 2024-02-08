@@ -20,6 +20,8 @@ header {
     text-transform: unset;
     color: rgb(68, 68, 68);
     font-weight: 600;
+    font-family: 'Times-Roman';
+    font-size: 23px;
   }
   header .logoNonUp:hover {
     color: #ff3333!important;
