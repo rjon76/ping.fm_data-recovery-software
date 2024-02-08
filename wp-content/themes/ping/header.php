@@ -82,14 +82,6 @@ if($current_language == 'de_DE') {
 
 			gtag('config', 'G-H1RBTQZ91E');
 		</script>
-		<script>
-			const langSwitcherChildLength = document.querySelector('.language-switcher .wpml-ls-sub-menu').children.length;
-			const switcher = document.querySelector('.language-switcher');
-
-			if(langSwitcherChildLength === 0) {
-				switcher.classList.add('hidden');
-			}
-		</script>
 	</head>
 
 	<body <?php body_class(); ?>>
@@ -139,3 +131,11 @@ if($current_language == 'de_DE') {
 				<?php } ?>
 			</div>
 		</header>
+		<script>
+			const langSwitcherChildLength = document.querySelector('.language-switcher .wpml-ls-sub-menu').children.length;
+			const switcher = document.querySelector('.language-switcher');
+
+			if(langSwitcherChildLength === 0) {
+				switcher.classList.add('hidden');
+			}
+		</script>
