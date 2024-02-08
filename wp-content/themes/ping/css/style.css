@@ -721,7 +721,7 @@ section.banner .banner--img {
 section.banner::after {
   content: '';
   opacity: 100%;
-  background-image: url("data-recovery-image.png") !important;
+  background-image: url("../images/data-recovery-image.png") !important;
   background-size: auto 100%;
   background-position: left center;
   width: auto;  
@@ -743,6 +743,7 @@ section.howto.banner::after {
 section.kissmac.banner {
   background: #fffe31;
   background: linear-gradient(180deg, rgb(255 196 30) 23%, rgb(255 253 50) 44%, rgb(254 217 40) 96%);
+  margin-top: 0;
 }
 section.kissmac.banner::after {
   background-image: url('../images/Minecraft_style.png') !important;
@@ -753,7 +754,6 @@ section.kissmac.banner::after {
   }
 }
 section.banner .banner--img.chromecast--img::after {
-  /* content: url("iPhone-stream@2x.webp"); */
   background-image: unset !important;
   opacity: 70%;
   bottom: unset;

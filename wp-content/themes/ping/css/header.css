@@ -16,6 +16,14 @@ header {
     text-decoration: none;
     margin-bottom: 0;
   }
+  header .logoNonUp {
+    text-transform: unset;
+    color: rgb(68, 68, 68);
+    font-weight: 600;
+  }
+  header .logoNonUp:hover {
+    color: #ff3333!important;
+  }
   header ul {
     display: flex;
     margin: 0;

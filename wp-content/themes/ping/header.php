@@ -83,18 +83,28 @@ if($current_language == 'de_DE') {
 			gtag('config', 'G-H1RBTQZ91E');
 		</script>
 		<script>
-			if(jQuery('.language-switcher .wpml-ls-sub-menu').children().length === 0) {
-				jQuery('.language-switcher').addClass('hidden');
+			const langSwitcherChildLength = document.querySelector('.language-switcher .wpml-ls-sub-menu').children.length;
+			const switcher = document.querySelector('.language-switcher');
+
+			if(langSwitcherChildLength === 0) {
+				switcher.classList.add('hidden');
 			}
 		</script>
 	</head>
 
 	<body <?php body_class(); ?>>
 		<header>
-			<a href="https://www.ping.fm/<?php echo $curr_url; ?>" rel="follow">
-				<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
-				ping.fm
-			</a>
+			<?php if(get_site_url() === 'https://kismac-ng.org/blog') { ?>
+				<a href="https://kismac-ng.org/" rel="follow" class="logoNonUp">
+					<img src="https://kismac-ng.org/blog/wp-content/uploads/2024/02/cropped-wifi_9055433.png" alt="KisMAC Logo" width="512" height="512">
+					KisMAC
+				</a>
+			<?php } else { ?>
+				<a href="https://www.ping.fm/<?php echo $curr_url; ?>" rel="follow">
+					<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
+					ping.fm
+				</a>
+			<?php } ?>
 			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
 				<div class="language-switcher">
@@ -105,6 +115,7 @@ if($current_language == 'de_DE') {
 				?>		
 				</div>
 				<?php if ($current_language !== 'ar') { ?>
+					<?php if(get_site_url() !== 'https://kismac-ng.org/blog') { ?>
 					<ul>
 						<li>
 							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
@@ -124,6 +135,7 @@ if($current_language == 'de_DE') {
 							</li>
 						<?php } ?>
 					</ul>
+					<?php } ?>
 				<?php } ?>
 			</div>
 		</header>
