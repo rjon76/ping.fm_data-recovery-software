@@ -8,48 +8,24 @@
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */
-$currenturl = preg_replace('#(/[a-z]{2})?(/.*)#', '${2}', $_SERVER['REQUEST_URI']);
-$fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
+global $sitepress;
+$current_language = 'en';
+$curr_url = '';
+$ping_url = '';
 
-$current_language = get_locale();
+if( isset($sitepress) && is_object($sitepress) ) {
+	$languages = $sitepress->get_ls_languages();
 
-$aUrl = explode("/", $_SERVER['REQUEST_URI']);
-$articleUrl = $aUrl[count($aUrl) - 2];
-
-if($current_language == 'de_DE') {
-	$curr_url = 'de/';
-	$ping_url = '/de';
-} elseif ($current_language == 'es_ES') {
-	$curr_url = 'es/';
-	$ping_url = '/es';
-} elseif ($current_language == 'fr_FR') {
-	$curr_url = 'fr/';
-	$ping_url = '/fr';
-}  elseif ($current_language == 'it_IT') {
-	$curr_url = 'it/';
-	$ping_url = '/it';
-} elseif ($current_language == 'ja') {
-	$curr_url = 'ja/';
-	$ping_url = '/ja';
-} elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
-	$curr_url = 'pt/';
-	$ping_url = '/pt';
-} elseif ($current_language == 'nl_NL') {
-	$curr_url = 'nl/';
-	$ping_url = '/nl';
-} elseif ($current_language == 'ar') {
-	$curr_url = '';
-	$ping_url = '/ar';
-} elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
-	$curr_url = 'zh/';
-	$ping_url = '/zh';
-} elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
-	$curr_url = 'sv/';
-	$ping_url = '/sv';
-} else {
-	$curr_url = '';
-	$ping_url = '';
+	foreach ( $languages as $hreflang_code => $hreflang_url ) {
+		if($hreflang_url["active"] && $hreflang_url["language_code"] !== 'en') {
+			$current_language = $hreflang_url["language_code"];
+			$curr_url = $hreflang_url["language_code"] . '/';
+			$ping_url = '/' . $hreflang_url["language_code"];
+		}
+	}
 }
+
+$fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 ?><!DOCTYPE html>
 
@@ -118,7 +94,7 @@ if($current_language == 'de_DE') {
 						<li>
 							<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
 						</li>
-						<?php if( $current_language == 'en_EN' || $current_language == 'en' || $current_language == 'en_US' ) { ?>
+						<?php if( $current_language == 'en' ) { ?>
 							<li>
 								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
 							</li>
