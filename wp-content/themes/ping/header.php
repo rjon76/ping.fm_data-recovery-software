@@ -97,7 +97,7 @@ if($current_language == 'de_DE') {
 					ping.fm
 				</a>
 			<?php } ?>
-			<button class="menu-button" aria-label="Mobile menu"></button>
+			<button class="menu-button <?php echo get_site_url() === 'https://kismac-ng.org/blog' ? 'hidden' : ''; ?>" aria-label="Mobile menu"></button>
 			<div class="header-menu">
 				<div class="language-switcher">
 				<?php

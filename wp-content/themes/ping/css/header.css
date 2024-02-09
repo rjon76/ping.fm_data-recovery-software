@@ -310,7 +310,9 @@ header {
   .menu-button {
     display: none;
   }
-
+  .menu-button.hidden {
+    display: none !important;
+  }
   @media(max-width: 767px) {
     .menu-button {
         display: block;
@@ -348,7 +350,7 @@ header {
         display: none;
         flex-direction: column-reverse;
         position: absolute;
-        top: 78px;
+        top: 74px;
         left: 0;
         right: 0;
         background: #fff;

@@ -745,6 +745,25 @@ section.kissmac.banner {
   background: linear-gradient(180deg, rgb(255 196 30) 23%, rgb(255 253 50) 44%, rgb(254 217 40) 96%);
   margin-top: 0;
 }
+section.kissmac.banner .banner--img {
+  max-width: 1300px;
+}
+@media(max-width: 1599px) {
+  section.kissmac.banner .banner--img .banner--inner h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  section.kissmac.banner .banner--img .banner--inner p {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+}
+@media(max-width: 1399px) {
+  section.kissmac.banner .banner--img .banner--inner h1 {
+    font-size: 26px;
+    line-height: 34px;
+  }
+}
 section.kissmac.banner::after {
   background-image: url('../images/Minecraft_style.png') !important;
 }
