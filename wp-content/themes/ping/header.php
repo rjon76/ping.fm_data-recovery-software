@@ -17,9 +17,11 @@ if( isset($sitepress) && is_object($sitepress) ) {
 	$languages = $sitepress->get_ls_languages();
 
 	foreach ( $languages as $hreflang_code => $hreflang_url ) {
-		if($hreflang_url["active"] && $hreflang_url["language_code"] !== 'en') {
+		if( $hreflang_url["active"] && $hreflang_url["language_code"] !== 'en' ) {
 			$current_language = $hreflang_url["language_code"];
-			$curr_url = $hreflang_url["language_code"] . '/';
+			if( $hreflang_url["language_code"] !== 'ar' ) {
+				$curr_url = $hreflang_url["language_code"] . '/';
+			}
 			$ping_url = '/' . $hreflang_url["language_code"];
 		}
 	}
