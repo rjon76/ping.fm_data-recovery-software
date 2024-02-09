@@ -4,36 +4,20 @@
 */
 	get_header();
 
-	$aUrl = explode("/", $_SERVER['REQUEST_URI']);
-	$articleUrl = $aUrl[count($aUrl) - 2];
+	global $sitepress;
+	$curr_url = '';
 
-	$current_language = get_locale();
+	if( isset($sitepress) && is_object($sitepress) ) {
+		$languages = $sitepress->get_ls_languages();
 
-    if($current_language == 'de_DE') {
-        $curr_url = 'de/';
-    } elseif ($current_language == 'es_ES') {
-        $curr_url = 'es/';
-    } elseif ($current_language == 'fr_FR') {
-        $curr_url = 'fr/';
-    } elseif ($current_language == 'it_IT') {
-        $curr_url = 'it/';
-    } elseif ($current_language == 'ja') {
-        $curr_url = 'ja/';
-    } elseif ($current_language == 'pt_PT' || $current_language == 'pt-PT' || $current_language == 'pt') {
-        $curr_url = 'pt/';
-    } elseif ($current_language == 'nl_NL') {
-        $curr_url = 'nl/';	
-    } elseif ($current_language == 'ar') {
-        $curr_url = 'ar/';
-    } elseif ($current_language == 'zh-CN' || $current_language == 'zh_CN' || $current_language == 'zh') {
-        $curr_url = 'zh/';
-    } elseif ($current_language == 'sv-SE' || $current_language == 'sv_SE') {
-        $curr_url = 'sv/';
-    } else {
-        $curr_url = '';
-    }
+		foreach ( $languages as $hreflang_code => $hreflang_url ) {
+			if($hreflang_url["active"] && $hreflang_url["language_code"] !== 'en') {
+				$curr_url = $hreflang_url["language_code"] . '/';
+			}
+		}
+	}
 ?>
-		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-uri="<?php echo $articleUrl; ?>" data-lang="<?php echo $curr_url; ?>">
+		<main id="mainTag" data-href="<?php echo get_site_url();?>" data-lang="<?php echo $curr_url; ?>">
 			<div class="container">
 				<div class="breadcrumb">
 					<?php
