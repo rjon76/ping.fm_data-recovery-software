@@ -741,8 +741,7 @@ section.howto.banner::after {
   background-image: url('https://www.ping.fm/howto/wp-content/uploads/2024/01/DALL·E_2024_01_05_09_54_29_A_simple_3D_character_holding_a_tech.png') !important;
 }
 section.kissmac.banner {
-  background: #fffe31;
-  background: linear-gradient(180deg, rgb(255 196 30) 23%, rgb(255 253 50) 44%, rgb(254 217 40) 96%);
+  background: #e2b061;
   margin-top: 0;
 }
 section.kissmac.banner .banner--img {
@@ -765,11 +764,14 @@ section.kissmac.banner .banner--img {
   }
 }
 section.kissmac.banner::after {
-  background-image: url('../images/Minecraft_style.png') !important;
+  background-image: url('../images/new_log_contrast.png') !important;
 }
 @media (max-width: 500px) {
   section.banner::after {
     background-position: center;
+  }
+  section.kissmac.banner::after {
+    background-position: center left 10%;
   }
 }
 section.banner .banner--img.chromecast--img::after {
