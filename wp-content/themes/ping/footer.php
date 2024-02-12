@@ -35,8 +35,23 @@
 						</a>
 					</li>
 				</ul>
+				<div class="language-switcher">
+				<?php
+					echo '<div class="wpml-floating-language-switcher">';
+						do_action('wpml_add_language_selector');
+					echo '</div>';
+				?>		
+				</div>
 			</div>
 		</footer>
+		<script>
+			const langSwitcherChildLength = document.querySelector('.language-switcher .wpml-ls-sub-menu').children.length;
+			const switcher = document.querySelector('.language-switcher');
+
+			if(langSwitcherChildLength === 0) {
+				switcher.classList.add('hidden');
+			}
+		</script>
 		<script src="<?php echo get_site_url();?>/wp-content/themes/ping/js/main.js"></script>
 	</body>
 </html>

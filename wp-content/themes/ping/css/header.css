@@ -16,6 +16,35 @@ header {
     text-decoration: none;
     margin-bottom: 0;
   }
+  @media screen and (max-width: 1199px) and (min-width: 768px) {
+    header a {
+      padding: 0 20px;
+      font-size: 24px;
+    }
+  }
+  header > a {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  header > a img {
+    width: 50px;
+    height: 50px;
+    margin: 0 12px 0 0;
+    background: transparent;
+    -webkit-box-shadow: unset;
+            box-shadow: unset;
+  }
+  @media(max-width: 1199px) {
+    header > a img {
+      width: 36px;
+      height: 36px;
+      margin-right: 6px;
+    }
+  }
   header .logoNonUp {
     text-transform: unset;
     color: rgb(68, 68, 68);
@@ -53,11 +82,6 @@ header {
   header ul li a {
     padding: 0 10px;
   }
-  @media(max-width: 1199px) {
-    header {
-      padding-bottom: 50px;
-    }
-  }
   @media (max-width: 767px) {
     header {
         padding-bottom: 12px;
@@ -69,12 +93,12 @@ header {
   
   header a:last-child {
     color: #000;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 19px;
     text-align: center;
     letter-spacing: .0928571px;
     text-decoration: none;
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
   header .menu {
     margin: 0;
@@ -85,62 +109,64 @@ header {
     transform: translate(-50%, -50%);
     height: 31px;
   }
-  header .language-switcher > div {
+  .language-switcher > div {
     max-width: 200px;
     min-width: 120px;
     padding: 4px;
     height: 50px;
     border-radius: 6px;
   }
-  .rtl header .language-switcher > div {
+  .rtl .language-switcher > div {
     margin-right: 20px;
   }
   @media(max-width: 767px) {
-    .rtl header .language-switcher > div {
+    .rtl .language-switcher > div {
       margin-right: 0;
     }
   }
-  header .language-switcher > div {
+  .language-switcher > div {
     background-image: url('../images/arrow-down-3101.svg') !important;
     background-position: calc(100% - 10px) calc(1em + 4px),calc(100% - 3px) calc(1em + 0px) !important;
     background-size: 10px 10px, 10px 10px !important;
     background-repeat: no-repeat !important;
     border: 0 !important;
-    padding: 0 0 0 20px;
   }
   @media(max-width: 767px) {
-    header .language-switcher > div {
+    .language-switcher > div {
       padding-left: 10px;
     }
   }
-  header .language-switcher .trp-ls-shortcode-disabled-language {
+  .language-switcher .trp-ls-shortcode-disabled-language {
     cursor: default !important;
   }
-  header .wpml-ls-legacy-dropdown .wpml-ls-sub-menu {
+  .wpml-ls-legacy-dropdown .wpml-ls-sub-menu {
     display: none;
   }
-  header .wpml-ls-legacy-dropdown .wpml-ls-current-language:focus .wpml-ls-sub-menu,
-  header .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover .wpml-ls-sub-menu {
+  .wpml-ls-legacy-dropdown .wpml-ls-current-language:focus .wpml-ls-sub-menu,
+  .wpml-ls-legacy-dropdown .wpml-ls-current-language:hover .wpml-ls-sub-menu {
     display: flex !important;
     flex-direction: column;
     min-width: 300px;
     overflow-x: hidden;
     text-overflow: ellipsis;
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: auto;
+    transform: translateY(-100%);
+    top: 0;
+    flex-wrap: nowrap;
   }
-  header .wpml-ls-legacy-dropdown .wpml-ls-flag+span {
+  .wpml-ls-legacy-dropdown .wpml-ls-flag+span {
     overflow: visible !important;
   }
-  header .wpml-ls-legacy-dropdown a span {
+  .wpml-ls-legacy-dropdown a span {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  header .wpml-ls-legacy-dropdown a span.wpml-ls-display {
+  .wpml-ls-legacy-dropdown a span.wpml-ls-display {
     display: none !important;
   }
-  header .language-switcher:focus .langList,
-  header .language-switcher:hover .langList {
+  .language-switcher:focus .langList,
+  .language-switcher:hover .langList {
     padding: 4px !important;
     visibility: visible;
     max-height: 250px;
@@ -152,9 +178,9 @@ header {
     display: inline-block !important;
     min-height: auto;
   }
-  header .language-switcher .langList img,
-  header .language-switcher > div > a > img,
-  header .wpml-ls-legacy-dropdown .wpml-ls-flag {
+  .language-switcher .langList img,
+  .language-switcher > div > a > img,
+  .wpml-ls-legacy-dropdown .wpml-ls-flag {
     display: flex;
     align-items: center;
     margin: 0 5px 0 0 !important;
@@ -162,21 +188,26 @@ header {
     height: 12px !important;
     border-radius: 0;
   }
-  header .wpml-ls-statics-shortcode_actions a,
-  header .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu a,
-  header .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu a:link,
-  header .wpml-ls-statics-shortcode_actions li:not(.wpml-ls-current-language) .wpml-ls-link,
-  header .wpml-ls-statics-shortcode_actions li:not(.wpml-ls-current-language) .wpml-ls-link:link {
+  .wpml-ls-statics-shortcode_actions,
+  .wpml-ls-statics-shortcode_actions > ul,
+  .wpml-ls-statics-shortcode_actions > ul > .wpml-ls-item {
+    height: 100%;
+  }
+  .wpml-ls-statics-shortcode_actions a,
+  .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu a,
+  .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu a:link,
+  .wpml-ls-statics-shortcode_actions li:not(.wpml-ls-current-language) .wpml-ls-link,
+  .wpml-ls-statics-shortcode_actions li:not(.wpml-ls-current-language) .wpml-ls-link:link {
     display: flex !important;
     align-items: center;
   }
-  .rtl header .language-switcher .langList img,
-  .rtl header .language-switcher > div > a > img {
+  .rtl .language-switcher .langList img,
+  .rtl .language-switcher > div > a > img {
     margin: 0 0 0 5px !important;
   }
-  header .language-switcher .langList a,
-  header .language-switcher > div > a,
-  header .wpml-ls-legacy-dropdown .wpml-ls-flag+span {
+  .language-switcher .langList a,
+  .language-switcher > div > a,
+  .wpml-ls-legacy-dropdown .wpml-ls-flag+span {
     line-height: 26px;
     display: block !important;
     text-align: left;
@@ -193,20 +224,24 @@ header {
     border-radius: 3px;
     margin-left: 0;
   }
-  header .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle:after {
-    border: 0.15em solid transparent;
-    border-top: 0.15em solid;
+  .wpml-ls-legacy-dropdown a.wpml-ls-item-toggle:after {
+    border: 0.35em solid transparent;
+    border-top: 0.35em solid;
     top: 50%;
   }
-  header .wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a {
+  .wpml-ls-legacy-dropdown .wpml-ls-item {
+    width: 100%;
+  }
+  .wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a {
     display: flex !important;
     align-items: center;
+    height: 100%;
   }
-  header .language-switcher .langList a:hover {
+  .language-switcher .langList a:hover {
     background: #f0f0f0;
     border-radius: 2px;
   }
-  header .language-switcher .langList {
+  .language-switcher .langList {
     display: none;
     padding: 4px;
     height: 1px;
@@ -224,33 +259,33 @@ header {
     width: 166px;
     border-radius: 6px;
   }
-  header .language-switcher {
-    position: absolute;
-    left: 250px;
-    top: 45%;
-    transform: translate(0,-40%);
+  .language-switcher {
+    /* position: absolute; */
+    /* left: 250px;
+    top: 45%; */
+    /* transform: translate(0,-40%); */
     height: 50px;
     width: max-content;
-    z-index: 99999;
+    /* z-index: 99999; */
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  header .language-switcher.hidden {
+  .language-switcher.hidden {
     display: none !important;
   }
-  .rtl header .language-switcher {
+  .rtl .language-switcher {
     left: unset;
     right: 250px;
   }
   @media(max-width: 1199px) {
-    header .language-switcher {
+    .language-switcher {
       left: unset;
       right: 5px;
       bottom: 0;
       transform: unset;
       top: unset;
     }
-    .rtl header .language-switcher {
+    .rtl .language-switcher {
       right: unset;
       left: 5px;
     }
@@ -364,7 +399,7 @@ header {
         flex-direction: column;
         background: #fff;
     }
-    header .language-switcher {
+    .language-switcher {
         position: relative !important;
         margin-left: 10px;
     }

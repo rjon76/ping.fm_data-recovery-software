@@ -75,45 +75,33 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					ping.fm
 				</a>
 			<?php } ?>
-			<button class="menu-button <?php echo get_site_url() === 'https://kismac-ng.org/blog' ? 'hidden' : ''; ?>" aria-label="Mobile menu"></button>
+			<button class="menu-button" aria-label="Mobile menu"></button>
 			<div class="header-menu">
-				<div class="language-switcher">
-				<?php
-					echo '<div class="wpml-floating-language-switcher">';
-						do_action('wpml_add_language_selector');
-					echo '</div>';
-				?>		
-				</div>
-				<?php if ($current_language !== 'ar') { ?>
-					<?php if(get_site_url() !== 'https://kismac-ng.org/blog') { ?>
-					<ul>
-						<li>
-							<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
-						</li>
-						<li>
-							<a href="/howto/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('How To & Best Software', 'custom-string-translation'); ?></a>
-						</li>
-						<li>
-							<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
-						</li>
-						<?php if( $current_language == 'en' ) { ?>
+				<ul>
+					<li>
+						<a href="https://www.linkedin.com/in/kropachek/" rel="dofollow" target="_blank"><?php _e('Submit your content', 'custom-string-translation'); ?></a>
+					</li>
+					<?php if ($current_language !== 'ar') { ?>
+						<?php if(get_site_url() !== 'https://kismac-ng.org/blog') { ?>
 							<li>
-								<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
+								<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
 							</li>
 							<li>
-								<a href="/app-vs-app/" rel="dofollow"><?php _e('App Vs App', 'custom-string-translation'); ?></a>
+								<a href="/howto/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('How To & Best Software', 'custom-string-translation'); ?></a>
 							</li>
+							<li>
+								<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
+							</li>
+							<?php if( $current_language == 'en' ) { ?>
+								<li>
+									<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
+								</li>
+								<li>
+									<a href="/app-vs-app/" rel="dofollow"><?php _e('App Vs App', 'custom-string-translation'); ?></a>
+								</li>
+							<?php } ?>
 						<?php } ?>
-					</ul>
 					<?php } ?>
-				<?php } ?>
+				</ul>
 			</div>
 		</header>
-		<script>
-			const langSwitcherChildLength = document.querySelector('.language-switcher .wpml-ls-sub-menu').children.length;
-			const switcher = document.querySelector('.language-switcher');
-
-			if(langSwitcherChildLength === 0) {
-				switcher.classList.add('hidden');
-			}
-		</script>
