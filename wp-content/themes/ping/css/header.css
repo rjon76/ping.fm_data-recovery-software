@@ -85,6 +85,7 @@ header {
   @media (max-width: 767px) {
     header {
         padding-bottom: 12px;
+        height: 74px;
     }
     header a {
       padding: 0 15px;
