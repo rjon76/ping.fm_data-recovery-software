@@ -98,6 +98,21 @@ xmlwriter_start_element($xw, 'root');
 
     $pageContent = $regenerate_faq == 'false' ? $aContent[0] . $mainString . $aContent[1] : $mainString . '</section>';
 
+    $aFaqUrls = getUrlsFromString($pageContent);
+
+    if(!empty($aFaqUrls[0])) {
+        foreach($aFaqUrls[0] as $url) {
+
+            $cUrl = str_replace(["'", '"'], '', $url);
+            
+            $isValid = is_valid_uri($cUrl);
+            
+            if(!$isValid) {
+                $pageContent = replaceInvalidUrl($pageContent, $cUrl);
+            }
+        }
+    }
+
     if(!empty($aArticles["page"]) && empty($aArticles["page"][1]) && empty($aArticles["page"][2])) {
         xmlwriter_start_element($xw, 'page');
             xmlwriter_start_element($xw, 'page_meta');

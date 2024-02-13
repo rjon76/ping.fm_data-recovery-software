@@ -373,6 +373,36 @@ xmlwriter_start_element($xw, 'root');
     $faqString.='</section>';
     $pageContent .= $contentString;
 
+    $aContentUrls = getUrlsFromString($pageContent);
+    $aFaqUrls = getUrlsFromString($faqString);
+
+    if(!empty($aContentUrls[0])) {
+        foreach($aContentUrls[0] as $url) {
+
+            $cUrl = str_replace(["'", '"'], '', $url);
+            
+            $isValid = is_valid_uri($cUrl);
+            
+            if(!$isValid) {
+                $pageContent = replaceOfficialWebsite($pageContent, $cUrl);
+                $pageContent = replaceInvalidUrl($pageContent, $cUrl);
+            }
+        }
+    }
+
+    if(!empty($aFaqUrls[0])) {
+        foreach($aFaqUrls[0] as $url) {
+
+            $cUrl = str_replace(["'", '"'], '', $url);
+            
+            $isValid = is_valid_uri($cUrl);
+            
+            if(!$isValid) {
+                $faqString = replaceInvalidUrl($faqString, $cUrl);
+            }
+        }
+    }
+
     if(!empty($aArticles["page"]) && count($aArticles["page"]) > 0) {
         if(empty($aArticles["page"][1]) && empty($aArticles["page"][2]) &&
             (!empty($aArticles["page"]["title"]) && $page_url != $aArticles["page"]["page_url"])) {

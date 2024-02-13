@@ -15,6 +15,32 @@ $languages = [
     'Swedish',
 ];
 
+function getUrlsFromString($str) {
+    preg_match_all('#(?:https?)://[^\s\,]+#i', $str, $matches);
+    return $matches;
+}
+
+function replaceOfficialWebsite($str, $url) {
+    if(preg_replace('#<a href=[*,",\']'.$url.'[^>]*.Official Website<\/a>#is', "", $str)) {
+        return preg_replace('#<a href=[*,",\']'.$url.'[^>]*.Official Website<\/a>#is', "", $str);
+    } else {
+        return $str;
+    }
+}
+    
+function replaceInvalidUrl($str, $url) {
+    if(preg_replace('#<a href=[*,",\']'.$url.'[^>]*.(.*?)<\/a>#is', "\$1", $str)) {
+        return preg_replace('#<a href=[*,",\']'.$url.'[^>]*.(.*?)<\/a>#is', "\$1", $str);
+    } else {
+        return $str;
+    }
+}
+
+function is_valid_uri($uri) {
+    $hds = @get_headers($uri);
+    return !$hds || (strpos($hds[0], ' 404 ') !== false ) ? false : true;
+}
+
 function writeTimeGeneration($path_to_file, $action) {
     file_put_contents($path_to_file, $action);
 }
