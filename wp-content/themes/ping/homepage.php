@@ -31,7 +31,7 @@
                             <?php if(get_site_url() === 'https://www.ping.fm/data-recovery-software') { ?>
                                 <img srcset="<?php echo get_site_url();?>/wp-content/uploads/note.png" src="<?php echo get_site_url();?>/wp-content/uploads/note.png" width="512" height="512" alt="Note icon">
                             <?php } ?>
-                            <?php if(get_site_url() === 'https://kismac-ng.org/blog') { ?>
+                            <?php if(get_site_url() === 'https://kismac-ng.org/blog' || get_site_url() === 'https://kismac-ng.org/blog/') { ?>
                                 <img srcset="https://kismac-ng.org/blog/wp-content/uploads/2024/02/cropped-wifi_9055433.png" src="https://kismac-ng.org/blog/wp-content/uploads/2024/02/cropped-wifi_9055433.png" width="512" height="512" alt="Wifi icon">
                             <?php } ?>
                             <h2><a href="<?php echo esc_url( get_permalink($post->id) ); ?>"><?php echo $post->post_title ?></a></h2>
