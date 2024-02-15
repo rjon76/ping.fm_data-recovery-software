@@ -82,7 +82,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 						<a href="https://www.linkedin.com/in/kropachek/" rel="dofollow" target="_blank"><?php _e('Submit your content', 'custom-string-translation'); ?></a>
 					</li>
 					<?php if ($current_language !== 'ar') { ?>
-						<?php if(get_site_url() !== 'https://kismac-ng.org/blog') { ?>
+						<?php if(get_site_url() !== 'https://kismac-ng.org/blog' && get_site_url() !== 'https://kismac-ng.org/blog/') { ?>
 							<li>
 								<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
 							</li>
