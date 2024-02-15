@@ -64,7 +64,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 
 	<body <?php body_class(); ?>>
 		<header>
-			<?php if(get_site_url() === 'https://kismac-ng.org/blog') { ?>
+			<?php if(get_site_url() === 'https://kismac-ng.org/blog' || get_site_url() === 'https://kismac-ng.org/blog/') { ?>
 				<a href="https://kismac-ng.org/" rel="follow" class="logoNonUp">
 					<img src="https://kismac-ng.org/blog/wp-content/uploads/2024/02/cropped-wifi_9055433.png" alt="KisMAC Logo" width="512" height="512">
 					KisMAC
