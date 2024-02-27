@@ -790,6 +790,8 @@ article > section:not(:first-child):not(:last-child) ul p {
 }
 .no-medal + h2,
 .medal + h2 {
+  font-size: 22px;
+  color: #6366f1;
   display: inline-flex;
   max-width: calc(100% - 56px);
   align-items: center;
@@ -805,6 +807,10 @@ article > section:not(:first-child):not(:last-child) ul p {
 .medal + h2 + img {
   margin: 15px 10px 20px 56px;
   max-width: calc(100% - 66px);
+  border-radius: 12px;
+}
+.no-medal + h2 + p img,
+.medal + h2 + p img {
   border-radius: 12px;
 }
 .ofWSite {
