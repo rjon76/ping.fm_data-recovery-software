@@ -801,6 +801,12 @@ article > section:not(:first-child):not(:last-child) ul p {
   margin: 0;
   color: #6366f1;
 }
+.no-medal + h2 + img,
+.medal + h2 + img {
+  margin: 15px 10px 20px 56px;
+  max-width: calc(100% - 66px);
+  border-radius: 12px;
+}
 .ofWSite {
   display: -webkit-box;
   display: -ms-flexbox;
