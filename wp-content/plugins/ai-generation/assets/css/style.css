@@ -1,0 +1,265 @@
+main {
+    padding-top: 0 !important;
+}
+.container {
+    position: relative;
+    max-width: 100% !important;
+    padding: 0 24px !important;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#editPage {
+    max-width: 100%;
+}
+#editPage textarea {
+    width: 100%;
+    resize: none;
+    height: 500px;
+}
+label, input {
+    display: block;
+    width: 100%;
+}
+input {
+    margin: 10px 0 20px;
+    border: 2px solid #333333;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 24px;
+}
+.sBtn {
+    background: #333 !important;
+    color: white;
+    display: inline-block;
+    max-width: 320px;
+    margin: 60px 0 0;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 6px 12px;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none !important;
+}
+.img {
+    display: block;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 40px;
+}
+.modal,
+.loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(173 173 173 / 80%);
+}
+.loader img {
+    width: 100px;
+    height: 100px;
+}
+.modal.show,
+.loader.show {
+    display: flex;
+    z-index: 999999;
+}
+#moreFAq {
+    margin-top: 65px;
+    text-align: center;
+    font-weight: bold;
+}
+.checkbox {
+    display:flex;
+    align-items: center;
+    font-weight: bold;
+}
+.checkbox input {
+    width: 20px;
+    height: 20px;
+    margin: 0 12px 0 0;
+}
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-left: -24px;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    width: 100%;
+    font-size: 18px;
+}
+.tab button:hover {
+    background-color: #ddd;
+}
+.tab button.active {
+    background-color: #ccc;
+}
+.tabcontent {
+    max-width: 720px;
+    flex: 1 0;
+    padding: 10px 0 0;
+    border-top: none;
+    animation: fadeEffect 1s;
+}
+.generate {
+    color: green;
+}
+br {
+    display: block !important;
+}
+.dropbtn {
+    background-color: #04AA6D;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+Cgo8ZGVmcz4KPC9kZWZzPgo8ZyBzdHlsZT0ic3Ryb2tlOiBub25lOyBzdHJva2Utd2lkdGg6IDA7IHN0cm9rZS1kYXNoYXJyYXk6IG5vbmU7IHN0cm9rZS1saW5lY2FwOiBidXR0OyBzdHJva2UtbGluZWpvaW46IG1pdGVyOyBzdHJva2UtbWl0ZXJsaW1pdDogMTA7IGZpbGw6IG5vbmU7IGZpbGwtcnVsZTogbm9uemVybzsgb3BhY2l0eTogMTsiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuNDA2NTkzNDA2NTkzNDAxNiAxLjQwNjU5MzQwNjU5MzQwMTYpIHNjYWxlKDIuODEgMi44MSkiID4KCTxwYXRoIGQ9Ik0gOTAgMjQuMjUgYyAwIC0wLjg5NiAtMC4zNDIgLTEuNzkyIC0xLjAyNSAtMi40NzUgYyAtMS4zNjYgLTEuMzY3IC0zLjU4MyAtMS4zNjcgLTQuOTQ5IDAgTCA0NSA2MC44IEwgNS45NzUgMjEuNzc1IGMgLTEuMzY3IC0xLjM2NyAtMy41ODMgLTEuMzY3IC00Ljk1IDAgYyAtMS4zNjYgMS4zNjcgLTEuMzY2IDMuNTgzIDAgNC45NSBsIDQxLjUgNDEuNSBjIDEuMzY2IDEuMzY3IDMuNTgzIDEuMzY3IDQuOTQ5IDAgbCA0MS41IC00MS41IEMgODkuNjU4IDI2LjA0MiA5MCAyNS4xNDYgOTAgMjQuMjUgeiIgc3R5bGU9InN0cm9rZTogbm9uZTsgc3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiBub25lOyBzdHJva2UtbGluZWNhcDogYnV0dDsgc3Ryb2tlLWxpbmVqb2luOiBtaXRlcjsgc3Ryb2tlLW1pdGVybGltaXQ6IDEwOyBmaWxsOiByZ2IoMjU1LDI1NSwyNTUpOyBmaWxsLXJ1bGU6IG5vbnplcm87IG9wYWNpdHk6IDE7IiB0cmFuc2Zvcm09IiBtYXRyaXgoMSAwIDAgMSAwIDApICIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgo8L2c+Cjwvc3ZnPg==");
+    background-position: center right 6px;
+    background-size: 14px 10px;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 16px 32px 16px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+svg{
+    width: 100px;
+    height: 100px;
+    margin: 20px auto 0;
+    display:inline-block;
+}
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 14px 20px 12px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 10px;
+    max-width: calc(100% - 20px);
+}
+#myInput:focus {outline: 3px solid #ddd;}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 400px;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    border-radius: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.dropdown-content .option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+.dropdown-content .option:hover {background-color: #f1f1f1}
+.show {display:block;}
+.danger {
+    background: red !important;
+}
+.green {
+    background: green !important;
+}
+.orange {
+    background: orange !important;
+}
+.modal-w {
+    padding: 40px;
+    border-radius: 16px;
+    width: 600px;
+}
+.modal-w.body {
+    background: #FFF;
+}
+.modal-w .modal-b {
+    display: none;
+}
+.modal-w .modal-translate {
+    display: none;
+}
+.modal-w svg {
+    display: block;
+}
+.modal-w.body .modal-b {
+    display: block;
+}
+.modal-w.body.translate .modal-b {
+    display: none;
+}
+.modal-w.translate .modal-translate {
+    display: block;
+}
+.modal-w.body svg {
+    display: none;
+}
+.modal-w button {
+    background: #333;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    padding: 12px;
+    width: 47%;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.modal-w button:last-child:not(.green) {
+    background: red !important;
+    margin-right: 0;
+}
+.modal-w button.green {
+    margin-right: 0;
+}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.nowproccess {
+    color: #3e8e41;
+    border: 1px solid black;
+    font-size: 16px;
+    margin: 32px 0 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #fff;
+    padding: 16px;
+}
