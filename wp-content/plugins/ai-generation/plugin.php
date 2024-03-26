@@ -27,14 +27,14 @@ require_once __DIR__ . '/views/new-article.php';
 
 // PAGE GENERATION
 require_once __DIR__ . '/generation/funcGenerateArticle.php';
-add_action('wp_ajax_chat_gpt_generate_article', fn() => (funcGenerateArticle()));
+add_action('wp_ajax_chat_gpt_generate_article', 'funcGenerateArticle');
 
 // PAGE REGENERATION
-add_action('admin_action_chat_gpt_generate_article', fn() => (funcGenerateArticle()));
+add_action('admin_action_chat_gpt_generate_article', 'funcGenerateArticle');
 
 // PAGE TRANSLATE TO ALL LANGUAGES
 require_once __DIR__ . '/generation/funcTranslateArticle.php';
-add_action('admin_action_chat_gpt_translate_article', fn() => (funcTranslateArticle()));
+add_action('admin_action_chat_gpt_translate_article', 'funcTranslateArticle');
 
 // CONNECT SCRIPT
 add_action('admin_init', 'load_my_script');
