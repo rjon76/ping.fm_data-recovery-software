@@ -22,6 +22,9 @@ function funcTranslateArticle() {
     $uploads = wp_upload_dir()["basedir"];
     $image_folder = $uploads . "/ai";
     $file = $uploads . '/time_record.txt';
+    if(!file_exists($file)) {
+        writeTimeGeneration($file, 'done');
+    }
     $file_proccess = $uploads . '/process_record.txt';
     $file_queue = $uploads . '/translation_queue_ids.txt';
     $cron_job_key = PMXI_Plugin::getInstance()->getOption('cron_job_key');
