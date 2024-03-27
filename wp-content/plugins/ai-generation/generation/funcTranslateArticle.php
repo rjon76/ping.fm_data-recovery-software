@@ -423,13 +423,15 @@ function funcTranslateArticle() {
             $fields = ['type' => 'file'];
             $fields['name'] = "generated-post-$currentLanguage.xml";
 
+            $importID = null;
+
             foreach((new PMXI_Import_List())->getBy($fields)->toArray() as $import) {
                 $importID = $import["id"];
             }
 
             $isImportDone = true;
 
-            if($importID) {
+            if(!is_null($importID)) {
                 do {
                     try {
                         autoImport([$importID], $domain_url, $cron_job_key);
