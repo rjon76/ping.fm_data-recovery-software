@@ -7,8 +7,8 @@ function funcTranslateArticle() {
     }
 
     ini_set('memory_limit', '-1');
-    ini_set('max_execution_time', 300);
-    set_time_limit(300);
+    ini_set('max_execution_time', 600);
+    set_time_limit(600);
     ini_set('display_errors',1);
     error_reporting(E_ALL);
 
@@ -275,7 +275,9 @@ function funcTranslateArticle() {
                         }
                     } while ( is_null($translate_h1title) );
 
-                    generateImgWithTitle($translate_h1title, $image_src, true, $currentLanguage, $englishH1);
+                    if(file_exists($image_src)) {
+                        generateImgWithTitle($translate_h1title, $image_src, true, $currentLanguage, $englishH1);
+                    }
                 }
 
                 $translate_faq_first = null;
@@ -343,13 +345,12 @@ function funcTranslateArticle() {
                                 $softTitle = str_replace(["<h2>", "</h2>", "<b>", "</b>"], "", replaceInvalidUrl($soft, $softUrl));
 
                                 if(file_exists($uploads . '/ai/' . $screenTitleOriginal) && !file_exists($uploads . '/ai/' . $screenTitle)) {
-                                
                                     generateImgWithTitle($softTitle, $uploads . '/ai/' . $screenTitleOriginal, true, $language, '', $domain_url, $softUrl);
-            
-                                    $posScreen = stripos($page_content, $screenTitle);
-                                    if($posScreen === false) {
-                                        $page_content = str_replace($screenTitleEnglish, $screenTitle, $page_content);
-                                    }
+                                }
+
+                                $posScreen = stripos($page_content, $screenTitle);
+                                if($posScreen === false) {
+                                    $page_content = str_replace($screenTitleEnglish, $screenTitle, $page_content);
                                 }
                             }
                         }

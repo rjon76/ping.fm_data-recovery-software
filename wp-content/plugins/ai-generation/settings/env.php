@@ -101,6 +101,9 @@ function imagettftextcenter($image, $size, $p, $x, $y, $color, $fontfile, $text,
 }
 
 function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $title_original = '', $domainUrl = '', $image_name = '') {
+    if(!file_exists($image_src)) {
+        return;
+    }
     $BASE_UPLOADS = wp_upload_dir()["basedir"];
     $capture        = imagecreatefromjpeg($image_src);
     $font_path      = $BASE_UPLOADS . "/fonts/Inter-Bold.ttf";
@@ -637,6 +640,8 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_json);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
+    curl_setopt($ch, CURLOPT_TIMEOUT, 600);
 
     $headers = array();
     $headers[] = 'Content-Type: application/json';

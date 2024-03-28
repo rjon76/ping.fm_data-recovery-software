@@ -481,7 +481,7 @@ function funcGenerateArticle() {
                         
                         generateImgWithTitle($softTitle, $uploads . '/ai/' . $screenTitleOriginal, true, $language, '', $domain_url, $softUrl);
 
-                        $pageContent = preg_replace('#<h2><a [h,H]ref=[*,",\']'.$softUrl.'+[^>]*.(.*?)<\/a></h2>#i', $soft.'<img src="'. $domain_url .'/wp-content/uploads/ai/'. $screenTitle .'">', $pageContent);
+                        $pageContent = preg_replace('#<h2><a [h,H]ref=[*,",\']'.$softUrl.'+[^>]*.(.*?)<\/a></h2>#i', $soft.'<img src="'. $domain_url .'/wp-content/uploads/ai/'. $screenTitle .'" alt="'.$softUrl.' screenshot" width="1280" height="720">', $pageContent);
                     }
                 }
             }
