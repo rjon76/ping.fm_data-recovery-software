@@ -130,7 +130,7 @@ function funcTranslateArticle() {
     if($translateNums == 20 || $translateNums == 0) {
         writeTimeGeneration($file, 'start');
     }
-    
+
     if($onlyFaq == 'false' && !isset($_GET["fullLanguage"])) {
         writeTimeGeneration($file_proccess, 'Translating article with id: ' . $idIdx);
     } else if(isset($_GET["fullLanguage"])) {
@@ -470,7 +470,7 @@ function funcTranslateArticle() {
         }
     }
 
-    if( isset($_GET["postId"]) ) {
+    if( isset($_GET["postId"]) && ($translateNums == 20 || $translateNums == 0) ) {
         $stringsID = file_get_contents($file_queue);
         file_put_contents($file_queue, str_replace($_GET["postId"] . ',', '', $stringsID));
     }
