@@ -127,7 +127,10 @@ function funcTranslateArticle() {
         $faq_theme = get_field('faq_theme', $idIdx);
     }
 
-    writeTimeGeneration($file, 'start');
+    if($translateNums == 20 || $translateNums == 0) {
+        writeTimeGeneration($file, 'start');
+    }
+    
     if($onlyFaq == 'false' && !isset($_GET["fullLanguage"])) {
         writeTimeGeneration($file_proccess, 'Translating article with id: ' . $idIdx);
     } else if(isset($_GET["fullLanguage"])) {
