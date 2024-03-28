@@ -195,6 +195,10 @@ function funcTranslateArticle() {
                 $currentLanguage = 'Chinese';
             } elseif($lang["translated_name"] == 'Português') {
                 $currentLanguage = 'Portuguese';
+            } elseif($lang["translated_name"] == 'Norwegian Bokmål') {
+                $currentLanguage = 'Norwegian';
+            } elseif($lang["translated_name"] == '中文 (台灣)') {
+                $currentLanguage = 'Taiwanese(Mandarin)';
             } else {
                 $currentLanguage = $lang["translated_name"];
             }
