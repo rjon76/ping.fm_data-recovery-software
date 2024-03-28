@@ -31,6 +31,10 @@ function funcTranslateArticle() {
     $domain_url = get_site_url();
     $onlyFaq = 'false';
     $fullLanguage = '';
+    $translateNums = 0;
+    if(isset($_GET["data"]) && !empty($_GET["data"])) {
+        $translateNums = intval($_GET["data"]);
+    }
 
     global $sitepress;
 
@@ -184,10 +188,24 @@ function funcTranslateArticle() {
     $englishH1 = $h1title;
     $isUpdateLanguage = false;
 
+    if($translateNums == 20) {
+        sleep(60);
+    }
+
     if( isset($sitepress) && is_object($sitepress) ) {
         $languages = $sitepress->get_ls_languages();
-
+        $countLang = 0;
         foreach($languages as $lang) {
+
+            $countLang++;
+
+            if($translateNums == 10) {
+                if($countLang >= 10) continue;
+            }
+
+            if($translateNums == 20) {
+                if($countLang < 10) continue;
+            }
 
             if($lang["translated_name"] == 'English') {
                 continue;
@@ -454,6 +472,8 @@ function funcTranslateArticle() {
         file_put_contents($file_queue, str_replace($_GET["postId"] . ',', '', $stringsID));
     }
 
-    writeTimeGeneration($file_proccess, 'done');
-    writeTimeGeneration($file, 'done');
+    if($translateNums == 20 || $translateNums == 0) {
+        writeTimeGeneration($file_proccess, 'done');
+        writeTimeGeneration($file, 'done');
+    }
 }

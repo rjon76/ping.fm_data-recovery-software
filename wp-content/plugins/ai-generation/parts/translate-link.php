@@ -34,8 +34,23 @@ function translate_article($actions, $page_object)
                     if (window.confirm("Do you really want translate article?")) {
                         if(jQuery(this).hasClass("disabled")) { return; }
                         let errorKey = false;
+                        const urlScript = jQuery(this).attr("href");
                         jQuery.ajax({
-                            url: jQuery(this).attr("href"),
+                            url: urlScript + "&data=10",
+                            type: "GET",
+                        }).done(function(data){
+                            console.log("data is:", data);
+                            if(data === "Empty OPENAI_API_KEY") {
+                                alert(data);
+                                errorKey = true;
+                            }
+                        }).fail(function(data){
+                            alert("Something went wrong.");
+                            location.reload();
+                        })
+
+                        jQuery.ajax({
+                            url: urlScript + "&data=20",
                             type: "GET",
                         }).done(function(data){
                             console.log("data is:", data);
