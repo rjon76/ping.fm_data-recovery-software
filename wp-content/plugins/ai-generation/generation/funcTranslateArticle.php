@@ -129,17 +129,15 @@ function funcTranslateArticle() {
 
     if($translateNums == 20 || $translateNums == 0) {
         writeTimeGeneration($file, 'start');
+
+        if($onlyFaq == 'false' && !isset($_GET["fullLanguage"])) {
+            writeTimeGeneration($file_proccess, 'Translating article with id: ' . $idIdx);
+        } else if(isset($_GET["fullLanguage"])) {
+            writeTimeGeneration($file_proccess, 'Translating single locale: ' . $_GET["fullLanguage"]);
+        } else {
+            writeTimeGeneration($file_proccess, 'Translating FAQ for article with id: ' . $idIdx);
+        }
     }
-
-    if($onlyFaq == 'false' && !isset($_GET["fullLanguage"])) {
-        writeTimeGeneration($file_proccess, 'Translating article with id: ' . $idIdx);
-    } else if(isset($_GET["fullLanguage"])) {
-        writeTimeGeneration($file_proccess, 'Translating single locale: ' . $_GET["fullLanguage"]);
-    } else {
-        writeTimeGeneration($file_proccess, 'Translating FAQ for article with id: ' . $idIdx);
-    }
-
-
 
     $aContentFirst = [];
     $aContentSecond = [];

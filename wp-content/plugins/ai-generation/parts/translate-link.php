@@ -49,19 +49,21 @@ function translate_article($actions, $page_object)
                             location.reload();
                         })
 
-                        jQuery.ajax({
-                            url: urlScript + "&data=20",
-                            type: "GET",
-                        }).done(function(data){
-                            console.log("data is:", data);
-                            if(data === "Empty OPENAI_API_KEY") {
-                                alert(data);
-                                errorKey = true;
-                            }
-                        }).fail(function(data){
-                            alert("Something went wrong.");
-                            location.reload();
-                        })
+                        setTimeout(() => {
+                            jQuery.ajax({
+                                url: urlScript + "&data=20",
+                                type: "GET",
+                            }).done(function(data){
+                                console.log("data is:", data);
+                                if(data === "Empty OPENAI_API_KEY") {
+                                    alert(data);
+                                    errorKey = true;
+                                }
+                            }).fail(function(data){
+                                alert("Something went wrong.");
+                                location.reload();
+                            })
+                        },100);
 
                         jQuery(this).addClass("disabled");
                         jQuery(this).attr("href", "");
