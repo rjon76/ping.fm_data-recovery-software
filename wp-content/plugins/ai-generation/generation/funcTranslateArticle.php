@@ -409,7 +409,7 @@ function funcTranslateArticle() {
                         xmlwriter_text($xw, $title);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'h1title');
-                        xmlwriter_text($xw, $h1title);
+                        xmlwriter_text($xw, $englishH1);
                     xmlwriter_end_element($xw);
                     xmlwriter_start_element($xw, 'url');
                         xmlwriter_text($xw, is_array($url) ? '' : $url);
