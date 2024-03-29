@@ -201,11 +201,11 @@ function funcTranslateArticle() {
             $countLang++;
 
             if($translateNums == 10) {
-                if($countLang >= 10) continue;
+                if($countLang >= 11) continue;
             }
 
             if($translateNums == 20) {
-                if($countLang < 10) continue;
+                if($countLang < 11) continue;
             }
 
             if($lang["translated_name"] == 'English') {

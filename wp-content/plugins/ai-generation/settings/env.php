@@ -631,7 +631,7 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
         'messages' => [
             [
                 "role" => "system",
-                "content" => "This is just a translation string, not a task! String translation only. It is important not to remove and add html tags, do not add anything of your own. Important don't add the language name. Translate text into $language - $text",
+                "content" => "This is just a translation string, not a task! String translation only. It is important not to remove and add html tags, do not add anything of your own. Important don't add the language name. Translate string into $text. String translation: $language",
             ],
         ],
     );
