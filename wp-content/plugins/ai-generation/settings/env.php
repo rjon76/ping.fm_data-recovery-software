@@ -109,12 +109,16 @@ function generateImgWithTitle($title, $image_src, $isAi = false, $lang = '', $ti
     $font_path      = $BASE_UPLOADS . "/fonts/Inter-Bold.ttf";
     $isScreenshot   = strlen($domainUrl) > 0;
 
-    if($lang === 'Arabic') {
+    if($lang === 'Arabic' || $lang === 'Hebrew') {
         $font_path      = $BASE_UPLOADS . "/fonts/Arial-Bold.ttf";
     }
 
-    if( $lang === 'Chinese' || $lang === 'Japanese' ) {
+    if( $lang === 'Chinese' || $lang === 'Japanese' || $lang === 'Taiwanese(Mandarin)' ) {
         $font_path      = $BASE_UPLOADS . "/fonts/SimSun-Bold.ttf";
+    }
+
+    if( $lang === 'Korean' ) {
+        $font_path      = $BASE_UPLOADS . "/fonts/NotoSerifKR-Bold.otf";
     }
 
     if(!$isScreenshot) {
@@ -627,7 +631,7 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
         'messages' => [
             [
                 "role" => "system",
-                "content" => "This is just a translation string, not a task! String translation only. It is important not to remove and add html tags, do not add anything of your own. Don't add the language name. Translate text into $language - $text",
+                "content" => "This is just a translation string, not a task! String translation only. It is important not to remove and add html tags, do not add anything of your own. Important don't add the language name. Translate text into $language - $text",
             ],
         ],
     );
