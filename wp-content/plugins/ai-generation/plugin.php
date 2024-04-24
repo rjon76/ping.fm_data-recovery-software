@@ -24,10 +24,15 @@ require_once __DIR__ . '/parts/translate-faq-link.php';
 
 // Admin pages views
 require_once __DIR__ . '/views/new-article.php';
+require_once __DIR__ . '/views/new-medium.php';
 
 // PAGE GENERATION
 require_once __DIR__ . '/generation/funcGenerateArticle.php';
 add_action('wp_ajax_chat_gpt_generate_article', 'funcGenerateArticle');
+
+// PAGE MEDIUM GENERATION
+require_once __DIR__ . '/generation/funcGenerateMedium.php';
+add_action('wp_ajax_chat_gpt_generate_medium', 'funcGenerateMedium');
 
 // PAGE REGENERATION
 add_action('admin_action_chat_gpt_generate_article', 'funcGenerateArticle');

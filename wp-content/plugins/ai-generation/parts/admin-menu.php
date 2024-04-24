@@ -15,4 +15,5 @@ function ai_generation_post() {
     
     add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
     add_submenu_page( $menu_slug, 'Generate New Article', 'Generate new', $capability, $menu_slug, $function );
+    add_submenu_page( $menu_slug, 'Generate Medium Article', 'Generate Medium', $capability, 'new-medium', 'new_medium_data' );
 }

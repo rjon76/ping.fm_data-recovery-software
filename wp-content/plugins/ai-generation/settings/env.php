@@ -658,6 +658,40 @@ function getTranslate($language, $text, $OPENAI_API_KEY) {
     curl_close($ch);
 }
 
+function getTags($text, $OPENAI_API_KEY) {
+
+    $data = array(
+        'model' => 'gpt-4-1106-preview',
+        'messages' => [
+            [
+                "role" => "system",
+                "content" => "Create five broad and commonly used tags to categorize the content of $text, comma separated, ensuring they're applicable for searches on Medium.",
+            ],
+        ],
+    );
+
+    $post_json = json_encode($data);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_json);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
+    curl_setopt($ch, CURLOPT_TIMEOUT, 600);
+
+    $headers = array();
+    $headers[] = 'Content-Type: application/json';
+    $headers[] = "Authorization: Bearer $OPENAI_API_KEY";
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    $result = curl_exec($ch);
+    return json_decode($result);
+
+    curl_close($ch);
+}
+
 function autoImport($array, $domain_url, $cron_job_key) {
 
     foreach($array as $id) {
