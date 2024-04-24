@@ -396,7 +396,7 @@ function funcGenerateArticle() {
                         $matches
                     );
                     
-                    $videoString = '<section><h2>Youtube video to watch</h2><div class="nonp iframe">' . 
+                    $videoString = '<section><h2>Watch on Youtube: <a href="' . $youtube_url . '" target="_blank">' . $page_title . '</a></h2><div class="nonp iframe">' . 
                         "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$matches[1]\" frameborder=\"0\" allowfullscreen></iframe>"
                         . '</div></section>';
                 }
@@ -422,7 +422,7 @@ function funcGenerateArticle() {
                         $youtube_url,
                         $matches
                     );
-                    $string = '<section><div><div>3</div><h2>Youtube video to watch</h2></div><div class="iframe">' . 
+                    $string = '<section><div><div>3</div><h2>Watch on Youtube: <a href="' . $youtube_url . '" target="_blank">' . $page_title . '</a></h2></div><div class="iframe">' . 
                                     "<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$matches[1]\" frameborder=\"0\" allowfullscreen></iframe>"
                                 . '</div></section>
                                 <section><div><div>4</div><h2>Precautions and Tips:</h2></div>'.$tipsString.'</section>
