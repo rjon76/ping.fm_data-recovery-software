@@ -84,15 +84,15 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					<?php if ($current_language !== 'ar') { ?>
 						<?php if(get_site_url() !== 'https://kismac-ng.org/blog' && get_site_url() !== 'https://www.kismac-ng.org/blog') { ?>
 							<li>
-								<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
-							</li>
-							<li>
 								<a href="/howto/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('How To & Best Software', 'custom-string-translation'); ?></a>
 							</li>
 							<li>
 								<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
 							</li>
 							<?php if( $current_language == 'en' ) { ?>
+								<li>
+									<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
+								</li>
 								<li>
 									<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
 								</li>
