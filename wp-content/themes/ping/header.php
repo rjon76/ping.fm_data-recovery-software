@@ -70,7 +70,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					KisMAC
 				</a>
 			<?php } else { ?>
-				<a href="https://www.ping.fm/<?php echo $curr_url; ?>" rel="follow">
+				<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="follow">
 					<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
 					ping.fm
 				</a>
