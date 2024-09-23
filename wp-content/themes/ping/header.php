@@ -11,7 +11,7 @@
 global $sitepress;
 $current_language = 'en';
 $curr_url = '';
-$ping_url = '';
+$ping_url = 'https://www.ping.fm/';
 
 if( isset($sitepress) && is_object($sitepress) ) {
 	$languages = $sitepress->get_ls_languages();
@@ -22,7 +22,7 @@ if( isset($sitepress) && is_object($sitepress) ) {
 			if( $hreflang_url["language_code"] !== 'ar' ) {
 				$curr_url = $hreflang_url["language_code"] . '/';
 			}
-			$ping_url = 'https://www.ping.fm/' . $hreflang_url["language_code"];
+			$ping_url .= $hreflang_url["language_code"];
 		}
 	}
 }
@@ -89,20 +89,24 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					<?php if ($current_language !== 'ar') { ?>
 						<?php if(get_site_url() !== 'https://kismac-ng.org/blog' && get_site_url() !== 'https://www.kismac-ng.org/blog') { ?>
 							<li>
-								<a href="/howto/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('How To & Best Software', 'custom-string-translation'); ?></a>
+								<a href="<?php echo $ping_url; ?>howto/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('How To & Best Software', 'custom-string-translation'); ?></a>
 							</li>
 							<li>
-								<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
+							<?php if(get_site_url() === 'https://datarecovery.ping.fm') { ?>
+									<a href="<?php echo 'https://datarecovery.ping.fm/'; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
+							<?php } else { ?>
+									<a href="<?php echo $ping_url; ?>data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
+							<?php } ?>
 							</li>
 							<?php if( $current_language == 'en' ) { ?>
 								<li>
-									<a href="<?php echo $ping_url; ?>/chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
+									<a href="<?php echo $ping_url; ?>chromecast-screen-mirroring/" rel="dofollow"><?php _e('Chromecast Screen Mirroring', 'custom-string-translation'); ?></a>
 								</li>
 								<li>
-									<a href="<?php echo $ping_url; ?>/ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
+									<a href="<?php echo $ping_url; ?>ip/" rel="dofollow"><?php _e('Router Login & IP Address', 'custom-string-translation'); ?></a>
 								</li>
 								<li>
-									<a href="/app-vs-app/" rel="dofollow"><?php _e('App Vs App', 'custom-string-translation'); ?></a>
+									<a href="<?php echo $ping_url; ?>app-vs-app/" rel="dofollow"><?php _e('App Vs App', 'custom-string-translation'); ?></a>
 								</li>
 							<?php } ?>
 						<?php } ?>
