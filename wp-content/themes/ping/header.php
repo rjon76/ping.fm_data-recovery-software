@@ -69,6 +69,11 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					<img src="https://kismac-ng.org/blog/wp-content/uploads/2024/02/cropped-wifi_9055433.png" alt="KisMAC Logo" width="512" height="512">
 					KisMAC
 				</a>
+			<?php } else if(get_site_url() === 'https://datarecovery.ping.fm') { ?>
+				<a href="https://datarecovery.ping.fm/<?php echo $curr_url; ?>" rel="follow">
+					<img src="https://www.ping.fm/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
+					ping.fm
+				</a>
 			<?php } else { ?>
 				<a href="/data-recovery-software/<?php echo $curr_url; ?>" rel="follow">
 					<img src="/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
