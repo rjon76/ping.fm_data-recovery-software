@@ -79,7 +79,7 @@
 											<?php if(get_site_url() === 'https://www.ping.fm/howto') { ?>
 												<img srcset="https://www.ping.fm/howto/wp-content/uploads/2024/01/multimedia_9842714.png" src="https://www.ping.fm/howto/wp-content/uploads/2024/01/multimedia_9842714.png" width="512" height="512" alt="Howto icon">
 											<?php } ?>
-											<?php if(get_site_url() === 'https://www.ping.fm/data-recovery-software') { ?>
+											<?php if(get_site_url() === 'https://www.ping.fm/data-recovery-software' || get_site_url() === 'https://datarecovery.ping.fm') { ?>
 												<img srcset="<?php echo get_site_url();?>/wp-content/uploads/note.png" src="<?php echo get_site_url();?>/wp-content/uploads/note.png" width="512" height="512" alt="Note icon">
 											<?php } ?>
 											<?php if(get_site_url() === 'https://kismac-ng.org/blog' || get_site_url() === 'https://www.kismac-ng.org/blog') { ?>

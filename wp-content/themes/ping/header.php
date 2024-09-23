@@ -22,7 +22,7 @@ if( isset($sitepress) && is_object($sitepress) ) {
 			if( $hreflang_url["language_code"] !== 'ar' ) {
 				$curr_url = $hreflang_url["language_code"] . '/';
 			}
-			$ping_url = '/' . $hreflang_url["language_code"];
+			$ping_url = 'https://www.ping.fm/' . $hreflang_url["language_code"];
 		}
 	}
 }
