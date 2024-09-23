@@ -22,7 +22,6 @@ if( isset($sitepress) && is_object($sitepress) ) {
 			if( $hreflang_url["language_code"] !== 'ar' ) {
 				$curr_url = $hreflang_url["language_code"] . '/';
 			}
-			$ping_url .= $hreflang_url["language_code"];
 		}
 	}
 }
@@ -70,7 +69,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 					KisMAC
 				</a>
 			<?php } else if(get_site_url() === 'https://datarecovery.ping.fm') { ?>
-				<a href="https://datarecovery.ping.fm/<?php echo $curr_url; ?>" rel="follow">
+				<a href="<?php echo $ping_url; ?><?php echo $curr_url; ?>" rel="follow">
 					<img src="https://www.ping.fm/wp-content/uploads/question.png" alt="Ping Fm Logo" width="512" height="512">
 					ping.fm
 				</a>
@@ -93,7 +92,7 @@ $fileName = get_post_meta(get_the_ID(), '_wp_page_template', true);
 							</li>
 							<li>
 							<?php if(get_site_url() === 'https://datarecovery.ping.fm') { ?>
-									<a href="<?php echo 'https://datarecovery.ping.fm/'; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
+									<a href="<?php echo 'https://datarecovery.ping.fm/'; ?><?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
 							<?php } else { ?>
 									<a href="<?php echo $ping_url; ?>data-recovery-software/<?php echo $curr_url; ?>" rel="dofollow"><?php _e('Data Recovery Software', 'custom-string-translation'); ?></a>
 							<?php } ?>
