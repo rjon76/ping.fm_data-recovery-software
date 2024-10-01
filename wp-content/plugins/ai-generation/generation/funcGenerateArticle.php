@@ -12,6 +12,7 @@ function funcGenerateArticle() {
     error_reporting(E_ALL);
 
     require_once __DIR__ . "/../settings/env.php";
+    require_once __DIR__ . "/../settings/unique-image-generator.php";
 
     if($OPENAI_API_KEY == '') {
         echo 'Empty OPENAI_API_KEY';
@@ -469,17 +470,25 @@ function funcGenerateArticle() {
                         $screenTitle = str_replace(['/', '.', ':', '?', '='], '-', $softUrl) . $language . '.jpg';
                         $screenTitleOriginal = str_replace(['/', '.', ':', '?', '='], '-', $softUrl) . '-original.jpg';
                         // capture
-                        if(!file_exists($uploads . '/ai/' . $screenTitleOriginal)) {
+                        // if(!file_exists($uploads . '/ai/' . $screenTitleOriginal)) {
                             $call = screenshotlayer($softUrl, $params, $SCREENSHOT_KEY);
                             $result = saveAiImage($call, $uploads . '/ai/' . $screenTitleOriginal);
                             if($result === "NOT_IMAGE") continue;
                             
                             sleep(10);
-                        }
+                        // }
 
                         $softTitle = str_replace(["<h2>", "</h2>", "<b>", "</b>"], "", replaceInvalidUrl($soft, $softUrl));
                         
                         generateImgWithTitle($softTitle, $uploads . '/ai/' . $screenTitleOriginal, true, $language, '', $domain_url, $softUrl);
+
+                        sleep(30);
+
+                        if(file_exists($uploads . '/ai/' . $screenTitle)) {
+                            generateUniqImage($uploads . '/ai/' . $screenTitle);
+                        } else {
+                            continue;
+                        }
 
                         $pageContent = preg_replace('#<h2><a [h,H]ref=[*,",\']'.$softUrl.'+[^>]*.(.*?)<\/a></h2>#i', $soft.'<img src="'. $domain_url .'/wp-content/uploads/ai/'. $screenTitle .'" alt="'.$softUrl.' screenshot" width="1280" height="720">', $pageContent);
                     }
